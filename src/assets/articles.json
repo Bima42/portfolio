@@ -1,14 +1,17 @@
 [
     {
         "title": "Bonjour",
-        "description": "Le premier article"
+        "description": "Le premier article",
+        "pictures": ["articlesImages/test.png"]
     },
     {
         "title": "Au Revoir",
-        "description": "Le deuxieme article"
+        "description": "Le deuxieme article",
+        "pictures": ["articlesImages/test.png"]
     },
     {
         "title": "Ma bite",
-        "description": "🍆🍆🍆🍆🍆🍆💦💦💦💦💦"
+        "description": "🍆🍆🍆🍆🍆🍆💦💦💦💦💦",
+        "pictures": ["articlesImages/test.png"]
     }
 ]
