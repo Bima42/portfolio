@@ -2,7 +2,7 @@
     {
         "title": "Bonjour",
         "description": "Le premier article",
-        "pictures": ["articlesImages/test.png"]
+        "pictures": ["articlesImages/test.png", "articlesImages/test2.png"]
     },
     {
         "title": "Au Revoir",
