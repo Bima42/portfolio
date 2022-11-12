@@ -69,7 +69,9 @@ const props = defineProps({ article: { }, type: String })
 
   > .front,
   > .back {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     transition-timing-function: cubic-bezier(.175, .885, .32, 1.275);
     transition-duration: .5s;
     transition-property: transform, opacity;
