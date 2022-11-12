@@ -7,6 +7,13 @@
       </div>
       <div class="back">
         <div class="resume" v-html="article.resume"></div>
+        <div class="tags">
+          <div v-for="tag in article.tags" v-bind:key="tag"
+               class="tag"
+          >
+            {{tag}}
+          </div>
+        </div>
       </div>
     </div>
     <div class="githubLink">
@@ -114,6 +121,21 @@ const props = defineProps({ article: { }, type: String })
       }
     }
   }
+}
+
+.tags {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1em;
+}
+
+.tag {
+  background: #aaa;
+  border-radius: 30px;
+  width: fit-content;
+  padding: 5px 1em;
 }
 
 .description {

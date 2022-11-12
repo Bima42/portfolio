@@ -2,6 +2,7 @@
     {
         "title": "Webserv",
         "header": "<h2>HTTP/1.1 Web Server in CPP98</h2>",
+        "tags": ["C", "C++", "HTML","C", "C++","C", "C++","C", "C++","C", "C++","C", "C++","C", "C++","C", "C++"],
         "resume": "<h2>45 days</h2><h2>Collaborators</h2><a href='https://github.com/tyrossel'><img src='https://avatars.githubusercontent.com/u/29518484?v=4'/></a><a href='https://github.com/YvanoffP'><img src='https://avatars.githubusercontent.com/u/44474562?v=4'></a><a href='https://github.com/Bima42'><img src='https://avatars.githubusercontent.com/u/87313922?v=4'></a>",
         "githubLink": "https://github.com/Bima42/webserv",
         "description": "<p>Able to receive requests from several clients at the same time.<br>Must be configured using a configuration file, written in JSON and inspired by Nginx.<br>Able to process GET, POST and DELETE type requests as defined in RFC 7231.<br>We have taken as reference the RFCs from 7230 to 7235<br>Possible to upload and download files.<br>We decided to create a static HTML in which various tests could be carried out in order to facilitate the use of our server.<br>Logs are display in order to observe incoming requests as well as outgoing responses.</p>",
