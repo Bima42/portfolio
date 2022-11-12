@@ -14,9 +14,7 @@ import articlesData from '@/assets/articles.json'
 <style lang="scss" scoped>
 section {
   .main-card {
-    margin: 0 20px 0 20px;
-    border: 3px solid white;
-    border-radius: 25px;
+    margin: 0 20px 150px 20px;
   }
 }
 

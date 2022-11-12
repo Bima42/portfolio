@@ -2,12 +2,12 @@
   <h1>{{ article.title }}</h1>
   <section class="article">
     <section class="left-card card">
-      <ArticleDescription v-if="(n % 2 === 0)" :article='article' />
-      <ArticlePicturesCarousel v-else :pictures='article.pictures'/>
+      <ArticleDescription v-if="(n % 2 === 0)" :article='article' type="left" />
+      <ArticlePicturesCarousel v-else :pictures='article.pictures' type="left" />
     </section>
-    <section class="right-card card">
-      <ArticlePicturesCarousel v-if="(n % 2 === 0)" :pictures='article.pictures'/>
-      <ArticleDescription v-else :article='article' />
+    <section class="card">
+      <ArticlePicturesCarousel v-if="(n % 2 === 0)" :pictures='article.pictures' type="right" />
+      <ArticleDescription v-else :article='article' type="right" />
     </section>
   </section>
 </template>
@@ -22,23 +22,16 @@ const props = defineProps({ article: { }, n: Number })
 
 <style lang="scss" scoped>
 h1 {
-  margin: 10px;
-  font-size: 50px;
+  margin: 20px;
+  font-size: 40px;
 }
 .article {
   display: flex;
-  min-height: 500px;
+  min-height: 550px;
 
   .card {
     padding: 20px;
     width: 50%;
-    height: 100%;
-  }
-
-  .left-card {
-  }
-  .right-card {
-    overflow: auto; // TODO: remove me
   }
 }
 </style>

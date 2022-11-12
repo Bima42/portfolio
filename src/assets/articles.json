@@ -1,29 +1,42 @@
 [
     {
         "title": "Webserv",
-        "resume": "<h2>Create a HTTP/1.1 Web Server in CPP98</h2><h3>45 days</h3><a href='https://github.com/tyrossel'><img src='https://avatars.githubusercontent.com/u/29518484?v=4'/></a><a href='https://github.com/YvanoffP'><img src='https://avatars.githubusercontent.com/u/44474562?v=4'></a><a href='https://github.com/Bima42'><img src='https://avatars.githubusercontent.com/u/87313922?v=4'></a>",
+        "header": "<h2>HTTP/1.1 Web Server in CPP98</h2>",
+        "resume": "<h2>45 days</h2><h2>Collaborators</h2><a href='https://github.com/tyrossel'><img src='https://avatars.githubusercontent.com/u/29518484?v=4'/></a><a href='https://github.com/YvanoffP'><img src='https://avatars.githubusercontent.com/u/44474562?v=4'></a><a href='https://github.com/Bima42'><img src='https://avatars.githubusercontent.com/u/87313922?v=4'></a>",
         "githubLink": "https://github.com/Bima42/webserv",
-        "description": "This project allowed us to create an HTTP/1.1 web server in CPP98. The server is able to receive requests from several clients at the same time and process them, without crashing.It must be configured using a configuration file, written in JSON. Many features can be added, we were inspired by Nginx configuration files.Our server is able to process GET, POST and DELETE type requests as defined in RFC 7231.We have taken as reference the RFCs from 7230 to 7235, in order to best implement the standards of HTTP/1.1It is also possible to upload and download files.We decided to create a static HTML in which various tests could be carried out in order to facilitate the use of our server.When using it, it's possible to see the logs of our server in the terminal in which it was launched, in order to observe incoming requests as well as outgoing responses.",
+        "description": "<p>Able to receive requests from several clients at the same time.<br>Must be configured using a configuration file, written in JSON and inspired by Nginx.<br>Able to process GET, POST and DELETE type requests as defined in RFC 7231.<br>We have taken as reference the RFCs from 7230 to 7235<br>Possible to upload and download files.<br>We decided to create a static HTML in which various tests could be carried out in order to facilitate the use of our server.<br>Logs are display in order to observe incoming requests as well as outgoing responses.</p>",
         "pictures": ["articlesImages/webserv/webserv_movie.gif", "articlesImages/webserv/webserv_screen_1.png", "articlesImages/webserv/webserv_screen_2.png"]
     },
     {
         "title": "Inception",
-        "description": "Introduction to the Docker environment. I discovered Docker for the first time during this project.I was aiming to deploy 3 Docker containers.  - A database: MariaDB  - A management system: Wordpress  - A server: NginxAll with the aim of hosting a website locally, using these containers.I also had to redirect the localhost to the name of the requested site, in this case tpauvret.42.fr.I had an obligation not to use images from DockerHub. My containers could only import an Alpine or Debian image. So I created one Dockerfile per container, all imported from Debian Buster. Each Dockerfile can be seen as a cooking recipe. When it is launched, a series of commands will be executed, in order to set up the containers as we wish.I used docker-compose to manage the different containers. It is a tool for defining and running multi-container Docker applications.The Docker-compose file is written in YAML.It is in this one that I described the order of creation of the containers, their volumes, the network to which they have access, their environment etc.",
+        "header": "<h2>Website deployment using Docker</h2>",
+        "resume": "<h2>20 days</h2><h2>Collaborators</h2><a href='https://github.com/Bima42'><img src='https://avatars.githubusercontent.com/u/87313922?v=4'></a>",
+        "githubLink": "https://github.com/Bima42/inception",
+        "description": "<p>Discovered Docker for the first time during this project.<br>3 Docker containers: MariaDB, Wordpress and Nginx.<br>Had to redirect the localhost to the name of the requested site, in this case tpauvret.42.fr.<br>I had an obligation not to use images from DockerHub (I could only import an Alpine or Debian image). <br>I used docker-compose to manage the different containers.<br>The Docker-compose file is written in YAML. It is in this one that I described the order of creation of the containers, their volumes, the network to which they have access, their environment etc.</p>",
         "pictures": ["articlesImages/inception/inception_resume.png"]
     },
     {
         "title": "Ft_containers",
-        "description": "I implemented various C++ containers from the STD library.The goal here was to recreate the following containers:   - vector  - map  - stack All in CPP98. Almost all of the documentation can be found at [CppReference](http://cppreference.com) or [CPlusPlus](http://cplusplus.com).All of the functions and members of these containers reside on these sites.I also served source codes of the containers to understand the comments they have been implemented.My containers are usable via the namespace ft.I used different testers to see the effectiveness of my containers :  - Tester 1 :  - Tester 2 : I also implemented my own tests. You can launch them using flag when you start my program.",
+        "header": "<h2>Reimplement CPP container</h2>",
+        "resume": "<h2>20 days</h2><h2>Collaborators</h2><a href='https://github.com/Bima42'><img src='https://avatars.githubusercontent.com/u/87313922?v=4'></a>",
+        "githubLink": "https://github.com/Bima42/ft_containers",
+        "description": "<p>Recreate the following containers: vector, map and stack.<br>Developed in CPP98.<br>I served source codes of the containers to understand how they have been implemented.<br>My containers are usable via the namespace ft.<br>I used different testers to see the effectiveness of my containers :  - Tester 1 :  - Tester 2 : <br>I also implemented my own tests. You can launch them using flag when you start my program.",
         "pictures": ["articlesImages/ft_containers/ft_containers_movie.gif"]
     },
     {
         "title": "Cub3d",
-        "description": "Creation of a video game in C, inspired by Wolfenstein.The game must be able to provide a smooth and sufficiently dynamic user experience.Since multithreading is not allowed, raycasting had to be implemented intelligently.The mandatory part requires you to be able to launch the game via a configuration file respecting a certain syntax. Also, the player must be able to move with the WASD keys and rotate the camera.We made the decision to add an exit to the maze. It was not mandatory but it seemed logical to us, so that the player could end the game.In parallel with this project, I decided to create a maze generator in Python.This generator allows you to create a map that can be used in our Cub3d. It creates a .ber file, with the paths of the texture files of your choice, as well as the floor and ceiling colors you want.The maze creation algorithm used is the Depth First Search Algorithm (DFS)",
+        "header": "<h2>Implement raycasting in a simple video game</h2>",
+        "resume": "<h2>20 days</h2><h2>Collaborators</h2><a href='https://github.com/YvanoffP'><img src='https://avatars.githubusercontent.com/u/44474562?v=4'></a><a href='https://github.com/Bima42'><img src='https://avatars.githubusercontent.com/u/87313922?v=4'></a>",
+        "githubLink": "https://github.com/Bima42/cub3d",
+        "description": "<p>Game must be able to provide a smooth and sufficiently dynamic user experience.<br>Since multithreading is not allowed, raycasting had to be implemented intelligently.<br>The mandatory part requires you to be able to launch the game via a configuration file respecting a certain syntax.<br>Also, the player must be able to move with the WASD keys and rotate the camera.<br>We made the decision to add an exit to the maze.<br> In parallel with this project, I decided to create a maze generator in Python.<br>This generator allows you to create a map that can be used in our Cub3d.<br>The maze creation algorithm used is the Depth First Search Algorithm (DFS)</p>",
         "pictures": ["articlesImages/cub3d/cub3d_movie.gif"]
     },
     {
         "title": "Minishell",
-        "description": "We recreated a simple version of a shell.Our reference for minishell development was bash.We implemented some builtins ourselves, like cd, echo or even pwd.Those that are not implemented are called directly via their path (like /bin for example).Redirects, heredocs and pipe are also implemented by us.It is possible to navigate, compile or launch programs, add environment variables as in a classic shell.)",
+        "header": "<h2>Create a simple version of a shell</h2>",
+        "resume": "<h2>30 days</h2><h2>Collaborators</h2><a href='https://github.com/YvanoffP'><img src='https://avatars.githubusercontent.com/u/44474562?v=4'></a><a href='https://github.com/Bima42'><img src='https://avatars.githubusercontent.com/u/87313922?v=4'></a>",
+        "githubLink": "https://github.com/Bima42/minishell",
+        "description": "<p>Our reference for minishell development was bash.<br>We implemented some builtins ourselves, like cd, echo or even pwd.<br>Those that are not implemented are called directly via their path (like /bin for example).<br>Redirects, heredocs and pipe are also implemented by us.<br>It is possible to navigate, compile or launch programs, add environment variables as in a classic shell.<br>",
         "pictures": ["articlesImages/minishell/minishell_movie.gif"]
     }
 ]
