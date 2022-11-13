@@ -3,10 +3,10 @@
   <section class="article">
     <section class="left-card card">
       <ArticleDescription v-if="(n % 2 === 0) || isPhone()" :article='article' :n="n" type="left" />
-      <ArticlePicturesCarousel v-else :pictures='article.pictures' type="left" />
+      <ArticlePicturesCarousel v-else :pictures='article.pictures[0]' type="left" />
     </section>
     <section class="card">
-      <ArticlePicturesCarousel v-if="(n % 2 === 0) || isPhone()" :pictures='article.pictures' type="right" />
+      <ArticlePicturesCarousel v-if="(n % 2 === 0) || isPhone()" :pictures='article.pictures[0]' type="right" />
       <ArticleDescription v-else :article='article' :n="n" type="right" />
     </section>
   </section>

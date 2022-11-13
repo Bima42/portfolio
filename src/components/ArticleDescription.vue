@@ -4,7 +4,7 @@
     <div class="flip is-flipped" @click="clicked" :id="n">
       <div class="front">
         <div class="description" v-html="article.description"></div>
-        <p class="footer" style="cursor: pointer"><u>See less</u></p>
+        <p class="footer"><u>See less</u></p>
       </div>
       <div class="back">
         <div class="resume" v-html="article.resume"></div>
@@ -14,7 +14,7 @@
             {{tag}}
           </div>
         </div>
-        <p class="footer" style="cursor: pointer"><u>See more</u></p>
+        <p class="footer"><u>See more</u></p>
       </div>
     </div>
   </div>
@@ -147,6 +147,7 @@ function clicked (e: Event) {
 
 .footer {
   margin-bottom: 15px;
+  cursor: pointer;
 }
 
 </style>

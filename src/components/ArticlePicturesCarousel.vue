@@ -1,61 +1,24 @@
 <template>
   <section class="carousel">
     <div class="pictures">
-      <img class="hidden" v-for="(picture, n) in pictures" v-bind:key="n" ref="pictureElements"
-           :src="getImgSrc(picture)"
+      <img class="shown" v-bind:key="n" ref="pictureElements"
+           :src="getImgSrc(pictures)"
            :alt="n"
       />
-    </div>
-    <div class="controls" v-if="pictures.length > 1">
-      <button class="left" @click='changePicture(-1)'>&lt;</button>
-      <button class="right" @click='changePicture(1)'>&gt;</button>
     </div>
   </section>
 </template>
 
 <script lang="ts" setup>
-import { defineProps, onMounted, ref } from 'vue'
+import { defineProps } from 'vue'
 
-const props = defineProps({ pictures: [] })
+const props = defineProps({ pictures: String })
 const pictureElements = []
-const currentPicture = ref(0)
 
 function getImgSrc (url: string) {
   return require('../assets/' + url)
 }
 
-function hidePicture (i: number) {
-  pictureElements[i].classList.add('hidden')
-  pictureElements[i].classList.remove('shown')
-}
-
-function displayPicture (i: number) {
-  pictureElements[i].classList.add('shown')
-  pictureElements[i].classList.remove('hidden')
-}
-
-function changePicture (by: number) {
-  pictureElements[currentPicture.value].classList.remove('anim1')
-  pictureElements[currentPicture.value].classList.remove('anim2')
-  hidePicture(currentPicture.value)
-  currentPicture.value += by
-  if (currentPicture.value < 0) {
-    currentPicture.value = props.pictures.length - 1
-  }
-  if (currentPicture.value >= props.pictures.length) {
-    currentPicture.value = 0
-  }
-  displayPicture(currentPicture.value)
-  if (by < 0) {
-    pictureElements[currentPicture.value].classList.add('anim1')
-  } else {
-    pictureElements[currentPicture.value].classList.add('anim2')
-  }
-}
-
-onMounted(() => {
-  displayPicture(0)
-})
 </script>
 
 <style lang="scss" scoped>

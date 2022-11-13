@@ -53,7 +53,8 @@
     display: flex;
     font-size: 13px;
     flex-direction: column;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
+    margin-top: 10px;
 
     h2 {
       margin: 0;

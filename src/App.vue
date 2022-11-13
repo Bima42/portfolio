@@ -2,6 +2,19 @@
   <router-view/>
 </template>
 
+<script lang="ts">
+export default {
+  name: 'App',
+  watch: {
+    $route: {
+      immediate: true,
+      handler: function (to: any, from: any) {
+        document.title = to.meta.title || 'Some Default Title'
+      }
+    }
+  }
+}
+</script>
 <style lang="scss">
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 body {

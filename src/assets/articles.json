@@ -11,7 +11,7 @@
     {
         "title": "Inception",
         "header": "<h2>Website deployment using Docker</h2>",
-        "tags": ["Docker", "Docker-compose", "Container", "Nginx", "MariaDB", "Wordpress"],
+        "tags": ["Docker", "Container", "Nginx", "MariaDB", "Wordpress", "Docker-compose"],
         "resume": "<h2>20 days</h2><h2>Collaborators</h2><a href='https://github.com/Bima42'><img src='https://avatars.githubusercontent.com/u/87313922?v=4'></a>",
         "githubLink": "https://github.com/Bima42/inception",
         "description": "<p>Discovered Docker for the first time during this project.<br>3 Docker containers: MariaDB, Wordpress and Nginx.<br>Had to redirect the localhost to the name of the requested site, in this case tpauvret.42.fr.<br>I had an obligation not to use images from DockerHub (I could only import an Alpine or Debian image). <br>I used docker-compose to manage the different containers.<br>The Docker-compose file is written in YAML. It is in this one that I described the order of creation of the containers, their volumes, the network to which they have access, their environment etc.</p>",
