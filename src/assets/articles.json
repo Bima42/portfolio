@@ -23,7 +23,7 @@
         "tags": ["C++", "Containers", "Vector", "Map", "Stack", "Binary Search Tree"],
         "resume": "<h2>20 days</h2><h2>Collaborators</h2><a href='https://github.com/Bima42'><img src='https://avatars.githubusercontent.com/u/87313922?v=4'></a>",
         "githubLink": "https://github.com/Bima42/ft_containers",
-        "description": "<p>Recreate the following containers: vector, map and stack.<br>Developed in CPP98.<br>I served source codes of the containers to understand how they have been implemented.<br>My containers are usable via the namespace ft.<br>I used different testers to see the effectiveness of my containers :  - Tester 1 :  - Tester 2 : <br>I also implemented my own tests. You can launch them using flag when you start my program.",
+        "description": "<p>Recreate the following containers: vector, map and stack.<br>Developed in CPP98.<br><br>I served source codes of the containers to understand how they have been implemented.<br>My containers are usable via the namespace ft.<br><br>I used different testers to see the effectiveness of my containers.<br>I also implemented my own tests. You can launch them using flag when you start my program.",
         "pictures": ["articlesImages/ft_containers/ft_containers_screen.png"]
     },
     {

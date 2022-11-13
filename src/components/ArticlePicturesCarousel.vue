@@ -1,7 +1,7 @@
 <template>
   <section class="carousel">
     <div class="pictures">
-      <img class="hidden" v-for='(picture, n) in pictures' v-bind:key="n" ref="pictureElements"
+      <img class="hidden" v-for="(picture, n) in pictures" v-bind:key="n" ref="pictureElements"
            :src="getImgSrc(picture)"
            :alt="n"
       />
@@ -60,9 +60,11 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 $controls-width: 80px;
+
 .carousel {
   height: 100%;
   position: relative;
+
   .controls {
     width: 100%;
     position: absolute;
@@ -157,6 +159,23 @@ $controls-width: 80px;
       &.hidden {
         display: none;
       }
+    }
+  }
+}
+
+@media (orientation: portrait) {
+  .carousel {
+    margin-top: 40px;
+    .controls {
+      margin: 0;
+      button:hover {
+        opacity: 75%;
+      }
+    }
+    .pictures {
+      max-width: 100%;
+      max-height: 100%;
+      margin: 0;
     }
   }
 }
