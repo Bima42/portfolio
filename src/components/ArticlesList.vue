@@ -8,7 +8,7 @@
 </template>
 
 <script lang="ts" setup>
-import ArticleHeader from '@/components/ArticleHeader.vue'
+import ArticleHeader from '@/components/SiteHeader.vue'
 import ArticleDetails from '@/components/ArticleDetails.vue'
 import articlesData from '@/assets/articles.json'
 </script>

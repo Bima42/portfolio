@@ -54,6 +54,8 @@ function changePicture (by: number) {
 }
 
 onMounted(() => {
+  console.log(pictureElements)
+  console.log(props.pictures)
   displayPicture(0)
 })
 </script>

@@ -1,13 +1,12 @@
 <template>
   <section class="header">
     <div class="name">
-      <h1>PAUVRET</h1>
-      <h1>TANGUY</h1>
+      <h1>PAUVRET TANGUY</h1>
     </div>
     <div class="resume">
-      <h2>Hi there, I'm Tanguy or Bima ! I'm currently student at 42 School</h2>
-      <h2>I'm interest in Backend Development and Machine Learning</h2>
-      <h2>You will find here some of my projects</h2>
+      <h2>Hi there, I'm Tanguy or Bima !<br>I'm currently a student at 42 Lausanne</h2>
+      <h2>I'm interested into Backend Development and Machine Learning</h2>
+      <h2>You will find here some projects I've done</h2>
     </div>
     <div class="social_media">
       <a href="https://github.com/Bima42">
@@ -35,14 +34,15 @@
 .header {
   display: flex;
   flex-direction: column;
-  font-size: 30px;
+  justify-content: center;
+  font-size: 75px;
+  @media (orientation: portrait) {
+    font-size: 50px;
+  }
 
   .name {
     display: flex;
     flex-direction: column;
-    align-self: flex-start;
-    text-align: left;
-    margin: 20px 0 30px 25px;
   }
 
   h1 {
@@ -53,10 +53,7 @@
     display: flex;
     font-size: 13px;
     flex-direction: column;
-    align-self: flex-start;
-    text-align: left;
     margin-bottom: 30px;
-    margin-left: 25px;
 
     h2 {
       margin: 0;
