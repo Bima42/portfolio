@@ -4,7 +4,7 @@
       <h1>PAUVRET TANGUY</h1>
     </div>
     <div class="resume">
-      <h2>Hi there, I'm Tanguy or Bima !<br>I'm currently a student at 42 Lausanne</h2>
+      <h2>Hi there, I'm Tanguy or Bima !<br>I started dev a year ago and I'm currently a student at 42 Lausanne<br></h2>
       <h2>I'm interested into Backend Development and Machine Learning</h2>
       <h2>You will find here some projects I've done</h2>
     </div>

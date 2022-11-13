@@ -53,6 +53,10 @@ hr {
   border: 1px solid #f9dd94;
 }
 
+.githubLink {
+  margin-top: 10px;
+}
+
 @media (orientation: portrait) {
   .githubLink {
     margin-top: 30px;

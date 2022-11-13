@@ -134,7 +134,7 @@ function clicked (e: Event) {
 }
 
 .tag {
-  background: #aaa;
+  background: #8d8d8d;
   border-radius: 30px;
   width: fit-content;
   padding: 5px 1em;

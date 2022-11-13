@@ -30,9 +30,9 @@
         "title": "Cub3d",
         "header": "<h2>Implement raycasting in a simple video game</h2>",
         "tags": ["C", "Raycasting", "Video Game", "3D"],
-        "resume": "<h2>20 days</h2><h2>Collaborators</h2><a href='https://github.com/YvanoffP'><img src='https://avatars.githubusercontent.com/u/44474562?v=4'></a><a href='https://github.com/Bima42'><img src='https://avatars.githubusercontent.com/u/87313922?v=4'></a>",
+        "resume": "<h2>15 days</h2><h2>Collaborators</h2><a href='https://github.com/YvanoffP'><img src='https://avatars.githubusercontent.com/u/44474562?v=4'></a><a href='https://github.com/Bima42'><img src='https://avatars.githubusercontent.com/u/87313922?v=4'></a>",
         "githubLink": "https://github.com/Bima42/cub3d",
-        "description": "<p>Game must be able to provide a smooth and sufficiently dynamic user experience.<br>Since multithreading is not allowed, raycasting had to be implemented intelligently.<br>The mandatory part requires you to be able to launch the game via a configuration file respecting a certain syntax.<br>Also, the player must be able to move with the WASD keys and rotate the camera.<br>We made the decision to add an exit to the maze.<br> In parallel with this project, I decided to create a maze generator in Python.<br>This generator allows you to create a map that can be used in our Cub3d.<br>The maze creation algorithm used is the Depth First Search Algorithm (DFS)</p>",
+        "description": "<p>Game must be able to provide a smooth and sufficiently dynamic user experience.<br>Since multithreading is not allowed, raycasting had to be implemented intelligently.<br>The mandatory part requires you to be able to launch the game via a configuration file respecting a certain syntax.<br>Also, the player must be able to move with the WASD keys and rotate the camera using arrow keys.<br> In parallel with this project, I decided to create a maze generator in Python.<br>This generator allows you to create a map that can be used in our Cub3d.<br>The maze creation algorithm used is the Depth First Search Algorithm (DFS)</p>",
         "pictures": ["articlesImages/cub3d/cub3d_movie.gif", "articlesImages/cub3d/cub3d_map.png"]
     },
     {
@@ -41,7 +41,7 @@
         "tags": ["C", "Shell", "Bash"],
         "resume": "<h2>30 days</h2><h2>Collaborators</h2><a href='https://github.com/YvanoffP'><img src='https://avatars.githubusercontent.com/u/44474562?v=4'></a><a href='https://github.com/Bima42'><img src='https://avatars.githubusercontent.com/u/87313922?v=4'></a>",
         "githubLink": "https://github.com/Bima42/minishell",
-        "description": "<p>Our reference for minishell development was bash.<br>We implemented some builtins ourselves, like cd, echo or even pwd.<br>Those that are not implemented are called directly via their path (like /bin for example).<br>Redirects, heredocs and pipe are also implemented by us.<br>It is possible to navigate, compile or launch programs, add environment variables as in a classic shell.<br>",
+        "description": "<p>Our reference for minishell development was bash.<br>Parsing was a big part of this project.<br>We implemented some builtins ourselves, like cd, echo or even pwd.<br>Those that are not implemented are called directly via their path (like /bin/ls for example).<br>Redirects, heredocs and pipes are also implemented by us.<br>It is possible to navigate, compile or launch programs, add environment variables like in a classic shell.<br>",
         "pictures": ["articlesImages/minishell/minishell_screen.png"]
     }
 ]

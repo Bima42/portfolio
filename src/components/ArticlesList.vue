@@ -9,7 +9,7 @@
 
 <script lang="ts" setup>
 import ArticleHeader from '@/components/SiteHeader.vue'
-import ArticleDetails from '@/components/ArticleDetails.vue'
+import ArticleDetails from '@/components/ArticleComponents.vue'
 import articlesData from '@/assets/articles.json'
 </script>
 
