@@ -6,7 +6,7 @@
         "resume": "<h2>45 days</h2><h2>Collaborators</h2><a href='https://github.com/tyrossel'><img src='https://avatars.githubusercontent.com/u/29518484?v=4'/></a><a href='https://github.com/YvanoffP'><img src='https://avatars.githubusercontent.com/u/44474562?v=4'></a><a href='https://github.com/Bima42'><img src='https://avatars.githubusercontent.com/u/87313922?v=4'></a>",
         "githubLink": "https://github.com/Bima42/webserv",
         "description": "<p>Able to receive requests from several clients at the same time.<br>Must be configured using a configuration file, written in JSON and inspired by Nginx.<br>Able to process GET, POST and DELETE type requests as defined in RFC 7231.<br>We have taken as reference the RFCs from 7230 to 7235<br>Possible to upload and download files.<br>We decided to create a static HTML in which various tests could be carried out in order to facilitate the use of our server.<br>Logs are display in order to observe incoming requests as well as outgoing responses.</p>",
-        "pictures": ["articlesImages/webserv/webserv_movie.gif", "articlesImages/webserv/webserv_screen_1.png", "articlesImages/webserv/webserv_screen_2.png"]
+        "pictures": ["articlesImages/webserv/webserv_screen.png", "articlesImages/webserv/webserv_screen_1.png", "articlesImages/webserv/webserv_screen_2.png"]
     },
     {
         "title": "Inception",
@@ -24,7 +24,7 @@
         "resume": "<h2>20 days</h2><h2>Collaborators</h2><a href='https://github.com/Bima42'><img src='https://avatars.githubusercontent.com/u/87313922?v=4'></a>",
         "githubLink": "https://github.com/Bima42/ft_containers",
         "description": "<p>Recreate the following containers: vector, map and stack.<br>Developed in CPP98.<br>I served source codes of the containers to understand how they have been implemented.<br>My containers are usable via the namespace ft.<br>I used different testers to see the effectiveness of my containers :  - Tester 1 :  - Tester 2 : <br>I also implemented my own tests. You can launch them using flag when you start my program.",
-        "pictures": ["articlesImages/ft_containers/ft_containers_movie.gif"]
+        "pictures": ["articlesImages/ft_containers/ft_containers_screen.png"]
     },
     {
         "title": "Cub3d",
@@ -33,7 +33,7 @@
         "resume": "<h2>20 days</h2><h2>Collaborators</h2><a href='https://github.com/YvanoffP'><img src='https://avatars.githubusercontent.com/u/44474562?v=4'></a><a href='https://github.com/Bima42'><img src='https://avatars.githubusercontent.com/u/87313922?v=4'></a>",
         "githubLink": "https://github.com/Bima42/cub3d",
         "description": "<p>Game must be able to provide a smooth and sufficiently dynamic user experience.<br>Since multithreading is not allowed, raycasting had to be implemented intelligently.<br>The mandatory part requires you to be able to launch the game via a configuration file respecting a certain syntax.<br>Also, the player must be able to move with the WASD keys and rotate the camera.<br>We made the decision to add an exit to the maze.<br> In parallel with this project, I decided to create a maze generator in Python.<br>This generator allows you to create a map that can be used in our Cub3d.<br>The maze creation algorithm used is the Depth First Search Algorithm (DFS)</p>",
-        "pictures": ["articlesImages/cub3d/cub3d_movie.gif"]
+        "pictures": ["articlesImages/cub3d/cub3d_movie.gif", "articlesImages/cub3d/cub3d_map.png"]
     },
     {
         "title": "Minishell",
@@ -42,6 +42,6 @@
         "resume": "<h2>30 days</h2><h2>Collaborators</h2><a href='https://github.com/YvanoffP'><img src='https://avatars.githubusercontent.com/u/44474562?v=4'></a><a href='https://github.com/Bima42'><img src='https://avatars.githubusercontent.com/u/87313922?v=4'></a>",
         "githubLink": "https://github.com/Bima42/minishell",
         "description": "<p>Our reference for minishell development was bash.<br>We implemented some builtins ourselves, like cd, echo or even pwd.<br>Those that are not implemented are called directly via their path (like /bin for example).<br>Redirects, heredocs and pipe are also implemented by us.<br>It is possible to navigate, compile or launch programs, add environment variables as in a classic shell.<br>",
-        "pictures": ["articlesImages/minishell/minishell_movie.gif"]
+        "pictures": ["articlesImages/minishell/minishell_screen.png"]
     }
 ]
