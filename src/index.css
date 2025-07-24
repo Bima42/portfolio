@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   /* Colors */
   --color-background: #FFFDF0;
@@ -35,6 +37,13 @@
   --radius-xl: 1rem;       /* 16px */
   --radius-2xl: 1.5rem;    /* 24px */
   --radius-full: 9999px;   /* full circle */
+}
+
+.dark {
+  --color-background: #0F0F0F;
+  --color-foreground: #FFFDF0;
+  --color-primary: #C6BCF0;
+  --color-secondary: #8A4FFF;
 }
 
 body {

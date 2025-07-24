@@ -1,14 +1,10 @@
 import { useState } from 'react'
 import { Link } from '@tanstack/react-router'
+import { useTheme } from '../hooks/useTheme'
 
 export default function Header() {
-  const [isDark, setIsDark] = useState(false)
+  const { toggleTheme, isDark } = useTheme()
   const [language, setLanguage] = useState('FR')
-
-  const toggleTheme = () => {
-    setIsDark(!isDark)
-    document.documentElement.classList.toggle('dark')
-  }
 
   const toggleLanguage = () => {
     setLanguage(language === 'FR' ? 'EN' : 'FR')
