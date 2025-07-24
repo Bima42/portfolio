@@ -1,0 +1,40 @@
+{
+  "navigation": {
+    "about": "À propos",
+    "projects": "Projets",
+    "contact": "Contact"
+  },
+  "pages": {
+    "home": {
+      "title": "Accueil",
+      "darkModeTest": "Test Dark Mode",
+      "currentMode": "Mode actuel",
+      "secondaryColor": "Couleur secondaire",
+      "shouldChange": "Devrait changer en mode sombre",
+      "invertedContrast": "Contraste inversé",
+      "textOnForeground": "Texte sur fond foreground",
+      "tailwindVariant": "Tailwind dark: variant",
+      "tailwindDescription": "Cette carte utilise les classes dark: de Tailwind",
+      "cssVariables": "Variables CSS",
+      "cssDescription": "Cette carte utilise les variables CSS custom"
+    },
+    "about": {
+      "title": "À propos"
+    },
+    "projects": {
+      "title": "Projets"
+    },
+    "contact": {
+      "title": "Contact"
+    }
+  },
+  "theme": {
+    "light": "clair",
+    "dark": "sombre"
+  },
+  "common": {
+    "loading": "Chargement...",
+    "error": "Erreur",
+    "success": "Succès"
+  }
+}

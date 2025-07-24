@@ -1,14 +1,10 @@
-import { useState } from 'react'
 import { Link } from '@tanstack/react-router'
 import { useTheme } from '../hooks/useTheme'
+import { useLanguage } from '../hooks/useLanguage'
 
 export default function Header() {
   const { toggleTheme, isDark } = useTheme()
-  const [language, setLanguage] = useState('FR')
-
-  const toggleLanguage = () => {
-    setLanguage(language === 'FR' ? 'EN' : 'FR')
-  }
+  const { toggleLanguage, getLanguageDisplay, t } = useLanguage()
 
   return (
     <header className="fixed top-lg left-1/2 transform -translate-x-1/2 z-50 w-full max-w-container-lg mx-auto px-md">
@@ -29,19 +25,19 @@ export default function Header() {
                 to="/about" 
                 className="text-foreground hover:text-primary transition-colors font-medium py-sm px-md rounded-lg hover:bg-primary/10 [&.active]:text-primary [&.active]:bg-primary/10"
               >
-                À propos
+                {t('navigation.about')}
               </Link>
               <Link 
                 to="/projects" 
                 className="text-foreground hover:text-primary transition-colors font-medium py-sm px-md rounded-lg hover:bg-primary/10 [&.active]:text-primary [&.active]:bg-primary/10"
               >
-                Projets
+                {t('navigation.projects')}
               </Link>
               <Link 
                 to="/contact" 
                 className="text-foreground hover:text-primary transition-colors font-medium py-sm px-md rounded-lg hover:bg-primary/10 [&.active]:text-primary [&.active]:bg-primary/10"
               >
-                Contact
+                {t('navigation.contact')}
               </Link>
             </div>
           </div>
@@ -57,7 +53,7 @@ export default function Header() {
               style={{ width: 'var(--size-button-height)', height: 'var(--size-button-height)' }}
               title="Changer de langue"
             >
-              <span className="text-foreground font-medium text-sm">{language}</span>
+              <span className="text-foreground font-medium text-sm">{getLanguageDisplay()}</span>
             </button>
             
             {/* Theme toggle */}
