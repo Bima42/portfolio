@@ -1,11 +1,16 @@
-import { useEffect } from 'react'
-import { useLocalStorage, useMedia } from 'react-use'
+import { useEffect, useState } from 'react'
+import { useMedia } from 'react-use'
 
 type Theme = 'light' | 'dark'
 
 export function useTheme() {
   const prefersDark = useMedia('(prefers-color-scheme: dark)')
-  const [theme, setTheme] = useLocalStorage<Theme>('theme', prefersDark ? 'dark' : 'light')
+  
+  const [theme, setThemeState] = useState<Theme>(() => {
+    if (typeof window === 'undefined') return 'light'
+    const stored = localStorage.getItem('theme') as Theme | null
+    return stored || (prefersDark ? 'dark' : 'light')
+  })
 
   useEffect(() => {
     const root = document.documentElement
@@ -15,14 +20,20 @@ export function useTheme() {
     } else {
       root.classList.remove('dark')
     }
+    
+    localStorage.setItem('theme', theme)
   }, [theme])
 
+  const setTheme = (newTheme: Theme) => {
+    setThemeState(newTheme)
+  }
+
   const toggleTheme = () => {
-    setTheme(prev => prev === 'light' ? 'dark' : 'light')
+    setThemeState(prev => prev === 'light' ? 'dark' : 'light')
   }
 
   return {
-    theme: theme || 'light',
+    theme,
     setTheme,
     toggleTheme,
     isDark: theme === 'dark'
