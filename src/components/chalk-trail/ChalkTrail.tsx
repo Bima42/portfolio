@@ -1,6 +1,6 @@
 import React from 'react';
 import type { ChalkTrailProps } from './types';
-import { useChalkAnimation } from '../../hooks/useChalkAnimation.ts';
+import { useChalkAnimation } from '@/hooks/useChalkAnimation.ts';
 
 const DEFAULT_PROPS: Required<ChalkTrailProps> = {
   backgroundColor: '#1a1a1a',
