@@ -16,7 +16,8 @@ const DEFAULT_PROPS: Required<ChalkTrailProps> = {
 export function ChalkTrail(props: ChalkTrailProps = {}) {
   const mergedProps = { ...DEFAULT_PROPS, ...props };
   
-  const { canvasRef, particleCount, isAnimating } = useChalkAnimation(mergedProps);
+  // const { canvasRef, particleCount, isAnimating } = useChalkAnimation(mergedProps);
+  const { canvasRef } = useChalkAnimation(mergedProps);
 
   const canvasStyle: React.CSSProperties = {
     position: 'absolute',
@@ -39,28 +40,28 @@ export function ChalkTrail(props: ChalkTrailProps = {}) {
       />
       
       {/* DEV DEBUG */}
-      {process.env.NODE_ENV === 'development' && (
-        <div
-          style={{
-            position: 'fixed',
-            top: 10,
-            right: 10,
-            backgroundColor: 'rgba(0, 0, 0, 0.8)',
-            color: 'white',
-            padding: '8px 12px',
-            borderRadius: '4px',
-            fontSize: '11px',
-            fontFamily: 'monospace',
-            zIndex: 9999,
-            pointerEvents: 'none',
-            userSelect: 'none'
-          }}
-        >
-          <div>Particles: {particleCount}</div>
-          <div>Animating: {isAnimating ? 'Yes' : 'No'}</div>
-          <div>Active: {mergedProps.isActive ? 'Yes' : 'No'}</div>
-        </div>
-      )}
+      {/*{process.env.NODE_ENV === 'development' && (*/}
+      {/*  <div*/}
+      {/*    style={{*/}
+      {/*      position: 'fixed',*/}
+      {/*      top: 10,*/}
+      {/*      right: 10,*/}
+      {/*      backgroundColor: 'rgba(0, 0, 0, 0.8)',*/}
+      {/*      color: 'white',*/}
+      {/*      padding: '8px 12px',*/}
+      {/*      borderRadius: '4px',*/}
+      {/*      fontSize: '11px',*/}
+      {/*      fontFamily: 'monospace',*/}
+      {/*      zIndex: 9999,*/}
+      {/*      pointerEvents: 'none',*/}
+      {/*      userSelect: 'none'*/}
+      {/*    }}*/}
+      {/*  >*/}
+      {/*    <div>Particles: {particleCount}</div>*/}
+      {/*    <div>Animating: {isAnimating ? 'Yes' : 'No'}</div>*/}
+      {/*    <div>Active: {mergedProps.isActive ? 'Yes' : 'No'}</div>*/}
+      {/*  </div>*/}
+      {/*)}*/}
     </>
   );
 }
