@@ -1,14 +1,11 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
+import { useLocalStorage, useMedia } from 'react-use'
 
 type Theme = 'light' | 'dark'
 
 export function useTheme() {
-  const [theme, setTheme] = useState<Theme>(() => {
-    const stored = localStorage.getItem('theme') as Theme | null
-    if (stored) return stored
-    
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-  })
+  const prefersDark = useMedia('(prefers-color-scheme: dark)')
+  const [theme, setTheme] = useLocalStorage<Theme>('theme', prefersDark ? 'dark' : 'light')
 
   useEffect(() => {
     const root = document.documentElement
@@ -18,8 +15,6 @@ export function useTheme() {
     } else {
       root.classList.remove('dark')
     }
-    
-    localStorage.setItem('theme', theme)
   }, [theme])
 
   const toggleTheme = () => {
@@ -27,7 +22,7 @@ export function useTheme() {
   }
 
   return {
-    theme,
+    theme: theme || 'light',
     setTheme,
     toggleTheme,
     isDark: theme === 'dark'

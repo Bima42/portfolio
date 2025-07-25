@@ -7,16 +7,7 @@
   "pages": {
     "home": {
       "title": "Home",
-      "darkModeTest": "Dark Mode Test",
-      "currentMode": "Current mode",
-      "secondaryColor": "Secondary color",
-      "shouldChange": "Should change in dark mode",
-      "invertedContrast": "Inverted contrast",
-      "textOnForeground": "Text on foreground background",
-      "tailwindVariant": "Tailwind dark: variant",
-      "tailwindDescription": "This card uses Tailwind's dark: classes",
-      "cssVariables": "CSS Variables",
-      "cssDescription": "This card uses custom CSS variables"
+      "greeting": "Building solutions that help people"
     },
     "about": {
       "title": "About"

@@ -1,6 +1,6 @@
 import { Link } from '@tanstack/react-router'
-import { useTheme } from '../hooks/useTheme'
-import { useLanguage } from '../hooks/useLanguage'
+import { useTheme } from '../../hooks/useTheme.ts'
+import { useLanguage } from '../../hooks/useLanguage.ts'
 
 export default function Header() {
   const { toggleTheme, isDark } = useTheme()
