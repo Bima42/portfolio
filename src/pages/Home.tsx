@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useLanguage } from '../hooks/useLanguage';
 import { HeroSection, ProjectsSection, type Project } from '../components/home';
+import { ChalkTrail } from '../components/chalk-trail';
 
 export default function Home() {
   const { currentLanguage: language } = useLanguage();
@@ -53,7 +54,16 @@ export default function Home() {
 
   return (
     <div className="relative overflow-hidden">
-      {/* TODO - Chalk Trail Effect */}
+      {/* Chalk Trail Effect */}
+      <ChalkTrail
+        chalkColor="rgba(198, 188, 240, 0.8)"
+        trailLength={2500}
+        fadeSpeed={0.015}
+        particleSize={5}
+        spawnRate={12}
+        maxParticles={600}
+        isActive={true}
+      />
       
       <HeroSection isVisible={isVisible} />
       
