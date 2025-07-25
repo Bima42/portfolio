@@ -72,7 +72,7 @@ export function useChalkAnimation(props: ChalkTrailProps): UseChalkAnimationRetu
     if (now - lastMoveTime.current < 8) return;
     
     const x = event.clientX;
-    const y = event.clientY;
+    const y = event.clientY + window.pageYOffset;
     
     lastMoveTime.current = now;
 
@@ -92,7 +92,7 @@ export function useChalkAnimation(props: ChalkTrailProps): UseChalkAnimationRetu
     if (!canvas || !rendererRef.current) return;
 
     const newWidth = window.innerWidth;
-    const newHeight = window.innerHeight;
+    const newHeight = Math.max(window.innerHeight, document.documentElement.scrollHeight);
     
     rendererRef.current.resize(newWidth, newHeight);
   }, []);
@@ -104,8 +104,9 @@ export function useChalkAnimation(props: ChalkTrailProps): UseChalkAnimationRetu
     const context = canvas.getContext('2d');
     if (!context) return;
 
+    // Dimensionnement pour couvrir toute la page scrollable
     canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    canvas.height = Math.max(window.innerHeight, document.documentElement.scrollHeight);
 
     particleSystemRef.current = new ParticleSystem(
       maxParticles,

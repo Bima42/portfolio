@@ -19,11 +19,11 @@ export function ChalkTrail(props: ChalkTrailProps = {}) {
   const { canvasRef, particleCount, isAnimating } = useChalkAnimation(mergedProps);
 
   const canvasStyle: React.CSSProperties = {
-    position: 'fixed',
+    position: 'absolute',
     top: 0,
     left: 0,
-    width: '100vw',
-    height: '100vh',
+    width: '100%',
+    height: '100%',
     pointerEvents: 'none',
     zIndex: 10,
     backgroundColor: 'transparent'
