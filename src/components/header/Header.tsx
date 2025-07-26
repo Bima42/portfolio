@@ -4,13 +4,7 @@ import { Logo, VerticalDivider } from "./atoms";
 import { NavigationMenu, LanguageToggle, ThemeToggle, MobileMenu } from "./molecules";
 import type { NavigationMenuItem } from "./types";
 
-export interface HeaderProps {
-  className?: string;
-}
-
-export function Header({
-  className = '',
-}: HeaderProps) {
+export function Header() {
   const themeHook = useTheme();
   const languageHook = useLanguage();
   
@@ -23,14 +17,12 @@ export function Header({
   ];
 
   return (
-    <header 
-      className={`
-        fixed top-4 left-1/2 -translate-x-1/2
-        z-50
-        w-[calc(100%-4rem)] max-w-6xl
-        ${className}
-      `}
-    >
+    <header className="
+      fixed
+      top-4 left-[2rem]
+      -translate-x-1/2z-50
+      w-[calc(100vw-4rem)]
+     ">
       <div 
         className="
           px-6 py-3
