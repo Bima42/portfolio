@@ -13,7 +13,7 @@ export function HeroSection() {
             <h1 className="text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold leading-tight tracking-tight">
               <div className="flex flex-col md:flex-row items-center justify-center gap-md">
                 <span className="text-foreground">Tanguy</span>
-                <span className="text-primary bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
+                <span className="text-primary bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
                   Pauvret
                 </span>
               </div>

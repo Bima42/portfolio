@@ -35,17 +35,17 @@ export function Header({
         className="
           px-6 py-3
           rounded-3xl
-          backdrop-blur-xl saturate-180
+          backdrop-blur-xl
           bg-white/10 dark:bg-white/5
           border border-white/20 dark:border-white/10
-          shadow-lg shadow-black/5 dark:shadow-black/20
+          shadow-md shadow-black/5 dark:shadow-black/20
           transition-all duration-300
           hover:bg-white/15 dark:hover:bg-white/10
         "
         style={{
           boxShadow: theme === "dark" 
-            ? `0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)`
-            : `0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)`
+            ? `0 8px 16x rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)`
+            : `0 8px 16px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)`
         }}
       >
         <div className="flex items-center justify-between">
@@ -60,12 +60,12 @@ export function Header({
 
           {/* Right: Controls */}
           <div className="flex items-center space-x-3">
+
             {/* Desktop Controls */}
+            {/* md:flex make it appears when desktop */}
             <div className="hidden md:flex items-center space-x-3">
               <LanguageToggle />
-              
               <VerticalDivider />
-              
               <ThemeToggle />
             </div>
 
