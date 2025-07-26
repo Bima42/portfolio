@@ -27,7 +27,7 @@ export function Header({
       className={`
         fixed top-4 left-1/2 -translate-x-1/2
         z-50
-        w-[calc(100%-2rem)] max-w-6xl
+        w-[calc(100%-4rem)] max-w-6xl
         ${className}
       `}
     >
