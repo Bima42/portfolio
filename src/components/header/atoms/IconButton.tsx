@@ -1,5 +1,13 @@
 import { Button } from '@/components/ui/button';
-import type { IconButtonProps } from '../types';
+
+interface IconButtonProps {
+  icon: React.ReactNode;
+  onClick?: () => void;
+  ariaLabel: string;
+  variant?: 'ghost' | 'outline';
+  size?: 'sm' | 'md' | 'lg';
+  className?: string;
+}
 
 export function IconButton({
   icon,
@@ -21,7 +29,7 @@ export function IconButton({
       size="icon"
       onClick={onClick}
       aria-label={ariaLabel}
-      className={`
+      className={`  
         ${sizeClasses[size]}
         rounded-2xl
         backdrop-blur-sm
@@ -30,7 +38,7 @@ export function IconButton({
         hover:bg-white/15 dark:hover:bg-white/10
         text-slate-800 dark:text-slate-200
         transition-all duration-200
-        hover:scale-105
+        hover:scale-105 cursor-pointer
         ${className}
       `}
     >

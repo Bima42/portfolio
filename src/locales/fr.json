@@ -1,4 +1,11 @@
 {
+  "language": {
+    "en": "Anglais",
+    "fr": "Français"
+  },
+    "header": {
+      "languageToggle": "Passer à {{language}}"
+    },
   "navigation": {
     "about": "À propos",
     "projects": "Projets",

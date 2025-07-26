@@ -3,16 +3,18 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Link } from '@tanstack/react-router';
 import { IconButton, VerticalDivider } from '../atoms';
 import { LanguageToggle, ThemeToggle } from '../molecules';
-import type { MobileMenuProps } from '../types';
+import type { NavigationMenuItem } from '../types';
+
+interface MobileMenuProps {
+  isOpen: boolean;
+  onToggle: () => void;
+  navigationItems: NavigationMenuItem[];
+}
 
 export function MobileMenu({
   isOpen,
   onToggle,
   navigationItems,
-  onLanguageChange,
-  onThemeToggle,
-  currentTheme,
-  currentLanguage
 }: MobileMenuProps) {
   return (
     <div className="md:hidden">
@@ -75,17 +77,11 @@ export function MobileMenu({
             {/* Bottom Controls */}
             <div className="border-t border-white/10 pt-6">
               <div className="flex items-center justify-center space-x-4">
-                <LanguageToggle
-                  currentLanguage={currentLanguage}
-                  onLanguageChange={onLanguageChange}
-                />
+                <LanguageToggle />
                 
                 <VerticalDivider height="h-8" />
                 
-                <ThemeToggle
-                  currentTheme={currentTheme}
-                  onToggle={onThemeToggle}
-                />
+                <ThemeToggle />
               </div>
             </div>
           </div>

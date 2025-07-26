@@ -1,25 +1,26 @@
 import { useState } from 'react';
 import { useTheme } from '@/hooks/useTheme';
-import { type Language, useLanguage } from '@/hooks/useLanguage';
+import { useLanguage } from '@/hooks/useLanguage';
 import { Logo, VerticalDivider } from './atoms';
 import { NavigationMenu, LanguageToggle, ThemeToggle, MobileMenu } from './molecules';
-import type { HeaderContainerProps, NavigationMenuItem } from './types';
+import type { NavigationMenuItem } from './types';
+
+export interface HeaderProps {
+  className?: string;
+  navigationItems?: NavigationMenuItem[];
+}
 
 export function Header({
   className = '',
-  onLanguageChange,
-  onThemeToggle,
-  currentTheme,
-  currentLanguage,
   navigationItems
-}: HeaderContainerProps) {
+}: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   
   const themeHook = useTheme();
   const languageHook = useLanguage();
   
-  const theme = currentTheme || themeHook.theme;
-  const language = currentLanguage || languageHook.currentLanguage;
+  const theme = themeHook.theme;
+  const language = languageHook.currentLanguage;
 
   // Dynamic navigation items based on language
   const defaultNavigation: NavigationMenuItem[] = [
@@ -29,22 +30,6 @@ export function Header({
   ];
 
   const finalNavigationItems = navigationItems || defaultNavigation;
-  
-  const handleThemeToggle = () => {
-    if (onThemeToggle) {
-      onThemeToggle();
-    } else {
-      themeHook.toggleTheme();
-    }
-  };
-  
-  const handleLanguageChange = (newLanguage: Language) => {
-    if (onLanguageChange) {
-      onLanguageChange(newLanguage);
-    } else {
-      languageHook.changeLanguage(newLanguage);
-    }
-  };
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
@@ -78,7 +63,7 @@ export function Header({
       >
         <div className="flex items-center justify-between">
           {/* Left: Logo */}
-          <Logo src={"public/logo-no-bg.svg"} alt={"logo"}/>
+          <Logo src={"logo-no-bg.svg"} alt={"logo"}/>
 
           {/* Center: Desktop Navigation */}
           <NavigationMenu 
@@ -90,17 +75,11 @@ export function Header({
           <div className="flex items-center space-x-3">
             {/* Desktop Controls */}
             <div className="hidden md:flex items-center space-x-3">
-              <LanguageToggle
-                currentLanguage={language}
-                onLanguageChange={handleLanguageChange}
-              />
+              <LanguageToggle />
               
               <VerticalDivider />
               
-              <ThemeToggle
-                currentTheme={theme}
-                onToggle={handleThemeToggle}
-              />
+              <ThemeToggle currentTheme={theme}/>
             </div>
 
             {/* Mobile Menu */}
@@ -108,10 +87,6 @@ export function Header({
               isOpen={mobileMenuOpen}
               onToggle={toggleMobileMenu}
               navigationItems={finalNavigationItems}
-              onLanguageChange={handleLanguageChange}
-              onThemeToggle={handleThemeToggle}
-              currentTheme={theme}
-              currentLanguage={language}
             />
           </div>
         </div>

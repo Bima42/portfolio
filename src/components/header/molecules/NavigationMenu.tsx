@@ -1,5 +1,10 @@
 import { Link, useRouterState } from '@tanstack/react-router';
-import type { NavigationMenuProps } from '../types';
+import type { NavigationMenuItem } from '../types';
+
+interface NavigationMenuProps {
+  items: NavigationMenuItem[];
+  className?: string;
+}
 
 export function NavigationMenu({ items, className = '' }: NavigationMenuProps) {
   const router = useRouterState();

@@ -1,18 +1,21 @@
 import { Moon, Sun } from 'lucide-react';
 import { IconButton } from '../atoms';
-import type { ThemeToggleProps } from '../types';
+import { useTheme } from '@/hooks/useTheme';
+
+interface ThemeToggleProps {
+  className?: string;
+}
 
 export function ThemeToggle({ 
-  currentTheme, 
-  onToggle, 
-  className = '' 
+  className = ''
 }: ThemeToggleProps) {
-  const isLight = currentTheme === 'light';
+  const { theme, toggleTheme } = useTheme();
+  const isLight = theme === 'light';
   
   return (
     <IconButton
       icon={isLight ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
-      onClick={onToggle}
+      onClick={toggleTheme}
       ariaLabel={`Switch to ${isLight ? 'dark' : 'light'} theme`}
       variant="ghost"
       className={className}

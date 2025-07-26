@@ -1,4 +1,7 @@
-import type { VerticalDividerProps } from '../types';
+interface VerticalDividerProps {
+    className?: string;
+    height?: string;
+}
 
 export function VerticalDivider({ 
   className = '', 

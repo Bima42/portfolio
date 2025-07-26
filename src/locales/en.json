@@ -1,8 +1,15 @@
 {
+  "language": {
+    "en": "English",
+    "fr": "French"
+  },
   "navigation": {
     "about": "About",
     "projects": "Projects",
     "contact": "Contact"
+  },
+  "header": {
+    "languageToggle": "Switch to {{language}}"
   },
   "pages": {
     "home": {
