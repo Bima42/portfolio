@@ -26,8 +26,8 @@ export function NavigationLink({ item, onClick, isMobile = false }: NavigationLi
 	}
   `;
 
-	const mobileClasses = isMobile ? 'w-full justify-start' : '';
-	const desktopClasses = !isMobile ? 'text-sm px-3 py-2' : '';
+	const mobileClasses = isMobile ? 'justify-start' : '';
+	const desktopClasses = !isMobile ? `text-sm px-3 py-2` : '';
 
 	return (
 		<Link
@@ -35,12 +35,7 @@ export function NavigationLink({ item, onClick, isMobile = false }: NavigationLi
 			className={`${baseClasses} ${mobileClasses} ${desktopClasses}`}
 			onClick={onClick}
 		>
-		  <span className="flex items-center gap-3">
-			{item.icon && (
-				<span className="w-5 h-5 flex-shrink-0">
-				{item.icon}
-			  </span>
-			)}
+		  <span>
 			  {item.label}
 		  </span>
 		</Link>

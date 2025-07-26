@@ -78,6 +78,7 @@ export function MobileMenu({ navigationItems }: MobileMenuProps) {
               {/* Navigation Links */}
               <nav
                   className="
+                  flex flex-col
                 flex-1
                 px-4 py-6
                 space-y-2

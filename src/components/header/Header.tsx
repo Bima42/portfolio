@@ -34,7 +34,7 @@ export function Header({
       <div 
         className="
           px-6 py-3
-          rounded-3xl
+          rounded-4xl
           backdrop-blur-xl
           bg-white/10 dark:bg-white/5
           border border-white/20 dark:border-white/10
