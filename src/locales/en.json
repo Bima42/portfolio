@@ -37,5 +37,30 @@
     "loading": "Loading...",
     "error": "Error",
     "success": "Success"
+  },
+  "timeline": {
+    "title": "My Journey",
+    "showMore": "Show more",
+    "discover": "Discover",
+    "items": {
+      "software_engineer": {
+        "title": "Software Engineer",
+        "location": "Lausanne, Switzerland 🇨🇭",
+        "description": "I started working here after completing my end-of-studies internship. I develop, maintain, and improve the company's applications. I also manage, in collaboration with the CTO, all aspects of the company's infrastructure, including servers, databases, and development tools."
+      },
+      "voltaire": {
+        "title": "Founder",
+        "description": "Creation of an AI assistant specialized in writing, addressing the limitations of general-purpose tools such as ChatGPT."
+      },
+      "prompt_pilot": {
+        "title": "Founder",
+        "description": "Creation of a tool for generating prompts optimized for LLM, solving the problem of vague and unstructured responses."
+      },
+      "42_school": {
+        "title": "Student",
+        "location": "Lausanne, Switzerland 🇨🇭",
+        "description": "Innovative computer training that is free and open to all, with no diploma required, based on project-based learning and peer support. It stands out for its educational approach without teachers or traditional classes, promoting autonomy, creativity, and technical excellence."
+      }
+    }
   }
 }

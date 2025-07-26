@@ -37,5 +37,30 @@
     "loading": "Chargement...",
     "error": "Erreur",
     "success": "Succès"
+  },
+  "timeline": {
+    "title": "Mon Parcours",
+    "showMore": "Voir plus",
+    "discover": "Découvrir",
+    "items": {
+      "software_engineer": {
+        "title": "Ingénieur Logiciel",
+        "location": "Lausanne, Suisse 🇨🇭",
+        "description": "Entré en poste après mon stage de fin d'études. Je développe, maintiens et améliores les applications de l'entreprise. Je gère également, en collaboration avec le CTO, toute la partie infrastructure de l'entreprise, notamment les serveurs, les bases de données et les outils de développement."
+      },
+      "voltaire": {
+        "title": "Fondateur",
+        "description": "Création d'un assistant IA spécialisé dans la rédaction, répondant aux limitations des outils généralistes comme ChatGPT."
+      },
+      "prompt_pilot": {
+        "title": "Fondateur",
+        "description": "Création d'un outil de génération de prompts optimisés pour LLM, résolvant le problème des réponses vagues et peu structurées."
+      },
+      "42_school": {
+        "title": "Étudiant",
+        "location": "Lausanne, Suisse 🇨🇭",
+        "description": "Formation en informatique innovante, gratuite et ouverte à tous, sans diplôme requis, qui repose sur l’apprentissage par projets et l’entraide entre pairs. Elle se distingue par son approche pédagogique sans professeurs ni cours traditionnels, favorisant l’autonomie, la créativité et l’excellence technique."
+      }
+    }
   }
 }

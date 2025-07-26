@@ -22,6 +22,7 @@ export function Header() {
       top-4 left-[2rem]
       -translate-x-1/2z-50
       w-[calc(100vw-4rem)]
+      z-1000
      ">
       <div 
         className="
