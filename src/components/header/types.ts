@@ -1,5 +1,8 @@
+import type { ReactNode } from 'react';
+
 export interface NavigationMenuItem {
-  label: string;
   href: string;
+  label: string;
   isActive?: boolean;
+  icon?: ReactNode;
 }

@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 
 interface IconButtonProps {
-  icon: React.ReactNode;
+  icon: React.ReactNode | string;
   onClick?: () => void;
   ariaLabel: string;
   variant?: 'ghost' | 'outline';

@@ -9,7 +9,10 @@
     "contact": "Contact"
   },
   "header": {
-    "languageToggle": "Switch to {{language}}"
+    "languageToggle": "Switch to {{language}}",
+    "theme": "Theme",
+    "language": "Language",
+    "navigation": "Navigation"
   },
   "pages": {
     "home": {

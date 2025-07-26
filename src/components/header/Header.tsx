@@ -1,39 +1,26 @@
-import { useState } from 'react';
-import { useTheme } from '@/hooks/useTheme';
-import { useLanguage } from '@/hooks/useLanguage';
-import { Logo, VerticalDivider } from './atoms';
-import { NavigationMenu, LanguageToggle, ThemeToggle, MobileMenu } from './molecules';
-import type { NavigationMenuItem } from './types';
+import { useTheme } from "@/hooks/useTheme";
+import { useLanguage } from "@/hooks/useLanguage";
+import { Logo, VerticalDivider } from "./atoms";
+import { NavigationMenu, LanguageToggle, ThemeToggle, MobileMenu } from "./molecules";
+import type { NavigationMenuItem } from "./types";
 
 export interface HeaderProps {
   className?: string;
-  navigationItems?: NavigationMenuItem[];
 }
 
 export function Header({
   className = '',
-  navigationItems
 }: HeaderProps) {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  
   const themeHook = useTheme();
   const languageHook = useLanguage();
   
   const theme = themeHook.theme;
-  const language = languageHook.currentLanguage;
 
-  // Dynamic navigation items based on language
   const defaultNavigation: NavigationMenuItem[] = [
-    { label: languageHook.t('navigation.about'), href: '/about' },
-    { label: languageHook.t('navigation.projects'), href: '/projects' },
-    { label: languageHook.t('navigation.contact'), href: '/contact' }
+    { label: languageHook.t("navigation.about"), href: "/about" },
+    { label: languageHook.t("navigation.projects"), href: "/projects" },
+    { label: languageHook.t("navigation.contact"), href: "/contact" }
   ];
-
-  const finalNavigationItems = navigationItems || defaultNavigation;
-
-  const toggleMobileMenu = () => {
-    setMobileMenuOpen(!mobileMenuOpen);
-  };
 
   return (
     <header 
@@ -56,7 +43,7 @@ export function Header({
           hover:bg-white/15 dark:hover:bg-white/10
         "
         style={{
-          boxShadow: theme === 'dark' 
+          boxShadow: theme === "dark" 
             ? `0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)`
             : `0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)`
         }}
@@ -67,7 +54,7 @@ export function Header({
 
           {/* Center: Desktop Navigation */}
           <NavigationMenu 
-            items={finalNavigationItems}
+            items={defaultNavigation}
             className="flex-1 justify-center"
           />
 
@@ -79,15 +66,10 @@ export function Header({
               
               <VerticalDivider />
               
-              <ThemeToggle currentTheme={theme}/>
+              <ThemeToggle />
             </div>
 
-            {/* Mobile Menu */}
-            <MobileMenu
-              isOpen={mobileMenuOpen}
-              onToggle={toggleMobileMenu}
-              navigationItems={finalNavigationItems}
-            />
+            <MobileMenu navigationItems={defaultNavigation} />
           </div>
         </div>
       </div>

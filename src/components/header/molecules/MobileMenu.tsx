@@ -1,92 +1,132 @@
 import { Menu, X } from 'lucide-react';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Link } from '@tanstack/react-router';
+import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import { IconButton, VerticalDivider } from '../atoms';
 import { LanguageToggle, ThemeToggle } from '../molecules';
 import type { NavigationMenuItem } from '../types';
+import { useState, useEffect } from 'react';
+import { NavigationLink } from '@/components/header/atoms/NavigationLink';
+import { useLanguage } from '@/hooks/useLanguage.ts';
 
 interface MobileMenuProps {
-  isOpen: boolean;
-  onToggle: () => void;
   navigationItems: NavigationMenuItem[];
 }
 
-export function MobileMenu({
-  isOpen,
-  onToggle,
-  navigationItems,
-}: MobileMenuProps) {
+export function MobileMenu({ navigationItems }: MobileMenuProps) {
+  const { t } = useLanguage();
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    setIsOpen(false);
+  }, []);
+
+  const handleToggle = () => setIsOpen(!isOpen);
+  const handleClose = () => setIsOpen(false);
+
   return (
-    <div className="md:hidden">
-      <Sheet open={isOpen} onOpenChange={onToggle}>
-        <SheetTrigger asChild>
-          <IconButton
-            icon={<Menu className="h-5 w-5" />}
-            onClick={onToggle}
-            ariaLabel="Open navigation menu"
-            variant="ghost"
-          />
-        </SheetTrigger>
-        
-        <SheetContent 
-          side="right" 
-          className="
-            w-80
-            bg-background/95
-            backdrop-blur-xl
-            border-l border-white/20 dark:border-white/10
-            rounded-l-3xl
-          "
-        >
-          <div className="flex flex-col h-full">
-            {/* Header */}
-            <div className="flex items-center justify-between mb-8">
-              <h2 className="text-lg font-semibold">Menu</h2>
-              <IconButton
-                icon={<X className="h-5 w-5" />}
-                onClick={onToggle}
-                ariaLabel="Close navigation menu"
+      <div className="md:hidden">
+        <Sheet open={isOpen} onOpenChange={setIsOpen}>
+          <SheetTrigger asChild>
+            <IconButton
+                icon={<Menu className="h-5 w-5" />}
+                onClick={handleToggle}
+                ariaLabel="Open navigation menu"
                 variant="ghost"
-                size="sm"
-              />
-            </div>
+                className="
+              hover:bg-white/10 dark:hover:bg-white/5
+              active:bg-white/20 dark:active:bg-white/10
+              transition-colors duration-200
+            "
+            />
+          </SheetTrigger>
 
-            {/* Navigation Links */}
-            <nav className="flex-1 space-y-4">
-              {navigationItems.map((item) => (
-                <Link
-                  key={item.href}
-                  to={item.href}
-                  onClick={onToggle}
+          <SheetContent
+              side="right"
+              className="
+            w-[min(85vw,320px)]
+            bg-background/98 dark:bg-background/95
+            backdrop-blur-xl
+            border-l border-foreground/10 dark:border-foreground/20
+            rounded-l-3xl
+            shadow-xl dark:shadow-2xl
+            p-0
+          "
+          >
+            <div className="flex flex-col h-full">
+              {/* Header */}
+              <SheetHeader className="
+              flex flex-row items-center justify-between
+              p-6 pb-4
+              border-b border-foreground/10 dark:border-foreground/20
+            ">
+                <SheetTitle className="text-lg font-semibold text-foreground">
+                  {t("header.navigation")}
+                </SheetTitle>
+                <IconButton
+                    icon={<X className="h-5 w-5" />}
+                    onClick={handleClose}
+                    ariaLabel="Close navigation menu"
+                    variant="ghost"
+                    size="sm"
+                    className="
+                  hover:bg-white/10 dark:hover:bg-white/5
+                  active:bg-white/20 dark:active:bg-white/10
+                  transition-colors duration-200
+                "
+                />
+              </SheetHeader>
+
+              {/* Navigation Links */}
+              <nav
                   className="
-                    block
-                    px-4 py-3
-                    text-base font-medium
-                    rounded-2xl
-                    transition-all duration-200
-                    hover:bg-primary/10
-                    border border-transparent
-                    hover:border-primary/20
-                  "
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </nav>
+                flex-1
+                px-4 py-6
+                space-y-2
+                overflow-y-auto
+              "
+                  role="navigation"
+                  aria-label="Mobile navigation"
+              >
+                {navigationItems.map((item) => (
+                    <NavigationLink
+                        key={item.href}
+                        item={item}
+                        onClick={handleClose}
+                        isMobile={true}
+                    />
+                ))}
+              </nav>
 
-            {/* Bottom Controls */}
-            <div className="border-t border-white/10 pt-6">
-              <div className="flex items-center justify-center space-x-4">
-                <LanguageToggle />
-                
-                <VerticalDivider height="h-8" />
-                
-                <ThemeToggle />
+              {/* Bottom Controls */}
+              <div className="
+              border-t border-foreground/10 dark:border-foreground/20
+              bg-foreground/5 dark:bg-foreground/10
+              p-6
+              backdrop-blur-sm
+            ">
+                <div className="flex items-center justify-center space-x-6">
+                  <div className="flex items-center gap-2">
+                  <span className="text-xs font-medium text-foreground/70 dark:text-foreground/60">
+                    {t("header.theme")}
+                  </span>
+                    <ThemeToggle />
+                  </div>
+
+                  <VerticalDivider
+                      height="h-6"
+                      className="bg-foreground/20 dark:bg-foreground/30"
+                  />
+
+                  <div className="flex items-center gap-2">
+                  <span className="text-xs font-medium text-foreground/70 dark:text-foreground/60">
+                    {t("header.language")}
+                  </span>
+                    <LanguageToggle />
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </SheetContent>
-      </Sheet>
-    </div>
+          </SheetContent>
+        </Sheet>
+      </div>
   );
 }

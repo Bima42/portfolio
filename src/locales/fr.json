@@ -3,9 +3,12 @@
     "en": "Anglais",
     "fr": "Français"
   },
-    "header": {
-      "languageToggle": "Passer à {{language}}"
-    },
+  "header": {
+    "languageToggle": "Passer à {{language}}",
+    "theme": "Thème",
+    "language": "Langue",
+    "navigation": "Navigation"
+  },
   "navigation": {
     "about": "À propos",
     "projects": "Projets",
