@@ -1,18 +1,12 @@
 import { useLanguage } from '../../hooks/useLanguage';
 
-interface HeroSectionProps {
-  isVisible: boolean;
-}
-
-export function HeroSection({ isVisible }: HeroSectionProps) {
+export function HeroSection() {
   const { t } = useLanguage();
 
   return (
     <section className="min-h-screen flex items-center justify-center relative bg-background">
       <div className="container mx-auto px-lg">
-        <div className={`max-w-5xl mx-auto text-center transition-all duration-1000 ease-out ${
-          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-        }`}>
+        <div className={"max-w-5xl mx-auto text-center transition-all duration-1000 ease-out opacity-100 translate-y-0"}>
           
           {/* Main heading */}
           <div className="mb-2xl">
@@ -34,10 +28,8 @@ export function HeroSection({ isVisible }: HeroSectionProps) {
           </div>
 
           {/* Description */}
-          <div className="max-w-2xl mx-auto">
-            <p className={`text-lg md:text-xl lg:text-2xl text-foreground/70 leading-relaxed text-center font-light transition-all duration-1000 delay-300 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-            }`}>
+          <div className="mx-auto">
+            <p className={"text-lg md:text-xl lg:text-2xl text-foreground/70 text-center font-light transition-all duration-1000 delay-300 opacity-100 translate-y-0"}>
               {t("pages.home.greeting")}
             </p>
           </div>
