@@ -30,7 +30,7 @@ export function AnimatedLogo({
           translateX: "0%",
           translateY: "0%"
         } : {
-          scale: 2.5,
+          scale: 3,
           x: "50vw", 
           y: "50vh",
           translateX: "-50%",
@@ -57,7 +57,6 @@ export function AnimatedLogo({
     );
   }
 
-  // Version statique pour SimpleHeader
   return (
     <Link
       to="/"
