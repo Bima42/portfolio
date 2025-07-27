@@ -4,9 +4,9 @@
     "fr": "French"
   },
   "navigation": {
-    "about": "About",
-    "projects": "Projects",
-    "contact": "Contact"
+    "about": "ABOUT",
+    "projects": "PROJECTS",
+    "contact": "CONTACT"
   },
   "header": {
     "languageToggle": "Switch to {{language}}",

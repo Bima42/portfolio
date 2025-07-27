@@ -10,9 +10,9 @@
     "navigation": "Navigation"
   },
   "navigation": {
-    "about": "À propos",
-    "projects": "Projets",
-    "contact": "Contact"
+    "about": "À PROPOS",
+    "projects": "PROJETS",
+    "contact": "CONTACT"
   },
   "pages": {
     "home": {
