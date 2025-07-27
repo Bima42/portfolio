@@ -8,7 +8,7 @@ export function Header() {
   const themeHook = useTheme();
   const languageHook = useLanguage();
   
-  const theme = themeHook.theme;
+  const theme = themeHook;
 
   const defaultNavigation: NavigationMenuItem[] = [
     { label: languageHook.t("navigation.about"), href: "/about" },
@@ -36,7 +36,7 @@ export function Header() {
           hover:bg-white/15 dark:hover:bg-white/10
         "
         style={{
-          boxShadow: theme === "dark" 
+          boxShadow: theme.isDark
             ? `0 8px 16x rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)`
             : `0 8px 16px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)`
         }}
@@ -57,6 +57,27 @@ export function Header() {
             {/* Desktop Controls */}
             {/* md:flex make it appears when desktop */}
             <div className="hidden md:flex items-center space-x-3">
+              <a 
+                href="https://github.com/Bima42/portfolio"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="
+                  flex items-center space-x-2 px-4 py-2
+                  rounded-full
+                  transition-all duration-200
+                  text-sm font-medium
+                  text-foreground hover:text-primary
+                  hover:bg-primary/10 dark:hover:bg-primary/20 hover:shadow-sm
+                "
+              >
+                <img
+                  src={theme.isDark ? "/github-mark-white.svg" : "/github-mark.svg"}
+                  alt="GitHub"
+                  className="w-4 h-4"
+                />
+                <span>Github</span>
+              </a>
+              <VerticalDivider />
               <LanguageToggle />
               <VerticalDivider />
               <ThemeToggle />
