@@ -63,9 +63,10 @@ export function Header() {
                 rel="noopener noreferrer"
                 className="
                   flex items-center space-x-2 px-4 py-2
-                  rounded-full
+                  rounded-full backdrop-blur-sm dark:border dark:border-white/10
                   transition-all duration-200
-                  text-sm font-medium
+                  text-xs font-medium
+                  dark:bg-white/5
                   text-foreground hover:text-primary
                   hover:bg-primary/10 dark:hover:bg-primary/20 hover:shadow-sm
                 "
@@ -75,7 +76,7 @@ export function Header() {
                   alt="GitHub"
                   className="w-4 h-4"
                 />
-                <span>Github</span>
+                <span>GITHUB</span>
               </a>
               <VerticalDivider />
               <LanguageToggle />
