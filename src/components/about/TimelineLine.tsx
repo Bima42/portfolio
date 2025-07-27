@@ -11,15 +11,24 @@ export function TimelineLine() {
       {/* Background line */}
       <div className="absolute left-0 md:left-1/2 top-0 w-0.5 h-full bg-foreground/20 md:-translate-x-1/2" />
       
-      {/* Animated progress line */}
+      {/* Animated progress line going down from dot */}
       <motion.div 
         className="absolute left-0 md:left-1/2 top-0 w-0.5 bg-gradient-to-b from-primary via-secondary/80 to-primary/60 md:-translate-x-1/2 origin-top"
         style={{ height: lineHeight }}
       />
       
-      {/* Main starting dot */}
+      {/* Animated progress line going up from dot */}
+      <motion.div 
+        className="absolute left-0 md:left-1/2 top-0 w-0.5 bg-primary md:-translate-x-1/2 origin-top"
+        style={{ 
+          height: lineHeight,
+          transform: 'translateY(-100%) translateX(-50%)'
+        }}
+      />
+      
+      {/* Main starting dot - stays fixed */}
       <motion.div
-        className="absolute left-0 md:left-1/2 top-0 w-4 h-4 rounded-full bg-primary border-2 border-background shadow-lg -translate-x-1/2"
+        className="absolute left-0 md:left-1/2 top-0 w-4 h-4 rounded-full bg-primary border-2 border-background shadow-lg -translate-x-1/2 z-10"
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ delay: 0.5, duration: 0.6, ease: 'easeOut' }}
