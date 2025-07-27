@@ -11,11 +11,11 @@ export function TimelineItem({ item, isLeft }: TimelineItemProps) {
   
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ['start end', 'end start']
+    offset: ['start 0.8', 'end 0.2']
   });
 
   const cardX = useTransform(scrollYProgress, [0, 0.5, 1], [isLeft ? -100 : 100, 0, isLeft ? 50 : -50]);
-  const cardOpacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0]);
+  const cardOpacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
   const dotScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.8, 1.2, 0.8]);
 
   const getTypeStyles = (type: string) => {
@@ -49,15 +49,13 @@ export function TimelineItem({ item, isLeft }: TimelineItemProps) {
   };
 
   return (
-    <div ref={ref} className="relative h-screen flex items-center">
+    <div ref={ref} className="relative h-[60vh] flex items-center">
       {/* Timeline dot on the central line */}
       <motion.div
         className="absolute left-6 md:left-1/2 top-1/2 md:-translate-x-1/2 -translate-y-1/2 z-20"
         style={{ scale: dotScale }}
       >
-        <div className="w-5 h-5 rounded-full bg-primary border-4 border-background shadow-xl flex items-center justify-center">
-          {/*<span className="text-xs">{getTypeIcon(item.type)}</span>*/}
-        </div>
+        <div className="w-5 h-5 rounded-full bg-primary border-4 border-background shadow-xl flex items-center justify-center" />
       </motion.div>
 
       {/* Timeline card */}

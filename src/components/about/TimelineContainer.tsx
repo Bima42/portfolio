@@ -17,7 +17,7 @@ export function TimelineContainer({ timelineData }: TimelineContainerProps) {
     <ReactLenis root options={{ duration: 1.5 }}>
       <div ref={containerRef} className="relative min-h-screen w-full">
         {/* Page Title */}
-        <div className="relative pb-16">
+        <div className="relative pb-8">
           <div className="container mx-auto px-4">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-center text-foreground mb-8">
               {t(timelineData.title || 'timeline.title')}
