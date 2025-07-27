@@ -5,14 +5,16 @@ interface LogoProps {
   alt?: string;
   text?: string;
   className?: string;
+  logoHeight?: string;
   href?: string;
 }
 
 export function Logo({ 
-  src, 
+  src = '/logo-no-bg.svg',
+  logoHeight,
   alt = 'Logo', 
   className = '',
-  href = '/' 
+  href = '/'
 }: LogoProps) {
 
   return (
@@ -20,7 +22,7 @@ export function Logo({
       to={href}
       className={`flex items-center space-x-2 transition-opacity hover:opacity-80 ${className}`}
     >
-      <img src={src} alt={alt} className="h-8 w-auto" />
+      <img src={src} alt={alt} className={`${logoHeight ? logoHeight : "h-12"} w-auto`} />
     </Link>
   );
 }

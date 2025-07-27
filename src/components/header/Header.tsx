@@ -43,7 +43,7 @@ export function Header() {
       >
         <div className="flex items-center justify-between">
           {/* Left: Logo */}
-          <Logo src={"logo-no-bg.svg"} alt={"logo"}/>
+          <Logo />
 
           {/* Center: Desktop Navigation */}
           <NavigationMenu 

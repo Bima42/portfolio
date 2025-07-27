@@ -2,24 +2,6 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-@keyframes logoExpand {
-  0% {
-    transform: translate(-50%, -50%) scale(0.3);
-    opacity: 1;
-  }
-  70% {
-    transform: translate(-50%, -50%) scale(3);
-    opacity: 0.8;
-  }
-  100% {
-    transform: translate(-50%, -50%) scale(6);
-    opacity: 0;
-  }
-}
-
-@utility animate-logo-expand {
-  animation: logoExpand 2s ease-out forwards;
-}
 
 @theme {
   /* Colors */
