@@ -1,11 +1,16 @@
-import { createRootRoute, Outlet } from '@tanstack/react-router'
-import { Header } from '@/components/header'
+import { createRootRoute, Outlet, useLocation } from '@tanstack/react-router'
+import { Header, SimpleHeader } from '@/components/header'
 
 export const Route = createRootRoute({
-  component: () => (
-    <>
-      <Header />
-      <Outlet />
-    </>
-  ),
+  component: () => {
+    const location = useLocation()
+    const isHomePage = location.pathname === '/'
+    
+    return (
+      <>
+        {isHomePage ? <SimpleHeader /> : <Header />}
+        <Outlet />
+      </>
+    )
+  },
 })
