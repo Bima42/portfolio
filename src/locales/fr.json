@@ -17,7 +17,12 @@
   "pages": {
     "home": {
       "title": "Accueil",
-      "greeting": "Concevoir des solutions utiles aux gens"
+      "greeting": "Concevoir des solutions utiles aux gens",
+      "buttons": {
+        "knowMore": "En savoir plus sur moi",
+        "projects": "Mes projets",
+        "contact": "Contactez-moi"
+      }
     },
     "about": {
       "title": "À propos"

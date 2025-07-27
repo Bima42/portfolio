@@ -17,7 +17,12 @@
   "pages": {
     "home": {
       "title": "Home",
-      "greeting": "Building useful solutions for people"
+      "greeting": "Building useful solutions for people",
+      "buttons": {
+        "knowMore": "Know more about me",
+        "projects": "My projects",
+        "contact": "Contact me"
+      }
     },
     "about": {
       "title": "About"

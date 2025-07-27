@@ -1,6 +1,7 @@
 import { useLanguage } from '@/hooks/useLanguage';
 import { motion, type Variants } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import { HeroButtons } from './molecules';
 
 function TypewriterText({ text }: { text: string; }) {
   const [displayText, setDisplayText] = useState('');
@@ -19,7 +20,7 @@ function TypewriterText({ text }: { text: string; }) {
       }, 100);
 
       return () => clearInterval(typeInterval);
-    }, 3000);
+    }, 3300);
 
     return () => clearTimeout(startTimer);
   }, [text]);
@@ -100,6 +101,9 @@ export function HeroSection() {
               <TypewriterText text={t("pages.home.greeting")} />
             </p>
           </motion.div>
+
+          {/* Hero Buttons */}
+          <HeroButtons />
         </motion.div>
       </div>
     </section>

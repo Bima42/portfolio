@@ -6,6 +6,7 @@
 @theme {
   /* Colors */
   --color-background: #FFFDF0;
+  --color-background-elevated: #FFFFFF;
   --color-foreground: #0F0F0F;
   --color-primary: #C6BCF0;
   --color-secondary: #6100FF;
@@ -46,6 +47,7 @@
 
 .dark {
   --color-background: #0F0F0F;
+  --color-background-elevated: #1A1A1A;
   --color-foreground: #FFFDF0;
   --color-primary: #C6BCF0;
   --color-secondary: #8A4FFF;
