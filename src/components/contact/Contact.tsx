@@ -6,7 +6,7 @@ export default function Contact() {
 
   return (
     <div className="min-h-screen flex items-center bg-background">
-      <div className="flex flex-col container mx-auto px-6 py-16 gap-y-12">
+      <div className="flex flex-col w-full px-6 py-16 gap-y-12">
         <h1 className="text-5xl font-bold text-foreground mb-8 text-center">{t('pages.contact.title')}</h1>
         <ContactGrid />
       </div>

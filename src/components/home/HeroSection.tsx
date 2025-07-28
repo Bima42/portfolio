@@ -59,7 +59,7 @@ export function HeroSection() {
 
   return (
     <section className="min-h-screen flex items-center justify-center relative bg-background">
-      <div className="container mx-auto px-lg">
+      <div className="w-full px-lg">
         <motion.div 
           className="mx-auto text-center"
           variants={containerVariants}
