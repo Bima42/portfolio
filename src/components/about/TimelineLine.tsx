@@ -7,10 +7,9 @@ export function TimelineLine() {
     const dotScale = useTransform(scrollYProgress, [0, 0.01], [1, 0]);
 
     return (
-        // Position absolute au lieu de sticky - ne prend plus de place dans le DOM
         <div className="absolute left-6 md:left-1/2 top-0 h-full w-0 z-0 pointer-events-none">
 
-            {/* Background line - prend toute la hauteur du conteneur parent */}
+            {/* Background line */}
             <div className="absolute left-0 md:left-1/2 top-0 w-0.5 h-full bg-foreground/20 md:-translate-x-1/2" />
 
             {/* Animated progress line */}

@@ -13,13 +13,14 @@ export function TimelineContainer({ timelineData }: TimelineContainerProps) {
 
     return (
         <ReactLenis root options={{ duration: 1.5 }}>
-            {/* Le conteneur principal avec position relative */}
             <div ref={containerRef} className="relative w-full top-[-100px]">
+                {/* Div to push a bit the content to bottom*/}
+                <div className="h-[15vh]" />
 
-                {/* Timeline Line - maintenant en absolute, ne prend plus de place */}
+                {/* Central Timeline Line */}
                 <TimelineLine />
 
-                {/* Timeline Items - définissent maintenant la vraie hauteur */}
+                {/* Timeline Items */}
                 <div className="relative z-10">
                     {timelineData.items.map((item, index) => (
                         <TimelineItem

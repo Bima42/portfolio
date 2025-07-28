@@ -5,38 +5,84 @@ export const timelineData: TimelineData = {
   items: [
     {
       id: '1',
-      date: '01.2023 - Today',
-      title: 'timeline.items.software_engineer.title',
-      location: 'timeline.items.software_engineer.location',
-      description: 'timeline.items.software_engineer.description',
-      type: 'experience'
+      date: '2013',
+      title: 'timeline.items.school.title',
+      location: 'timeline.items.school.location',
+      description: 'timeline.items.school.description',
+      type: 'education'
     },
     {
-      id: '2', 
-      date: '12.2024 - 06.2025',
-      title: 'timeline.items.voltaire.title',
-      description: 'timeline.items.voltaire.description',
-      link: 'https://voltaire.chat',
-      internalLink: '/projects/voltaire',
-      type: 'project'
+      id: '2',
+      date: '2013 - 2016',
+      title: 'timeline.items.university.title',
+      location: 'timeline.items.university.location',
+      description: 'timeline.items.university.description',
+      type: 'education'
     },
     {
       id: '3',
-      date: '09-2024 - 11-2024',
-      title: 'timeline.items.prompt_pilot.title',
-      description: 'timeline.items.prompt_pilot.description',
-      link: 'https://prompt-pilot.app',
-      internalLink: '/projects/prompt-pilot',
-      type: 'project'
+      date: '2017',
+      title: 'timeline.items.vet_fail.title',
+      location: 'timeline.items.vet_fail.location',
+      description: 'timeline.items.vet_fail.description',
+      type: 'education'
     },
     {
       id: '4',
-      date: '10-2021 - Today',
+      date: '05-2018 / 09-2018',
+      title: 'timeline.items.cook_lacanau.title',
+      location: 'timeline.items.cook_lacanau.location',
+      description: 'timeline.items.cook_lacanau.description',
+      type: 'experience'
+    },
+    {
+      id: '5',
+      date: '2019',
+      title: 'timeline.items.norway.title',
+      location: 'timeline.items.norway.location',
+      description: 'timeline.items.norway.description',
+      type: 'travel'
+    },
+    {
+      id: '6',
+      date: '03-2019 / 06-2021',
+      title: 'timeline.items.cook_geneva.title',
+      location: 'timeline.items.cook_geneva.location',
+      description: 'timeline.items.cook_geneva.description',
+      type: 'experience'
+    },
+    {
+      id: '7',
+      date: '10-2021 / 06-2023',
       title: 'timeline.items.42_school.title',
       location: 'timeline.items.42_school.location',
       description: 'timeline.items.42_school.description',
       link: 'https://www.42lausanne.ch',
       type: 'education'
-    }
+    },
+    {
+      id: '8',
+      date: '01-2024',
+      title: 'timeline.items.canada.title',
+      location: 'timeline.items.canada.location',
+      description: 'timeline.items.canada.description',
+      type: 'travel'
+    },
+    {
+      id: '9',
+      date: '12-2024',
+      title: 'timeline.items.iceland.title',
+      location: 'timeline.items.iceland.location',
+      description: 'timeline.items.iceland.description',
+      type: 'travel'
+    },
+    {
+      id: '10',
+      date: '01-2023 - Aujourd\'hui',
+      title: 'timeline.items.software_engineer.title',
+      location: 'timeline.items.software_engineer.location',
+      description: 'timeline.items.software_engineer.description',
+      type: 'experience'
+    },
   ]
 };
