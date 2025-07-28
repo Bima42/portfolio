@@ -13,7 +13,7 @@ export function TimelineContainer({ timelineData }: TimelineContainerProps) {
 
   return (
     <ReactLenis root options={{ duration: 1.5 }}>
-      <div ref={containerRef} className="relative min-h-screen w-full">
+      <div ref={containerRef} className="relative min-h-screen w-full top-[-100px]">
 
         {/* Central Timeline Line */}
         <TimelineLine />
