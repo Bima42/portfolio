@@ -11,7 +11,7 @@ export function TimelineItem({ item, isLeft }: TimelineItemProps) {
   
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ['start 1.5', 'end 0.2']
+    offset: ['start 0.8', 'end 0.3']
   });
 
   const cardX = useTransform(scrollYProgress, [0, 0.5, 1], [isLeft ? -100 : 100, 0, isLeft ? 50 : -50]);
@@ -49,7 +49,7 @@ export function TimelineItem({ item, isLeft }: TimelineItemProps) {
   };
 
   return (
-    <div ref={ref} className="relative h-[60vh] flex items-center">
+    <div ref={ref} className="relative h-[40vh] flex items-center">
       {/* Timeline dot on the central line */}
       <motion.div
         className="absolute left-6 md:left-1/2 top-1/2 md:-translate-x-1/2 -translate-y-1/2 z-20"
