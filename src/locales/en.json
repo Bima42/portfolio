@@ -48,23 +48,55 @@
     "showMore": "Show more",
     "discover": "Discover",
     "items": {
-      "software_engineer": {
-        "title": "Software Engineer",
-        "location": "Lausanne, Switzerland 🇨🇭",
-        "description": "I started working here after completing my end-of-studies internship. I develop, maintain, and improve the company's applications. I also manage, in collaboration with the CTO, all aspects of the company's infrastructure, including servers, databases, and development tools."
+      "school": {
+        "title": "Scientific Baccalauréat",
+        "location": "Paul Guérin School, Niort, France 🇫🇷",
+        "description": "Specializing in Life Sciences and Sports. Obtained at the age of 16."
       },
-      "voltaire": {
-        "title": "Founder",
-        "description": "Creation of an AI assistant specialized in writing, addressing the limitations of general-purpose tools such as ChatGPT."
+      "university": {
+        "title": "Bachelor's in Animal Physiology and Neurosciences",
+        "location": "University of Poitiers, France 🇫🇷",
+        "description": "A three-year program focused on the study of animal physiology and the functioning of the nervous system."
       },
-      "prompt_pilot": {
-        "title": "Founder",
-        "description": "Creation of a tool for generating prompts optimized for LLM, solving the problem of vague and unstructured responses."
+      "vet_fail": {
+        "title": "Veterinary School Failure",
+        "location": "Nantes, France 🇫🇷",
+        "description": "Attempt following the completion of my bachelor's degree, alongside a second bachelor's degree in Ecology and Organism Biology."
+      },
+      "cook_lacanau": {
+          "title": "Cook",
+          "location": "Éliandre - Lacanau, France 🇫🇷",
+          "description": "Seasonal job as a cook in a restaurant. I learned to work under pressure and collaborate with a dynamic team."
+      },
+      "norway": {
+        "title": "20 Days in Norway",
+        "location": "Tromso, Norway 🇳🇴",
+        "description": "20-day trip to Norway to discover the Northern Lights."
+      },
+      "cook_geneva": {
+          "title": "Cook",
+          "location": "Nero's - Geneva, Switzerland 🇨🇭",
+          "description": "Cook in an Italian restaurant in the center of Geneva. I developed my culinary skills and learned to work in a multicultural environment."
       },
       "42_school": {
-        "title": "Student",
+        "title": "42 School Student",
         "location": "Lausanne, Switzerland 🇨🇭",
-        "description": "Innovative computer training that is free and open to all, with no diploma required, based on project-based learning and peer support. It stands out for its educational approach without teachers or traditional classes, promoting autonomy, creativity, and technical excellence."
+        "description": "Innovative computer training that is free and open to all, with no diploma required, based on project-based learning and peer support."
+      },
+      "canada": {
+        "title": "Discover Québec",
+        "location": "Montebello, Canada 🇨🇦",
+        "description": "A three-week trip with friends to visit a friend who lives there and discover the culture."
+      },
+      "iceland": {
+        "title": "Chasing the Northern Lights in a van",
+        "location": "Iceland 🇮🇸",
+        "description": "Ten days to cross the entire southern part of the island, see the erupting volcanoes, and hunt for the Northern Lights."
+      },
+      "software_engineer": {
+        "title": "Software Engineer",
+        "location": "Resilio - Lausanne, Switzerland 🇨🇭",
+        "description": "I started working here after completing my end-of-studies internship. \n I develop, maintain, and improve the company's applications. I also manage, in collaboration with the CTO, all aspects of the company's infrastructure, including servers and databases."
       }
     }
   }

@@ -5,8 +5,8 @@ export interface TimelineItem {
   location?: string;       // Translation key for location
   description: string;     // Translation key for description
   link?: string;           // Optional link for being redirected outside the app
-  internalLink?: string;   // Optional link for project details in portfolio
-  type: 'education' | 'experience' | 'project' | 'personal';
+  icon?: string;
+  type: 'education' | 'experience' | 'project' | 'travel';
 }
 
 export interface TimelineData {

@@ -1,1 +1,0 @@
-export { HeroButton } from './HeroButton';

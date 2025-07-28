@@ -9,27 +9,29 @@ interface TimelineContainerProps {
 }
 
 export function TimelineContainer({ timelineData }: TimelineContainerProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
+    const containerRef = useRef<HTMLDivElement>(null);
 
-  return (
-    <ReactLenis root options={{ duration: 1.5 }}>
-      <div ref={containerRef} className="relative min-h-screen w-full">
+    return (
+        <ReactLenis root options={{ duration: 1.5 }}>
+            <div ref={containerRef} className="relative w-full top-[-100px]">
+                {/* Div to push a bit the content to bottom*/}
+                <div className="h-[15vh]" />
 
-        {/* Central Timeline Line */}
-        <TimelineLine />
+                {/* Central Timeline Line */}
+                <TimelineLine />
 
-        {/* Timeline Items */}
-        <div className="relative z-10">
-          {timelineData.items.map((item, index) => (
-            <TimelineItem
-              key={item.id}
-              item={item}
-              index={index}
-              isLeft={index % 2 === 0}
-            />
-          ))}
-        </div>
-      </div>
-    </ReactLenis>
-  );
+                {/* Timeline Items */}
+                <div className="relative z-10">
+                    {timelineData.items.map((item, index) => (
+                        <TimelineItem
+                            key={item.id}
+                            item={item}
+                            index={index}
+                            isLeft={index % 2 === 0}
+                        />
+                    ))}
+                </div>
+            </div>
+        </ReactLenis>
+    );
 }

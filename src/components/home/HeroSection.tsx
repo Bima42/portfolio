@@ -1,7 +1,6 @@
 import { useLanguage } from '@/hooks/useLanguage';
 import { motion, type Variants } from 'framer-motion';
 import { useEffect, useState } from 'react';
-import { HeroButtons } from './molecules';
 
 function TypewriterText({ text }: { text: string; }) {
   const [displayText, setDisplayText] = useState('');
@@ -102,8 +101,6 @@ export function HeroSection() {
             </p>
           </motion.div>
 
-          {/* Hero Buttons */}
-          <HeroButtons />
         </motion.div>
       </div>
     </section>
