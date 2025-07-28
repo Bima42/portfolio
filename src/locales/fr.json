@@ -50,12 +50,12 @@
     "items": {
       "school": {
         "title": "Baccalauréat Scientifique",
-        "location": "Niort, France 🇫🇷",
+        "location": "Lycée Paul Guérin, Niort, France 🇫🇷",
         "description": "Avec spécialisation en Sciences de la vie, et Sport. Obtention à l'âge de 16 ans."
       },
       "university": {
         "title": "Licence Physiologie Animale et Neurosciences",
-        "location": "Poitiers, France 🇫🇷",
+        "location": "Université de Poitiers, France 🇫🇷",
         "description": "Un programme de trois ans axé sur l'étude du vivant et du fonctionnement du système nerveux."
       },
       "vet_fail": {
@@ -65,7 +65,7 @@
       },
       "cook_lacanau": {
         "title": "Cuisinier",
-        "location": "Lacanau, France 🇫🇷",
+        "location": "Éliandre - Lacanau, France 🇫🇷",
         "description": "Emploi saisonnier en tant que cuisinier dans un restaurant. J'ai appris à travailler sous pression et à collaborer avec une équipe dynamique."
       },
       "norway": {
@@ -75,11 +75,11 @@
       },
       "cook_geneva": {
         "title": "Cuisinier",
-        "location": "Genève, Suisse 🇨🇭",
+        "location": "Nero's - Genève, Suisse 🇨🇭",
         "description": "Cuisinier dans un restaurant italien, dans le centre de Genève. J'ai développé mes compétences culinaires et appris à travailler dans un environnement multiculturel."
       },
       "42_school": {
-        "title": "Étudiant",
+        "title": "Étudiant École 42",
         "location": "Lausanne, Suisse 🇨🇭",
         "description": "Formation en informatique innovante, gratuite et ouverte à tous, sans diplôme requis, qui repose sur l’apprentissage par projets et l’entraide entre pairs."
       },
@@ -95,8 +95,8 @@
       },
       "software_engineer": {
         "title": "Ingénieur Logiciel",
-        "location": "Lausanne, Suisse 🇨🇭",
-        "description": "Entré en poste après mon stage de fin d'études. Je développe, maintiens et améliores les applications de l'entreprise. Je gère également, en collaboration avec le CTO, toute la partie infrastructure de l'entreprise, notamment les serveurs, les bases de données et les outils de développement."
+        "location": "Resilio - Lausanne, Suisse 🇨🇭",
+        "description": "Entré en poste après mon stage de fin d'études. \n Je développe, maintiens et améliores les applications de l'entreprise. Je gère également, en collaboration avec le CTO, toute la partie infrastructure de l'entreprise, notamment les serveurs et les bases de données."
       }
     }
   }

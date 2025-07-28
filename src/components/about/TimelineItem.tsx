@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import type { TimelineItemProps } from './types.ts';
 import { useLanguage } from '@/hooks/useLanguage';
 import { ExternalLink } from 'lucide-react';
+import { Logo } from '@/components/header';
 
 export function TimelineItem({ item, isLeft }: TimelineItemProps) {
   const { t } = useLanguage();
@@ -78,9 +79,10 @@ export function TimelineItem({ item, isLeft }: TimelineItemProps) {
             <span className="inline-block px-3 py-1 text-sm font-semibold text-primary bg-primary/10 rounded-full">
               {item.date}
             </span>
-            <span className="text-2xl opacity-60">
-              {getTypeIcon(item.type)}
-            </span>
+            {item.icon ? (<Logo src={item.icon} alt={"card-logo"} logoHeight={"h-6"} />) :
+              (<span className="text-2xl opacity-60">
+                {getTypeIcon(item.type)}
+              </span>)}
           </div>
 
           {/* Title */}
@@ -95,7 +97,9 @@ export function TimelineItem({ item, isLeft }: TimelineItemProps) {
 
           {/* Description */}
           <p className="text-sm md:text-base text-foreground/80 leading-relaxed">
-            {t(item.description)}
+            {t(item.description, {
+              break: <br />,
+            })}
           </p>
 
           {(item.link) && (

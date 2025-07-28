@@ -50,12 +50,12 @@
     "items": {
       "school": {
         "title": "Scientific Baccalauréat",
-        "location": "Niort, France 🇫🇷",
+        "location": "Paul Guérin School, Niort, France 🇫🇷",
         "description": "Specializing in Life Sciences and Sports. Obtained at the age of 16."
       },
       "university": {
         "title": "Bachelor's in Animal Physiology and Neurosciences",
-        "location": "Poitiers, France 🇫🇷",
+        "location": "University of Poitiers, France 🇫🇷",
         "description": "A three-year program focused on the study of animal physiology and the functioning of the nervous system."
       },
       "vet_fail": {
@@ -65,7 +65,7 @@
       },
       "cook_lacanau": {
           "title": "Cook",
-          "location": "Lacanau, France 🇫🇷",
+          "location": "Éliandre - Lacanau, France 🇫🇷",
           "description": "Seasonal job as a cook in a restaurant. I learned to work under pressure and collaborate with a dynamic team."
       },
       "norway": {
@@ -75,11 +75,11 @@
       },
       "cook_geneva": {
           "title": "Cook",
-          "location": "Geneva, Switzerland 🇨🇭",
+          "location": "Nero's - Geneva, Switzerland 🇨🇭",
           "description": "Cook in an Italian restaurant in the center of Geneva. I developed my culinary skills and learned to work in a multicultural environment."
       },
       "42_school": {
-        "title": "Student",
+        "title": "42 School Student",
         "location": "Lausanne, Switzerland 🇨🇭",
         "description": "Innovative computer training that is free and open to all, with no diploma required, based on project-based learning and peer support."
       },
@@ -95,8 +95,8 @@
       },
       "software_engineer": {
         "title": "Software Engineer",
-        "location": "Lausanne, Switzerland 🇨🇭",
-        "description": "I started working here after completing my end-of-studies internship. I develop, maintain, and improve the company's applications. I also manage, in collaboration with the CTO, all aspects of the company's infrastructure, including servers, databases, and development tools."
+        "location": "Resilio - Lausanne, Switzerland 🇨🇭",
+        "description": "I started working here after completing my end-of-studies internship. \n I develop, maintain, and improve the company's applications. I also manage, in collaboration with the CTO, all aspects of the company's infrastructure, including servers and databases."
       }
     }
   }

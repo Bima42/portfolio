@@ -58,7 +58,8 @@ export const timelineData: TimelineData = {
       location: 'timeline.items.42_school.location',
       description: 'timeline.items.42_school.description',
       link: 'https://www.42lausanne.ch',
-      type: 'education'
+      type: 'education',
+      icon: '/logo-42.svg'
     },
     {
       id: '8',
@@ -82,7 +83,8 @@ export const timelineData: TimelineData = {
       title: 'timeline.items.software_engineer.title',
       location: 'timeline.items.software_engineer.location',
       description: 'timeline.items.software_engineer.description',
-      type: 'experience'
+      type: 'experience',
+      icon: '/logo-resilio.svg'
     },
   ]
 };
