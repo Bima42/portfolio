@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { AnimatedLogo } from '@/components/header/atoms/AnimatedLogo';
 import About from '@/components/about/About.tsx';
+import { TagList } from '@/components/tags';
 
 export default function Home() {
     const [animationComplete, setAnimationComplete] = useState(false);
@@ -37,9 +38,10 @@ export default function Home() {
 
             </div>
 
-            {contentVisible && (
+            {contentVisible && (<>
                 <About/>
-            )}
+                <TagList tags={["react", "typescript", "docker"]} size="md" />
+            </>)}
 
     </div>
 
