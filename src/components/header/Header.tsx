@@ -3,7 +3,7 @@ import { useLanguage } from "@/hooks/useLanguage";
 import { Logo, VerticalDivider } from "./atoms";
 import { NavigationMenu, LanguageToggle, ThemeToggle, MobileMenu } from "./molecules";
 import type { NavigationMenuItem } from "./types";
-import { GithubButton } from '@/components/header/atoms/GithubButton.tsx';
+import { GithubButton } from '@/components/buttons/GithubButton.tsx';
 
 export function Header() {
   const { isDark } = useTheme();

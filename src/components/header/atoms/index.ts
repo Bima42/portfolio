@@ -1,3 +1,3 @@
 export { Logo } from './Logo';
-export { IconButton } from './IconButton';
+export { IconButton } from '../../buttons/IconButton.tsx';
 export { VerticalDivider } from './VerticalDivider';
