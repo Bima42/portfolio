@@ -114,6 +114,21 @@
         "gamification": "Pour maintenir la motivation de l'élève, l'application définit automatiquement des objectifs et des récompenses. L'élève peut gagner des points en effectuant des exercices et les échanger contre des récompenses sur une boutique en ligne."
       },
       "tech_stack": "Pour créer cette application, j'ai utilisé React Native pour le front-end, Node.js pour le back-end et MongoDB pour la base de données. J'ai également utilisé Socket.io pour la communication en temps réel entre le coach et l'étudiant. L'application est disponible sur iOS et Android."
+    },
+      "voltaire": {
+        "title": "Voltaire",
+        "presentation": "Voltaire est une application d'intelligence artificielle qui assiste les utilisateurs dans leur processus d'écriture. Elle permet de rédiger, éditer et améliorer des textes tout en s'adaptant au style et aux besoins spécifiques de chaque utilisateur.",
+        "opportunity": "L'idée est née du constat que de nombreuses personnes perdent un temps considérable dans la rédaction et la mise en forme de leurs textes. Qu'il s'agisse de professionnels devant produire régulièrement du contenu ou d'utilisateurs occasionnels confrontés à des tâches d'écriture complexes, tous font face aux mêmes défis : trouver l'inspiration, structurer leurs idées et s'assurer que le résultat final soit à la hauteur de leurs attentes.",
+        "solution": "Imaginez que vous devez rédiger un document important mais que vous ne savez pas par où commencer. Avant Voltaire, vous auriez passé des heures devant une page blanche, consultant diverses sources d'information et essayant plusieurs versions. Avec Voltaire, vous conversez simplement avec le chatbot qui vous guide pour clarifier vos idées. Vous importez les contextes pertinents (documents, vidéos, images), et Voltaire s'adapte à votre style d'écriture.",
+        "features": {
+          "connexion": "L'application offre une connexion sécurisée via OAuth Google ou par magic link, permettant aux utilisateurs d'accéder rapidement à leur compte sans avoir à mémoriser de mots de passe supplémentaires.",
+          "chatbot": "Un chatbot conversationnel incarnant Voltaire permet aux utilisateurs de discuter de leurs projets d'écriture. Il les aide à préciser leurs idées, à structurer leur pensée et à déterminer l'approche rédactionnelle la plus adaptée à leurs besoins.",
+          "redaction": "Voltaire analyse votre style d'écriture et s'y adapte pour produire des textes qui vous ressemblent. L'IA prend en compte vos préférences stylistiques, votre ton habituel et vos expressions favorites pour générer un contenu personnalisé.",
+          "editeur": "L'interface d'édition est intuitive et épurée, facilitant la concentration sur le contenu. Elle permet de mettre en forme le texte, de suivre les différentes versions d'un document et d'identifier clairement les modifications entre chaque itération.",
+          "contextes": "La fonction d'importation de contextes est particulièrement puissante, permettant d'intégrer des données de sources variées (PDF, images, enregistrements vocaux, vidéos YouTube, fichiers Excel...) que Voltaire analyse pour enrichir ses suggestions et sa compréhension de votre projet.",
+          "projets": "La gestion de projets permet de capitaliser sur les travaux précédents. Voltaire vous guide dans l'identification des données importantes à importer et crée automatiquement des pages avec les contextes pertinents déjà intégrés, réduisant considérablement le temps de préparation pour les tâches récurrentes."
+        },
+        "tech_stack": "Voltaire est développé avec NextJS, Python et FastAPI. L'ensemble est conteneurisé avec Docker et déployé sur Railway, garantissant stabilité et évolutivité de l'application."
+      }
     }
-  }
 }

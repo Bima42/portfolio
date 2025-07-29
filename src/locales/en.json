@@ -114,6 +114,22 @@
         "gamification": "To keep the student motivated, the app automatically sets up goals and rewards. The student can earn points by completing exercises, and can redeem them for rewards on a marketplace."
       },
       "tech_stack": "To create this app, I used React Native for the front-end, Node.js for the back-end, and MongoDB for the database. I also used Socket.io for real-time communication between the coach and the student. The app is available on both iOS and Android."
+    },
+    "voltaire": {
+      "title": "Voltaire",
+      "presentation": "Voltaire is an artificial intelligence application that assists users in their writing process. It enables writing, editing and improving texts while adapting to each user's specific style and needs.",
+      "opportunity": "The idea emerged from the observation that many people waste considerable time writing and formatting their texts. Whether they are professionals who need to regularly produce content or occasional users faced with complex writing tasks, all face the same challenges: finding inspiration, structuring their ideas and ensuring the final result meets their expectations.",
+      "solution": "Imagine you need to write an important document but don't know where to start. Before Voltaire, you would have spent hours staring at a blank page, consulting various information sources and trying multiple versions. With Voltaire, you simply converse with the chatbot that guides you to clarify your ideas. You import relevant contexts (documents, videos, images), and the AI adapts to your writing style.",
+      "features": {
+        "connexion": "The application offers secure login via Google OAuth or magic link, allowing users to quickly access their account without having to memorize additional passwords.",
+        "chatbot": "A conversational chatbot embodying Voltaire allows users to discuss their writing projects. It helps them clarify their ideas, structure their thoughts and determine the most suitable writing approach for their needs.",
+        "redaction": "Voltaire analyzes your writing style and adapts to it to produce texts that sound like you. The AI takes into account your stylistic preferences, your usual tone and your favorite expressions to generate personalized content.",
+        "editeur": "The editing interface is intuitive and streamlined, facilitating focus on content. It allows text formatting, tracking different versions of a document and clearly identifying changes between each iteration.",
+        "contextes": "The context import function is particularly powerful, allowing integration of data from various sources (PDF, images, voice recordings, YouTube videos, Excel files...) that Voltaire analyzes to enrich its suggestions and understanding of your project.",
+        "projets": "Project management allows you to capitalize on previous work. Voltaire guides you in identifying important data to import and automatically creates pages with relevant contexts already integrated, significantly reducing preparation time for recurring tasks."
+      },
+      "tech_stack": "Voltaire is developed with NextJS, Python and FastAPI. The whole system is containerized with Docker and deployed on Railway, ensuring application stability and scalability."
     }
+  }
   }
 }
