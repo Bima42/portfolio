@@ -16,7 +16,7 @@ function TypewriterText({ text }: { text: string; }) {
         } else {
           clearInterval(typeInterval);
         }
-      }, 100);
+      }, 80);
 
       return () => clearInterval(typeInterval);
     }, 3300);
