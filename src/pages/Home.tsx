@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { AnimatedLogo } from '@/components/header/atoms/AnimatedLogo';
 import About from '@/components/about/About.tsx';
+import { ProjectsCarousel } from '@/components/projects';
 import { TagList } from '@/components/tags';
 import Contact from '@/components/contact/Contact.tsx';
 
@@ -41,6 +42,7 @@ export default function Home() {
 
             {contentVisible && (<>
                 <About/>
+                <ProjectsCarousel numberOfCards={6} />
                 <TagList tags={["react", "typescript", "docker"]} size="md" />
                 <Contact />
             </>)}
