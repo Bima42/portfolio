@@ -131,5 +131,4 @@
       "tech_stack": "Voltaire is developed with NextJS, Python and FastAPI. The whole system is containerized with Docker and deployed on Railway, ensuring application stability and scalability."
     }
   }
-  }
 }
