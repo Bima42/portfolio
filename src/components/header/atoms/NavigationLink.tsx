@@ -7,7 +7,6 @@ interface NavigationLinkProps {
 }
 
 export function NavigationLink({ item, onClick, isMobile = false }: NavigationLinkProps) {
-	const isActive = item.isActive;
 
 	const handleClick = () => {
 		const element = document.getElementById(item.id);
@@ -28,9 +27,7 @@ export function NavigationLink({ item, onClick, isMobile = false }: NavigationLi
     transition-all duration-200
     hover:bg-white/10 dark:hover:bg-white/5
     focus:outline-none
-    ${isActive
-		? 'text-primary bg-primary/10 dark:bg-primary/20 shadow-sm'
-		: 'text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-slate-100'
+	text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-slate-100
 	}
   `;
 
