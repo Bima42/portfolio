@@ -1,134 +1,134 @@
 {
-  "language": {
-    "en": "Anglais",
-    "fr": "Français"
-  },
-  "header": {
-    "languageToggle": "Passer à {{language}}",
-    "theme": "Thème",
-    "language": "Langue",
-    "navigation": "Navigation"
-  },
-  "navigation": {
-    "about": "À PROPOS",
-    "projects": "PROJETS",
-    "contact": "CONTACT"
-  },
-  "pages": {
-    "home": {
-      "title": "Accueil",
-      "greeting": "Concevoir des solutions utiles pour les gens",
-      "buttons": {
-        "knowMore": "En savoir plus sur moi",
-        "projects": "Mes projets",
-        "contact": "Contactez-moi"
-      }
+    "language": {
+        "en": "Anglais",
+        "fr": "Français"
     },
-    "about": {
-      "title": "À propos"
+    "header": {
+        "languageToggle": "Passer à {{language}}",
+        "theme": "Thème",
+        "language": "Langue",
+        "navigation": "Navigation"
+    },
+    "navigation": {
+        "about": "À PROPOS",
+        "projects": "PROJETS",
+        "contact": "CONTACT"
+    },
+    "pages": {
+        "home": {
+            "title": "Accueil",
+            "greeting": "Concevoir des solutions utiles pour les gens",
+            "buttons": {
+                "knowMore": "En savoir plus sur moi",
+                "projects": "Mes projets",
+                "contact": "Contactez-moi"
+            }
+        },
+        "about": {
+            "title": "À propos"
+        },
+        "projects": {
+            "title": "Projets"
+        },
+        "contact": {
+            "title": "Contactez-moi"
+        }
+    },
+    "theme": {
+        "light": "clair",
+        "dark": "sombre"
+    },
+    "common": {
+        "loading": "Chargement...",
+        "error": "Erreur",
+        "success": "Succès"
+    },
+    "timeline": {
+        "title": "Mon Parcours",
+        "showMore": "Voir plus",
+        "discover": "Découvrir",
+        "items": {
+            "school": {
+                "title": "Baccalauréat Scientifique",
+                "location": "Lycée Paul Guérin, Niort, France 🇫🇷",
+                "description": "Avec spécialisation en Sciences de la vie, et Sport. Obtention à l'âge de 16 ans."
+            },
+            "university": {
+                "title": "Licence Physiologie Animale et Neurosciences",
+                "location": "Université de Poitiers, France 🇫🇷",
+                "description": "Un programme de trois ans axé sur l'étude du vivant et du fonctionnement du système nerveux."
+            },
+            "vet_fail": {
+                "title": "Échec d'entrée en école vétérinaire",
+                "location": "Nantes, France 🇫🇷",
+                "description": "Tentative suite à la fin de ma licence, en parallèle d'une seconde licence en Écologie et Biologie des Organismes."
+            },
+            "cook_lacanau": {
+                "title": "Cuisinier",
+                "location": "Éliandre - Lacanau, France 🇫🇷",
+                "description": "Emploi saisonnier en tant que cuisinier dans un restaurant. J'ai appris à travailler sous pression et à collaborer avec une équipe dynamique."
+            },
+            "norway": {
+                "title": "20 Jours en Norvège",
+                "location": "Tromso, Norvège 🇳🇴",
+                "description": "Voyage de 20 jours en Norvège, à la découverte des des aurores boréales."
+            },
+            "cook_geneva": {
+                "title": "Cuisinier",
+                "location": "Nero's - Genève, Suisse 🇨🇭",
+                "description": "Cuisinier dans un restaurant italien, dans le centre de Genève. J'ai développé mes compétences culinaires et appris à travailler dans un environnement multiculturel."
+            },
+            "42_school": {
+                "title": "Étudiant École 42",
+                "location": "Lausanne, Suisse 🇨🇭",
+                "description": "Formation en informatique innovante, gratuite et ouverte à tous, sans diplôme requis, qui repose sur l’apprentissage par projets et l’entraide entre pairs."
+            },
+            "canada": {
+                "title": "Découvrir Québec",
+                "location": "Montebello, Canada 🇨🇦",
+                "description": "Voyage de trois semaines entre amis, pour rejoindre un ami qui vit là-bas et découvrir la culture."
+            },
+            "iceland": {
+                "title": "Chasser les aurores boréales en van",
+                "location": "Islande 🇮🇸",
+                "description": "Une dizaine de jours pour traverser toute la partie Sud de l'île, y voir les volcans en éruption et chasser les aurores boréales."
+            },
+            "software_engineer": {
+                "title": "Ingénieur Logiciel",
+                "location": "Resilio - Lausanne, Suisse 🇨🇭",
+                "description": "Entré en poste après mon stage de fin d'études. \n Je développe, maintiens et améliores les applications de l'entreprise. Je gère également, en collaboration avec le CTO, toute la partie infrastructure de l'entreprise, notamment les serveurs et les bases de données."
+            }
+        }
     },
     "projects": {
-      "title": "Projets"
-    },
-    "contact": {
-      "title": "Contactez-moi"
-    }
-  },
-  "theme": {
-    "light": "clair",
-    "dark": "sombre"
-  },
-  "common": {
-    "loading": "Chargement...",
-    "error": "Erreur",
-    "success": "Succès"
-  },
-  "timeline": {
-    "title": "Mon Parcours",
-    "showMore": "Voir plus",
-    "discover": "Découvrir",
-    "items": {
-      "school": {
-        "title": "Baccalauréat Scientifique",
-        "location": "Lycée Paul Guérin, Niort, France 🇫🇷",
-        "description": "Avec spécialisation en Sciences de la vie, et Sport. Obtention à l'âge de 16 ans."
-      },
-      "university": {
-        "title": "Licence Physiologie Animale et Neurosciences",
-        "location": "Université de Poitiers, France 🇫🇷",
-        "description": "Un programme de trois ans axé sur l'étude du vivant et du fonctionnement du système nerveux."
-      },
-      "vet_fail": {
-        "title": "Échec d'entrée en école vétérinaire",
-        "location": "Nantes, France 🇫🇷",
-        "description": "Tentative suite à la fin de ma licence, en parallèle d'une seconde licence en Écologie et Biologie des Organismes."
-      },
-      "cook_lacanau": {
-        "title": "Cuisinier",
-        "location": "Éliandre - Lacanau, France 🇫🇷",
-        "description": "Emploi saisonnier en tant que cuisinier dans un restaurant. J'ai appris à travailler sous pression et à collaborer avec une équipe dynamique."
-      },
-      "norway": {
-        "title": "20 Jours en Norvège",
-        "location": "Tromso, Norvège 🇳🇴",
-        "description": "Voyage de 20 jours en Norvège, à la découverte des des aurores boréales."
-      },
-      "cook_geneva": {
-        "title": "Cuisinier",
-        "location": "Nero's - Genève, Suisse 🇨🇭",
-        "description": "Cuisinier dans un restaurant italien, dans le centre de Genève. J'ai développé mes compétences culinaires et appris à travailler dans un environnement multiculturel."
-      },
-      "42_school": {
-        "title": "Étudiant École 42",
-        "location": "Lausanne, Suisse 🇨🇭",
-        "description": "Formation en informatique innovante, gratuite et ouverte à tous, sans diplôme requis, qui repose sur l’apprentissage par projets et l’entraide entre pairs."
-      },
-      "canada": {
-        "title": "Découvrir Québec",
-        "location": "Montebello, Canada 🇨🇦",
-        "description": "Voyage de trois semaines entre amis, pour rejoindre un ami qui vit là-bas et découvrir la culture."
-      },
-      "iceland": {
-        "title": "Chasser les aurores boréales en van",
-        "location": "Islande 🇮🇸",
-        "description": "Une dizaine de jours pour traverser toute la partie Sud de l'île, y voir les volcans en éruption et chasser les aurores boréales."
-      },
-      "software_engineer": {
-        "title": "Ingénieur Logiciel",
-        "location": "Resilio - Lausanne, Suisse 🇨🇭",
-        "description": "Entré en poste après mon stage de fin d'études. \n Je développe, maintiens et améliores les applications de l'entreprise. Je gère également, en collaboration avec le CTO, toute la partie infrastructure de l'entreprise, notamment les serveurs et les bases de données."
-      }
-    }
-  },
-  "projects": {
-    "tidaka": {
-      "title": "Tidaka",
-      "presentation": "Tidaka est une application mobile qui met en relation les entraîneurs sportifs avec leurs clients. Elle permet aux entraîneurs de gérer leurs horaires, de suivre les progrès de leurs clients et de communiquer avec eux en temps réel.",
-      "opportunity": "L'idée est venue par le biais d'un ami travaillais sur le projets. Ils avaient remarqué sque de nombreux entraîneurs ont du mal à gérer efficacement leurs clients, en particulier lorsqu'ils ont plusieurs clients avec des programmes d'entraînement et des emplois du temps différents. Ils ont donc démarré ce projet pour solutionner ce problème.",
-      "solution": "Imaginez que vous êtes coach sportif avec plusieurs clients aux besoins variés. Avant Tidaka, vous utilisiez Excel et WhatsApp ... peu efficace. Avec Tidaka, chaque coach et client a son appli. Vous créez ou choisissez un plan d'entraînement, le programmez, le client est notifié, commence l'entraînement, et vous suivez ses progrès en temps réel, avec possibilité de communication et d’ajustements via l’app.",
-      "features": {
-        "connection": "Pour se connecter avec un élève, le coach doit lui envoyer un code d'invitation.",
-        "training_plan_creation": "L'entraîneur peut créer un nouveau programme d'entraînement en sélectionnant les exercices, les séries, les répétitions et le temps de repos. Il peut exploiter la bibliothèque existante qui contient plus de 200 vidéos d'exercices créées par des professionnels.",
-        "training_plan_execution": "Une fois le programme d'entraînement créé et envoyé, l'étudiant ne peut commencer le programme d'entraînement que les jours prévus. Pendant les exercices, l'étudiant peut suivre le nombre de répétitions, le poids utilisé et le temps de repos.",
-        "meeting": "Le coach ou l'étudiant peuvent programmer une réunion. Le coach peut indiquer ses disponibilités et l'étudiant peut choisir un créneau horaire. La réunion sera ajoutée au calendrier du coach et de l'étudiant.",
-        "gamification": "Pour maintenir la motivation de l'élève, l'application définit automatiquement des objectifs et des récompenses. L'élève peut gagner des points en effectuant des exercices et les échanger contre des récompenses sur une boutique en ligne."
-      },
-      "tech_stack": "Pour créer cette application, j'ai utilisé React Native pour le front-end, Node.js pour le back-end et MongoDB pour la base de données. J'ai également utilisé Socket.io pour la communication en temps réel entre le coach et l'étudiant. L'application est disponible sur iOS et Android."
-    },
-      "voltaire": {
-        "title": "Voltaire",
-        "presentation": "Voltaire est une application d'intelligence artificielle qui assiste les utilisateurs dans leur processus d'écriture. Elle permet de rédiger, éditer et améliorer des textes tout en s'adaptant au style et aux besoins spécifiques de chaque utilisateur.",
-        "opportunity": "L'idée est née du constat que de nombreuses personnes perdent un temps considérable dans la rédaction et la mise en forme de leurs textes. Qu'il s'agisse de professionnels devant produire régulièrement du contenu ou d'utilisateurs occasionnels confrontés à des tâches d'écriture complexes, tous font face aux mêmes défis : trouver l'inspiration, structurer leurs idées et s'assurer que le résultat final soit à la hauteur de leurs attentes.",
-        "solution": "Imaginez que vous devez rédiger un document important mais que vous ne savez pas par où commencer. Avant Voltaire, vous auriez passé des heures devant une page blanche, consultant diverses sources d'information et essayant plusieurs versions. Avec Voltaire, vous conversez simplement avec le chatbot qui vous guide pour clarifier vos idées. Vous importez les contextes pertinents (documents, vidéos, images), et Voltaire s'adapte à votre style d'écriture.",
-        "features": {
-          "connexion": "L'application offre une connexion sécurisée via OAuth Google ou par magic link, permettant aux utilisateurs d'accéder rapidement à leur compte sans avoir à mémoriser de mots de passe supplémentaires.",
-          "chatbot": "Un chatbot conversationnel incarnant Voltaire permet aux utilisateurs de discuter de leurs projets d'écriture. Il les aide à préciser leurs idées, à structurer leur pensée et à déterminer l'approche rédactionnelle la plus adaptée à leurs besoins.",
-          "redaction": "Voltaire analyse votre style d'écriture et s'y adapte pour produire des textes qui vous ressemblent. L'IA prend en compte vos préférences stylistiques, votre ton habituel et vos expressions favorites pour générer un contenu personnalisé.",
-          "editeur": "L'interface d'édition est intuitive et épurée, facilitant la concentration sur le contenu. Elle permet de mettre en forme le texte, de suivre les différentes versions d'un document et d'identifier clairement les modifications entre chaque itération.",
-          "contextes": "La fonction d'importation de contextes est particulièrement puissante, permettant d'intégrer des données de sources variées (PDF, images, enregistrements vocaux, vidéos YouTube, fichiers Excel...) que Voltaire analyse pour enrichir ses suggestions et sa compréhension de votre projet.",
-          "projets": "La gestion de projets permet de capitaliser sur les travaux précédents. Voltaire vous guide dans l'identification des données importantes à importer et crée automatiquement des pages avec les contextes pertinents déjà intégrés, réduisant considérablement le temps de préparation pour les tâches récurrentes."
+        "tidaka": {
+            "title": "Tidaka",
+            "presentation": "Tidaka est une application mobile qui met en relation les entraîneurs sportifs avec leurs clients. Elle permet aux entraîneurs de gérer leurs horaires, de suivre les progrès de leurs clients et de communiquer avec eux en temps réel.",
+            "opportunity": "L'idée est venue par le biais d'un ami travaillais sur le projets. Ils avaient remarqué sque de nombreux entraîneurs ont du mal à gérer efficacement leurs clients, en particulier lorsqu'ils ont plusieurs clients avec des programmes d'entraînement et des emplois du temps différents. Ils ont donc démarré ce projet pour solutionner ce problème.",
+            "solution": "Imaginez que vous êtes coach sportif avec plusieurs clients aux besoins variés. Avant Tidaka, vous utilisiez Excel et WhatsApp ... peu efficace. Avec Tidaka, chaque coach et client a son appli. Vous créez ou choisissez un plan d'entraînement, le programmez, le client est notifié, commence l'entraînement, et vous suivez ses progrès en temps réel, avec possibilité de communication et d’ajustements via l’app.",
+            "features": {
+                "connection": "Pour se connecter avec un élève, le coach doit lui envoyer un code d'invitation.",
+                "training_plan_creation": "L'entraîneur peut créer un nouveau programme d'entraînement en sélectionnant les exercices, les séries, les répétitions et le temps de repos. Il peut exploiter la bibliothèque existante qui contient plus de 200 vidéos d'exercices créées par des professionnels.",
+                "training_plan_execution": "Une fois le programme d'entraînement créé et envoyé, l'étudiant ne peut commencer le programme d'entraînement que les jours prévus. Pendant les exercices, l'étudiant peut suivre le nombre de répétitions, le poids utilisé et le temps de repos.",
+                "meeting": "Le coach ou l'étudiant peuvent programmer une réunion. Le coach peut indiquer ses disponibilités et l'étudiant peut choisir un créneau horaire. La réunion sera ajoutée au calendrier du coach et de l'étudiant.",
+                "gamification": "Pour maintenir la motivation de l'élève, l'application définit automatiquement des objectifs et des récompenses. L'élève peut gagner des points en effectuant des exercices et les échanger contre des récompenses sur une boutique en ligne."
+            },
+            "tech_stack": "Pour créer cette application, j'ai utilisé React Native pour le front-end, Node.js pour le back-end et MongoDB pour la base de données. J'ai également utilisé Socket.io pour la communication en temps réel entre le coach et l'étudiant. L'application est disponible sur iOS et Android."
         },
-        "tech_stack": "Voltaire est développé avec NextJS, Python et FastAPI. L'ensemble est conteneurisé avec Docker et déployé sur Railway, garantissant stabilité et évolutivité de l'application."
-      }
+        "voltaire": {
+            "title": "Voltaire",
+            "presentation": "Voltaire est une application d'intelligence artificielle qui assiste les utilisateurs dans leur processus d'écriture. Elle permet de rédiger, éditer et améliorer des textes tout en s'adaptant au style et aux besoins spécifiques de chaque utilisateur.",
+            "opportunity": "L'idée est née du constat que de nombreuses personnes perdent un temps considérable dans la rédaction et la mise en forme de leurs textes. Qu'il s'agisse de professionnels devant produire régulièrement du contenu ou d'utilisateurs occasionnels confrontés à des tâches d'écriture complexes, tous font face aux mêmes défis : trouver l'inspiration, structurer leurs idées et s'assurer que le résultat final soit à la hauteur de leurs attentes.",
+            "solution": "Imaginez que vous devez rédiger un document important mais que vous ne savez pas par où commencer. Avant Voltaire, vous auriez passé des heures devant une page blanche, consultant diverses sources d'information et essayant plusieurs versions. Avec Voltaire, vous conversez simplement avec le chatbot qui vous guide pour clarifier vos idées. Vous importez les contextes pertinents (documents, vidéos, images), et Voltaire s'adapte à votre style d'écriture.",
+            "features": {
+                "connexion": "L'application offre une connexion sécurisée via OAuth Google ou par magic link, permettant aux utilisateurs d'accéder rapidement à leur compte sans avoir à mémoriser de mots de passe supplémentaires.",
+                "chatbot": "Un chatbot conversationnel incarnant Voltaire permet aux utilisateurs de discuter de leurs projets d'écriture. Il les aide à préciser leurs idées, à structurer leur pensée et à déterminer l'approche rédactionnelle la plus adaptée à leurs besoins.",
+                "redaction": "Voltaire analyse votre style d'écriture et s'y adapte pour produire des textes qui vous ressemblent. L'IA prend en compte vos préférences stylistiques, votre ton habituel et vos expressions favorites pour générer un contenu personnalisé.",
+                "editeur": "L'interface d'édition est intuitive et épurée, facilitant la concentration sur le contenu. Elle permet de mettre en forme le texte, de suivre les différentes versions d'un document et d'identifier clairement les modifications entre chaque itération.",
+                "contextes": "La fonction d'importation de contextes est particulièrement puissante, permettant d'intégrer des données de sources variées (PDF, images, enregistrements vocaux, vidéos YouTube, fichiers Excel...) que Voltaire analyse pour enrichir ses suggestions et sa compréhension de votre projet.",
+                "projets": "La gestion de projets permet de capitaliser sur les travaux précédents. Voltaire vous guide dans l'identification des données importantes à importer et crée automatiquement des pages avec les contextes pertinents déjà intégrés, réduisant considérablement le temps de préparation pour les tâches récurrentes."
+            },
+            "tech_stack": "Voltaire est développé avec NextJS, Python et FastAPI. L'ensemble est conteneurisé avec Docker et déployé sur Railway, garantissant stabilité et évolutivité de l'application."
+        }
     }
 }

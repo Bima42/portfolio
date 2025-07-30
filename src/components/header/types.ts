@@ -1,4 +1,4 @@
 export interface NavigationMenuItem {
-  id: string;
-  label: string;
+    id: string;
+    label: string;
 }

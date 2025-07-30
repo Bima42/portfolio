@@ -3,19 +3,19 @@ interface VerticalDividerProps {
     height?: string;
 }
 
-export function VerticalDivider({ 
-  className = '', 
-  height = 'h-6' 
+export function VerticalDivider({
+    className = '',
+    height = 'h-6',
 }: VerticalDividerProps) {
-  return (
-    <div 
-      className={`
+    return (
+        <div
+            className={`
         w-px 
         ${height} 
         bg-foreground/20 
         dark:bg-foreground/10
         ${className}
       `}
-    />
-  );
+        />
+    );
 }

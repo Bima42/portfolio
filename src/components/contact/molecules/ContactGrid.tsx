@@ -2,12 +2,13 @@ import { ContactCard } from '../atoms';
 import { contactData } from '../data/contactData';
 
 interface ContactGridProps {
-  className?: string;
+    className?: string;
 }
 
 export function ContactGrid({ className = '' }: ContactGridProps) {
-  return (
-    <div className={`
+    return (
+        <div
+            className={`
       grid
       grid-cols-1
       md:grid-cols-3
@@ -15,13 +16,11 @@ export function ContactGrid({ className = '' }: ContactGridProps) {
       md:gap-8
       mx-auto
       ${className}
-    `}>
-      {contactData.map((contact) => (
-        <ContactCard
-          key={contact.id}
-          contact={contact}
-        />
-      ))}
-    </div>
-  );
+    `}
+        >
+            {contactData.map(contact => (
+                <ContactCard key={contact.id} contact={contact} />
+            ))}
+        </div>
+    );
 }

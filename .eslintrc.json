@@ -1,0 +1,7 @@
+{
+    "extends": ["@vitejs/eslint-config-react", "prettier"],
+    "plugins": ["prettier"],
+    "rules": {
+        "prettier/prettier": "error"
+    }
+}

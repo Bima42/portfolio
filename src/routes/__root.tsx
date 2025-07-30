@@ -1,11 +1,9 @@
-import { createRootRoute, Outlet } from '@tanstack/react-router'
+import { createRootRoute, Outlet } from '@tanstack/react-router';
 
 function RootContent() {
-  return <Outlet />;
+    return <Outlet />;
 }
 
 export const Route = createRootRoute({
-  component: () => (
-      <RootContent />
-  ),
-})
+    component: () => <RootContent />,
+});

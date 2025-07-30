@@ -1,134 +1,134 @@
 {
-  "language": {
-    "en": "English",
-    "fr": "French"
-  },
-  "navigation": {
-    "about": "ABOUT",
-    "projects": "PROJECTS",
-    "contact": "CONTACT"
-  },
-  "header": {
-    "languageToggle": "Switch to {{language}}",
-    "theme": "Theme",
-    "language": "Language",
-    "navigation": "Navigation"
-  },
-  "pages": {
-    "home": {
-      "title": "Home",
-      "greeting": "Building useful solutions for people",
-      "buttons": {
-        "knowMore": "Know more about me",
-        "projects": "My projects",
-        "contact": "Contact me"
-      }
+    "language": {
+        "en": "English",
+        "fr": "French"
     },
-    "about": {
-      "title": "About"
+    "navigation": {
+        "about": "ABOUT",
+        "projects": "PROJECTS",
+        "contact": "CONTACT"
+    },
+    "header": {
+        "languageToggle": "Switch to {{language}}",
+        "theme": "Theme",
+        "language": "Language",
+        "navigation": "Navigation"
+    },
+    "pages": {
+        "home": {
+            "title": "Home",
+            "greeting": "Building useful solutions for people",
+            "buttons": {
+                "knowMore": "Know more about me",
+                "projects": "My projects",
+                "contact": "Contact me"
+            }
+        },
+        "about": {
+            "title": "About"
+        },
+        "projects": {
+            "title": "Projects"
+        },
+        "contact": {
+            "title": "Reach me"
+        }
+    },
+    "theme": {
+        "light": "light",
+        "dark": "dark"
+    },
+    "common": {
+        "loading": "Loading...",
+        "error": "Error",
+        "success": "Success"
+    },
+    "timeline": {
+        "title": "My Journey",
+        "showMore": "Show more",
+        "discover": "Discover",
+        "items": {
+            "school": {
+                "title": "Scientific Baccalauréat",
+                "location": "Paul Guérin School, Niort, France 🇫🇷",
+                "description": "Specializing in Life Sciences and Sports. Obtained at the age of 16."
+            },
+            "university": {
+                "title": "Bachelor's in Animal Physiology and Neurosciences",
+                "location": "University of Poitiers, France 🇫🇷",
+                "description": "A three-year program focused on the study of animal physiology and the functioning of the nervous system."
+            },
+            "vet_fail": {
+                "title": "Veterinary School Failure",
+                "location": "Nantes, France 🇫🇷",
+                "description": "Attempt following the completion of my bachelor's degree, alongside a second bachelor's degree in Ecology and Organism Biology."
+            },
+            "cook_lacanau": {
+                "title": "Cook",
+                "location": "Éliandre - Lacanau, France 🇫🇷",
+                "description": "Seasonal job as a cook in a restaurant. I learned to work under pressure and collaborate with a dynamic team."
+            },
+            "norway": {
+                "title": "20 Days in Norway",
+                "location": "Tromso, Norway 🇳🇴",
+                "description": "20-day trip to Norway to discover the Northern Lights."
+            },
+            "cook_geneva": {
+                "title": "Cook",
+                "location": "Nero's - Geneva, Switzerland 🇨🇭",
+                "description": "Cook in an Italian restaurant in the center of Geneva. I developed my culinary skills and learned to work in a multicultural environment."
+            },
+            "42_school": {
+                "title": "42 School Student",
+                "location": "Lausanne, Switzerland 🇨🇭",
+                "description": "Innovative computer training that is free and open to all, with no diploma required, based on project-based learning and peer support."
+            },
+            "canada": {
+                "title": "Discover Québec",
+                "location": "Montebello, Canada 🇨🇦",
+                "description": "A three-week trip with friends to visit a friend who lives there and discover the culture."
+            },
+            "iceland": {
+                "title": "Chasing the Northern Lights in a van",
+                "location": "Iceland 🇮🇸",
+                "description": "Ten days to cross the entire southern part of the island, see the erupting volcanoes, and hunt for the Northern Lights."
+            },
+            "software_engineer": {
+                "title": "Software Engineer",
+                "location": "Resilio - Lausanne, Switzerland 🇨🇭",
+                "description": "I started working here after completing my end-of-studies internship. \n I develop, maintain, and improve the company's applications. I also manage, in collaboration with the CTO, all aspects of the company's infrastructure, including servers and databases."
+            }
+        }
     },
     "projects": {
-      "title": "Projects"
-    },
-    "contact": {
-      "title": "Reach me"
+        "tidaka": {
+            "title": "Tidaka",
+            "presentation": "Tidaka is a mobile app that connects sports coaches with their clients. It allows coaches to manage their schedules, track their clients' progress, and communicate with them in real time.",
+            "opportunity": "The idea came from a friend working on the project. They noticed that many coaches struggle to manage their clients effectively, especially when they have multiple clients with different training programs and schedules. They therefore started this project to solve this problem.",
+            "solution": "Imagine you are a sports coach with several clients with varying needs. Before Tidaka, you used Excel and WhatsApp... not very efficient. With Tidaka, each coach and client has their own app. You create or choose a training plan, schedule it, the client is notified, starts training, and you track their progress in real time, with the ability to communicate and make adjustments via the app.",
+            "features": {
+                "connection": "To connect with a student, the coach has to send an invitation code to the student.",
+                "training_plan_creation": "The coach can create a new training plan by selecting the exercises, sets, reps, and rest time. They can leverage the existing library of exercises with more than 200 exercises videos created by professionals.",
+                "training_plan_execution": "Once the training plan is created and sent, the student can only start the training plan on their scheduled days. While doing the exercises, the student can track the number of reps, the weight used, and the rest time.",
+                "meeting": "Either the coach or the student can schedule a meeting. The coach can set his availability and the student can choose a time slot. The meeting will be added to the calendar of both the coach and the student.",
+                "gamification": "To keep the student motivated, the app automatically sets up goals and rewards. The student can earn points by completing exercises, and can redeem them for rewards on a marketplace."
+            },
+            "tech_stack": "To create this app, I used React Native for the front-end, Node.js for the back-end, and MongoDB for the database. I also used Socket.io for real-time communication between the coach and the student. The app is available on both iOS and Android."
+        },
+        "voltaire": {
+            "title": "Voltaire",
+            "presentation": "Voltaire is an artificial intelligence application that assists users in their writing process. It enables writing, editing and improving texts while adapting to each user's specific style and needs.",
+            "opportunity": "The idea emerged from the observation that many people waste considerable time writing and formatting their texts. Whether they are professionals who need to regularly produce content or occasional users faced with complex writing tasks, all face the same challenges: finding inspiration, structuring their ideas and ensuring the final result meets their expectations.",
+            "solution": "Imagine you need to write an important document but don't know where to start. Before Voltaire, you would have spent hours staring at a blank page, consulting various information sources and trying multiple versions. With Voltaire, you simply converse with the chatbot that guides you to clarify your ideas. You import relevant contexts (documents, videos, images), and the AI adapts to your writing style.",
+            "features": {
+                "connexion": "The application offers secure login via Google OAuth or magic link, allowing users to quickly access their account without having to memorize additional passwords.",
+                "chatbot": "A conversational chatbot embodying Voltaire allows users to discuss their writing projects. It helps them clarify their ideas, structure their thoughts and determine the most suitable writing approach for their needs.",
+                "redaction": "Voltaire analyzes your writing style and adapts to it to produce texts that sound like you. The AI takes into account your stylistic preferences, your usual tone and your favorite expressions to generate personalized content.",
+                "editeur": "The editing interface is intuitive and streamlined, facilitating focus on content. It allows text formatting, tracking different versions of a document and clearly identifying changes between each iteration.",
+                "contextes": "The context import function is particularly powerful, allowing integration of data from various sources (PDF, images, voice recordings, YouTube videos, Excel files...) that Voltaire analyzes to enrich its suggestions and understanding of your project.",
+                "projets": "Project management allows you to capitalize on previous work. Voltaire guides you in identifying important data to import and automatically creates pages with relevant contexts already integrated, significantly reducing preparation time for recurring tasks."
+            },
+            "tech_stack": "Voltaire is developed with NextJS, Python and FastAPI. The whole system is containerized with Docker and deployed on Railway, ensuring application stability and scalability."
+        }
     }
-  },
-  "theme": {
-    "light": "light",
-    "dark": "dark"
-  },
-  "common": {
-    "loading": "Loading...",
-    "error": "Error",
-    "success": "Success"
-  },
-  "timeline": {
-    "title": "My Journey",
-    "showMore": "Show more",
-    "discover": "Discover",
-    "items": {
-      "school": {
-        "title": "Scientific Baccalauréat",
-        "location": "Paul Guérin School, Niort, France 🇫🇷",
-        "description": "Specializing in Life Sciences and Sports. Obtained at the age of 16."
-      },
-      "university": {
-        "title": "Bachelor's in Animal Physiology and Neurosciences",
-        "location": "University of Poitiers, France 🇫🇷",
-        "description": "A three-year program focused on the study of animal physiology and the functioning of the nervous system."
-      },
-      "vet_fail": {
-        "title": "Veterinary School Failure",
-        "location": "Nantes, France 🇫🇷",
-        "description": "Attempt following the completion of my bachelor's degree, alongside a second bachelor's degree in Ecology and Organism Biology."
-      },
-      "cook_lacanau": {
-          "title": "Cook",
-          "location": "Éliandre - Lacanau, France 🇫🇷",
-          "description": "Seasonal job as a cook in a restaurant. I learned to work under pressure and collaborate with a dynamic team."
-      },
-      "norway": {
-        "title": "20 Days in Norway",
-        "location": "Tromso, Norway 🇳🇴",
-        "description": "20-day trip to Norway to discover the Northern Lights."
-      },
-      "cook_geneva": {
-          "title": "Cook",
-          "location": "Nero's - Geneva, Switzerland 🇨🇭",
-          "description": "Cook in an Italian restaurant in the center of Geneva. I developed my culinary skills and learned to work in a multicultural environment."
-      },
-      "42_school": {
-        "title": "42 School Student",
-        "location": "Lausanne, Switzerland 🇨🇭",
-        "description": "Innovative computer training that is free and open to all, with no diploma required, based on project-based learning and peer support."
-      },
-      "canada": {
-        "title": "Discover Québec",
-        "location": "Montebello, Canada 🇨🇦",
-        "description": "A three-week trip with friends to visit a friend who lives there and discover the culture."
-      },
-      "iceland": {
-        "title": "Chasing the Northern Lights in a van",
-        "location": "Iceland 🇮🇸",
-        "description": "Ten days to cross the entire southern part of the island, see the erupting volcanoes, and hunt for the Northern Lights."
-      },
-      "software_engineer": {
-        "title": "Software Engineer",
-        "location": "Resilio - Lausanne, Switzerland 🇨🇭",
-        "description": "I started working here after completing my end-of-studies internship. \n I develop, maintain, and improve the company's applications. I also manage, in collaboration with the CTO, all aspects of the company's infrastructure, including servers and databases."
-      }
-    }
-  },
-  "projects": {
-    "tidaka": {
-      "title": "Tidaka",
-      "presentation": "Tidaka is a mobile app that connects sports coaches with their clients. It allows coaches to manage their schedules, track their clients' progress, and communicate with them in real time.",
-      "opportunity": "The idea came from a friend working on the project. They noticed that many coaches struggle to manage their clients effectively, especially when they have multiple clients with different training programs and schedules. They therefore started this project to solve this problem.",
-      "solution": "Imagine you are a sports coach with several clients with varying needs. Before Tidaka, you used Excel and WhatsApp... not very efficient. With Tidaka, each coach and client has their own app. You create or choose a training plan, schedule it, the client is notified, starts training, and you track their progress in real time, with the ability to communicate and make adjustments via the app.",
-      "features": {
-        "connection": "To connect with a student, the coach has to send an invitation code to the student.",
-        "training_plan_creation": "The coach can create a new training plan by selecting the exercises, sets, reps, and rest time. They can leverage the existing library of exercises with more than 200 exercises videos created by professionals.",
-        "training_plan_execution": "Once the training plan is created and sent, the student can only start the training plan on their scheduled days. While doing the exercises, the student can track the number of reps, the weight used, and the rest time.",
-        "meeting": "Either the coach or the student can schedule a meeting. The coach can set his availability and the student can choose a time slot. The meeting will be added to the calendar of both the coach and the student.",
-        "gamification": "To keep the student motivated, the app automatically sets up goals and rewards. The student can earn points by completing exercises, and can redeem them for rewards on a marketplace."
-      },
-      "tech_stack": "To create this app, I used React Native for the front-end, Node.js for the back-end, and MongoDB for the database. I also used Socket.io for real-time communication between the coach and the student. The app is available on both iOS and Android."
-    },
-    "voltaire": {
-      "title": "Voltaire",
-      "presentation": "Voltaire is an artificial intelligence application that assists users in their writing process. It enables writing, editing and improving texts while adapting to each user's specific style and needs.",
-      "opportunity": "The idea emerged from the observation that many people waste considerable time writing and formatting their texts. Whether they are professionals who need to regularly produce content or occasional users faced with complex writing tasks, all face the same challenges: finding inspiration, structuring their ideas and ensuring the final result meets their expectations.",
-      "solution": "Imagine you need to write an important document but don't know where to start. Before Voltaire, you would have spent hours staring at a blank page, consulting various information sources and trying multiple versions. With Voltaire, you simply converse with the chatbot that guides you to clarify your ideas. You import relevant contexts (documents, videos, images), and the AI adapts to your writing style.",
-      "features": {
-        "connexion": "The application offers secure login via Google OAuth or magic link, allowing users to quickly access their account without having to memorize additional passwords.",
-        "chatbot": "A conversational chatbot embodying Voltaire allows users to discuss their writing projects. It helps them clarify their ideas, structure their thoughts and determine the most suitable writing approach for their needs.",
-        "redaction": "Voltaire analyzes your writing style and adapts to it to produce texts that sound like you. The AI takes into account your stylistic preferences, your usual tone and your favorite expressions to generate personalized content.",
-        "editeur": "The editing interface is intuitive and streamlined, facilitating focus on content. It allows text formatting, tracking different versions of a document and clearly identifying changes between each iteration.",
-        "contextes": "The context import function is particularly powerful, allowing integration of data from various sources (PDF, images, voice recordings, YouTube videos, Excel files...) that Voltaire analyzes to enrich its suggestions and understanding of your project.",
-        "projets": "Project management allows you to capitalize on previous work. Voltaire guides you in identifying important data to import and automatically creates pages with relevant contexts already integrated, significantly reducing preparation time for recurring tasks."
-      },
-      "tech_stack": "Voltaire is developed with NextJS, Python and FastAPI. The whole system is containerized with Docker and deployed on Railway, ensuring application stability and scalability."
-    }
-  }
 }
