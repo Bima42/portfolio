@@ -20,14 +20,13 @@ export function NavigationLink({ item, onClick, isMobile = false }: NavigationLi
 	};
 
 	const baseClasses = `
-    relative
-    px-4 py-3
-    text-base font-medium
-    rounded-2xl
-    transition-all duration-200
-    hover:bg-white/10 dark:hover:bg-white/5
-    focus:outline-none
-	text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-slate-100
+		relative
+		px-4 py-2
+		text-base font-medium
+		rounded-2xl
+		transition-all duration-200
+		focus:outline-none
+		hover-button
 	}
   `;
 

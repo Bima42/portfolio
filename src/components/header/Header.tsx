@@ -23,7 +23,7 @@ export function Header({ animationComplete, onLogoAnimationComplete }: HeaderPro
   return (
     <header className="
       fixed
-      top-4 left-4 right-4
+      top-4 left-4 right-4 md:left-12 md:right-12
       max-w-full
       z-100
      ">

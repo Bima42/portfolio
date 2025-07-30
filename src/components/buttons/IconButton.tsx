@@ -35,10 +35,8 @@ export function IconButton({
         backdrop-blur-sm
         bg-white/5 dark:bg-white/5
         border border-white/20 dark:border-white/10
-        hover:bg-white/15 dark:hover:bg-white/10
-        text-slate-800 dark:text-slate-200
+        hover-button
         transition-all duration-200
-        hover:scale-105 cursor-pointer
         ${className}
       `}
     >

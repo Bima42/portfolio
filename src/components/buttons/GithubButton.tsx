@@ -9,12 +9,9 @@ export function GithubButton() {
 			rel="noopener noreferrer"
 			className="
                   flex items-center space-x-2 px-4 py-2
-                  rounded-full backdrop-blur-sm dark:border dark:border-white/10
+                  rounded-full backdrop-blur-sm
                   transition-all duration-200
-                  text-xs font-medium
-                  dark:bg-white/5
-                  text-foreground hover:text-primary
-                  hover:bg-primary/10 dark:hover:bg-primary/20 hover:shadow-sm
+                  text-xs font-medium hover-button
                 "
 		>
 			<img

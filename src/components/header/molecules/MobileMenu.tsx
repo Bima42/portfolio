@@ -23,7 +23,7 @@ export function MobileMenu({ navigationItems }: MobileMenuProps) {
   const handleClose = () => setIsOpen(false);
 
   return (
-      <div className="md:hidden">
+      <div className="md:hidden z-200">
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
           <SheetTrigger asChild>
             <IconButton
@@ -48,7 +48,7 @@ export function MobileMenu({ navigationItems }: MobileMenuProps) {
             border-l border-foreground/10 dark:border-foreground/20
             rounded-l-3xl
             shadow-xl dark:shadow-2xl
-            p-0
+            p-0 z-200
           "
           >
             <div className="flex flex-col h-full">
