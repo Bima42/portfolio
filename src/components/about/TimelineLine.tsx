@@ -1,7 +1,15 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 
-export function TimelineLine() {
-    const { scrollYProgress } = useScroll();
+interface TimelineLineProps {
+    containerRef: React.RefObject<HTMLDivElement | null>;
+}
+
+export function TimelineLine({ containerRef }: TimelineLineProps) {
+    // Track scroll progress specifically for the timeline container
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ['start 0.8', 'end 0.2']
+    });
 
     const lineHeight = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
     const dotScale = useTransform(scrollYProgress, [0, 0.01], [1, 0]);
@@ -18,7 +26,7 @@ export function TimelineLine() {
                 style={{ height: lineHeight }}
             />
 
-            {/* Starting dot  */}
+            {/* Starting dot */}
             <motion.div
                 className="absolute left-0 top-0 w-4 h-4 rounded-full bg-primary border-2 border-background shadow-lg -translate-x-1/2 z-10 md:left-1/2"
                 initial={{ scale: 0, opacity: 0 }}

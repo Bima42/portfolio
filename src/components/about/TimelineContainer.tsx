@@ -17,8 +17,8 @@ export function TimelineContainer({ timelineData }: TimelineContainerProps) {
                 {/* Div to push a bit the content to bottom*/}
                 <div className="h-[15vh]" />
 
-                {/* Central Timeline Line */}
-                <TimelineLine />
+                {/* Central Timeline Line - Pass containerRef */}
+                <TimelineLine containerRef={containerRef} />
 
                 {/* Timeline Items */}
                 <div className="relative z-10">
