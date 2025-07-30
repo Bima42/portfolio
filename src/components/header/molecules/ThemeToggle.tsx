@@ -1,6 +1,7 @@
 import { Moon, Sun } from 'lucide-react';
 import { IconButton } from '../atoms';
-import { useTheme } from '@/hooks/useTheme';
+
+import { useTheme } from '@/hooks/useTheme.tsx';
 
 interface ThemeToggleProps {
     className?: string;

@@ -1,4 +1,3 @@
-import { useTheme } from '@/hooks/useTheme';
 import { useLanguage } from '@/hooks/useLanguage';
 import { Logo, VerticalDivider } from './atoms';
 import {
@@ -11,6 +10,8 @@ import type { NavigationMenuItem } from './types';
 import { GithubButton } from '@/components/buttons/GithubButton.tsx';
 import { AnimatePresence, motion } from 'framer-motion';
 import { AnimatedLogo } from '@/components/header/atoms/AnimatedLogo.tsx';
+
+import { useTheme } from '@/hooks/useTheme.tsx';
 interface HeaderProps {
     animationComplete: boolean;
     onLogoAnimationComplete: () => void;
@@ -31,11 +32,11 @@ export function Header({
     return (
         <header
             className="
-      fixed
-      top-4 left-4 right-4 md:left-12 md:right-12
-      max-w-full
-      z-100
-     "
+              fixed
+              top-4 left-4 right-4 md:left-12 md:right-12
+              max-w-full
+              z-100
+             "
         >
             <motion.div
                 className="px-6 py-3 border border-transparent rounded-4xl"
@@ -109,7 +110,7 @@ export function Header({
                             >
                                 {/* Desktop Controls */}
                                 <div className="hidden md:flex items-center space-x-3">
-                                    <GithubButton />
+                                    <GithubButton isDark={isDark} />
                                     <VerticalDivider />
                                     <LanguageToggle />
                                     <VerticalDivider />

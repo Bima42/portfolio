@@ -1,9 +1,8 @@
-import { useEffect, useState } from 'react';
+import { type ReactNode, useEffect, useState } from 'react';
 import { useMedia } from 'react-use';
+import { type Theme, ThemeContext } from '@/contexts/theme/ThemeContext.tsx';
 
-type Theme = 'light' | 'dark';
-
-export function useTheme() {
+export function ThemeProvider({ children }: { children: ReactNode }) {
     const prefersDark = useMedia('(prefers-color-scheme: dark)');
 
     const [theme, setThemeState] = useState<Theme>(() => {
@@ -32,10 +31,14 @@ export function useTheme() {
         setThemeState(prev => (prev === 'light' ? 'dark' : 'light'));
     };
 
-    return {
+    const value = {
         theme,
         setTheme,
         toggleTheme,
         isDark: theme === 'dark',
     };
+
+    return (
+        <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
+    );
 }

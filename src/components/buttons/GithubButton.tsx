@@ -1,7 +1,4 @@
-import { useTheme } from '@/hooks/useTheme.ts';
-
-export function GithubButton() {
-    const { isDark } = useTheme();
+export function GithubButton({ isDark }: { isDark: boolean }) {
     return (
         <a
             href="https://github.com/Bima42/portfolio"
