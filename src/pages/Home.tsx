@@ -29,7 +29,7 @@ export default function Home() {
             </div>
 
             {isContentVisible && (<>
-                <About/>
+                {/*<About/>*/}
                 <ProjectsCarousel numberOfCards={6} />
                 <TagList tags={["react", "typescript", "docker"]} size="md" />
                 <Contact />

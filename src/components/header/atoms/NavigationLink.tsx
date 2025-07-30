@@ -27,6 +27,7 @@ export function NavigationLink({ item, onClick, isMobile = false }: NavigationLi
 		transition-all duration-200
 		focus:outline-none
 		hover-button
+		border-none
 	}
   `;
 
