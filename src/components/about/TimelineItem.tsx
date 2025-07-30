@@ -23,17 +23,28 @@ export function TimelineItem({ item, isLeft }: TimelineItemProps) {
     offset: ['start 1.2', 'end 0.3']
   });
 
+  const keyframes = [0, 0.5, 1];
+
   // Responsive animation logic - Fixed mobile animation
   const cardX = useTransform(
       scrollYProgress,
-      [0, 0.5, 1],
+      keyframes,
       isMobile
-          ? [100, 0, 0] // Mobile: from right to center, stay at center
-          : [isLeft ? -100 : 100, 0, isLeft ? 50 : -50] // Desktop: alternating
+          ? [0, 5, 15] // Mobile: from right to center, stay at center
+          : [0, isLeft ? -50 : 50, isLeft ? -80 : 80] // Desktop: from center to left/right
   );
 
   const cardOpacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
-  const dotScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.8, 1.2, 0.8]);
+  const dotScale = useTransform(scrollYProgress, keyframes, [0.8, 1.2, 1]);
+
+  const lineWidth = useTransform(
+      scrollYProgress,
+      keyframes,
+      isMobile
+          ? [0, 30, 40]
+          : [0, 50, 80]
+
+  );
 
   const getTypeStyles = (type: string) => {
     switch (type) {
@@ -69,8 +80,28 @@ export function TimelineItem({ item, isLeft }: TimelineItemProps) {
             className="absolute left-6 top-1/2 -translate-y-1/2 -translate-x-1/2 md:left-1/2 z-20"
             style={{ scale: dotScale }}
         >
-          <div className="w-5 h-5 rounded-full bg-primary border-4 border-background shadow-xl flex items-center justify-center" />
+          <div className="w-4 h-4 rounded-full bg-primary border-2 border-background shadow-xl flex items-center justify-center" />
         </motion.div>
+
+        {/* Connector line  */}
+        <motion.div
+            className={`absolute top-1/2 -translate-y-1/2 h-0.5 bg-foreground/20 z-10 ${
+                isMobile
+                    ? 'left-6'
+                    : isLeft
+                        ? 'right-1/2'
+                        : 'left-1/2'
+            }`}
+            style={{
+              width: lineWidth,
+              opacity: cardOpacity,
+              transformOrigin: isMobile
+                  ? 'left center'
+                  : isLeft
+                      ? 'right center'
+                      : 'left center'
+            }}
+        />
 
         {/* Timeline card  */}
         <motion.div
@@ -79,8 +110,8 @@ export function TimelineItem({ item, isLeft }: TimelineItemProps) {
                 'left-12 right-4 ' +
                 // Desktop positioning: alternating sides
                 (isLeft
-                    ? 'md:left-16 lg:left-20 md:right-1/2 md:mr-16 lg:mr-20'
-                    : 'md:right-16 lg:right-20 md:left-1/2 md:ml-16 lg:ml-20')
+                    ? 'md:left-16 lg:left-20 md:right-1/2  lg:ml-20'
+                    : 'md:right-16 lg:right-20 md:left-1/2  lg:mr-20')
             }`}
             style={{
               x: cardX,
@@ -138,13 +169,6 @@ export function TimelineItem({ item, isLeft }: TimelineItemProps) {
                   )}
                 </div>
             )}
-
-            {/* Connector line */}
-            <div className={`absolute top-1/2 -translate-y-1/2 w-4 h-0.5 bg-foreground/20 -left-4 ${
-                isLeft
-                    ? 'md:w-8 lg:w-12 md:-right-8 lg:-right-12 md:left-auto'
-                    : 'md:w-8 lg:w-12 md:-left-8 lg:-left-12'
-            }`} />
           </div>
         </motion.div>
       </div>
