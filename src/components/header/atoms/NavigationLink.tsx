@@ -1,4 +1,3 @@
-import { Link, useRouterState } from '@tanstack/react-router';
 import type { NavigationMenuItem } from '../types';
 
 interface NavigationLinkProps {
@@ -8,9 +7,18 @@ interface NavigationLinkProps {
 }
 
 export function NavigationLink({ item, onClick, isMobile = false }: NavigationLinkProps) {
-	const router = useRouterState();
-	const currentPath = router.location.pathname;
-	const isActive = currentPath === item.href || item.isActive;
+	const isActive = item.isActive;
+
+	const handleClick = () => {
+		const element = document.getElementById(item.id);
+		if (element) {
+			element.scrollIntoView({ 
+				behavior: 'smooth',
+				block: 'start'
+			});
+		}
+		onClick?.();
+	};
 
 	const baseClasses = `
     relative
@@ -30,14 +38,14 @@ export function NavigationLink({ item, onClick, isMobile = false }: NavigationLi
 	const desktopClasses = !isMobile ? `text-sm px-3 py-2` : '';
 
 	return (
-		<Link
-			to={item.href}
+		<button
+			type="button"
 			className={`${baseClasses} ${mobileClasses} ${desktopClasses}`}
-			onClick={onClick}
+			onClick={handleClick}
 		>
 		  <span>
 			  {item.label}
 		  </span>
-		</Link>
+		</button>
 	);
 }

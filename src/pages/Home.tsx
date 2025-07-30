@@ -1,38 +1,26 @@
 import { HeroSection} from '@/components/home';
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { AnimatedLogo } from '@/components/header/atoms/AnimatedLogo';
+import { motion } from 'framer-motion';
 import About from '@/components/about/About.tsx';
 import { ProjectsCarousel } from '@/components/projects';
 import { TagList } from '@/components/tags';
 import Contact from '@/components/contact/Contact.tsx';
+import { useContentVisible } from '@/hooks/useContentVisible.ts';
+import { Header } from '@/components/header';
 
 export default function Home() {
-    const [animationComplete, setAnimationComplete] = useState(false);
-    const [contentVisible, setContentVisible] = useState(false);
+    const { isContentVisible, animationComplete, handleAnimationEnd } = useContentVisible();
 
-    const handleLogoAnimationComplete = () => {
-        if (!animationComplete) {
-            setAnimationComplete(true);
-            setTimeout(() => {
-                setContentVisible(true);
-            }, 1000);
-        }
-    };
+    return (<>
+        <Header 
+            animationComplete={animationComplete}
+            onLogoAnimationComplete={handleAnimationEnd}
+        />
 
-    return (<div className=" min-h-screen bg-background">
+        <div className=" min-h-screen bg-background">
             <div className="relative overflow-hidden">
-                <AnimatePresence>
-                    <AnimatedLogo
-                        showInitialAnimation={true}
-                        isAnimating={animationComplete}
-                        onAnimationComplete={handleLogoAnimationComplete}
-                    />
-                </AnimatePresence>
-
                 <motion.div
                     initial={{ opacity: 0 }}
-                    animate={{ opacity: contentVisible ? 1 : 0 }}
+                    animate={{ opacity: isContentVisible ? 1 : 0 }}
                     transition={{ duration: 1, delay: 0.2 }}
                 >
                     <HeroSection />
@@ -40,7 +28,7 @@ export default function Home() {
 
             </div>
 
-            {contentVisible && (<>
+            {isContentVisible && (<>
                 <About/>
                 <ProjectsCarousel numberOfCards={6} />
                 <TagList tags={["react", "typescript", "docker"]} size="md" />
@@ -48,6 +36,5 @@ export default function Home() {
             </>)}
 
     </div>
-
-    );
+    </>);
 }

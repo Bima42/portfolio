@@ -13,9 +13,9 @@ export function NavigationMenu({ items, className = '' }: NavigationMenuProps) {
           role="navigation"
           aria-label="Main navigation"
       >
-        {items.map((item) => (
+        {items.map((item, index) => (
             <NavigationLink
-                key={item.href}
+                key={`${item.id}_${index}`}
                 item={item}
                 isMobile={false}
             />

@@ -39,6 +39,7 @@ export function ProjectsCarousel({ numberOfCards = 5, className }: ProjectsCarou
   const activeIndexRef = useRef(0);
   const [activeIndex, setActiveIndex] = useState(0);
 
+  // TODO: Change how we detect mobile devices
   useEffect(() => {
     const checkIsMobile = () => {
       setIsMobile(window.innerWidth < 768);
@@ -85,7 +86,7 @@ export function ProjectsCarousel({ numberOfCards = 5, className }: ProjectsCarou
   }
 
   return (
-    <div ref={containerRef} className={`relative ${className}`} style={{ height: '400vh' }}>
+    <div ref={containerRef} className={`relative ${className}`} style={{ height: '400vh' }} id="projects">
       {/* Sticky container with cards */}
       <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden">
         <h2 className="text-4xl font-bold mb-12 text-foreground">

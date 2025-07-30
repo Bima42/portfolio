@@ -1,18 +1,23 @@
 import { useTheme } from "@/hooks/useTheme";
 import { useLanguage } from "@/hooks/useLanguage";
-import { Logo, VerticalDivider } from "./atoms";
+import { VerticalDivider } from './atoms';
 import { NavigationMenu, LanguageToggle, ThemeToggle, MobileMenu } from "./molecules";
 import type { NavigationMenuItem } from "./types";
 import { GithubButton } from '@/components/buttons/GithubButton.tsx';
+import { AnimatePresence } from 'framer-motion';
+import { AnimatedLogo } from '@/components/header/atoms/AnimatedLogo.tsx';
+interface HeaderProps {
+  animationComplete: boolean;
+  onLogoAnimationComplete: () => void;
+}
 
-export function Header() {
+export function Header({ animationComplete, onLogoAnimationComplete }: HeaderProps) {
   const { isDark } = useTheme();
   const { t } = useLanguage();
 
   const defaultNavigation: NavigationMenuItem[] = [
-    { label: t("navigation.about"), href: "/about" },
-    { label: t("navigation.projects"), href: "/projects" },
-    { label: t("navigation.contact"), href: "/contact" }
+    { label: t("navigation.projects"), id: "projects" },
+    { label: t("navigation.contact"), id: "contact" }
   ];
 
   return (
@@ -42,7 +47,12 @@ export function Header() {
       >
         <div className="flex items-center justify-between">
           {/* Left: Logo */}
-          <Logo logoHeight={"h-10"} />
+          <AnimatePresence>
+            <AnimatedLogo
+                isAnimating={!animationComplete}
+                onAnimationComplete={onLogoAnimationComplete}
+            />
+          </AnimatePresence>
 
           {/* Center: Desktop Navigation */}
           <NavigationMenu 

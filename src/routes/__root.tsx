@@ -1,16 +1,7 @@
-import { createRootRoute, Outlet, useLocation } from '@tanstack/react-router'
-import { Header, SimpleHeader } from '@/components/header'
+import { createRootRoute, Outlet } from '@tanstack/react-router'
 
 function RootContent() {
-  const location = useLocation()
-  const isHomePage = location.pathname === '/'
-
-  return (
-    <>
-      {isHomePage ? <SimpleHeader /> : <Header />}
-      <Outlet />
-    </>
-  )
+  return <Outlet />;
 }
 
 export const Route = createRootRoute({

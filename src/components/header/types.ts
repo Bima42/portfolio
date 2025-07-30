@@ -1,5 +1,5 @@
 export interface NavigationMenuItem {
-  href: string;
+  id: string;
   label: string;
   isActive?: boolean;
 }

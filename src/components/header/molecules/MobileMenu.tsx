@@ -89,7 +89,7 @@ export function MobileMenu({ navigationItems }: MobileMenuProps) {
               >
                 {navigationItems.map((item) => (
                     <NavigationLink
-                        key={item.href}
+                        key={item.id}
                         item={item}
                         onClick={handleClose}
                         isMobile={true}
