@@ -50,6 +50,7 @@ export function Header({ animationComplete, onLogoAnimationComplete }: HeaderPro
         }}
       >
         <div className="flex items-center justify-between">
+          {/* Fallback Logo for initial animation state - allow to take space and avoid weird animation effect */}
           {!animationComplete && <Logo className={'opacity-0'} logoHeight={'h-10'} />}
 
           {/* Left: Logo */}
