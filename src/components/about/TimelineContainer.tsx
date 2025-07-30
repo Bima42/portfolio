@@ -5,7 +5,7 @@ import { TimelineLine } from './TimelineLine';
 import { TimelineItem } from './TimelineItem';
 
 interface TimelineContainerProps {
-  timelineData: TimelineData;
+    timelineData: TimelineData;
 }
 
 export function TimelineContainer({ timelineData }: TimelineContainerProps) {
@@ -13,7 +13,7 @@ export function TimelineContainer({ timelineData }: TimelineContainerProps) {
 
     return (
         <ReactLenis root options={{ duration: 1.5 }}>
-            <div ref={containerRef} className="relative w-full top-[-100px]">
+            <div ref={containerRef} className="relative w-full top-[-100px] overflow-x-hidden">
                 {/* Div to push a bit the content to bottom*/}
                 <div className="h-[15vh]" />
 
