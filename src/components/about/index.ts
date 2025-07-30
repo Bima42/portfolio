@@ -1,3 +1,3 @@
 export { TimelineContainer } from './TimelineContainer';
-export { TimelineLine } from './TimelineLine';
-export { TimelineItem } from './TimelineItem';
+export { TimelineLine } from './atoms/TimelineLine.tsx';
+export { TimelineItem } from './molecules/TimelineItem.tsx';

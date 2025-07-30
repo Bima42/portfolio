@@ -1,8 +1,8 @@
 import { useRef } from 'react';
 import { ReactLenis } from 'lenis/react';
 import type { TimelineData } from './types.ts';
-import { TimelineLine } from './TimelineLine';
-import { TimelineItem } from './TimelineItem';
+import { TimelineLine } from './atoms/TimelineLine.tsx';
+import { TimelineItem } from './molecules/TimelineItem.tsx';
 
 interface TimelineContainerProps {
     timelineData: TimelineData;
@@ -13,14 +13,15 @@ export function TimelineContainer({ timelineData }: TimelineContainerProps) {
 
     return (
         <ReactLenis root options={{ duration: 1.5 }}>
-            <div ref={containerRef} className="relative w-full top-[-100px] overflow-x-hidden">
+            <div
+                ref={containerRef}
+                className="relative w-full top-[-100px] overflow-x-hidden"
+            >
                 {/* Div to push a bit the content to bottom*/}
                 <div className="h-[15vh]" />
 
-                {/* Central Timeline Line - Pass containerRef */}
                 <TimelineLine containerRef={containerRef} />
 
-                {/* Timeline Items */}
                 <div className="relative z-10">
                     {timelineData.items.map((item, index) => (
                         <TimelineItem
