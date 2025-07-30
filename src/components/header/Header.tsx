@@ -1,10 +1,10 @@
 import { useTheme } from "@/hooks/useTheme";
 import { useLanguage } from "@/hooks/useLanguage";
-import { VerticalDivider } from './atoms';
+import { Logo, VerticalDivider } from './atoms';
 import { NavigationMenu, LanguageToggle, ThemeToggle, MobileMenu } from "./molecules";
 import type { NavigationMenuItem } from "./types";
 import { GithubButton } from '@/components/buttons/GithubButton.tsx';
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { AnimatedLogo } from '@/components/header/atoms/AnimatedLogo.tsx';
 interface HeaderProps {
   animationComplete: boolean;
@@ -23,29 +23,35 @@ export function Header({ animationComplete, onLogoAnimationComplete }: HeaderPro
   return (
     <header className="
       fixed
-      top-4 left-[2rem]
-      -translate-x-1/2z-50
-      w-[calc(100vw-4rem)]
-      z-1000
+      top-4 left-4 right-4
+      max-w-full
+      z-100
      ">
-      <div 
-        className="
-          px-6 py-3
-          rounded-4xl
-          backdrop-blur-xl
-          bg-white/10 dark:bg-white/5
-          border border-white/20 dark:border-white/10
-          shadow-md shadow-black/5 dark:shadow-black/20
-          transition-all duration-300
-          hover:bg-white/15 dark:hover:bg-white/10
-        "
-        style={{
-          boxShadow: isDark
-            ? `0 8px 16x rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)`
-            : `0 8px 16px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)`
+      <motion.div 
+        className="px-6 py-3 border border-transparent rounded-4xl"
+        animate={{
+          backgroundColor: animationComplete 
+            ? isDark ? 'rgba(255, 255, 255, 0.05)' : 'rgba(255, 255, 255, 0.1)'
+            : 'rgba(255, 255, 255, 0)',
+          borderColor: animationComplete 
+            ? isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(255, 255, 255, 0.2)'
+            : 'rgba(255, 255, 255, 0)',
+          backdropFilter: animationComplete ? 'blur(12px)' : 'blur(0px)',
+          boxShadow: animationComplete 
+            ? isDark 
+              ? '0 8px 16px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
+              : '0 8px 16px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
+            : '0 0 0 rgba(0, 0, 0, 0)'
+        }}
+        transition={{
+          duration: 0.8,
+          ease: "easeOut",
+          delay: 0.2
         }}
       >
         <div className="flex items-center justify-between">
+          {!animationComplete && <Logo className={'opacity-0'} logoHeight={'h-10'} />}
+
           {/* Left: Logo */}
           <AnimatePresence>
             <AnimatedLogo
@@ -55,28 +61,50 @@ export function Header({ animationComplete, onLogoAnimationComplete }: HeaderPro
           </AnimatePresence>
 
           {/* Center: Desktop Navigation */}
-          <NavigationMenu 
-            items={defaultNavigation}
-            className="flex-1 justify-center"
-          />
+          <AnimatePresence>
+            {animationComplete && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+                className="flex-1 justify-center"
+              >
+                <NavigationMenu
+                  items={defaultNavigation}
+                  className="flex-1 justify-center"
+                />
+              </motion.div>
+            )}
+          </AnimatePresence>
 
           {/* Right: Controls */}
-          <div className="flex items-center space-x-3">
+          <AnimatePresence>
+            {animationComplete && (
+              <motion.div 
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 20 }}
+                transition={{ duration: 0.5, delay: 0.6 }}
+                className="flex items-center space-x-3"
+              >
+                {/* Desktop Controls */}
+                <div className="hidden md:flex items-center space-x-3">
+                  <GithubButton />
+                  <VerticalDivider />
+                  <LanguageToggle />
+                  <VerticalDivider />
+                  <ThemeToggle />
+                </div>
 
-            {/* Desktop Controls */}
-            {/* md:flex make it appears when desktop */}
-            <div className="hidden md:flex items-center space-x-3">
-              <GithubButton />
-              <VerticalDivider />
-              <LanguageToggle />
-              <VerticalDivider />
-              <ThemeToggle />
-            </div>
+                <MobileMenu navigationItems={defaultNavigation} />
+              </motion.div>
+            )}
+          </AnimatePresence>
 
-            <MobileMenu navigationItems={defaultNavigation} />
-          </div>
+
         </div>
-      </div>
+      </motion.div>
     </header>
   );
 }
