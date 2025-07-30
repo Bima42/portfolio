@@ -17,15 +17,15 @@ export function AnimatedLogo({
         key="animated-logo"
         initial={{ 
           scale: 0,
-          x: "50vw", 
-          y: "50vh",
+          x: "45vw",
+          y: "45vh",
           translateX: "-50%",
           translateY: "-50%"
         }}
         animate={isAnimating ? {
           scale: 3,
-          x: "50vw", 
-          y: "50vh",
+          x: "45vw",
+          y: "45vh",
           translateX: "-50%",
           translateY: "-50%"
         } : {
