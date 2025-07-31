@@ -20,8 +20,8 @@ const Tag = React.forwardRef<HTMLSpanElement, TagProps>(
         const { label, icon } = tagData;
 
         const sizeClasses = {
-            sm: 'h-6 px-2 text-xs gap-1',
-            md: 'h-7 px-2.5 text-xs gap-1.5',
+            sm: 'h-6 px-3 text-xs gap-1.5',
+            md: 'h-7 px-3 text-xs gap-1.5',
             lg: 'h-8 px-3 text-sm gap-2',
         };
 
@@ -35,7 +35,7 @@ const Tag = React.forwardRef<HTMLSpanElement, TagProps>(
             <span
                 ref={ref}
                 className={cn(
-                    'py-4 px-4 inline-flex items-center font-medium text-foreground',
+                    'py-3 px-3 inline-flex items-center font-medium text-foreground',
                     'rounded-full backdrop-blur-sm border transition-all duration-200',
                     'border-gray-300 dark:border-gray-600',
                     'dark:bg-white/5',

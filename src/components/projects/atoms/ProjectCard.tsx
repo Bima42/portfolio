@@ -61,7 +61,7 @@ export const ProjectCard = memo(function ProjectCard({
                     {project.shortDescription}
                 </p>
                 <div className="flex flex-wrap gap-1 justify-center">
-                    <TagList tags={project.tags.slice(0, 3)} size={'sm'} />
+                    <TagList tags={project.tags.slice(0, 3)} size={'md'} />
                 </div>
             </div>
         </motion.div>
