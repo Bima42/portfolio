@@ -21,7 +21,7 @@ const Tag = React.forwardRef<HTMLSpanElement, TagProps>(
 
         const sizeClasses = {
             sm: 'h-6 px-2 text-xs gap-1',
-            md: 'h-7 px-2.5 text-sm gap-1.5',
+            md: 'h-7 px-2.5 text-xs gap-1.5',
             lg: 'h-8 px-3 text-sm gap-2',
         };
 
