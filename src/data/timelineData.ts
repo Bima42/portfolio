@@ -37,14 +37,6 @@ export const timelineData: TimelineData = {
         },
         {
             id: '5',
-            date: '2019',
-            title: 'timeline.items.norway.title',
-            location: 'timeline.items.norway.location',
-            description: 'timeline.items.norway.description',
-            type: 'travel',
-        },
-        {
-            id: '6',
             date: '03-2019 / 06-2021',
             title: 'timeline.items.cook_geneva.title',
             location: 'timeline.items.cook_geneva.location',
@@ -52,7 +44,7 @@ export const timelineData: TimelineData = {
             type: 'experience',
         },
         {
-            id: '7',
+            id: '6',
             date: '10-2021 / 06-2023',
             title: 'timeline.items.42_school.title',
             location: 'timeline.items.42_school.location',
@@ -62,23 +54,7 @@ export const timelineData: TimelineData = {
             icon: '/logo-42.svg',
         },
         {
-            id: '8',
-            date: '01-2024',
-            title: 'timeline.items.canada.title',
-            location: 'timeline.items.canada.location',
-            description: 'timeline.items.canada.description',
-            type: 'travel',
-        },
-        {
-            id: '9',
-            date: '12-2024',
-            title: 'timeline.items.iceland.title',
-            location: 'timeline.items.iceland.location',
-            description: 'timeline.items.iceland.description',
-            type: 'travel',
-        },
-        {
-            id: '10',
+            id: '7',
             date: "01-2023 - Aujourd'hui",
             title: 'timeline.items.software_engineer.title',
             location: 'timeline.items.software_engineer.location',

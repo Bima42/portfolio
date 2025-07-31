@@ -68,11 +68,6 @@
                 "location": "Éliandre - Lacanau, France 🇫🇷",
                 "description": "Seasonal job as a cook in a restaurant. I learned to work under pressure and collaborate with a dynamic team."
             },
-            "norway": {
-                "title": "20 Days in Norway",
-                "location": "Tromso, Norway 🇳🇴",
-                "description": "20-day trip to Norway to discover the Northern Lights."
-            },
             "cook_geneva": {
                 "title": "Cook",
                 "location": "Nero's - Geneva, Switzerland 🇨🇭",
@@ -82,16 +77,6 @@
                 "title": "42 School Student",
                 "location": "Lausanne, Switzerland 🇨🇭",
                 "description": "Innovative computer training that is free and open to all, with no diploma required, based on project-based learning and peer support."
-            },
-            "canada": {
-                "title": "Discover Québec",
-                "location": "Montebello, Canada 🇨🇦",
-                "description": "A three-week trip with friends to visit a friend who lives there and discover the culture."
-            },
-            "iceland": {
-                "title": "Chasing the Northern Lights in a van",
-                "location": "Iceland 🇮🇸",
-                "description": "Ten days to cross the entire southern part of the island, see the erupting volcanoes, and hunt for the Northern Lights."
             },
             "software_engineer": {
                 "title": "Software Engineer",

@@ -68,11 +68,6 @@
                 "location": "Éliandre - Lacanau, France 🇫🇷",
                 "description": "Emploi saisonnier en tant que cuisinier dans un restaurant. J'ai appris à travailler sous pression et à collaborer avec une équipe dynamique."
             },
-            "norway": {
-                "title": "20 Jours en Norvège",
-                "location": "Tromso, Norvège 🇳🇴",
-                "description": "Voyage de 20 jours en Norvège, à la découverte des des aurores boréales."
-            },
             "cook_geneva": {
                 "title": "Cuisinier",
                 "location": "Nero's - Genève, Suisse 🇨🇭",
@@ -82,16 +77,6 @@
                 "title": "Étudiant École 42",
                 "location": "Lausanne, Suisse 🇨🇭",
                 "description": "Formation en informatique innovante, gratuite et ouverte à tous, sans diplôme requis, qui repose sur l’apprentissage par projets et l’entraide entre pairs."
-            },
-            "canada": {
-                "title": "Découvrir Québec",
-                "location": "Montebello, Canada 🇨🇦",
-                "description": "Voyage de trois semaines entre amis, pour rejoindre un ami qui vit là-bas et découvrir la culture."
-            },
-            "iceland": {
-                "title": "Chasser les aurores boréales en van",
-                "location": "Islande 🇮🇸",
-                "description": "Une dizaine de jours pour traverser toute la partie Sud de l'île, y voir les volcans en éruption et chasser les aurores boréales."
             },
             "software_engineer": {
                 "title": "Ingénieur Logiciel",
