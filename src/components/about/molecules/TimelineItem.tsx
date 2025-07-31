@@ -1,22 +1,14 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
 import { useScroll, useTransform } from 'framer-motion';
 import type { TimelineItemProps } from '../types.ts';
 import { TimelineDot } from '@/components/about/atoms/TimelineDot.tsx';
 import { ConnectorLine } from '@/components/about/atoms/ConnectorLine.tsx';
 import { TimelineCard } from '@/components/about/molecules/TimelineCard.tsx';
-import { constants } from '@/constants.ts';
+import { useIsMobile } from '@/hooks/useIsMobile.tsx';
 
 export function TimelineItem({ item, isLeft }: TimelineItemProps) {
     const ref = useRef<HTMLDivElement>(null);
-    const [isMobile, setIsMobile] = useState(false);
-
-    useEffect(() => {
-        const checkMobile = () =>
-            setIsMobile(window.innerWidth < constants.MOBILE_BREAKPOINT);
-        checkMobile();
-        window.addEventListener('resize', checkMobile);
-        return () => window.removeEventListener('resize', checkMobile);
-    }, []);
+    const isMobile = useIsMobile();
 
     const { scrollYProgress } = useScroll({
         target: ref,

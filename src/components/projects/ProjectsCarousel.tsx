@@ -81,7 +81,6 @@ export function ProjectsCarousel({ projects }: ProjectsCarouselProps) {
         gap: 40,
     });
 
-    // Optimisation avec useCallback et throttling
     const updateActiveIndex = useCallback((newIndex: number) => {
         if (newIndex !== activeIndexRef.current) {
             activeIndexRef.current = newIndex;
@@ -97,7 +96,7 @@ export function ProjectsCarousel({ projects }: ProjectsCarouselProps) {
             timeoutId = setTimeout(() => {
                 const newIndex = Math.round(latest);
                 updateActiveIndex(newIndex);
-            }, 50); // Throttle les updates
+            }, 50);
         });
 
         return () => {

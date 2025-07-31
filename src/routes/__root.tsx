@@ -1,11 +1,14 @@
 import { createRootRoute, Outlet } from '@tanstack/react-router';
 
 import { ThemeProvider } from '@/contexts/theme/ThemeProvider.tsx';
+import { MobileProvider } from '@/contexts/mobile/MobileProvider.tsx';
 
 function RootContent() {
     return (
         <ThemeProvider>
-            <Outlet />
+            <MobileProvider>
+                <Outlet />
+            </MobileProvider>
         </ThemeProvider>
     );
 }

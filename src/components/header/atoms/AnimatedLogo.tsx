@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { constants } from '@/constants.ts';
 import { Logo } from '@/components/header';
+import { useIsMobile } from '@/hooks/useIsMobile.tsx';
 
 interface AnimatedLogoProps {
     isAnimating?: boolean;
@@ -12,12 +13,14 @@ export function AnimatedLogo({
     isAnimating = false,
     onAnimationComplete,
 }: AnimatedLogoProps) {
+    const isMobile = useIsMobile();
+
     return (
         <motion.div
             key="animated-logo"
             initial={{
                 scale: 0,
-                x: '45vw',
+                x: isMobile ? '40vw' : '45vw',
                 y: '45vh',
                 translateX: '-50%',
                 translateY: '-50%',
@@ -26,7 +29,7 @@ export function AnimatedLogo({
                 isAnimating
                     ? {
                           scale: 3,
-                          x: '45vw',
+                          x: isMobile ? '40vw' : '45vw',
                           y: '45vh',
                           translateX: '-50%',
                           translateY: '-50%',

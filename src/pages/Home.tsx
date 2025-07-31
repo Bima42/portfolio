@@ -6,6 +6,7 @@ import { TagList } from '@/components/tags';
 import Contact from '@/components/contact/Contact.tsx';
 import { useContentVisible } from '@/hooks/useContentVisible.ts';
 import { Header } from '@/components/header';
+import { dummyProjects } from '@/components/projects/dummyProjects.ts';
 
 export default function Home() {
     const { isContentVisible, animationComplete, handleAnimationEnd } =
@@ -32,7 +33,7 @@ export default function Home() {
                 {isContentVisible && (
                     <>
                         <About />
-                        <ProjectsCarousel numberOfCards={6} />
+                        <ProjectsCarousel projects={dummyProjects} />
                         <TagList
                             tags={['react', 'typescript', 'docker']}
                             size="md"
