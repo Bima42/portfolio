@@ -1,57 +1,68 @@
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils.ts';
 import { memo } from 'react';
+import type { Project } from '@/components/projects/types.ts';
+import { TagList } from '@/components/tags';
 
 interface ProjectCardProps {
-    index: number;
+    project: Project;
     isActive?: boolean;
+    onExpand?: () => void;
     className?: string;
 }
 
 export const ProjectCard = memo(function ProjectCard({
-    index,
+    project,
     isActive,
+    onExpand,
     className,
 }: ProjectCardProps) {
     return (
         <motion.div
             className={cn(
-                'w-96 h-80 rounded-2xl border-2 flex-shrink-0',
-                'bg-background-elevated/80 backdrop-blur-sm',
-                'flex items-center justify-center',
-                isActive && 'border-primary shadow-2xl shadow-primary/20',
+                'rounded-2xl border-2 flex-shrink-0 overflow-hidden',
+                'bg-background-elevated/80 backdrop-blur-sm cursor-pointer',
+                'relative transition-colors duration-200',
+                isActive && 'border-primary shadow-lg',
                 !isActive && 'border-foreground/20',
                 className
             )}
-            initial={false}
             animate={{
-                scale: isActive ? 1.1 : 0.85,
-                opacity: isActive ? 1 : 0.6,
-                y: isActive ? -10 : 0,
+                scale: isActive ? 1.05 : 0.9,
+                opacity: isActive ? 1 : 0.7,
             }}
             transition={{
-                type: 'spring',
-                stiffness: 300,
-                damping: 30,
-                mass: 0.8,
+                duration: 0.3,
+                ease: 'easeOut',
             }}
+            onClick={() => onExpand && onExpand()}
             whileHover={{
-                scale: isActive ? 1.15 : 0.9,
+                scale: isActive ? 1.08 : 0.95,
             }}
             style={{
-                willChange: 'transform, opacity',
+                width: 384,
+                height: 320,
+                willChange: 'transform',
             }}
         >
-            <div className="text-center">
-                <h3
-                    className={cn(
-                        'text-2xl font-bold mb-2 text-foreground',
-                        isActive && 'text-primary'
-                    )}
-                >
-                    Projet {index + 1}
+            <div className="p-6 h-full flex flex-col justify-center items-center text-center">
+                <div className="w-full h-32 rounded-lg mb-4 overflow-hidden">
+                    <img
+                        src={project.thumbnail}
+                        alt={project.title}
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                    />
+                </div>
+                <h3 className="text-xl font-bold mb-2 line-clamp-2">
+                    {project.title}
                 </h3>
-                <p className="text-foreground/60">Carte de test</p>
+                <p className="text-sm text-foreground/60 mb-4 line-clamp-3">
+                    {project.shortDescription}
+                </p>
+                <div className="flex flex-wrap gap-1 justify-center">
+                    <TagList tags={project.tags.slice(0, 3)} size={'sm'} />
+                </div>
             </div>
         </motion.div>
     );

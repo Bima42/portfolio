@@ -1,130 +1,171 @@
 import { motion } from 'framer-motion';
 import { useHorizontalScroll } from '@/hooks/useHorizontalScroll';
 import { ProjectCard } from './atoms/ProjectCard.tsx';
-import { useState, useEffect, useMemo, useRef } from 'react';
+import { ProjectModal } from './atoms/ProjectModal.tsx';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { CarouselProgressDots } from '@/components/projects/atoms/CarouselProgressDots.tsx';
+import type { Project } from './types.ts';
+import { constants } from '@/constants.ts';
 
 function MobileProjectsCarousel({
     className,
-    cards,
+    projects,
 }: {
-    cards: number[];
+    projects: Project[];
     className?: string;
 }) {
+    const [selectedProject, setSelectedProject] = useState<Project | null>(
+        null
+    );
+
     return (
-        <section className={`py-20 ${className}`}>
-            <div className="px-4">
-                <h2 className="text-3xl font-bold text-center mb-12 text-foreground">
-                    Projets
-                </h2>
-                <div className="overflow-x-auto">
-                    <div className="flex gap-6 pb-4">
-                        {cards.map(index => (
-                            <div key={index} className="flex-shrink-0">
-                                <ProjectCard
-                                    index={index}
-                                    isActive={false}
-                                    className="w-72 h-64"
-                                />
-                            </div>
-                        ))}
+        <>
+            <section className={`py-20 ${className}`}>
+                <div className="px-4">
+                    <h2 className="text-3xl font-bold text-center mb-12 text-foreground">
+                        Projets
+                    </h2>
+                    <div className="overflow-x-auto">
+                        <div className="flex gap-6 pb-4">
+                            {projects.map(project => (
+                                <div key={project.id} className="flex-shrink-0">
+                                    <ProjectCard
+                                        project={project}
+                                        isActive={false}
+                                        onExpand={() =>
+                                            setSelectedProject(project)
+                                        }
+                                        className="w-72 h-64"
+                                    />
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+
+            <ProjectModal
+                project={selectedProject}
+                isOpen={selectedProject !== null}
+                onClose={() => setSelectedProject(null)}
+            />
+        </>
     );
 }
 
 interface ProjectsCarouselProps {
-    numberOfCards?: number;
-    className?: string;
+    projects: Project[];
 }
 
-export function ProjectsCarousel({
-    numberOfCards = 5,
-    className,
-}: ProjectsCarouselProps) {
+export function ProjectsCarousel({ projects }: ProjectsCarouselProps) {
     const [isMobile, setIsMobile] = useState(false);
-    const activeIndexRef = useRef(0);
     const [activeIndex, setActiveIndex] = useState(0);
+    const [selectedProject, setSelectedProject] = useState<Project | null>(
+        null
+    );
+    const activeIndexRef = useRef(0);
 
-    // TODO: Change how we detect mobile devices
     useEffect(() => {
         const checkIsMobile = () => {
-            setIsMobile(window.innerWidth < 768);
+            setIsMobile(window.innerWidth < constants.MOBILE_BREAKPOINT);
         };
 
         checkIsMobile();
         window.addEventListener('resize', checkIsMobile);
-
         return () => window.removeEventListener('resize', checkIsMobile);
     }, []);
 
     const { containerRef, translateX, currentIndex } = useHorizontalScroll({
-        totalCards: numberOfCards,
-        cardWidth: 384, // w-96 = 384px
+        totalCards: projects.length,
+        cardWidth: 384,
         gap: 40,
     });
 
+    // Optimisation avec useCallback et throttling
+    const updateActiveIndex = useCallback((newIndex: number) => {
+        if (newIndex !== activeIndexRef.current) {
+            activeIndexRef.current = newIndex;
+            setActiveIndex(newIndex);
+        }
+    }, []);
+
     useEffect(() => {
-        let rafId: number;
+        let timeoutId: NodeJS.Timeout;
+
         const unsubscribe = currentIndex.on('change', latest => {
-            cancelAnimationFrame(rafId);
-            rafId = requestAnimationFrame(() => {
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(() => {
                 const newIndex = Math.round(latest);
-                if (newIndex !== activeIndexRef.current) {
-                    activeIndexRef.current = newIndex;
-                    setActiveIndex(newIndex);
-                }
-            });
+                updateActiveIndex(newIndex);
+            }, 50); // Throttle les updates
         });
 
         return () => {
-            cancelAnimationFrame(rafId);
+            clearTimeout(timeoutId);
             unsubscribe();
         };
-    }, [currentIndex]);
+    }, [currentIndex, updateActiveIndex]);
 
-    const cards = useMemo(
-        () => Array.from({ length: numberOfCards }, (_, index) => index),
-        [numberOfCards]
+    const handleExpand = useCallback(
+        (projectId: string) => {
+            const project = projects.find(p => p.id === projectId);
+            if (project) {
+                setSelectedProject(project);
+            }
+        },
+        [projects]
     );
 
+    const handleClose = useCallback(() => {
+        setSelectedProject(null);
+    }, []);
+
     if (isMobile) {
-        return <MobileProjectsCarousel cards={cards} className={className} />;
+        return <MobileProjectsCarousel projects={projects} />;
     }
 
     return (
-        <div
-            ref={containerRef}
-            className={`relative ${className}`}
-            style={{ height: '400vh' }}
-            id="projects"
-        >
-            {/* Sticky container with cards */}
-            <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden">
-                <h2 className="text-4xl font-bold mb-12 text-foreground">
-                    Projets
-                </h2>
+        <>
+            <div
+                ref={containerRef}
+                className="relative"
+                style={{ height: '400vh' }}
+                id="projects"
+            >
+                <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden">
+                    <h2 className="text-4xl font-bold mb-12 text-foreground">
+                        Projets
+                    </h2>
 
-                <motion.div
-                    className="flex gap-10"
-                    style={{
-                        x: translateX,
-                        willChange: 'transform',
-                    }}
-                >
-                    {cards.map(index => (
-                        <ProjectCard
-                            key={index}
-                            index={index}
-                            isActive={activeIndex === index}
-                        />
-                    ))}
-                </motion.div>
+                    <motion.div
+                        className="flex gap-10"
+                        style={{
+                            x: translateX,
+                            willChange: 'transform',
+                        }}
+                    >
+                        {projects.map((project, index) => (
+                            <ProjectCard
+                                key={project.id}
+                                project={project}
+                                isActive={activeIndex === index}
+                                onExpand={() => handleExpand(project.id)}
+                            />
+                        ))}
+                    </motion.div>
 
-                <CarouselProgressDots cards={cards} activeIndex={activeIndex} />
+                    <CarouselProgressDots
+                        cards={projects.map((_, index) => index)}
+                        activeIndex={activeIndex}
+                    />
+                </div>
             </div>
-        </div>
+
+            <ProjectModal
+                project={selectedProject}
+                isOpen={selectedProject !== null}
+                onClose={handleClose}
+            />
+        </>
     );
 }
