@@ -3,6 +3,7 @@ import { ProjectContent } from './ProjectContent';
 import { IconButton } from '@/components/buttons/IconButton';
 import { X } from 'lucide-react';
 import type { Project } from '../types';
+import { useEffect } from 'react';
 
 function CloseModalButton({ onClose }: { onClose: () => void }) {
     return (
@@ -24,16 +25,35 @@ interface ProjectModalProps {
 }
 
 export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
+    // Block scrolling on the body when the modal is open
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
+    }, [isOpen]);
+
     return (
         <Dialog open={isOpen} onOpenChange={open => !open && onClose()}>
-            <DialogContent className="max-w-[95vw] w-full max-h-[90vh] overflow-hidden p-0 sm:max-w-[90vw] z-101">
+            <DialogContent
+                className="max-w-[95vw] w-full max-h-[90vh] overflow-hidden p-0 sm:max-w-[90vw] z-101"
+                onWheel={e => e.stopPropagation()}
+                onTouchMove={e => e.stopPropagation()}
+            >
                 <div className="absolute right-4 top-4 z-10">
                     <CloseModalButton onClose={onClose} />
                 </div>
 
-                <div className="overflow-y-auto max-h-[90vh]">
+                <div
+                    className="overflow-y-auto max-h-[90vh]"
+                    style={{ scrollBehavior: 'smooth' }}
+                >
                     <div className="p-6 pt-12">
-                        {' '}
                         {project && <ProjectContent project={project} />}
                     </div>
                 </div>
