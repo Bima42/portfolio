@@ -1,36 +1,6 @@
 import { useLanguage } from '@/hooks/useLanguage';
 import { motion, type Variants } from 'framer-motion';
-import { useEffect, useState } from 'react';
-
-function TypewriterText({ text }: { text: string }) {
-    const [displayText, setDisplayText] = useState('');
-
-    useEffect(() => {
-        const startTimer = setTimeout(() => {
-            let index = 0;
-
-            const typeInterval = setInterval(() => {
-                if (index < text.length) {
-                    setDisplayText(text.slice(0, index + 1));
-                    index++;
-                } else {
-                    clearInterval(typeInterval);
-                }
-            }, 80);
-
-            return () => clearInterval(typeInterval);
-        }, 3300);
-
-        return () => clearTimeout(startTimer);
-    }, [text]);
-
-    return (
-        <span>
-            {displayText}
-            <span className="animate-pulse">|</span>
-        </span>
-    );
-}
+import { TypewriterText } from '@/components/home/atoms/TypewriterText.tsx';
 
 export function HeroSection() {
     const { t } = useLanguage();
@@ -93,7 +63,6 @@ export function HeroSection() {
                         </motion.div>
                     </motion.div>
 
-                    {/* Description */}
                     <motion.div className="mx-auto" variants={itemVariants}>
                         <p className="text-lg md:text-xl lg:text-2xl text-foreground/70 text-center font-light">
                             <TypewriterText text={t('pages.home.greeting')} />
