@@ -4,13 +4,15 @@ import type { TimelineItemProps } from '../types.ts';
 import { TimelineDot } from '@/components/about/atoms/TimelineDot.tsx';
 import { ConnectorLine } from '@/components/about/atoms/ConnectorLine.tsx';
 import { TimelineCard } from '@/components/about/molecules/TimelineCard.tsx';
+import { constants } from '@/constants.ts';
 
 export function TimelineItem({ item, isLeft }: TimelineItemProps) {
     const ref = useRef<HTMLDivElement>(null);
     const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
-        const checkMobile = () => setIsMobile(window.innerWidth < 768);
+        const checkMobile = () =>
+            setIsMobile(window.innerWidth < constants.MOBILE_BREAKPOINT);
         checkMobile();
         window.addEventListener('resize', checkMobile);
         return () => window.removeEventListener('resize', checkMobile);
