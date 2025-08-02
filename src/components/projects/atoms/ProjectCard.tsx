@@ -3,6 +3,7 @@ import { cn } from '@/lib/utils.ts';
 import { memo } from 'react';
 import type { Project } from '@/components/projects/types.ts';
 import { TagList } from '@/components/tags';
+import { constants } from '@/constants.ts';
 
 interface ProjectCardProps {
     project: Project;
@@ -39,8 +40,8 @@ export const ProjectCard = memo(function ProjectCard({
                 scale: isActive ? 1.1 : 0.95,
             }}
             style={{
-                width: 384,
-                height: 320,
+                width: constants.PROJECT_CARD_WIDTH,
+                height: 350,
                 willChange: 'transform',
             }}
         >

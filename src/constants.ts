@@ -1,4 +1,5 @@
 export const constants = {
     DURATION_SECONDS_LOGO_ANIMATION: 0.8,
     MOBILE_BREAKPOINT: 768,
+    PROJECT_CARD_WIDTH: 430,
 };

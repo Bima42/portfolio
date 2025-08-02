@@ -77,7 +77,7 @@ export function ProjectsCarousel({ projects }: ProjectsCarouselProps) {
 
     const { containerRef, translateX, currentIndex } = useHorizontalScroll({
         totalCards: projects.length,
-        cardWidth: 384,
+        cardWidth: constants.PROJECT_CARD_WIDTH,
         gap: 40,
     });
 
