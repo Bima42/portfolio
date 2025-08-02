@@ -10,6 +10,11 @@ export const tagData: Record<string, TagData> = {
         label: 'React',
         icon: '/logo-react.svg',
     },
+    react_native: {
+        id: 'react_native',
+        label: 'ReactNative',
+        icon: '/logo-react.svg',
+    },
     typescript: {
         id: 'typescript',
         label: 'TypeScript',
@@ -43,7 +48,17 @@ export const tagData: Record<string, TagData> = {
     postgresql: {
         id: 'postgresql',
         label: 'PostgreSQL',
-        icon: '/logo-postgre.svg',
+        icon: '/logo-postgresql.svg',
+    },
+    mongodb: {
+        id: 'mongodb',
+        label: 'MongoDB',
+        icon: '/logo-mongodb.svg',
+    },
+    socketio: {
+        id: 'socketio',
+        label: 'Socket.IO',
+        icon: '/logo-socketio.svg',
     },
 };
 
