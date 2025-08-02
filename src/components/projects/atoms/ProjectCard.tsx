@@ -22,13 +22,12 @@ export const ProjectCard = memo(function ProjectCard({
             className={cn(
                 'rounded-2xl border-2 flex-shrink-0 overflow-hidden',
                 'bg-background-elevated/80 backdrop-blur-sm cursor-pointer',
-                'relative transition-colors duration-200',
-                isActive && 'border-primary shadow-lg',
-                !isActive && 'border-foreground/20',
+                'relative transition-all duration-300 ease-out border-foreground/20',
+                'hover:border-primary',
                 className
             )}
             animate={{
-                scale: isActive ? 1.05 : 0.9,
+                scale: isActive ? 1.05 : 0.75,
                 opacity: isActive ? 1 : 0.7,
             }}
             transition={{
@@ -37,7 +36,7 @@ export const ProjectCard = memo(function ProjectCard({
             }}
             onClick={() => onExpand && onExpand()}
             whileHover={{
-                scale: isActive ? 1.08 : 0.95,
+                scale: isActive ? 1.1 : 0.95,
             }}
             style={{
                 width: 384,
@@ -54,7 +53,7 @@ export const ProjectCard = memo(function ProjectCard({
                         loading="lazy"
                     />
                 </div>
-                <h3 className="text-xl font-bold mb-2 line-clamp-2">
+                <h3 className="text-xl font-bold mb-2 text-foreground ">
                     {project.title}
                 </h3>
                 <p className="text-sm text-foreground/60 mb-4 line-clamp-3">
