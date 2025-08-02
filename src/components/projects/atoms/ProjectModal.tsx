@@ -40,6 +40,10 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
 
     return (
         <Dialog open={isOpen} onOpenChange={open => !open && onClose()}>
+            {isOpen && (
+                <div className="fixed inset-0 bg-black/20 backdrop-blur-sm z-100" />
+            )}
+
             <DialogContent
                 className="max-w-[95vw] w-full max-h-[90vh] overflow-hidden p-0 sm:max-w-[90vw] z-101"
                 onWheel={e => e.stopPropagation()}
