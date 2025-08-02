@@ -46,11 +46,11 @@ export const ProjectCard = memo(function ProjectCard({
             }}
         >
             <div className="p-6 h-full flex flex-col justify-center items-center text-center">
-                <div className="w-full h-32 rounded-lg mb-4 overflow-hidden">
+                <div className="w-full h-32 rounded-lg mb-4 overflow-hidden flex items-center">
                     <img
                         src={project.thumbnail}
                         alt={project.title}
-                        className="w-full h-full object-cover"
+                        className="w-full object-cover"
                         loading="lazy"
                     />
                 </div>

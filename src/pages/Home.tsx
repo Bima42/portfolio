@@ -2,7 +2,6 @@ import { HeroSection } from '@/components/home';
 import { motion } from 'framer-motion';
 import About from '@/components/about/About.tsx';
 import { ProjectsCarousel } from '@/components/projects';
-import { TagList } from '@/components/tags';
 import Contact from '@/components/contact/Contact.tsx';
 import { useContentVisible } from '@/hooks/useContentVisible.ts';
 import { Header } from '@/components/header';
@@ -32,12 +31,8 @@ export default function Home() {
 
                 {isContentVisible && (
                     <>
-                        <About />
+                        {/*<About />*/}
                         <ProjectsCarousel projects={dummyProjects} />
-                        <TagList
-                            tags={['react', 'typescript', 'docker']}
-                            size="md"
-                        />
                         <Contact />
                     </>
                 )}

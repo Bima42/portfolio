@@ -14,8 +14,21 @@ export function Logo({
     logoHeight,
     alt = 'Logo',
     className = '',
-    href = '/',
+    href,
 }: LogoProps) {
+    if (!href) {
+        return (
+            <div
+                className={`flex items-center space-x-2 transition-opacity hover:opacity-80 ${className}`}
+            >
+                <img
+                    src={src}
+                    alt={alt}
+                    className={`${logoHeight ? logoHeight : 'h-12'} w-auto ${className}`}
+                />
+            </div>
+        );
+    }
     return (
         <Link
             to={href}

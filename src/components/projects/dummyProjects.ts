@@ -6,39 +6,21 @@ export const dummyProjects: Project[] = [
         title: 'Tidaka',
         shortDescription:
             'Mobile app connecting sports coaches with their clients for better training management',
-        tags: ['react', 'typescript', 'docker'],
+        tags: [
+            'react_native',
+            'nodejs',
+            'typescript',
+            'mongodb',
+            'docker',
+            'socketio',
+        ],
         status: 'completed',
         year: 2024,
         category: 'mobile-app',
         featured: true,
-        thumbnail:
-            'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=200&fit=crop',
-        gallery: [
-            'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop',
-            'https://images.unsplash.com/photo-1434596922112-19c563067271?w=800&h=600&fit=crop',
-        ],
-        links: {
-            demo: 'https://tidaka-demo.com',
-            github: 'https://github.com/username/tidaka',
-            playstore:
-                'https://play.google.com/store/apps/details?id=com.tidaka',
-        },
+        thumbnail: '/tidaka/logo-tidaka.png',
         color: '#6366f1',
-        content: `
-# Tidaka - Coach & Client Connection
-
-## Le problème
-Les coachs sportifs galèrent à gérer leurs clients avec Excel et WhatsApp...
-
-## La solution
-Tidaka connecte coachs et clients dans une app dédiée.
-
-### Fonctionnalités clés :
-- 🏃‍♂️ Plans d'entraînement personnalisés
-- 📅 Planification automatique
-- 💬 Chat en temps réel
-- 📊 Suivi des progrès
-    `,
+        filePath: '/tidaka',
     },
     {
         id: 'voltaire',
@@ -52,16 +34,12 @@ Tidaka connecte coachs et clients dans une app dédiée.
         featured: true,
         thumbnail:
             'https://images.unsplash.com/photo-1455390582262-044cdead277a?w=400&h=200&fit=crop',
-        gallery: [
-            'https://images.unsplash.com/photo-1455390582262-044cdead277a?w=800&h=600&fit=crop',
-            'https://images.unsplash.com/photo-1542435503-956c469947f6?w=800&h=600&fit=crop',
-        ],
         links: {
             demo: 'https://voltaire-ai.com',
             github: 'https://github.com/username/voltaire',
         },
         color: '#f59e0b',
-        content: `
+        filePath: `
 # Voltaire AI - Smart Writing Assistant
 
 ## Le défi
@@ -83,15 +61,12 @@ Une IA qui apprend votre style pour vous assister efficacement.
         featured: false,
         thumbnail:
             'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=200&fit=crop',
-        gallery: [
-            'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop',
-        ],
         links: {
             demo: 'https://shopflow-demo.com',
             github: 'https://github.com/username/shopflow',
         },
         color: '#10b981',
-        content: `
+        filePath: `
 # ShopFlow - E-commerce Platform
 
 ## Vision

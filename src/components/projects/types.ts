@@ -7,8 +7,7 @@ export interface ProjectMeta {
     category: string;
     featured: boolean;
     thumbnail: string;
-    gallery: string[];
-    links: {
+    links?: {
         demo?: string;
         github?: string;
         playstore?: string;
@@ -19,5 +18,5 @@ export interface ProjectMeta {
 
 export interface Project extends ProjectMeta {
     id: string;
-    content: string; // Le contenu MDX compilé
+    filePath: string;
 }
