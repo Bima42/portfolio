@@ -5,15 +5,11 @@ export interface ProjectMeta {
     status: 'completed' | 'in-progress' | 'prototype';
     year: number;
     category: string;
-    featured: boolean;
     thumbnail: string;
     links?: {
         demo?: string;
         github?: string;
-        playstore?: string;
-        appstore?: string;
     };
-    color: string;
 }
 
 export interface Project extends ProjectMeta {

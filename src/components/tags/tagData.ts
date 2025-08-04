@@ -60,6 +60,11 @@ export const tagData: Record<string, TagData> = {
         label: 'Socket.IO',
         icon: '/logo-socketio.svg',
     },
+    nextjs: {
+        id: 'nextjs',
+        label: 'Next.js',
+        icon: '/logo-nextjs.svg',
+    },
 };
 
 export const getTagById = (id: string): TagData | undefined => {
