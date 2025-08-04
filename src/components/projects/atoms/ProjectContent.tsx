@@ -3,16 +3,30 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeHighlight from 'rehype-highlight';
 import type { Project } from '@/components/projects/types.ts';
-import { ExternalLink, Github, Smartphone } from 'lucide-react';
+import { ExternalLink, Github } from 'lucide-react';
 import { TagList } from '@/components/tags';
 import { useEffect, useState } from 'react';
 import { useLanguage } from '@/hooks/useLanguage.ts';
 import type { Components } from 'react-markdown';
 import { visit } from 'unist-util-visit';
 
+const videoExtensions = ['.mp4', '.webm', '.mov'];
+
+const isChildVideo = (child: any) => {
+    return (
+        child.type === 'image' &&
+        videoExtensions.some(ext => child.url?.endsWith(ext))
+    );
+};
+
 const groupImagesPlugin = () => {
     return tree => {
         visit(tree, 'paragraph', (node, index, parent) => {
+            // Avoid if it's video
+            if (node.children.some(isChildVideo)) {
+                return;
+            }
+
             const isImageOnly = node.children.every(
                 child =>
                     child.type === 'image' ||
@@ -107,7 +121,24 @@ const markdownComponents: Components = {
         );
     },
     img: ({ src, alt, ...props }) => {
-        // Plus de wrapper ici, c'est géré par les divs au-dessus
+        if (
+            src?.endsWith('.mp4') ||
+            src?.endsWith('.webm') ||
+            src?.endsWith('.mov')
+        ) {
+            return (
+                <video
+                    src={src}
+                    controls
+                    className="max-h-full object-contain w-full"
+                    autoPlay
+                    muted
+                    loop
+                >
+                    {alt && <p>{alt}</p>}
+                </video>
+            );
+        }
         return (
             <img
                 src={src}
@@ -130,7 +161,7 @@ const markdownComponents: Components = {
 };
 
 export function ProjectContent({ project }: ProjectContentProps) {
-    const { currentLanguage } = useLanguage();
+    const { t, currentLanguage } = useLanguage();
     const [markdownContent, setMarkdownContent] = useState<string>('');
 
     useEffect(() => {
@@ -159,20 +190,22 @@ export function ProjectContent({ project }: ProjectContentProps) {
         >
             {/* Header avec image */}
             <motion.div
-                className="relative h-64 rounded-xl overflow-hidden mb-8"
+                className="flex justify-right relative h-64 rounded-xl overflow-hidden mb-8"
                 variants={itemVariants}
             >
                 <img
                     src={project.thumbnail}
-                    alt={project.title}
-                    className="w-full object-cover"
+                    alt={t(project.title)}
+                    className="w-full "
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 <div className="absolute bottom-4 left-4">
                     <h1 className="text-3xl font-bold text-white mb-2">
-                        {project.title}
+                        {t(project.title)}
                     </h1>
-                    <p className="text-white/80">{project.shortDescription}</p>
+                    <p className="text-white/80">
+                        {t(project.shortDescription)}
+                    </p>
                 </div>
             </motion.div>
 
@@ -210,17 +243,6 @@ export function ProjectContent({ project }: ProjectContentProps) {
                         >
                             <Github className="w-4 h-4" />
                             GitHub
-                        </a>
-                    )}
-                    {project.links.playstore && (
-                        <a
-                            href={project.links.playstore}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 px-4 py-2 border border-foreground/20 rounded-lg hover:bg-foreground/5 transition-colors"
-                        >
-                            <Smartphone className="w-4 h-4" />
-                            Play Store
                         </a>
                     )}
                 </motion.div>

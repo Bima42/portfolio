@@ -4,6 +4,7 @@ import { memo } from 'react';
 import type { Project } from '@/components/projects/types.ts';
 import { TagList } from '@/components/tags';
 import { constants } from '@/constants.ts';
+import { useLanguage } from '@/hooks/useLanguage.ts';
 
 interface ProjectCardProps {
     project: Project;
@@ -18,6 +19,7 @@ export const ProjectCard = memo(function ProjectCard({
     onExpand,
     className,
 }: ProjectCardProps) {
+    const { t } = useLanguage();
     return (
         <motion.div
             className={cn(
@@ -55,10 +57,10 @@ export const ProjectCard = memo(function ProjectCard({
                     />
                 </div>
                 <h3 className="text-xl font-bold mb-2 text-foreground ">
-                    {project.title}
+                    {t(project.title)}
                 </h3>
                 <p className="text-sm text-foreground/60 mb-4 line-clamp-3">
-                    {project.shortDescription}
+                    {t(project.shortDescription)}
                 </p>
                 <div className="flex flex-wrap gap-1 justify-center">
                     <TagList tags={project.tags.slice(0, 3)} size={'md'} />
