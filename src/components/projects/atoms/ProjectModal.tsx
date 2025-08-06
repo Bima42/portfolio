@@ -54,7 +54,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                 </div>
 
                 <div
-                    className="overflow-y-auto max-h-[90vh]"
+                    className="max-w-full overflow-x-hidden overflow-y-auto max-h-[90vh]"
                     style={{ scrollBehavior: 'smooth' }}
                 >
                     <div className="p-6 pt-12">

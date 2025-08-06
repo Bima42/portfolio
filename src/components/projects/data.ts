@@ -1,11 +1,10 @@
 import type { Project } from './types';
 
-export const dummyProjects: Project[] = [
+export const projectsData: Project[] = [
     {
         id: 'tidaka',
-        title: 'Tidaka',
-        shortDescription:
-            'Mobile app connecting sports coaches with their clients for better training management',
+        title: 'projects.tidaka.title',
+        shortDescription: 'projects.tidaka.shortDescription',
         tags: [
             'react_native',
             'nodejs',
@@ -15,39 +14,31 @@ export const dummyProjects: Project[] = [
             'socketio',
         ],
         status: 'completed',
-        year: 2024,
+        year: 2023,
         category: 'mobile-app',
-        featured: true,
         thumbnail: '/tidaka/logo-tidaka.png',
-        color: '#6366f1',
         filePath: '/tidaka',
     },
     {
         id: 'voltaire',
-        title: 'Voltaire AI',
-        shortDescription:
-            'AI-powered writing assistant that adapts to your unique style and voice',
-        tags: ['react', 'typescript', 'docker'],
+        title: 'projects.voltaire.title',
+        shortDescription: 'projects.voltaire.shortDescription',
+        tags: [
+            'nextjs',
+            'fastapi',
+            'postgresql',
+            'python',
+            'typescript',
+            'docker',
+        ],
         status: 'completed',
         year: 2024,
         category: 'web-app',
-        featured: true,
-        thumbnail:
-            'https://images.unsplash.com/photo-1455390582262-044cdead277a?w=400&h=200&fit=crop',
+        thumbnail: '/voltaire/logo-voltaire.svg',
         links: {
-            demo: 'https://voltaire-ai.com',
-            github: 'https://github.com/username/voltaire',
+            demo: 'https://voltaire.chat',
         },
-        color: '#f59e0b',
-        filePath: `
-# Voltaire AI - Smart Writing Assistant
-
-## Le défi
-L'écriture prend trop de temps et manque souvent de cohérence...
-
-## Notre approche
-Une IA qui apprend votre style pour vous assister efficacement.
-    `,
+        filePath: '/voltaire',
     },
     {
         id: 'ecommerce',
@@ -58,14 +49,12 @@ Une IA qui apprend votre style pour vous assister efficacement.
         status: 'in-progress',
         year: 2024,
         category: 'web-app',
-        featured: false,
         thumbnail:
             'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=200&fit=crop',
         links: {
             demo: 'https://shopflow-demo.com',
             github: 'https://github.com/username/shopflow',
         },
-        color: '#10b981',
         filePath: `
 # ShopFlow - E-commerce Platform
 

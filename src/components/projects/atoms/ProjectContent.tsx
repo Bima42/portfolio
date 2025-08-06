@@ -21,7 +21,7 @@ const isChildVideo = (child: any) => {
 
 const groupImagesPlugin = () => {
     return tree => {
-        visit(tree, 'paragraph', (node, index, parent) => {
+        visit(tree, 'paragraph', node => {
             // Avoid if it's video
             if (node.children.some(isChildVideo)) {
                 return;
@@ -102,14 +102,14 @@ const markdownComponents: Components = {
     div: ({ className, children, ...props }) => {
         if (className === 'image-gallery') {
             return (
-                <div className="w-full h-[50vh] flex justify-center gap-10 bg-background/80 rounded-lg mb-6 my-6">
+                <div className="w-full h-[50vh] flex justify-center gap-10 bg-background/80 rounded-lg m-6">
                     {children}
                 </div>
             );
         }
         if (className === 'single-image') {
             return (
-                <div className="w-full h-[45vh] flex justify-center bg-blue-500 rounded-lg mb-6 my-6">
+                <div className="w-full h-[45vh] flex justify-center rounded-lg mb-6 my-6">
                     {children}
                 </div>
             );
@@ -130,12 +130,12 @@ const markdownComponents: Components = {
                 <video
                     src={src}
                     controls
-                    className="max-h-full object-contain w-full"
+                    className="max-h-full object-contain"
                     autoPlay
                     muted
                     loop
                 >
-                    {alt && <p>{alt}</p>}
+                    {alt && <span>{alt}</span>}
                 </video>
             );
         }
