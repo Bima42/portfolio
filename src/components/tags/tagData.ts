@@ -65,6 +65,11 @@ export const tagData: Record<string, TagData> = {
         label: 'Next.js',
         icon: '/logo-nextjs.svg',
     },
+    drizzle: {
+        id: 'drizzle',
+        label: 'Drizzle ORM',
+        icon: '/logo-drizzle.svg',
+    },
 };
 
 export const getTagById = (id: string): TagData | undefined => {
