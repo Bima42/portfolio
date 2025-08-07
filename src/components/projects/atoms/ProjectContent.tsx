@@ -56,6 +56,7 @@ const groupImagesPlugin = () => {
 
 interface ProjectContentProps {
     project: Project;
+    isMobile?: boolean;
 }
 
 const containerVariants = {
@@ -160,7 +161,7 @@ const markdownComponents: Components = {
     },
 };
 
-export function ProjectContent({ project }: ProjectContentProps) {
+export function ProjectContent({ project, isMobile }: ProjectContentProps) {
     const { t, currentLanguage } = useLanguage();
     const [markdownContent, setMarkdownContent] = useState<string>('');
 
@@ -172,8 +173,7 @@ export function ProjectContent({ project }: ProjectContentProps) {
                 );
                 const content = await response.text();
                 setMarkdownContent(content);
-            } catch (error) {
-                console.error('Erreur lors du chargement du markdown:', error);
+            } catch {
                 setMarkdownContent('Erreur lors du chargement du contenu.');
             }
         };
@@ -188,21 +188,23 @@ export function ProjectContent({ project }: ProjectContentProps) {
             initial="hidden"
             animate="visible"
         >
-            {/* Header avec image */}
+            {/* Header */}
             <motion.div
-                className="flex justify-right relative h-64 rounded-xl overflow-hidden mb-8"
+                className={`flex justify-right relative h-64 rounded-xl overflow-hidden mb-8 ${isMobile ? 'p-4' : ''}`}
                 variants={itemVariants}
             >
                 <img
-                    src={project.thumbnail}
+                    src={project.lightThumbnail}
                     alt={t(project.title)}
                     className="w-full "
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 <div className="absolute bottom-4 left-4">
-                    <h1 className="text-3xl font-bold text-white mb-2">
-                        {t(project.title)}
-                    </h1>
+                    {!isMobile && (
+                        <h1 className="text-3xl font-bold text-white mb-2">
+                            {t(project.title)}
+                        </h1>
+                    )}
                     <p className="text-white/80">
                         {t(project.shortDescription)}
                     </p>

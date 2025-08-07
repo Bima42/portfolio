@@ -93,6 +93,10 @@
         "voltaire": {
             "title": "Voltaire",
             "shortDescription": "Assistant de rédaction alimenté par l'IA qui s'adapte à votre style et à votre voix uniques."
+        },
+        "prompt-pilot": {
+            "title": "Prompt Pilot",
+            "shortDescription": "Application web pour la création et la gestion de prompts, destinés aux LLMs."
         }
     }
 }

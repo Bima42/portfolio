@@ -48,6 +48,7 @@ function MobileProjectsCarousel({
                 project={selectedProject}
                 isOpen={selectedProject !== null}
                 onClose={() => setSelectedProject(null)}
+                isMobile={true}
             />
         </>
     );

@@ -93,6 +93,10 @@
         "voltaire": {
             "title": "Voltaire",
             "shortDescription": "AI-powered writing assistant that adapts to your unique style and voice."
+        },
+        "prompt-pilot": {
+            "title": "Prompt Pilot",
+            "shortDescription": "AI-powered tool that helps you create and manage prompts for LLMs."
         }
     }
 }

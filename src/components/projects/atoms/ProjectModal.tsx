@@ -22,9 +22,15 @@ interface ProjectModalProps {
     project: Project | null;
     isOpen: boolean;
     onClose: () => void;
+    isMobile?: boolean;
 }
 
-export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
+export function ProjectModal({
+    project,
+    isOpen,
+    onClose,
+    isMobile,
+}: ProjectModalProps) {
     // Block scrolling on the body when the modal is open
     useEffect(() => {
         if (isOpen) {
@@ -58,7 +64,12 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                     style={{ scrollBehavior: 'smooth' }}
                 >
                     <div className="p-6 pt-12">
-                        {project && <ProjectContent project={project} />}
+                        {project && (
+                            <ProjectContent
+                                project={project}
+                                isMobile={isMobile}
+                            />
+                        )}
                     </div>
                 </div>
             </DialogContent>

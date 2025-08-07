@@ -5,6 +5,7 @@ import type { Project } from '@/components/projects/types.ts';
 import { TagList } from '@/components/tags';
 import { constants } from '@/constants.ts';
 import { useLanguage } from '@/hooks/useLanguage.ts';
+import { useTheme } from '@/hooks/useTheme.tsx';
 
 interface ProjectCardProps {
     project: Project;
@@ -20,6 +21,8 @@ export const ProjectCard = memo(function ProjectCard({
     className,
 }: ProjectCardProps) {
     const { t } = useLanguage();
+    const { isDark } = useTheme();
+
     return (
         <motion.div
             className={cn(
@@ -50,7 +53,11 @@ export const ProjectCard = memo(function ProjectCard({
             <div className="p-6 h-full flex flex-col justify-center items-center text-center">
                 <div className="w-full h-32 rounded-lg mb-4 overflow-hidden flex items-center">
                     <img
-                        src={project.thumbnail}
+                        src={
+                            isDark && project.darkThumbnail
+                                ? project.darkThumbnail
+                                : project.lightThumbnail
+                        }
                         alt={project.title}
                         className="w-full object-cover"
                         loading="lazy"

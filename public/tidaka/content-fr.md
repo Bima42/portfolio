@@ -15,7 +15,7 @@ Imaginez que vous êtes coach sportif avec plusieurs clients aux besoins variés
 ![tidaka-onboarding.png](/tidaka/tidaka-onboarding.png)
 ![tidaka-onboarding2.png](/tidaka/tidaka-onboarding2.png)
 
-Pour se connecter avec un élève, le coach doit lui envoyer un code d'invitation. Grâce à ce code, l'élève peut s'inscrire et se connecter à l'application.\
+Pour se connecter avec un élève, le coach doit lui envoyer un code d'invitation. Grâce à ce code, l'élève peut s'inscrire et se connecter à l'application.
 
 ### Création de programme d'entraînement
 ![tidaka-seance-creation.png](/tidaka/tidaka-seance-creation.png)
