@@ -192,7 +192,7 @@ export function ProjectContent({ project, isMobile }: ProjectContentProps) {
         >
             {/* Header */}
             <motion.div
-                className={`flex justify-right relative h-64 rounded-xl overflow-hidden mb-8 ${isMobile ? 'p-4' : 'py-6'}`}
+                className={`flex justify-center items-center relative h-64 rounded-xl overflow-hidden mb-8 ${isMobile ? 'p-4' : 'py-6'}`}
                 variants={itemVariants}
             >
                 <img
@@ -202,7 +202,7 @@ export function ProjectContent({ project, isMobile }: ProjectContentProps) {
                             : project.lightThumbnail
                     }
                     alt={t(project.title)}
-                    className="w-full"
+                    className="w-[70%]"
                 />
             </motion.div>
 
@@ -245,7 +245,6 @@ export function ProjectContent({ project, isMobile }: ProjectContentProps) {
                 </motion.div>
             )}
 
-            {/* Contenu Markdown */}
             <motion.div
                 className="prose prose-lg max-w-none dark:prose-invert"
                 variants={itemVariants}

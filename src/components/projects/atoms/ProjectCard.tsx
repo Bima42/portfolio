@@ -27,7 +27,7 @@ export const ProjectCard = memo(function ProjectCard({
         <motion.div
             className={cn(
                 'rounded-2xl border-2 flex-shrink-0 overflow-hidden',
-                'bg-background-elevated/80 backdrop-blur-sm cursor-pointer',
+                'glass-background cursor-pointer',
                 'relative transition-all duration-300 ease-out border-foreground/20',
                 'hover:border-primary',
                 className
@@ -51,7 +51,7 @@ export const ProjectCard = memo(function ProjectCard({
             }}
         >
             <div className="p-6 h-full flex flex-col justify-center items-center text-center">
-                <div className="w-full h-32 rounded-lg mb-4 overflow-hidden flex items-center">
+                <div className="w-full h-32 rounded-lg mb-4 overflow-hidden flex items-center p-4">
                     <img
                         src={
                             isDark && project.darkThumbnail
