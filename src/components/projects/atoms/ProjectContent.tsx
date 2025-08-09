@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react';
 import { useLanguage } from '@/hooks/useLanguage.ts';
 import type { Components } from 'react-markdown';
 import { visit } from 'unist-util-visit';
+import { useTheme } from '@/hooks/useTheme.tsx';
 
 const videoExtensions = ['.mp4', '.webm', '.mov'];
 
@@ -163,6 +164,7 @@ const markdownComponents: Components = {
 
 export function ProjectContent({ project, isMobile }: ProjectContentProps) {
     const { t, currentLanguage } = useLanguage();
+    const { isDark } = useTheme();
     const [markdownContent, setMarkdownContent] = useState<string>('');
 
     useEffect(() => {
@@ -194,17 +196,16 @@ export function ProjectContent({ project, isMobile }: ProjectContentProps) {
                 variants={itemVariants}
             >
                 <img
-                    src={project.lightThumbnail}
+                    src={
+                        isDark && project.darkThumbnail
+                            ? project.darkThumbnail
+                            : project.lightThumbnail
+                    }
                     alt={t(project.title)}
                     className="w-full "
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                 <div className="absolute bottom-4 left-4">
-                    {!isMobile && (
-                        <h1 className="text-3xl font-bold text-white mb-2">
-                            {t(project.title)}
-                        </h1>
-                    )}
                     <p className="text-white/80">
                         {t(project.shortDescription)}
                     </p>
