@@ -35,10 +35,8 @@ const Tag = React.forwardRef<HTMLSpanElement, TagProps>(
             <span
                 ref={ref}
                 className={cn(
-                    'py-3 px-3 inline-flex items-center font-medium text-foreground',
+                    'glass-background py-3 px-3 inline-flex items-center font-medium text-foreground',
                     'rounded-full backdrop-blur-sm border transition-all duration-200',
-                    'border-gray-300 dark:border-gray-600',
-                    'dark:bg-white/5',
                     sizeClasses[size],
                     className
                 )}

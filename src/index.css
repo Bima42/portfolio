@@ -6,6 +6,14 @@
     .hover-button {
         @apply text-foreground hover:text-primary dark:hover:bg-primary/20 hover:shadow-sm border border-white/20 dark:border-white/10 cursor-pointer hover:scale-105;
     }
+    .glass-background {
+        @apply
+        bg-white/10 dark:bg-white/5
+        border border-white/20 dark:border-white/10
+        backdrop-blur-3xl
+        shadow-[0_8px_16px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,0.2)]
+        dark:shadow-[0_8px_16px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.1)];
+    }
 }
 
 @theme {
@@ -57,6 +65,7 @@
     --color-primary: #c6bcf0;
     --color-secondary: #8a4fff;
 }
+
 
 body {
     font-family: Inter, system-ui, sans-serif;
