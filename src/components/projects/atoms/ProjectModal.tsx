@@ -51,7 +51,7 @@ export function ProjectModal({
             )}
 
             <DialogContent
-                className="max-w-[95vw] w-full max-h-[90vh] overflow-hidden p-0 sm:max-w-[90vw] z-101"
+                className="max-w-[95vw] w-full max-h-[90vh] overflow-hidden p-0 sm:max-w-[90vw] z-101 border-none"
                 onWheel={e => e.stopPropagation()}
                 onTouchMove={e => e.stopPropagation()}
             >
