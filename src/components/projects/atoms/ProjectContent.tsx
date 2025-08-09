@@ -10,6 +10,7 @@ import { useLanguage } from '@/hooks/useLanguage.ts';
 import type { Components } from 'react-markdown';
 import { visit } from 'unist-util-visit';
 import { useTheme } from '@/hooks/useTheme.tsx';
+import { useIsMobile } from '@/hooks/useIsMobile.tsx';
 
 const videoExtensions = ['.mp4', '.webm', '.mov'];
 
@@ -202,13 +203,13 @@ export function ProjectContent({ project, isMobile }: ProjectContentProps) {
                             : project.lightThumbnail
                     }
                     alt={t(project.title)}
-                    className="w-[70%]"
+                    className={`${isMobile ? 'w-full' : 'w-[70%]'}`}
                 />
             </motion.div>
 
             {/* Tags */}
             <motion.div
-                className="flex flex-wrap gap-2 mb-6"
+                className={`${isMobile ? 'justify-between' : ''} flex flex-wrap gap-2 mb-6`}
                 variants={itemVariants}
             >
                 <TagList tags={project.tags} size="lg" />
