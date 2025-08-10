@@ -35,7 +35,7 @@ function MobileProjectsCarousel({ projects }: { projects: Project[] }) {
 
     return (
         <>
-            <section>
+            <section id="projects">
                 <div className="px-4">
                     <h1 className="h1 mb-8">{t('pages.projects.title')}</h1>
 
@@ -75,6 +75,7 @@ interface ProjectsCarouselProps {
 }
 
 export function ProjectsCarousel({ projects }: ProjectsCarouselProps) {
+    const { t } = useLanguage();
     const [isMobile, setIsMobile] = useState(false);
     const [activeIndex, setActiveIndex] = useState(0);
     const [selectedProject, setSelectedProject] = useState<Project | null>(
@@ -149,9 +150,7 @@ export function ProjectsCarousel({ projects }: ProjectsCarouselProps) {
                 id="projects"
             >
                 <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden">
-                    <h2 className="text-4xl font-bold mb-12 text-foreground">
-                        Projets
-                    </h2>
+                    <h1 className="h1 mb-8">{t('pages.projects.title')}</h1>
 
                     <motion.div
                         className="flex gap-10"
