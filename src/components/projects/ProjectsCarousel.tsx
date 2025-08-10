@@ -1,11 +1,12 @@
 import { motion } from 'framer-motion';
 import { useHorizontalScroll } from '@/hooks/useHorizontalScroll';
-import { ProjectCard } from './atoms/ProjectCard.tsx';
+import { ProjectCard } from './molecules/ProjectCard.tsx';
 import { ProjectModal } from './atoms/ProjectModal.tsx';
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { CarouselProgressDots } from '@/components/projects/atoms/CarouselProgressDots.tsx';
 import type { Project } from './types.ts';
 import { constants } from '@/constants.ts';
+import { useLanguage } from '@/hooks/useLanguage.ts';
 
 function MobileProjectsCarousel({
     className,
@@ -14,6 +15,7 @@ function MobileProjectsCarousel({
     projects: Project[];
     className?: string;
 }) {
+    const { t } = useLanguage();
     const [selectedProject, setSelectedProject] = useState<Project | null>(
         null
     );
@@ -22,13 +24,11 @@ function MobileProjectsCarousel({
         <>
             <section className={`py-20 ${className}`}>
                 <div className="px-4">
-                    <h2 className="text-3xl font-bold text-center mb-12 text-foreground">
-                        Projets
-                    </h2>
+                    <h1 className="h1">{t('pages.projects.title')}</h1>
                     <div className="overflow-x-auto">
                         <div className="flex gap-6 pb-4">
                             {projects.map(project => (
-                                <div key={project.id} className="flex-shrink-0">
+                                <div key={project.id}>
                                     <ProjectCard
                                         project={project}
                                         isActive={false}

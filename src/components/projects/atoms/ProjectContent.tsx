@@ -10,7 +10,6 @@ import { useLanguage } from '@/hooks/useLanguage.ts';
 import type { Components } from 'react-markdown';
 import { visit } from 'unist-util-visit';
 import { useTheme } from '@/hooks/useTheme.tsx';
-import { useIsMobile } from '@/hooks/useIsMobile.tsx';
 
 const videoExtensions = ['.mp4', '.webm', '.mov'];
 

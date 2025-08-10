@@ -1,4 +1,6 @@
-export interface ProjectMeta {
+export interface Project {
+    id: string;
+    filePath: string;
     title: string;
     shortDescription: string;
     tags: string[];
@@ -8,9 +10,4 @@ export interface ProjectMeta {
         demo?: string;
         github?: string;
     };
-}
-
-export interface Project extends ProjectMeta {
-    id: string;
-    filePath: string;
 }

@@ -1,2 +1,2 @@
 export { ProjectsCarousel } from './ProjectsCarousel';
-export { ProjectCard } from './atoms/ProjectCard.tsx';
+export { ProjectCard } from './molecules/ProjectCard.tsx';

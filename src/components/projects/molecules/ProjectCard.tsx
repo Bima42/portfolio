@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils.ts';
-import { memo } from 'react';
 import type { Project } from '@/components/projects/types.ts';
 import { TagList } from '@/components/tags';
 import { constants } from '@/constants.ts';
@@ -14,12 +13,12 @@ interface ProjectCardProps {
     className?: string;
 }
 
-export const ProjectCard = memo(function ProjectCard({
+export const ProjectCard = ({
     project,
     isActive,
     onExpand,
     className,
-}: ProjectCardProps) {
+}: ProjectCardProps) => {
     const { t } = useLanguage();
     const { isDark } = useTheme();
 
@@ -75,4 +74,4 @@ export const ProjectCard = memo(function ProjectCard({
             </div>
         </motion.div>
     );
-});
+};
