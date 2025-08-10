@@ -1,4 +1,8 @@
-export function GithubButton({ isDark }: { isDark: boolean }) {
+import { useTheme } from '@/hooks/useTheme.tsx';
+
+export function GithubButton() {
+    const { isDark } = useTheme();
+
     return (
         <a
             href="https://github.com/Bima42/portfolio"
@@ -6,7 +10,7 @@ export function GithubButton({ isDark }: { isDark: boolean }) {
             rel="noopener noreferrer"
             className="
                   flex items-center space-x-2 px-4 py-2
-                  rounded-full backdrop-blur-sm
+                  rounded-full glass-background shadow-sm
                   transition-all duration-200
                   text-xs font-medium hover-button
                 "

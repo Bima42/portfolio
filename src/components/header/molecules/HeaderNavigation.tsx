@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import { DesktopNavigation } from './desktop/DesktopNavigation.tsx';
 import type { NavigationMenuItem } from '../types';
+import { DesktopNavigation } from '@/components/header';
 
 interface HeaderNavigationProps {
     items: NavigationMenuItem[];

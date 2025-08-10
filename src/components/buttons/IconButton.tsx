@@ -31,9 +31,8 @@ export function IconButton({
             aria-label={ariaLabel}
             className={`  
         ${sizeClasses[size]}
-        rounded-2xl
-        glass-background shadow-md
-        hover-button
+        rounded-2xl hover-button
+        glass-background shadow-sm
         transition-all duration-200
         ${className}
       `}

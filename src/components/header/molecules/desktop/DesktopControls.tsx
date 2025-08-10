@@ -1,14 +1,15 @@
 import { VerticalDivider } from '../../atoms';
 import { LanguageToggle, ThemeToggle } from '../index.ts';
 import { GithubButton } from '@/components/buttons/GithubButton.tsx';
-import { useTheme } from '@/hooks/useTheme.tsx';
+import { LinkedInButton } from '@/components/buttons/LinkedInButton.tsx';
 
 export function DesktopControls() {
-    const { isDark } = useTheme();
-
     return (
         <div className="hidden md:flex items-center space-x-3">
-            <GithubButton isDark={isDark} />
+            <VerticalDivider />
+            <GithubButton />
+            <VerticalDivider />
+            <LinkedInButton />
             <VerticalDivider />
             <LanguageToggle />
             <VerticalDivider />

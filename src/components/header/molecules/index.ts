@@ -1,4 +1,3 @@
-export { NavigationMenu } from './NavigationMenu';
 export { DesktopNavigation } from './desktop/DesktopNavigation.tsx';
 export { MobileNavigation } from './mobile/MobileNavigation.tsx';
 export { DesktopControls } from './desktop/DesktopControls.tsx';

@@ -1,8 +1,8 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import { DesktopControls } from './desktop/DesktopControls.tsx';
 import { MobileMenu } from './mobile/MobileMenu.tsx';
 import type { NavigationMenuItem } from '../types';
 import { useIsMobile } from '@/hooks/useIsMobile.tsx';
+import { DesktopControls } from '@/components/header';
 
 interface HeaderControlsProps {
     animationComplete: boolean;
