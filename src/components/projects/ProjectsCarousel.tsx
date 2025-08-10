@@ -8,13 +8,7 @@ import type { Project } from './types.ts';
 import { constants } from '@/constants.ts';
 import { useLanguage } from '@/hooks/useLanguage.ts';
 
-function MobileProjectsCarousel({
-    className,
-    projects,
-}: {
-    projects: Project[];
-    className?: string;
-}) {
+function MobileProjectsCarousel({ projects }: { projects: Project[] }) {
     const { t } = useLanguage();
     const [selectedProject, setSelectedProject] = useState<Project | null>(
         null
@@ -41,11 +35,11 @@ function MobileProjectsCarousel({
 
     return (
         <>
-            <section className={`py-20 ${className}`}>
+            <section>
                 <div className="px-4">
                     <h1 className="h1 mb-8">{t('pages.projects.title')}</h1>
 
-                    <div className="flex flex-col gap-15 items-center">
+                    <div className="flex flex-col pt-8 gap-15 items-center">
                         {projects.map(project => (
                             <div
                                 key={project.id}
