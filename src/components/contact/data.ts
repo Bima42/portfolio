@@ -1,5 +1,5 @@
-import { Linkedin, Mail, Github } from 'lucide-react';
-import type { ContactItem } from '../types';
+import { Mail, Linkedin, Github } from 'lucide-react';
+import type { ContactItem } from './types.ts';
 
 export const contactData: ContactItem[] = [
     {

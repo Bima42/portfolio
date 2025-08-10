@@ -1,5 +1,5 @@
 import { ContactCard } from '../atoms';
-import { contactData } from '../data/contactData';
+import { contactData } from '../data';
 
 interface ContactGridProps {
     className?: string;
