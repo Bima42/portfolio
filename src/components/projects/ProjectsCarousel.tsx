@@ -20,26 +20,48 @@ function MobileProjectsCarousel({
         null
     );
 
+    const getCardWidth = () => {
+        if (typeof window === 'undefined') return '100%';
+        const screenWidth = window.innerWidth;
+        return screenWidth > 300
+            ? Math.min(constants.PROJECT_CARD_WIDTH, screenWidth - 64)
+            : screenWidth - 32;
+    };
+
+    const [cardWidth, setCardWidth] = useState<string | number>(getCardWidth());
+
+    useEffect(() => {
+        const handleResize = () => {
+            setCardWidth(getCardWidth());
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
     return (
         <>
             <section className={`py-20 ${className}`}>
                 <div className="px-4">
-                    <h1 className="h1">{t('pages.projects.title')}</h1>
-                    <div className="overflow-x-auto">
-                        <div className="flex gap-6 pb-4">
-                            {projects.map(project => (
-                                <div key={project.id}>
-                                    <ProjectCard
-                                        project={project}
-                                        isActive={false}
-                                        onExpand={() =>
-                                            setSelectedProject(project)
-                                        }
-                                        className="w-72 h-64"
-                                    />
-                                </div>
-                            ))}
-                        </div>
+                    <h1 className="h1 mb-8">{t('pages.projects.title')}</h1>
+
+                    <div className="flex flex-col gap-15 items-center">
+                        {projects.map(project => (
+                            <div
+                                key={project.id}
+                                style={{
+                                    width: cardWidth,
+                                    maxWidth: constants.PROJECT_CARD_WIDTH,
+                                }}
+                            >
+                                <ProjectCard
+                                    project={project}
+                                    isActive={true}
+                                    onExpand={() => setSelectedProject(project)}
+                                    className="w-full h-80"
+                                />
+                            </div>
+                        ))}
                     </div>
                 </div>
             </section>

@@ -15,7 +15,7 @@
         dark:shadow-[0_8px_16px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.1)];
     }
     .h1 {
-        @apply text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-foreground text-center;
+        @apply text-5xl md:text-7xl lg:text-8xl xl:text-8xl font-bold text-foreground text-center;
     }
 }
 
@@ -39,6 +39,7 @@
     --spacing-5xl: 6rem; /* 96px */
     --spacing-6xl: 8rem; /* 128px */
     --spacing-7xl: 10rem; /* 160px */
+    --spacing-8xl: 12rem; /* 192px */
 
     /* Container sizes */
     --size-container-sm: 640px;

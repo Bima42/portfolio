@@ -29,6 +29,7 @@ export const ProjectCard = ({
                 'glass-background cursor-pointer',
                 'relative transition-all duration-300 ease-out border-foreground/20',
                 'hover:border-primary',
+                'w-full max-w-full md:max-w-none',
                 className
             )}
             animate={{
@@ -44,13 +45,15 @@ export const ProjectCard = ({
                 scale: isActive ? 1.1 : 0.95,
             }}
             style={{
-                width: constants.PROJECT_CARD_WIDTH,
-                height: 350,
+                width: className?.includes('w-full')
+                    ? '100%'
+                    : constants.PROJECT_CARD_WIDTH,
+                height: className?.includes('h-80') ? 320 : 350,
                 willChange: 'transform',
             }}
         >
-            <div className="p-6 h-full flex flex-col justify-center items-center text-center">
-                <div className="w-full h-32 rounded-lg mb-4 overflow-hidden flex items-center p-4">
+            <div className="p-4 md:p-6 h-full flex flex-col justify-center items-center text-center">
+                <div className="w-[90%] h-24 md:h-32 rounded-lg mb-3 md:mb-4 overflow-hidden flex items-center p-2 md:p-4">
                     <img
                         src={
                             isDark && project.darkThumbnail
@@ -62,14 +65,18 @@ export const ProjectCard = ({
                         loading="lazy"
                     />
                 </div>
-                <h3 className="text-xl font-bold mb-2 text-foreground ">
+                <h3 className="text-lg md:text-xl font-bold mb-2 text-foreground">
                     {t(project.title)}
                 </h3>
-                <p className="text-sm text-foreground/60 mb-4 line-clamp-3">
+                <p className="text-xs md:text-sm text-foreground/60 mb-3 md:mb-4 line-clamp-3">
                     {t(project.shortDescription)}
                 </p>
                 <div className="flex flex-wrap gap-1 justify-center">
-                    <TagList tags={project.tags.slice(0, 3)} size={'md'} />
+                    <TagList
+                        tags={project.tags.slice(0, 3)}
+                        size={'md'}
+                        className={'justify-center'}
+                    />
                 </div>
             </div>
         </motion.div>
