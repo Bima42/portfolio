@@ -3,9 +3,10 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet.tsx';
 import { IconButton } from '../../atoms';
 import { MobileMenuHeader } from './MobileMenuHeader.tsx';
 import { MobileNavigation } from './MobileNavigation.tsx';
-import { MobileControls } from './MobileControls.tsx';
+import { MobileToggles } from './MobileToggles.tsx';
 import type { NavigationMenuItem } from '../../types.ts';
 import { useState } from 'react';
+import { MobileSocialButtons } from '@/components/header/molecules/mobile/MobileSocialButtons.tsx';
 
 interface MobileMenuProps {
     navigationItems: NavigationMenuItem[];
@@ -52,7 +53,8 @@ export function MobileMenu({ navigationItems }: MobileMenuProps) {
                             navigationItems={navigationItems}
                             onItemClick={handleClose}
                         />
-                        <MobileControls />
+                        <MobileSocialButtons />
+                        <MobileToggles />
                     </div>
                 </SheetContent>
             </Sheet>

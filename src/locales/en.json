@@ -12,7 +12,8 @@
         "languageToggle": "Switch to {{language}}",
         "theme": "Theme",
         "language": "Language",
-        "navigation": "Navigation"
+        "navigation": "Navigation",
+        "connectAndDownload": "Connect and download"
     },
     "pages": {
         "home": {

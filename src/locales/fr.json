@@ -7,7 +7,8 @@
         "languageToggle": "Passer à {{language}}",
         "theme": "Thème",
         "language": "Langue",
-        "navigation": "Navigation"
+        "navigation": "Navigation",
+        "connectAndDownload": "Se connecter et télécharger"
     },
     "navigation": {
         "about": "À PROPOS",

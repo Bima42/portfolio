@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import { MobileMenu } from './mobile/MobileMenu.tsx';
-import type { NavigationMenuItem } from '../types';
+import { MobileMenu } from '../molecules/mobile/MobileMenu.tsx';
+import type { NavigationMenuItem } from '../types.ts';
 import { useIsMobile } from '@/hooks/useIsMobile.tsx';
 import { DesktopControls } from '@/components/header';
 

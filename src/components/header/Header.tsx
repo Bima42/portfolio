@@ -2,10 +2,10 @@ import { useLanguage } from '@/hooks/useLanguage';
 import { useTheme } from '@/hooks/useTheme';
 import { motion } from 'framer-motion';
 import { HeaderLogo } from './molecules/HeaderLogo';
-import { HeaderNavigation } from './molecules/HeaderNavigation';
-import { HeaderControls } from './molecules/HeaderControls';
+import { HeaderControls } from './organisms/HeaderControls.tsx';
 import type { NavigationMenuItem } from './types';
 import { useIsMobile } from '@/hooks/useIsMobile.tsx';
+import { DesktopNavigation } from '@/components/header/molecules';
 
 interface HeaderProps {
     animationComplete: boolean;
@@ -69,7 +69,7 @@ export function Header({
                     />
 
                     {!isMobile && (
-                        <HeaderNavigation
+                        <DesktopNavigation
                             items={defaultNavigation}
                             animationComplete={animationComplete}
                         />

@@ -2,7 +2,7 @@ import { VerticalDivider } from '../../atoms';
 import { LanguageToggle, ThemeToggle } from '../index.ts';
 import { useLanguage } from '@/hooks/useLanguage.ts';
 
-export function MobileControls() {
+export function MobileToggles() {
     const { t } = useLanguage();
 
     return (
