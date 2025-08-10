@@ -9,13 +9,13 @@ export function ContactGrid({ className = '' }: ContactGridProps) {
     return (
         <div
             className={`
-      grid
-      grid-cols-1
-      md:grid-cols-3
-      gap-6
-      md:gap-8
-      mx-auto
-      ${className}
+              grid
+              grid-cols-1
+              md:grid-cols-3
+              gap-10
+              md:gap-12
+              mx-auto
+              ${className}
     `}
         >
             {contactData.map(contact => (
