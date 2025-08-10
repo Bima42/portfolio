@@ -10,10 +10,28 @@ import { useLanguage } from '@/hooks/useLanguage.ts';
 import type { Components } from 'react-markdown';
 import { visit } from 'unist-util-visit';
 import { useTheme } from '@/hooks/useTheme.tsx';
+import type { Node, Parent } from 'unist';
+
+interface MarkdownNode extends Node {
+    type: string;
+    url?: string;
+    value?: string;
+}
+
+interface ParagraphNode extends Parent {
+    type: 'paragraph';
+    children: MarkdownNode[];
+    data?: {
+        hName: string;
+        hProperties: {
+            className: string;
+        };
+    };
+}
 
 const videoExtensions = ['.mp4', '.webm', '.mov'];
 
-const isChildVideo = (child: any) => {
+const isChildVideo = (child: MarkdownNode): boolean => {
     return (
         child.type === 'image' &&
         videoExtensions.some(ext => child.url?.endsWith(ext))
@@ -21,17 +39,17 @@ const isChildVideo = (child: any) => {
 };
 
 const groupImagesPlugin = () => {
-    return tree => {
-        visit(tree, 'paragraph', node => {
+    return (tree: Node): void => {
+        visit(tree, 'paragraph', (node: ParagraphNode) => {
             // Avoid if it's video
             if (node.children.some(isChildVideo)) {
                 return;
             }
 
             const isImageOnly = node.children.every(
-                child =>
+                (child: MarkdownNode) =>
                     child.type === 'image' ||
-                    (child.type === 'text' && child.value.trim() === '')
+                    (child.type === 'text' && child.value?.trim() === '')
             );
 
             if (isImageOnly) {
@@ -80,88 +98,6 @@ const itemVariants = {
     },
 };
 
-const markdownComponents: Components = {
-    h1: ({ children }) => (
-        <h1 className="text-4xl font-bold mb-6 text-foreground">{children}</h1>
-    ),
-    h2: ({ children }) => (
-        <h2 className="text-3xl font-semibold mb-4 mt-12 text-foreground">
-            {children}
-        </h2>
-    ),
-    h3: ({ children }) => (
-        <h3 className="text-2xl font-medium mb-3 mt-10 text-foreground">
-            {children}
-        </h3>
-    ),
-    p: ({ children }) => (
-        <p className="mb-4 text-foreground/80 leading-relaxed">{children}</p>
-    ),
-    ul: ({ children }) => <ul className="mb-4 ml-6 space-y-2">{children}</ul>,
-    li: ({ children }) => (
-        <li className="text-foreground/80 list-disc">{children}</li>
-    ),
-    div: ({ className, children, ...props }) => {
-        if (className === 'image-gallery') {
-            return (
-                <div className="w-full h-[50vh] flex justify-center gap-10 bg-background/80 rounded-lg m-6">
-                    {children}
-                </div>
-            );
-        }
-        if (className === 'single-image') {
-            return (
-                <div className="w-full h-[45vh] flex justify-center rounded-lg mb-6 my-6">
-                    {children}
-                </div>
-            );
-        }
-        return (
-            <div className={className} {...props}>
-                {children}
-            </div>
-        );
-    },
-    img: ({ src, alt, ...props }) => {
-        if (
-            src?.endsWith('.mp4') ||
-            src?.endsWith('.webm') ||
-            src?.endsWith('.mov')
-        ) {
-            return (
-                <video
-                    src={src}
-                    controls
-                    className="max-h-full object-contain"
-                    autoPlay
-                    muted
-                    loop
-                >
-                    {alt && <span>{alt}</span>}
-                </video>
-            );
-        }
-        return (
-            <img
-                src={src}
-                alt={alt}
-                className="max-h-full object-contain"
-                {...props}
-            />
-        );
-    },
-    code: ({ className, children, ...props }) => {
-        return (
-            <code
-                className={`${className} bg-muted px-1 py-0.5 rounded text-sm`}
-                {...props}
-            >
-                {children}
-            </code>
-        );
-    },
-};
-
 export function ProjectContent({ project, isMobile }: ProjectContentProps) {
     const { t, currentLanguage } = useLanguage();
     const { isDark } = useTheme();
@@ -182,6 +118,97 @@ export function ProjectContent({ project, isMobile }: ProjectContentProps) {
 
         loadMarkdown();
     }, [currentLanguage, project.filePath]);
+
+    const markdownComponents: Components = {
+        h1: ({ children }) => (
+            <h1 className="text-4xl font-bold mb-6 text-foreground">
+                {children}
+            </h1>
+        ),
+        h2: ({ children }) => (
+            <h2 className="text-3xl font-semibold mb-4 mt-12 text-foreground">
+                {children}
+            </h2>
+        ),
+        h3: ({ children }) => (
+            <h3 className="text-2xl font-medium mb-3 mt-10 text-foreground">
+                {children}
+            </h3>
+        ),
+        p: ({ children }) => (
+            <p className="mb-4 text-foreground/80 leading-relaxed">
+                {children}
+            </p>
+        ),
+        ul: ({ children }) => (
+            <ul className="mb-4 ml-6 space-y-2">{children}</ul>
+        ),
+        li: ({ children }) => (
+            <li className="text-foreground/80 list-disc">{children}</li>
+        ),
+        div: ({ className, children, ...props }) => {
+            if (className === 'image-gallery') {
+                return (
+                    <div
+                        className={`w-full flex justify-center gap-2 bg-background/80 rounded-lg my-6 ${
+                            isMobile
+                                ? 'h-[30vh] flex-row overflow-hidden'
+                                : 'h-[50vh] gap-10'
+                        }`}
+                    >
+                        {children}
+                    </div>
+                );
+            } else if (className === 'single-image') {
+                return (
+                    <div className="w-full h-[45vh] flex justify-center rounded-lg mb-6 my-6">
+                        {children}
+                    </div>
+                );
+            }
+            return (
+                <div className={className} {...props}>
+                    {children}
+                </div>
+            );
+        },
+        img: ({ src, alt, ...props }) => {
+            if (videoExtensions.some(ext => src?.endsWith(ext))) {
+                return (
+                    <video
+                        src={src}
+                        controls
+                        className="max-h-full object-contain"
+                        autoPlay
+                        muted
+                        loop
+                    >
+                        {alt && <span>{alt}</span>}
+                    </video>
+                );
+            }
+            return (
+                <img
+                    src={src}
+                    alt={alt}
+                    className={`max-h-full object-contain ${
+                        isMobile ? 'flex-1 min-w-0' : ''
+                    }`}
+                    {...props}
+                />
+            );
+        },
+        code: ({ className, children, ...props }) => {
+            return (
+                <code
+                    className={`${className} bg-muted px-1 py-0.5 rounded text-sm`}
+                    {...props}
+                >
+                    {children}
+                </code>
+            );
+        },
+    };
 
     return (
         <motion.div
