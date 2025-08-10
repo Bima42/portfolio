@@ -52,7 +52,7 @@ export const ProjectCard = ({
                 willChange: 'transform',
             }}
         >
-            <div className="p-4 md:p-6 h-full flex flex-col justify-center items-center text-center gap-y-2">
+            <div className="p-4 md:p-6 h-full flex flex-col justify-center items-center text-center gap-y-4">
                 <div className="w-[90%] h-24 md:h-32 rounded-lg mb-3 md:mb-4 overflow-hidden flex items-center p-2 md:p-4">
                     <img
                         src={
