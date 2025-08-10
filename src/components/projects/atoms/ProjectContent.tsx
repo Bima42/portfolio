@@ -208,10 +208,14 @@ export function ProjectContent({ project, isMobile }: ProjectContentProps) {
 
             {/* Tags */}
             <motion.div
-                className={`${isMobile ? 'justify-between' : ''} flex flex-wrap gap-2 mb-6`}
+                className={'flex flex-wrap gap-2 mb-6'}
                 variants={itemVariants}
             >
-                <TagList tags={project.tags} size="lg" />
+                <TagList
+                    tags={project.tags}
+                    size="lg"
+                    className={isMobile ? 'justify-between' : ''}
+                />
             </motion.div>
 
             {/* Links */}
