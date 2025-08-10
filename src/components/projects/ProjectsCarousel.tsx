@@ -150,7 +150,7 @@ export function ProjectsCarousel({ projects }: ProjectsCarouselProps) {
                 id="projects"
             >
                 <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden">
-                    <h1 className="h1 mb-8">{t('pages.projects.title')}</h1>
+                    <h1 className="h1">{t('pages.projects.title')}</h1>
 
                     <motion.div
                         className="flex gap-10"

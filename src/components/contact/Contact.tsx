@@ -9,7 +9,7 @@ export default function Contact() {
             className="min-h-screen flex items-center bg-background"
             id="contact"
         >
-            <div className="flex flex-col w-full px-6 py-16 gap-y-12">
+            <div className="flex flex-col w-full px-6 py-16">
                 <h1 className="h1">{t('pages.contact.title')}</h1>
                 <ContactGrid />
             </div>
