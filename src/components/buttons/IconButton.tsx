@@ -32,9 +32,7 @@ export function IconButton({
             className={`  
         ${sizeClasses[size]}
         rounded-2xl
-        backdrop-blur-sm
-        bg-white/5 dark:bg-white/5
-        border border-white/20 dark:border-white/10
+        glass-background shadow-md
         hover-button
         transition-all duration-200
         ${className}
