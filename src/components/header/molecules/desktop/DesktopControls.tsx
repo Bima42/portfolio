@@ -2,6 +2,7 @@ import { VerticalDivider } from '../../atoms';
 import { LanguageToggle, ThemeToggle } from '../index.ts';
 import { GithubButton } from '@/components/buttons/GithubButton.tsx';
 import { LinkedInButton } from '@/components/buttons/LinkedInButton.tsx';
+import { CVButton } from '@/components/buttons/CVButton.tsx';
 
 export function DesktopControls() {
     return (
@@ -10,6 +11,8 @@ export function DesktopControls() {
             <GithubButton />
             <VerticalDivider />
             <LinkedInButton />
+            <VerticalDivider />
+            <CVButton />
             <VerticalDivider />
             <LanguageToggle />
             <VerticalDivider />
