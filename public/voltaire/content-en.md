@@ -1,6 +1,6 @@
-![voltaire-landing.mp4](/voltaire/voltaire-landing.mp4)
-
 Voltaire is an AI-powered writing assistant that adapts to your unique style and voice. The application enables users to write, edit, and enhance texts while adapting to each user's specific style and requirements.
+
+![voltaire-landing.mp4](/voltaire/voltaire-landing.mp4)
 
 ## Background
 The idea emerged from the observation that many people waste considerable time writing and formatting their texts. Whether it's professionals who need to regularly produce content or occasional users facing complex writing tasks, they all encounter the same challenges: finding inspiration, structuring their ideas, and ensuring the final result meets their expectations.

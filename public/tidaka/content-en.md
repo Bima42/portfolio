@@ -1,6 +1,6 @@
-![tidaka-landing.png](/tidaka/tidaka-landing.png)
-
 Tidaka is a mobile application that connects fitness trainers with their clients. It allows trainers to manage their schedules, track their clients' progress, and communicate with them in real-time.
+
+![tidaka-landing.png](/tidaka/tidaka-landing.png)
 
 ## Context
 The idea came from a friend who was working on the project. They noticed that many trainers struggle to efficiently manage their clients, especially when they have multiple clients with different training programs and schedules.

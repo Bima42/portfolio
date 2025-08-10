@@ -1,6 +1,6 @@
-![prompt-pilot-landing.png](/prompt-pilot/prompt-pilot-landing.png)
-
 Prompt Pilot is an application that enables users to generate optimized prompts in XML format. It streamlines the creation and management of high-quality prompts to enhance interactions with LLMs and chatbots.
+
+![prompt-pilot-landing.mp4](/prompt-pilot/prompt-pilot-landing.mp4)
 
 ## Context
 With the emergence of LLMs and other chatbots, prompt quality has become crucial for obtaining relevant results. However, crafting effective prompts can be time-consuming and repetitive, particularly when structuring complex requests.

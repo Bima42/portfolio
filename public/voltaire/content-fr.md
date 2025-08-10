@@ -1,6 +1,6 @@
-![voltaire-landing.mp4](/voltaire/voltaire-landing.mp4)
-
 Voltaire est un assistant de rédaction alimenté par l'IA qui s'adapte à votre style. L'application permet de rédiger, éditer et améliorer des textes tout en s'adaptant au style et aux besoins spécifiques de chaque utilisateur.
+
+![voltaire-landing.mp4](/voltaire/voltaire-landing.mp4)
 
 ## Contexte
 L'idée est née du constat que de nombreuses personnes perdent un temps considérable dans la rédaction et la mise en forme de leurs textes. Qu'il s'agisse de professionnels devant produire régulièrement du contenu ou d'utilisateurs occasionnels confrontés à des tâches d'écriture complexes, tous font face aux mêmes défis : trouver l'inspiration, structurer leurs idées et s'assurer que le résultat final soit à la hauteur de leurs attentes.

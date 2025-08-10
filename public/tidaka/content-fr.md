@@ -1,6 +1,6 @@
-![tidaka-landing.png](/tidaka/tidaka-landing.png)
+Tidaka est une application mobile qui met en relation les entraîneurs sportifs avec leurs clients. Elle permet aux entraîneurs de gérer leurs horaires, de suivre les progrès de leurs clients et de communiquer avec eux en temps réel.
 
-Tidaka est une application mobile qui met en relation les entraîneurs sportifs avec leurs clients. Elle permet aux entraîneurs de gérer leurs horaires, de suivre les progrès de leurs clients et de communiquer avec eux en temps réel. 
+![tidaka-landing.png](/tidaka/tidaka-landing.png)
 
 ## Contexte
 L'idée est venue par le biais d'un ami travaillais sur le projets. Ils avaient remarqués que de nombreux entraîneurs ont du mal à gérer efficacement leurs clients, en particulier lorsqu'ils ont plusieurs clients avec des programmes d'entraînement et des emplois du temps différents. 
