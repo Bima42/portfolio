@@ -5,7 +5,7 @@ import { ProjectsCarousel } from '@/components/projects';
 import Contact from '@/components/contact/Contact.tsx';
 import { useContentVisible } from '@/hooks/useContentVisible.ts';
 import { Header } from '@/components/header';
-import { projectsData } from '@/components/projects/data.ts';
+import { projectsData } from '@/components/projects/data';
 
 export default function Home() {
     const { isContentVisible, animationComplete, handleAnimationEnd } =
@@ -31,7 +31,7 @@ export default function Home() {
 
                 {isContentVisible && (
                     <>
-                        {/*<About />*/}
+                        <About />
                         <ProjectsCarousel projects={projectsData} />
                         <Contact />
                     </>

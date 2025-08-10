@@ -1,4 +1,4 @@
-import type { TimelineData } from '../components/about/types.ts';
+import type { TimelineData } from './types.ts';
 
 export const timelineData: TimelineData = {
     title: 'timeline.title',

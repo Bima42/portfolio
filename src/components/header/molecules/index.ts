@@ -4,7 +4,6 @@ export { DesktopControls } from './desktop/DesktopControls.tsx';
 export { MobileToggles } from './mobile/MobileToggles.tsx';
 export { MobileMenuHeader } from './mobile/MobileMenuHeader.tsx';
 export { HeaderLogo } from './HeaderLogo';
-export { HeaderNavigation } from './HeaderNavigation';
 export { HeaderControls } from '../organisms/HeaderControls.tsx';
 export { MobileMenu } from './mobile/MobileMenu.tsx';
 export { LanguageToggle } from './toggles/LanguageToggle.tsx';

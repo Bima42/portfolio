@@ -1,5 +1,5 @@
 import { TimelineContainer } from '@/components/about/index.ts';
-import { timelineData } from '@/data/timelineData.ts';
+import { timelineData } from '@/components/about/data.ts';
 
 export default function About() {
     return (

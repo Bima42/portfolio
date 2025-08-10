@@ -1,8 +1,8 @@
 import { useRef } from 'react';
 import { ReactLenis } from 'lenis/react';
-import type { TimelineData } from './types.ts';
-import { TimelineLine } from './atoms/TimelineLine.tsx';
-import { TimelineItem } from './molecules/TimelineItem.tsx';
+import type { TimelineData } from '../types.ts';
+import { TimelineLine } from '../atoms/TimelineLine.tsx';
+import { TimelineItem } from './TimelineItem.tsx';
 
 interface TimelineContainerProps {
     timelineData: TimelineData;

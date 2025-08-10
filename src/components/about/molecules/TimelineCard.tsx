@@ -1,7 +1,7 @@
 import { motion, type MotionValue } from 'framer-motion';
 import { CardHeader } from '@/components/about/atoms/CardHeader.tsx';
 import { CardContent } from '@/components/about/atoms/CardContent.tsx';
-import { CardFooter } from '@/components/about/props/CardFooter.tsx';
+import { CardFooter } from '@/components/about/atoms/CardFooter.tsx';
 import type { TimelineItem } from '@/components/about/types.ts';
 
 interface TimelineCardProps {
