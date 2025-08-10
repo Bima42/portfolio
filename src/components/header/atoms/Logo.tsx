@@ -10,7 +10,7 @@ interface LogoProps {
 }
 
 export function Logo({
-    src = '/logo-no-bg.svg',
+    src = '/logos/logo-no-bg.svg',
     logoHeight,
     alt = 'Logo',
     className = '',
