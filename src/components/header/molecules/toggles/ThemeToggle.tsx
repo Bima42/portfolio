@@ -1,5 +1,5 @@
 import { Moon, Sun } from 'lucide-react';
-import { IconButton } from '../atoms';
+import { IconButton } from '../../atoms';
 
 import { useTheme } from '@/hooks/useTheme.tsx';
 

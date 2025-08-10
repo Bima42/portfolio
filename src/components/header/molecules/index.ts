@@ -1,4 +1,12 @@
 export { NavigationMenu } from './NavigationMenu';
-export { LanguageToggle } from './LanguageToggle';
-export { ThemeToggle } from './ThemeToggle';
-export { MobileMenu } from './MobileMenu';
+export { DesktopNavigation } from './desktop/DesktopNavigation.tsx';
+export { MobileNavigation } from './mobile/MobileNavigation.tsx';
+export { DesktopControls } from './desktop/DesktopControls.tsx';
+export { MobileControls } from './mobile/MobileControls.tsx';
+export { MobileMenuHeader } from './mobile/MobileMenuHeader.tsx';
+export { HeaderLogo } from './HeaderLogo';
+export { HeaderNavigation } from './HeaderNavigation';
+export { HeaderControls } from './HeaderControls';
+export { MobileMenu } from './mobile/MobileMenu.tsx';
+export { LanguageToggle } from './toggles/LanguageToggle.tsx';
+export { ThemeToggle } from './toggles/ThemeToggle.tsx';

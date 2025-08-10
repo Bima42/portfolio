@@ -1,4 +1,4 @@
-import { IconButton } from '../atoms';
+import { IconButton } from '../../atoms';
 import { useLanguage } from '@/hooks/useLanguage.ts';
 
 interface LanguageToggleProps {

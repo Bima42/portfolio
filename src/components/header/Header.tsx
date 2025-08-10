@@ -1,17 +1,12 @@
 import { useLanguage } from '@/hooks/useLanguage';
-import { Logo, VerticalDivider } from './atoms';
-import {
-    NavigationMenu,
-    LanguageToggle,
-    ThemeToggle,
-    MobileMenu,
-} from './molecules';
+import { useTheme } from '@/hooks/useTheme';
+import { motion } from 'framer-motion';
+import { HeaderLogo } from './molecules/HeaderLogo';
+import { HeaderNavigation } from './molecules/HeaderNavigation';
+import { HeaderControls } from './molecules/HeaderControls';
 import type { NavigationMenuItem } from './types';
-import { GithubButton } from '@/components/buttons/GithubButton.tsx';
-import { AnimatePresence, motion } from 'framer-motion';
-import { AnimatedLogo } from '@/components/header/atoms/AnimatedLogo.tsx';
+import { useIsMobile } from '@/hooks/useIsMobile.tsx';
 
-import { useTheme } from '@/hooks/useTheme.tsx';
 interface HeaderProps {
     animationComplete: boolean;
     onLogoAnimationComplete: () => void;
@@ -23,6 +18,7 @@ export function Header({
 }: HeaderProps) {
     const { isDark } = useTheme();
     const { t } = useLanguage();
+    const isMobile = useIsMobile();
 
     const defaultNavigation: NavigationMenuItem[] = [
         { label: t('navigation.projects'), id: 'projects' },
@@ -67,62 +63,22 @@ export function Header({
                 }}
             >
                 <div className="flex items-center justify-between">
-                    {/* Fallback Logo for initial animation state - allow to take space and avoid weird animation effect */}
-                    {!animationComplete && (
-                        <Logo className={'opacity-0'} logoHeight={'h-10'} />
+                    <HeaderLogo
+                        animationComplete={animationComplete}
+                        onLogoAnimationComplete={onLogoAnimationComplete}
+                    />
+
+                    {!isMobile && (
+                        <HeaderNavigation
+                            items={defaultNavigation}
+                            animationComplete={animationComplete}
+                        />
                     )}
 
-                    {/* Left: Logo */}
-                    <AnimatePresence>
-                        <AnimatedLogo
-                            isAnimating={!animationComplete}
-                            onAnimationComplete={onLogoAnimationComplete}
-                        />
-                    </AnimatePresence>
-
-                    {/* Center: Desktop Navigation */}
-                    <AnimatePresence>
-                        {animationComplete && (
-                            <motion.div
-                                initial={{ opacity: 0, y: -10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: -10 }}
-                                transition={{ duration: 0.5, delay: 0.4 }}
-                                className="flex-1 justify-center"
-                            >
-                                <NavigationMenu
-                                    items={defaultNavigation}
-                                    className="flex-1 justify-center"
-                                />
-                            </motion.div>
-                        )}
-                    </AnimatePresence>
-
-                    {/* Right: Controls */}
-                    <AnimatePresence>
-                        {animationComplete && (
-                            <motion.div
-                                initial={{ opacity: 0, x: 20 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                exit={{ opacity: 0, x: 20 }}
-                                transition={{ duration: 0.5, delay: 0.6 }}
-                                className="flex items-center space-x-3"
-                            >
-                                {/* Desktop Controls */}
-                                <div className="hidden md:flex items-center space-x-3">
-                                    <GithubButton isDark={isDark} />
-                                    <VerticalDivider />
-                                    <LanguageToggle />
-                                    <VerticalDivider />
-                                    <ThemeToggle />
-                                </div>
-
-                                <MobileMenu
-                                    navigationItems={defaultNavigation}
-                                />
-                            </motion.div>
-                        )}
-                    </AnimatePresence>
+                    <HeaderControls
+                        animationComplete={animationComplete}
+                        navigationItems={defaultNavigation}
+                    />
                 </div>
             </motion.div>
         </header>

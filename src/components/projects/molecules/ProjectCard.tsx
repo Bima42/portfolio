@@ -33,7 +33,7 @@ export const ProjectCard = ({
                 className
             )}
             animate={{
-                scale: isActive ? 1.05 : 0.75,
+                scale: isActive ? 1 : 0.75,
                 opacity: isActive ? 1 : 0.7,
             }}
             transition={{
@@ -42,7 +42,7 @@ export const ProjectCard = ({
             }}
             onClick={() => onExpand && onExpand()}
             whileHover={{
-                scale: isActive ? 1.1 : 0.95,
+                scale: isActive ? 1.05 : 0.95,
             }}
             style={{
                 width: className?.includes('w-full')
