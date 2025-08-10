@@ -1,6 +1,7 @@
 # Software Engineer Portfolio
 
 A modern portfolio showcasing my skills and achievements as a software engineer.
+[Check it out live!](https://tanguypauvret.me/)
 
 ![portofolio-landing.png](public/portofolio-landing.png)
 
