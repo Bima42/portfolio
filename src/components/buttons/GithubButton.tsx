@@ -1,8 +1,6 @@
-import { useTheme } from '@/hooks/useTheme.tsx';
+import { GithubIcon } from '@/components/icons/GithubIcon.tsx';
 
 export function GithubButton() {
-    const { isDark } = useTheme();
-
     return (
         <a
             href="https://github.com/Bima42/portfolio"
@@ -15,11 +13,7 @@ export function GithubButton() {
                   text-xs font-medium hover-button
                 "
         >
-            <img
-                src={isDark ? '/github-mark-white.svg' : '/github-mark.svg'}
-                alt="GitHub"
-                className="w-4 h-4"
-            />
+            <GithubIcon />
             <span>GITHUB</span>
         </a>
     );
