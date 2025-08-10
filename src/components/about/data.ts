@@ -59,6 +59,7 @@ export const timelineData: TimelineData = {
             title: 'timeline.items.software_engineer.title',
             location: 'timeline.items.software_engineer.location',
             description: 'timeline.items.software_engineer.description',
+            link: 'https://resilio-solutions.com/',
             type: 'experience',
             icon: '/logos/logo-resilio.svg',
         },
