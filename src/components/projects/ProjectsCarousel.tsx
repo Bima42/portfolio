@@ -146,7 +146,7 @@ export function ProjectsCarousel({ projects }: ProjectsCarouselProps) {
             <div
                 ref={containerRef}
                 className="relative"
-                style={{ height: '400vh' }}
+                style={{ height: '200vh' }}
                 id="projects"
             >
                 <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden">
