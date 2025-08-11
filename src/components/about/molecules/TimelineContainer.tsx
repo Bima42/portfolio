@@ -12,7 +12,7 @@ export function TimelineContainer({ timelineData }: TimelineContainerProps) {
     const containerRef = useRef<HTMLDivElement>(null);
 
     return (
-        <ReactLenis root options={{ duration: 1.5 }}>
+        <ReactLenis root options={{ duration: 1 }}>
             <div
                 ref={containerRef}
                 className="relative w-full top-[-100px] overflow-x-hidden"

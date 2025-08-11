@@ -66,7 +66,7 @@ export function TimelineItem({ item, isLeft }: TimelineItemProps) {
     };
 
     return (
-        <div ref={ref} className="relative h-[48vh] flex items-center">
+        <div ref={ref} className="relative h-[50vh] flex items-center">
             <TimelineDot dotScale={dotScale} />
 
             <ConnectorLine
