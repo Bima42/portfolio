@@ -191,6 +191,7 @@ export function ProjectContent({ project, isMobile }: ProjectContentProps) {
                 <img
                     src={src}
                     alt={alt}
+                    loading={'lazy'}
                     className={`max-h-full object-contain ${
                         isMobile ? 'flex-1 min-w-0' : ''
                     }`}
