@@ -1,6 +1,5 @@
 import { GithubButton } from '@/components/header/molecules/icon-buttons/GithubButton.tsx';
 import { LinkedInButton } from '@/components/header/molecules/icon-buttons/LinkedInButton.tsx';
-import { CVButton } from '@/components/header/molecules/icon-buttons/CVButton.tsx';
 import { useLanguage } from '@/hooks/useLanguage.ts';
 
 export function MobileSocialButtons() {
@@ -22,7 +21,7 @@ export function MobileSocialButtons() {
             <div className="flex flex-col justify-center space-y-4 px-6">
                 <GithubButton />
                 <LinkedInButton />
-                <CVButton />
+                {/*<CVButton />*/}
             </div>
         </div>
     );
