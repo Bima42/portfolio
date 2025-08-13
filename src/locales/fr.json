@@ -75,13 +75,13 @@
             },
             "42_school": {
                 "title": "Étudiant École 42",
-                "date": "10-2021 - Today",
+                "date": "10-2021 - Aujourd'hui",
                 "location": "Lausanne, Suisse 🇨🇭",
                 "description": "Formation en informatique innovante, gratuite et ouverte à tous, sans diplôme requis, qui repose sur l’apprentissage par projets et l’entraide entre pairs."
             },
             "software_engineer": {
                 "title": "Ingénieur Logiciel",
-                "date": "01-2023 - Today",
+                "date": "01-2023 - Aujourd'hui",
                 "location": "Resilio - Lausanne, Suisse 🇨🇭",
                 "description": "Je développe, maintiens et améliores les applications de l'entreprise. Je gère également, en collaboration avec le CTO, toute la partie infrastructure de l'entreprise, notamment les serveurs et les bases de données."
             }
