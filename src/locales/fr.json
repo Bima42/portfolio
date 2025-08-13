@@ -51,36 +51,37 @@
         "items": {
             "school": {
                 "title": "Baccalauréat Scientifique",
+                "date": "2013",
                 "location": "Lycée Paul Guérin, Niort, France 🇫🇷",
                 "description": "Avec spécialisation en Sciences de la vie, et Sport. Obtention à l'âge de 16 ans."
             },
             "university": {
                 "title": "Licence Physiologie Animale et Neurosciences",
+                "date": "2013-2016",
                 "location": "Université de Poitiers, France 🇫🇷",
                 "description": "Un programme de trois ans axé sur l'étude du vivant et du fonctionnement du système nerveux."
             },
             "vet_fail": {
                 "title": "Échec d'entrée en école vétérinaire",
+                "date": "2017",
                 "location": "Nantes, France 🇫🇷",
                 "description": "Tentative suite à la fin de ma licence, en parallèle d'une seconde licence en Écologie et Biologie des Organismes."
             },
-            "cook_lacanau": {
+            "cook": {
                 "title": "Cuisinier",
-                "location": "Éliandre - Lacanau, France 🇫🇷",
-                "description": "Emploi saisonnier en tant que cuisinier dans un restaurant. J'ai appris à travailler sous pression et à collaborer avec une équipe dynamique."
-            },
-            "cook_geneva": {
-                "title": "Cuisinier",
-                "location": "Nero's - Genève, Suisse 🇨🇭",
-                "description": "Cuisinier dans un restaurant italien, dans le centre de Genève. J'ai développé mes compétences culinaires et appris à travailler dans un environnement multiculturel."
+                "date": "Until 2021",
+                "location": "France 🇫🇷et Suisse 🇨🇭",
+                "description": "J'ai principalement travaillé en restauration dans les années qui ont précédés mon entrée à l'école 42."
             },
             "42_school": {
                 "title": "Étudiant École 42",
+                "date": "10-2021 - Today",
                 "location": "Lausanne, Suisse 🇨🇭",
                 "description": "Formation en informatique innovante, gratuite et ouverte à tous, sans diplôme requis, qui repose sur l’apprentissage par projets et l’entraide entre pairs."
             },
             "software_engineer": {
                 "title": "Ingénieur Logiciel",
+                "date": "01-2023 - Today",
                 "location": "Resilio - Lausanne, Suisse 🇨🇭",
                 "description": "Je développe, maintiens et améliores les applications de l'entreprise. Je gère également, en collaboration avec le CTO, toute la partie infrastructure de l'entreprise, notamment les serveurs et les bases de données."
             }

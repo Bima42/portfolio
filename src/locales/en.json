@@ -51,36 +51,37 @@
         "items": {
             "school": {
                 "title": "Scientific Baccalauréat",
+                "date": "2013",
                 "location": "Paul Guérin School, Niort, France 🇫🇷",
                 "description": "Specializing in Life Sciences and Sports. Obtained at the age of 16."
             },
             "university": {
                 "title": "Bachelor's in Animal Physiology and Neurosciences",
+                "date": "2013-2016",
                 "location": "University of Poitiers, France 🇫🇷",
                 "description": "A three-year program focused on the study of animal physiology and the functioning of the nervous system."
             },
             "vet_fail": {
                 "title": "Veterinary School Failure",
+                "date": "2017",
                 "location": "Nantes, France 🇫🇷",
                 "description": "Attempt following the completion of my bachelor's degree, alongside a second bachelor's degree in Ecology and Organism Biology."
             },
-            "cook_lacanau": {
+            "cook": {
                 "title": "Cook",
-                "location": "Éliandre - Lacanau, France 🇫🇷",
-                "description": "Seasonal job as a cook in a restaurant. I learned to work under pressure and collaborate with a dynamic team."
-            },
-            "cook_geneva": {
-                "title": "Cook",
-                "location": "Nero's - Geneva, Switzerland 🇨🇭",
-                "description": "Cook in an Italian restaurant in the center of Geneva. I developed my culinary skills and learned to work in a multicultural environment."
+                "date": "Until 2021",
+                "location": "France 🇫🇷and Switzerland 🇨🇭",
+                "description": "I mainly worked in catering in the years before I enrolled at 42."
             },
             "42_school": {
                 "title": "42 School Student",
+                "date": "10-2021 - Today",
                 "location": "Lausanne, Switzerland 🇨🇭",
                 "description": "Innovative computer training that is free and open to all, with no diploma required, based on project-based learning and peer support."
             },
             "software_engineer": {
                 "title": "Software Engineer",
+                "date": "01-2023 - Today",
                 "location": "Resilio - Lausanne, Switzerland 🇨🇭",
                 "description": "I develop, maintain, and improve the company's applications. I also manage, in collaboration with the CTO, all aspects of the company's infrastructure, including servers and databases."
             }
