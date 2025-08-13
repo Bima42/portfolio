@@ -24,9 +24,9 @@ export function HeaderIconButtonLayout({
         rounded-full glass-background shadow-sm
         transition-all duration-200
         text-xs font-medium hover-button
-        focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
+        focus:outline-none focus:ring-1 focus:ring-primary
         sm:justify-start
-        ${className}
+        ${className}    
     `;
 
     if (href) {
