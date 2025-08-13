@@ -21,26 +21,16 @@ export function ContactCard({ contact, className = '' }: ContactCardProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="
-                  group
-                  contact-card
-                  relative
-                  flex
-                  flex-col
-                  items-center
-                  justify-center
-                  p-8
-                  rounded-xl
-                  border
+                  group relative p-8
+                  flex flex-col items-center justify-center
+                  rounded-xl border
                   dark:bg-background-elevated
                   border-foreground/10
                   hover:border-primary/20
                   backdrop-blur-sm
-                  transition-all
-                  duration-300
-                  ease-out
-                  shadow-sm
-                  hover:shadow-lg
-                  hover:shadow-primary/10
+                  transition-all duration-300 ease-out
+                  shadow-sm hover:shadow-lg hover:shadow-primary/10
+                  focus:outline-none focus:ring-primary
                   min-h-[160px]
                 "
                 aria-label={`Contact via ${label}: ${value}`}
