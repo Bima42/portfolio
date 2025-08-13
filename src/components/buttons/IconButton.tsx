@@ -33,6 +33,7 @@ export function IconButton({
         ${sizeClasses[size]}
         rounded-2xl hover-button
         glass-background shadow-sm
+        focus:outline-none focus:ring-1 focus:ring-primary
         transition-all duration-200
         ${className}
       `}
