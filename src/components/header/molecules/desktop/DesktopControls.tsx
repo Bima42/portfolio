@@ -12,7 +12,7 @@ export function DesktopControls() {
             <LinkedInButton />
             <VerticalDivider />
             {/*<CVButton />*/}
-            <VerticalDivider />
+            {/*<VerticalDivider />*/}
             <LanguageToggle />
             <VerticalDivider />
             <ThemeToggle />
