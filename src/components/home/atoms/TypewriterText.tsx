@@ -2,9 +2,11 @@ import { useEffect, useState } from 'react';
 
 export function TypewriterText({ text }: { text: string }) {
     const [displayText, setDisplayText] = useState('');
+    const [isTyping, setIsTyping] = useState(false);
 
     useEffect(() => {
         const startTimer = setTimeout(() => {
+            setIsTyping(true);
             let index = 0;
 
             const typeInterval = setInterval(() => {
@@ -13,8 +15,9 @@ export function TypewriterText({ text }: { text: string }) {
                     index++;
                 } else {
                     clearInterval(typeInterval);
+                    setIsTyping(false);
                 }
-            }, 80);
+            }, 50);
 
             return () => clearInterval(typeInterval);
         }, 3300);
@@ -25,7 +28,9 @@ export function TypewriterText({ text }: { text: string }) {
     return (
         <span>
             {displayText}
-            <span className="animate-pulse">|</span>
+            <span className={isTyping ? 'cursor-static' : 'cursor-blink'}>
+                |
+            </span>
         </span>
     );
 }

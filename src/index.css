@@ -17,6 +17,22 @@
     .h1 {
         @apply text-5xl md:text-6xl lg:text-7xl xl:text-7xl font-bold text-foreground text-center mb-12;
     }
+    .cursor-blink {
+        animation: blink 1s step-end infinite;
+    }
+    .cursor-static {
+        opacity: 1;
+        animation: none;
+    }
+}
+
+@keyframes blink {
+    0%, 50% {
+        opacity: 1;
+    }
+    51%, 100% {
+        opacity: 0;
+    }
 }
 
 @theme {
