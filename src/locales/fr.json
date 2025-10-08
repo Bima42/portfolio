@@ -99,6 +99,10 @@
         "prompt-pilot": {
             "title": "Prompt Pilot",
             "shortDescription": "Application web pour la création et la gestion de prompts, destinés aux LLMs."
+        },
+        "docstral": {
+          "title": "Docstral",
+          "shortDescription": "Projet sandbox d'un agent pour intéragir avec la documentation de Mistal AI."
         }
     }
 }

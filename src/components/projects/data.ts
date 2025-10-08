@@ -22,6 +22,28 @@ export const projectsData: Project[] = [
         filePath: '/voltaire',
     },
     {
+        id: 'docstral',
+        title: 'projects.docstral.title',
+        shortDescription: 'projects.docstral.shortDescription',
+        tags: [
+            'react',
+            'python',
+            'fastapi',
+            'typescript',
+            'tailwind',
+            'redis',
+            'postgresql',
+            'docker',
+            'vllm',
+        ],
+        links: {
+            demo: 'https://github.com/Bima42/docstral',
+        },
+        lightThumbnail: '/docstral/docstral-full-logo.png',
+        darkThumbnail: '/docstral/docstral-full-logo.png',
+        filePath: '/docstral',
+    },
+    {
         id: 'tidaka',
         title: 'projects.tidaka.title',
         shortDescription: 'projects.tidaka.shortDescription',
