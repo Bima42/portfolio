@@ -70,6 +70,21 @@ export const tagData: Record<string, TagData> = {
         label: 'Drizzle ORM',
         icon: '/logos/logo-drizzle.svg',
     },
+    tailwind: {
+        id: 'tailwind',
+        label: 'Tailwind CSS',
+        icon: '/logos/logo-tailwind.svg',
+    },
+    vllm: {
+        id: 'vllm',
+        label: 'vLLM',
+        icon: '/logos/logo-vllm.svg',
+    },
+    redis: {
+        id: 'redis',
+        label: 'Redis',
+        icon: '/logos/logo-redis.svg',
+    },
 };
 
 export const getTagById = (id: string): TagData | undefined => {

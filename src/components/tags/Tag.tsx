@@ -31,8 +31,8 @@ export const Tag = ({ id, size = 'md' }: TagProps) => {
     return (
         <span
             className={cn(
-                'glass-background py-3 px-3 inline-flex items-center font-medium text-foreground',
-                'rounded-full transition-all duration-200',
+                'glass-background inline-flex items-center font-medium text-foreground',
+                'rounded-md transition-all duration-200',
                 sizeClasses[size]
             )}
         >

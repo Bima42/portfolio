@@ -30,6 +30,7 @@ interface ParagraphNode extends Parent {
 }
 
 const videoExtensions = ['.mp4', '.webm', '.mov'];
+const gifExtensions = ['.gif'];
 
 const isChildVideo = (child: MarkdownNode): boolean => {
     return (
@@ -38,11 +39,21 @@ const isChildVideo = (child: MarkdownNode): boolean => {
     );
 };
 
+const isChildGif = (child: MarkdownNode): boolean => {
+    return (
+        child.type === 'image' &&
+        gifExtensions.some(ext => child.url?.endsWith(ext))
+    );
+};
+
 const groupImagesPlugin = () => {
     return (tree: Node): void => {
         visit(tree, 'paragraph', (node: ParagraphNode) => {
-            // Avoid if it's video
-            if (node.children.some(isChildVideo)) {
+            if (
+                node.children.some(
+                    child => isChildVideo(child) || isChildGif(child)
+                )
+            ) {
                 return;
             }
 
@@ -185,6 +196,20 @@ export function ProjectContent({ project, isMobile }: ProjectContentProps) {
                     >
                         {alt && <span>{alt}</span>}
                     </video>
+                );
+            }
+            if (gifExtensions.some(ext => src?.endsWith(ext))) {
+                console.log('GID');
+                return (
+                    <div className="w-full h-[45vh] flex justify-center rounded-lg mb-6 my-6">
+                        <img
+                            src={src}
+                            alt={alt}
+                            loading={'lazy'}
+                            className="max-h-full object-contain"
+                            {...props}
+                        />
+                    </div>
                 );
             }
             return (

@@ -22,6 +22,40 @@ export const projectsData: Project[] = [
         filePath: '/voltaire',
     },
     {
+        id: 'docstral',
+        title: 'projects.docstral.title',
+        shortDescription: 'projects.docstral.shortDescription',
+        tags: [
+            'react',
+            'python',
+            'fastapi',
+            'typescript',
+            'tailwind',
+            'redis',
+            'postgresql',
+            'docker',
+            'vllm',
+        ],
+        links: {
+            demo: 'https://github.com/Bima42/docstral',
+        },
+        lightThumbnail: '/docstral/docstral-full-logo.png',
+        darkThumbnail: '/docstral/docstral-full-logo.png',
+        filePath: '/docstral',
+    },
+    {
+        id: 'prompt-pilot',
+        title: 'projects.prompt-pilot.title',
+        shortDescription: 'projects.prompt-pilot.shortDescription',
+        tags: ['nextjs', 'typescript', 'postgresql', 'docker', 'drizzle'],
+        lightThumbnail: '/prompt-pilot/logo-prompt-pilot-black.svg',
+        darkThumbnail: '/prompt-pilot/logo-prompt-pilot-white.svg',
+        links: {
+            demo: 'https://prompt-pilot.app',
+        },
+        filePath: '/prompt-pilot',
+    },
+    {
         id: 'tidaka',
         title: 'projects.tidaka.title',
         shortDescription: 'projects.tidaka.shortDescription',
@@ -35,17 +69,5 @@ export const projectsData: Project[] = [
         ],
         lightThumbnail: '/tidaka/logo-tidaka.png',
         filePath: '/tidaka',
-    },
-    {
-        id: 'prompt-pilot',
-        title: 'projects.prompt-pilot.title',
-        shortDescription: 'projects.prompt-pilot.shortDescription',
-        tags: ['nextjs', 'typescript', 'postgresql', 'docker', 'drizzle'],
-        lightThumbnail: '/prompt-pilot/logo-prompt-pilot-black.svg',
-        darkThumbnail: '/prompt-pilot/logo-prompt-pilot-white.svg',
-        links: {
-            demo: 'https://prompt-pilot.app',
-        },
-        filePath: '/prompt-pilot',
     },
 ];

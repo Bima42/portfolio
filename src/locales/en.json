@@ -99,6 +99,10 @@
         "prompt-pilot": {
             "title": "Prompt Pilot",
             "shortDescription": "AI-powered tool that helps you create and manage prompts for LLMs."
-        }
+        },
+      "docstral": {
+        "title": "Docstral",
+        "shortDescription": "AI-powered document search engine for efficient information retrieval about Mistral documentation."
+      }
     }
 }
