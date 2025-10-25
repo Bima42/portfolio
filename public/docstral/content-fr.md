@@ -18,7 +18,7 @@ Il ne s'agit pas d'un produit SaaS ou commercial, mais d'un projet portfolio et 
 
 ## Opportunité
 
-Imaginez que vous devez rapidement tester des interactions avec les modèles Mistral ou explorer leur documentation de manière interactive. Avant DocStral, vous auriez dû jongler entre plusieurs onglets de documentation, des notebooks Jupyter et des appels API manuels. Avec DocStral, vous conversez simplement avec l'assistant qui comprend le contexte de la documentation Mistral et vous fournit des réponses sourcées avec la possibilité de reproduire chaque interaction via des snippets de code.
+Imaginez que vous devez rapidement tester des interactions avec les modèles Mistral ou explorer leur documentation de manière interactive. Avant DocStral, vous auriez dû jongler entre plusieurs onglets de documentation. Avec DocStral, vous conversez simplement avec l'assistant qui comprend le contexte de la documentation Mistral et vous fournit des réponses sourcées avec la possibilité de reproduire chaque interaction via des snippets de code.
 
 ## Fonctionnalités
 
@@ -29,10 +29,6 @@ L'interface de chat moderne permet d'interagir en temps réel avec la documentat
 ### RAG minimal sur la documentation
 
 La fonctionnalité de RAG (Retrieval Augmented Generation) permet d'interroger la documentation officielle Mistral. Le système récupère automatiquement les passages pertinents, les affiche comme sources citées avec leurs URLs, et les intègre dans le contexte de la conversation pour des réponses précises et vérifiables.
-
-### Métriques en temps réel
-
-Un panneau de métriques affiche en direct les performances du système : latence moyenne et P95, tokens d'entrée/sortie, taux d'erreur et estimation des coûts. Ces indicateurs permettent de comprendre le comportement de l'application et d'optimiser les requêtes.
 
 ### Ingestion de documentation
 
