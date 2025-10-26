@@ -39,8 +39,8 @@ export const projectsData: Project[] = [
         links: {
             demo: 'https://github.com/Bima42/docstral',
         },
-        lightThumbnail: '/docstral/docstral-full-logo.png',
-        darkThumbnail: '/docstral/docstral-full-logo.png',
+        lightThumbnail: '/docstral/docstral-full-logo-black.png',
+        darkThumbnail: '/docstral/docstral-full-logo-white.png',
         filePath: '/docstral',
     },
     {
