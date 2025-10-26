@@ -2,7 +2,7 @@
 
 **DocStral** est une application de chat sandbox conçue pour interagir avec les modèles et la documentation Mistral. Il ne s'agit évidemment **pas d'un projet officiel Mistral**.
 
-![docstral-tiny-demo.gif](/docstral/docstral-tiny-demo.gif)
+![docstral-demo.mp4](/docstral/docstral-demo.mp4)
 
 ## Contexte
 
@@ -32,7 +32,7 @@ La fonctionnalité de RAG (Retrieval Augmented Generation) permet d'interroger l
 
 ### Ingestion de documentation
 
-La fonction d'ingestion permet d'indexer facilement de nouvelles pages de documentation. Le système extrait le texte propre, crée des chunks sémantiques, génère les embeddings via l'API Mistral et les stocke pour une récupération rapide et pertinente.
+La fonction d'ingestion permet d'indexer facilement de nouvelles pages de documentation. Le système extrait le texte propre, crée des chunks sémantiques, génère les embeddings et les stocke pour une récupération rapide et pertinente.
 
 ### Architecture transparente
 
