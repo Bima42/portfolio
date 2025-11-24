@@ -21,7 +21,6 @@ export function HeaderIconButtonLayout({
 }: HeaderIconButtonLayoutProps) {
     const baseClasses = `
         flex items-center justify-center space-x-2 px-4 py-2
-        rounded-full glass-background shadow-sm
         transition-all duration-200
         text-xs font-medium hover-button
         focus:outline-none focus:ring-1 focus:ring-primary

@@ -26,7 +26,7 @@ export function NavigationLink({
 		relative
 		px-4 py-2
 		text-base font-medium
-		rounded-2xl
+		rounded-sm
 		transition-all duration-200
 		focus:outline-none
 		hover-button

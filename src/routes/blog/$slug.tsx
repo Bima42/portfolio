@@ -1,8 +1,8 @@
 import { createFileRoute, Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
-import { Button } from '@/components/ui/button';
 import { ArrowLeftIcon } from 'lucide-react';
 import { getBlogPost } from '@/lib/blog';
+import { cn } from '@/lib/utils.ts';
 
 export const Route = createFileRoute('/blog/$slug')({
     component: BlogPost,
@@ -11,16 +11,16 @@ export const Route = createFileRoute('/blog/$slug')({
 function BlogPost() {
     const { slug } = Route.useParams();
     const { i18n } = useTranslation();
-
     const post = getBlogPost(slug, i18n.language);
 
     if (!post) {
         return (
-            <div className="min-h-screen flex flex-col items-center justify-center gap-4">
-                <h1 className="text-2xl font-bold">404 - Article not found</h1>
-                <Button asChild>
-                    <Link to="/blog">Back to blog</Link>
-                </Button>
+            <div className="min-h-screen flex items-center justify-center">
+                <h1 className="text-3xl font-bold text-foreground">
+                    {i18n.language === 'fr'
+                        ? 'Article non trouvé'
+                        : 'Post Not Found'}
+                </h1>
             </div>
         );
     }
@@ -28,31 +28,28 @@ function BlogPost() {
     const MDXContent = post.component;
 
     return (
-        <div className="min-h-screen py-20 px-4 md:px-8">
-            <div className="max-w-[var(--size-container-md)] mx-auto">
-                <Button
-                    asChild
-                    variant="ghost"
-                    className="mb-8 -ml-4 text-muted-foreground hover:text-foreground"
+        <div className="min-h-screen py-24 px-4 md:px-8">
+            <article className="max-w-[var(--size-container-md)] mx-auto">
+                <Link
+                    to="/blog"
+                    className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground mb-8 transition-colors"
                 >
-                    <Link to="/blog">
-                        <ArrowLeftIcon className="mr-2 size-4" />
-                        Back
-                    </Link>
-                </Button>
+                    <ArrowLeftIcon className="mr-2 size-4" />
+                    {i18n.language === 'fr' ? 'Retour au blog' : 'Back to blog'}
+                </Link>
 
-                <header className="mb-12">
-                    <div className="flex gap-2 mb-4">
+                <header className="mb-12 pb-8 border-b border-border">
+                    <div className="flex gap-2 mb-6">
                         {post.tags.map(tag => (
                             <span
                                 key={tag}
-                                className="text-xs font-medium px-2 py-1 rounded-full bg-secondary/10 text-secondary border border-secondary/20"
+                                className="text-xs font-medium px-2.5 py-0.5 rounded-sm bg-secondary/10 text-secondary"
                             >
                                 {tag}
                             </span>
                         ))}
                     </div>
-                    <h1 className="text-4xl md:text-5xl font-bold mb-4 text-foreground tracking-tight">
+                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-foreground tracking-tight leading-[1.1]">
                         {post.title}
                     </h1>
                     <time className="text-muted-foreground font-mono text-sm">
@@ -60,16 +57,20 @@ function BlogPost() {
                     </time>
                 </header>
 
-                <article
-                    className="prose prose-lg dark:prose-invert max-w-none
-                    prose-headings:font-bold prose-headings:tracking-tight
-                    prose-a:text-primary prose-a:no-underline hover:prose-a:underline
-                    prose-pre:bg-secondary/5 prose-pre:border prose-pre:border-white/10
-                "
+                <div
+                    className={cn(
+                        'prose prose-lg max-w-none',
+                        // Color adaptations
+                        'prose-headings:text-foreground prose-p:text-muted-foreground prose-strong:text-foreground',
+                        'prose-a:text-primary prose-a:no-underline hover:prose-a:underline',
+                        'prose-code:text-primary prose-code:bg-primary/10 prose-code:px-1 prose-code:rounded-md prose-code:before:content-none prose-code:after:content-none',
+                        'prose-pre:bg-muted prose-pre:text-muted-foreground prose-pre:border prose-pre:border-border',
+                        'prose-blockquote:border-l-primary prose-blockquote:text-muted-foreground'
+                    )}
                 >
                     <MDXContent />
-                </article>
-            </div>
+                </div>
+            </article>
         </div>
     );
 }

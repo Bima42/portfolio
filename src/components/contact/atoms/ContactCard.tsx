@@ -23,8 +23,8 @@ export function ContactCard({ contact, className = '' }: ContactCardProps) {
                 className="
                   group relative p-8
                   flex flex-col items-center justify-center
-                  rounded-xl border
-                  dark:bg-background-elevated
+                  rounded-md border
+                  bg-background-elevated
                   border-foreground/10
                   hover:border-primary/20
                   backdrop-blur-sm

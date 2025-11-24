@@ -13,7 +13,7 @@ export function VerticalDivider({
         w-px 
         ${height} 
         bg-foreground/20 
-        dark:bg-foreground/10
+        bg-foreground/10
         ${className}
       `}
         />

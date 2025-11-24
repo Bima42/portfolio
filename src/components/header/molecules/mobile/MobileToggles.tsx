@@ -8,14 +8,14 @@ export function MobileToggles() {
     return (
         <div
             className="
-                border-t border-foreground/10 dark:border-foreground/20
-                bg-foreground/5 dark:bg-foreground/10
+                border-t border-foreground/10 border-foreground/20
+                bg-foreground/5 bg-foreground/10
                 p-6
             "
         >
             <div className="flex items-center justify-center space-x-6">
                 <div className="flex items-center gap-2">
-                    <span className="text-xs font-medium text-foreground/70 dark:text-foreground/60">
+                    <span className="text-xs font-medium text-foreground/70 text-foreground/60">
                         {t('header.theme')}
                     </span>
                     <ThemeToggle />
@@ -23,11 +23,11 @@ export function MobileToggles() {
 
                 <VerticalDivider
                     height="h-6"
-                    className="bg-foreground/20 dark:bg-foreground/30"
+                    className="bg-foreground/20 bg-foreground/30"
                 />
 
                 <div className="flex items-center gap-2">
-                    <span className="text-xs font-medium text-foreground/70 dark:text-foreground/60">
+                    <span className="text-xs font-medium text-foreground/70 text-foreground/60">
                         {t('header.language')}
                     </span>
                     <LanguageToggle />

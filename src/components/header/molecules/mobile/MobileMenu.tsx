@@ -28,8 +28,8 @@ export function MobileMenu({ navigationItems }: MobileMenuProps) {
                         ariaLabel="Open navigation menu"
                         variant="ghost"
                         className="
-                            hover:bg-white/10 dark:hover:bg-white/5
-                            active:bg-white/20 dark:active:bg-white/10
+                            hover:bg-white/10
+                            active:bg-white/20
                             transition-colors duration-200
                         "
                     />
@@ -39,11 +39,11 @@ export function MobileMenu({ navigationItems }: MobileMenuProps) {
                     side="right"
                     className="
                         w-[min(85vw,320px)]
-                        bg-background/98 dark:bg-background/95
+                        bg-background/98
                         backdrop-blur-xl
-                        border-l border-foreground/10 dark:border-foreground/20
-                        rounded-l-3xl
-                        shadow-xl dark:shadow-2xl
+                        border-l border-foreground/10
+                        rounded-sm
+                        shadow-xl
                         p-0 z-200
                     "
                 >
