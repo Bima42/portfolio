@@ -6,7 +6,8 @@
     "navigation": {
         "about": "ABOUT",
         "projects": "PROJECTS",
-        "contact": "CONTACT"
+        "contact": "CONTACT",
+        "blog": "BLOG"
     },
     "header": {
         "languageToggle": "Switch to {{language}}",
@@ -100,9 +101,9 @@
             "title": "Prompt Pilot",
             "shortDescription": "AI-powered tool that helps you create and manage prompts for LLMs."
         },
-      "docstral": {
-        "title": "Docstral",
-        "shortDescription": "AI-powered document search engine for efficient information retrieval about Mistral documentation."
-      }
+        "docstral": {
+            "title": "Docstral",
+            "shortDescription": "AI-powered document search engine for efficient information retrieval about Mistral documentation."
+        }
     }
 }

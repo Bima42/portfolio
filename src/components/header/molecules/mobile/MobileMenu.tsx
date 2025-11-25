@@ -42,7 +42,7 @@ export function MobileMenu({ navigationItems }: MobileMenuProps) {
                         bg-background/98
                         backdrop-blur-xl
                         border-l border-foreground/10
-                        rounded-sm
+                        rounded-md
                         shadow-xl
                         p-0 z-200
                     "

@@ -143,7 +143,7 @@
     }
 
     .hover-button {
-        @apply text-foreground hover:text-primary hover:shadow-sm cursor-pointer hover:scale-105 transition-transform;
+        @apply text-foreground hover:text-primary hover:scale-105 transition-transform;
     }
 
     .h1 {

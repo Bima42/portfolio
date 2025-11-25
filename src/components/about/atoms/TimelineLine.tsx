@@ -14,10 +14,11 @@ export function TimelineLine({ containerRef }: TimelineLineProps) {
     const lineHeight = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
     const dotScale = useTransform(scrollYProgress, [0, 0.01], [1, 0]);
 
+    // TODO Bima: we can make the dot appears when line reaches certain height
     return (
         <div className="absolute left-6 md:left-1/2 top-0 h-full w-0 z-0 pointer-events-none">
             {/* Background line */}
-            <div className="absolute left-0 top-0 w-0.5 h-full bg-foreground/20 md:left-1/2 md:-translate-x-1/2" />
+            <div className="absolute left-0 top-0 w-0.5 h-full md:left-1/2 md:-translate-x-1/2" />
 
             {/* Animated progress line */}
             <motion.div

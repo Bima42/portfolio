@@ -1,4 +1,5 @@
 import type { NavigationMenuItem } from '../types';
+import { useNavigate } from '@tanstack/react-router';
 
 interface NavigationLinkProps {
     item: NavigationMenuItem;
@@ -11,22 +12,30 @@ export function NavigationLink({
     onClick,
     isMobile = false,
 }: NavigationLinkProps) {
-    const handleClick = () => {
-        const element = document.getElementById(item.id);
-        if (element) {
-            element.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start',
-            });
+    const navigate = useNavigate();
+
+    const handleClick = async () => {
+        // Navigate if it's blog
+        if (item.id === 'blog') {
+            await navigate({ to: '/blog' });
+            onClick?.();
+        } else {
+            const element = document.getElementById(item.id);
+            if (element) {
+                element.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start',
+                });
+            }
+            onClick?.();
         }
-        onClick?.();
     };
 
     const baseClasses = `
 		relative
 		px-4 py-2
 		text-base font-medium
-		rounded-sm
+		rounded-md
 		transition-all duration-200
 		focus:outline-none
 		hover-button

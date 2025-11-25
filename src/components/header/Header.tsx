@@ -21,6 +21,7 @@ export function Header({
     const defaultNavigation: NavigationMenuItem[] = [
         { label: t('navigation.projects'), id: 'projects' },
         { label: t('navigation.contact'), id: 'contact' },
+        { label: t('navigation.blog'), id: 'blog' },
     ];
 
     return (
@@ -33,7 +34,7 @@ export function Header({
              "
         >
             <motion.div
-                className="px-6 py-3 border-transparent rounded-sm"
+                className="px-6 py-3 border-transparent rounded-md"
                 animate={{
                     backgroundColor: animationComplete
                         ? 'rgba(255, 255, 255, 0.1)'

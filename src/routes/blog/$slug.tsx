@@ -43,7 +43,7 @@ function BlogPost() {
                         {post.tags.map(tag => (
                             <span
                                 key={tag}
-                                className="text-xs font-medium px-2.5 py-0.5 rounded-sm bg-secondary/10 text-secondary"
+                                className="text-xs font-medium px-2.5 py-0.5 rounded-md bg-secondary/10 text-secondary"
                             >
                                 {tag}
                             </span>

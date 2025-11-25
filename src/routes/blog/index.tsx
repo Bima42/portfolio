@@ -14,7 +14,7 @@ function BlogIndex() {
     return (
         <div className="min-h-screen py-24 px-4 md:px-8">
             <div className="max-w-[var(--size-container-lg)] mx-auto">
-                <div className="mb-16 max-w-2xl">
+                <div className="mb-16">
                     <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 text-foreground">
                         Blog
                     </h1>
@@ -31,7 +31,7 @@ function BlogIndex() {
                             key={post.slug}
                             to="/blog/$slug"
                             params={{ slug: post.slug }}
-                            className="group relative flex flex-col glass-card rounded-sm p-6 md:p-8 h-full"
+                            className="group relative flex flex-col glass-card rounded-md p-6 md:p-8 h-full"
                         >
                             <div className="flex items-center justify-between mb-4">
                                 <time className="text-sm font-mono text-muted-foreground">
@@ -41,7 +41,7 @@ function BlogIndex() {
                                     {post.tags.slice(0, 2).map(tag => (
                                         <span
                                             key={tag}
-                                            className="text-[10px] uppercase tracking-wider font-semibold px-2 py-1 rounded-sm bg-secondary/10 text-secondary"
+                                            className="text-[10px] uppercase tracking-wider font-semibold px-2 py-1 rounded-md bg-secondary/10 text-secondary"
                                         >
                                             {tag}
                                         </span>
@@ -68,7 +68,7 @@ function BlogIndex() {
                 </div>
 
                 {posts.length === 0 && (
-                    <div className="py-20 text-center border border-dashed border-border rounded-sm">
+                    <div className="py-20 text-center border border-dashed border-border rounded-md">
                         <p className="text-muted-foreground">
                             {i18n.language === 'fr'
                                 ? 'Bientôt disponible...'
