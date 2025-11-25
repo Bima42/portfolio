@@ -245,7 +245,7 @@ export function ProjectContent({ project, isMobile }: ProjectContentProps) {
         >
             {/* Header */}
             <motion.div
-                className={`flex justify-center items-center relative h-64 rounded-xl overflow-hidden mb-8 ${isMobile ? 'p-4' : 'py-6'}`}
+                className={`flex justify-center items-center relative h-64 rounded-md overflow-hidden mb-8 ${isMobile ? 'p-4' : 'py-6'}`}
                 variants={itemVariants}
             >
                 <img
@@ -303,7 +303,7 @@ export function ProjectContent({ project, isMobile }: ProjectContentProps) {
             )}
 
             <motion.div
-                className="prose prose-lg max-w-none dark:prose-invert"
+                className="prose prose-lg max-w-none prose-invert"
                 variants={itemVariants}
             >
                 <ReactMarkdown

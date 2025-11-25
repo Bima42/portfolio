@@ -7,13 +7,13 @@ export function MobileSocialButtons() {
     return (
         <div
             className="
-                border-t border-foreground/10 dark:border-foreground/20
-                bg-foreground/5 dark:bg-foreground/10
+                border-t border-foreground/10 border-foreground/20
+                bg-foreground/5 bg-foreground/10
                 p-6 space-y-4
             "
         >
             <div className="text-center">
-                <span className="text-xs font-medium text-foreground/70 dark:text-foreground/60 uppercase tracking-wider">
+                <span className="text-xs font-medium text-foreground/70 text-foreground/60 uppercase tracking-wider">
                     {t('header.connectAndDownload')}
                 </span>
             </div>

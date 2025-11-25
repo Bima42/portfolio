@@ -25,7 +25,7 @@ export const ProjectCard = ({
     return (
         <motion.div
             className={cn(
-                'rounded-2xl border-2 flex-shrink-0 overflow-hidden',
+                'rounded-md border-2 flex-shrink-0 overflow-hidden',
                 'glass-background cursor-pointer',
                 'relative transition-all duration-300 ease-out border-foreground/20',
                 'hover:border-primary',

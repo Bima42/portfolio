@@ -15,7 +15,7 @@ export function MobileMenuHeader({ onClose }: MobileMenuHeaderProps) {
             className="
                 flex flex-row items-center justify-between
                 p-6 pb-4
-                border-b border-foreground/10 dark:border-foreground/20
+                border-b border-foreground/10 border-foreground/20
             "
         >
             <SheetTitle className="text-lg font-semibold text-foreground">
@@ -28,8 +28,8 @@ export function MobileMenuHeader({ onClose }: MobileMenuHeaderProps) {
                 variant="ghost"
                 size="sm"
                 className="
-                    hover:bg-white/10 dark:hover:bg-white/5
-                    active:bg-white/20 dark:active:bg-white/10
+                    hover:bg-white/10 hover:bg-white/5
+                    active:bg-white/20 active:bg-white/10
                     transition-colors duration-200
                 "
             />

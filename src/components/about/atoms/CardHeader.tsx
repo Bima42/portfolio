@@ -11,7 +11,7 @@ export function CardHeader({ item, getTypeIcon }: CardHeaderProps) {
     const { t } = useLanguage();
     return (
         <div className="flex items-center justify-between mb-4">
-            <span className="inline-block px-3 py-1 text-sm font-semibold text-primary bg-primary/10 rounded-full">
+            <span className="inline-block px-3 py-1 text-sm font-semibold text-primary bg-primary/10 rounded-md">
                 {t(item.date)}
             </span>
             {item.icon ? (

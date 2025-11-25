@@ -41,7 +41,7 @@ export function TimelineCard({
             transition={{ duration: 0.6, ease: 'easeOut' }}
         >
             <div
-                className={`p-6 md:p-8 rounded-2xl backdrop-blur-md bg-background/90 border border-foreground/10 shadow-xl ${getTypeStyles(item.type)}`}
+                className={`p-6 md:p-8 rounded-md backdrop-blur-md bg-background/90 border border-foreground/10 shadow-xl ${getTypeStyles(item.type)}`}
             >
                 <CardHeader item={item} getTypeIcon={getTypeIcon} />
                 <CardContent item={item} />

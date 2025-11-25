@@ -1,4 +1,6 @@
 import type { NavigationMenuItem } from '../types';
+import { useNavigate } from '@tanstack/react-router';
+import { Button } from '@/components/ui/button.tsx';
 
 interface NavigationLinkProps {
     item: NavigationMenuItem;
@@ -11,39 +13,45 @@ export function NavigationLink({
     onClick,
     isMobile = false,
 }: NavigationLinkProps) {
-    const handleClick = () => {
-        const element = document.getElementById(item.id);
-        if (element) {
-            element.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start',
-            });
+    const navigate = useNavigate();
+
+    const handleClick = async () => {
+        // Navigate if it's blog
+        if (item.id === 'blog') {
+            await navigate({ to: '/blog' });
+            onClick?.();
+        } else {
+            const element = document.getElementById(item.id);
+            if (element) {
+                element.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start',
+                });
+            }
+            onClick?.();
         }
-        onClick?.();
     };
 
     const baseClasses = `
 		relative
 		px-4 py-2
 		text-base font-medium
-		rounded-2xl
-		transition-all duration-200
+		rounded-md
 		focus:outline-none
-		hover-button
 		border-none
 	}
   `;
 
     const mobileClasses = isMobile ? 'justify-start' : '';
-    const desktopClasses = !isMobile ? `text-sm px-3 py-2` : '';
+    const desktopClasses = !isMobile ? `text-xs px-3 py-1` : '';
 
     return (
-        <button
-            type="button"
+        <Button
             className={`${baseClasses} ${mobileClasses} ${desktopClasses}`}
             onClick={handleClick}
+            variant="ghost"
         >
             <span>{item.label}</span>
-        </button>
+        </Button>
     );
 }

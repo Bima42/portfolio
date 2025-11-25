@@ -20,7 +20,7 @@ export function TypewriterText({ text }: { text: string }) {
             }, 50);
 
             return () => clearInterval(typeInterval);
-        }, 3300);
+        }, 500);
 
         return () => clearTimeout(startTimer);
     }, [text]);

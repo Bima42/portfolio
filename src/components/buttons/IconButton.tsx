@@ -31,8 +31,7 @@ export function IconButton({
             aria-label={ariaLabel}
             className={`  
         ${sizeClasses[size]}
-        rounded-2xl hover-button
-        glass-background shadow-sm
+        hover-button
         focus:outline-none focus:ring-1 focus:ring-primary
         transition-all duration-200
         ${className}
