@@ -31,6 +31,8 @@
 
     /* Radius Base */
     --radius: 0.5rem;
+
+    background-color: hsl(var(--background));
 }
 
 .dark {

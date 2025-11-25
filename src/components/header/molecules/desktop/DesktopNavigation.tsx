@@ -8,7 +8,7 @@ interface DesktopNavigationProps {
 export function DesktopNavigation({ items }: DesktopNavigationProps) {
     return (
         <nav
-            className={'flex items-center space-x-2 flex-1 justify-center'}
+            className={'flex items-center justify-end space-x-2 flex-1'}
             role="navigation"
             aria-label="Main navigation"
         >
