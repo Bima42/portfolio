@@ -11,7 +11,7 @@ export function Header() {
 
     const defaultNavigation: NavigationMenuItem[] = [
         { label: t('navigation.projects'), id: 'projects' },
-        { label: t('navigation.blog'), id: 'blog' },
+        // { label: t('navigation.blog'), id: 'blog' },
         { label: t('navigation.contact'), id: 'contact' },
     ];
 

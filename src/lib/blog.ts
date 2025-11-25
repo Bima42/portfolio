@@ -9,7 +9,7 @@ export type BlogPost = {
 };
 
 export function getBlogPosts(lang: string) {
-    const modules = import.meta.glob('../blog/*.mdx', { eager: true });
+    const modules = import.meta.glob('../content/**/*.mdx', { eager: true });
 
     const posts: BlogPost[] = [];
 
