@@ -1,3 +1,5 @@
+import { Button } from '@/components/ui/button.tsx';
+
 interface HeaderIconButtonLayoutProps {
     children: React.ReactNode;
     onClick?: () => void;
@@ -21,8 +23,8 @@ export function HeaderIconButtonLayout({
 }: HeaderIconButtonLayoutProps) {
     const baseClasses = `
         flex items-center justify-center space-x-2 px-4 py-2
-        transition-all duration-200
-        text-xs font-medium hover-button
+        transition-all duration-200 text-foreground
+        text-xs font-medium hover-button rounded-sm
         focus:outline-none focus:ring-1 focus:ring-primary
         sm:justify-start
         ${className}    
@@ -44,12 +46,13 @@ export function HeaderIconButtonLayout({
     }
 
     return (
-        <button
+        <Button
             onClick={onClick}
             aria-label={ariaLabel}
             className={baseClasses}
+            variant="ghost"
         >
             {children}
-        </button>
+        </Button>
     );
 }

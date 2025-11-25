@@ -145,7 +145,7 @@
     }
 
     .hover-button {
-        @apply text-foreground hover:text-primary hover:scale-105 transition-transform;
+        @apply hover:bg-accent dark:hover:bg-accent-foreground/10 hover:text-primary hover:scale-105 transition-transform;
     }
 
     .h1 {

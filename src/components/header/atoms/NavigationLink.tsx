@@ -1,5 +1,6 @@
 import type { NavigationMenuItem } from '../types';
 import { useNavigate } from '@tanstack/react-router';
+import { Button } from '@/components/ui/button.tsx';
 
 interface NavigationLinkProps {
     item: NavigationMenuItem;
@@ -36,23 +37,21 @@ export function NavigationLink({
 		px-4 py-2
 		text-base font-medium
 		rounded-md
-		transition-all duration-200
 		focus:outline-none
-		hover-button
 		border-none
 	}
   `;
 
     const mobileClasses = isMobile ? 'justify-start' : '';
-    const desktopClasses = !isMobile ? `text-sm px-3 py-2` : '';
+    const desktopClasses = !isMobile ? `text-xs px-3 py-1` : '';
 
     return (
-        <button
-            type="button"
+        <Button
             className={`${baseClasses} ${mobileClasses} ${desktopClasses}`}
             onClick={handleClick}
+            variant="ghost"
         >
             <span>{item.label}</span>
-        </button>
+        </Button>
     );
 }
