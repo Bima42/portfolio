@@ -28,7 +28,7 @@ function BlogPost() {
     const MDXContent = post.component;
 
     return (
-        <div className="min-h-screen py-24 px-4 md:px-8">
+        <div className="min-h-screen py-[120px] px-4 md:px-8 bg-background">
             <article className="max-w-[var(--size-container-md)] mx-auto">
                 <Link
                     to="/blog"
