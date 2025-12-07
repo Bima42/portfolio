@@ -21,6 +21,9 @@ export function NavigationLink({
             await navigate({ to: '/blog' });
             onClick?.();
         } else {
+            if (window.location.pathname !== '/') {
+                await navigate({ to: '/' });
+            }
             const element = document.getElementById(item.id);
             if (element) {
                 element.scrollIntoView({
