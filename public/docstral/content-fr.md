@@ -12,7 +12,7 @@ Ce projet est né de deux motivations principales :
 Poursuivre mon perfectionnement dans la construction d'applications rapides et prêtes pour la production. Valider ma stack technique et mes patterns en préparation d'un futur template fullstack open-source.
 
 **Pratique du déploiement & LLMOps**  
-Expérimenter avec les outils de déploiement (notamment [Dockploy](https://dockploy.com)), l'auto-hébergement de modèles via [vLLM](https://github.com/vllm-project/vllm), et les workflows d'opérations LLM.
+Expérimenter avec les outils de déploiement (notamment [Dokploy](https://dokploy.com/)), l'auto-hébergement de modèles via [vLLM](https://github.com/vllm-project/vllm), et les workflows d'opérations LLM.
 
 Il ne s'agit pas d'un produit SaaS ou commercial, mais d'un projet portfolio et d'un terrain d'apprentissage destiné à être présenté à des collaborateurs, amis ou recruteurs.
 

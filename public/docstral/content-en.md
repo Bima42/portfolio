@@ -12,7 +12,7 @@ This project was born from two main motivations:
 Continue refining my ability to build fast, production-ready applications. Validate my tech stack and patterns in preparation for a future open-source fullstack template.
 
 **Deployment & LLMOps Practice**  
-Experiment with deployment tooling (e.g., [Dockploy](https://dockploy.com)), self-hosting models via [vLLM](https://github.com/vllm-project/vllm), and LLM operations workflows.
+Experiment with deployment tooling (e.g., [Dokploy](https://dokploy.com/)), self-hosting models via [vLLM](https://github.com/vllm-project/vllm), and LLM operations workflows.
 
 This is not a SaaS or commercial product. It's a portfolio project and learning playground to showcase for collaborators, friends or recruiters.
 
