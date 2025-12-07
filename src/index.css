@@ -149,7 +149,11 @@
     }
 
     .hover-button {
-        @apply hover:bg-accent dark:hover:bg-accent-foreground/10 hover:text-primary hover:scale-105 transition-transform;
+        @apply hover:bg-accent dark:hover:bg-accent-foreground/10 hover:scale-105 transition-transform;
+    }
+
+    .link-style {
+        @apply transition-all duration-200 text-foreground text-xs font-medium rounded-sm
     }
 
     .h1 {
