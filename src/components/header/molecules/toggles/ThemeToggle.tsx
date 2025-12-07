@@ -13,7 +13,7 @@ export function ThemeToggle({ className = '' }: ThemeToggleProps) {
     return (
         <IconButton
             icon={
-                !isDark ? (
+                isDark ? (
                     <Moon className="h-4 w-4" />
                 ) : (
                     <Sun className="h-4 w-4" />

@@ -15,7 +15,7 @@ export function MobileNavigation({
             className="
                 flex flex-col
                 flex-1
-                px-4 py-6
+                py-6
                 space-y-2
                 overflow-y-auto
             "
