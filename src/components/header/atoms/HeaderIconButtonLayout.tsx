@@ -23,11 +23,9 @@ export function HeaderIconButtonLayout({
 }: HeaderIconButtonLayoutProps) {
     const baseClasses = `
         flex items-center justify-center space-x-2 px-4 py-2
-        transition-all duration-200 text-foreground
-        text-xs font-medium hover-button rounded-sm
+        link-style hover-button
         focus:outline-none focus:ring-1 focus:ring-primary
-        sm:justify-start
-        ${className}    
+        ${className}
     `;
 
     if (href) {
