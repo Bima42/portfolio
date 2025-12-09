@@ -5,7 +5,7 @@ export type BlogPost = {
     description: string;
     tags: string[];
     lang: 'fr' | 'en';
-    component: React.ComponentType;
+    component: React.ComponentType<any>;
 };
 
 export function getBlogPosts(lang: string) {
