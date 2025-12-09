@@ -27,7 +27,7 @@ export function BlogPage() {
                             key={post.slug}
                             to="/blog/$slug"
                             params={{ slug: post.slug }}
-                            className="group relative flex flex-col glass-background rounded-md p-2 md:p-4 h-full"
+                            className="group relative flex flex-col glass-background rounded-md p-6 h-full"
                         >
                             <div className="flex items-center justify-between mb-4">
                                 <time className="text-sm font-mono text-muted-foreground">
