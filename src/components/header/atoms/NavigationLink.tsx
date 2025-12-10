@@ -18,7 +18,7 @@ export function NavigationLink({
     const handleClick = async () => {
         // Navigate if it's blog
         if (item.id === 'blog') {
-            await navigate({ to: '/blog' });
+            await navigate({ to: '/blog', search: { tag: undefined } });
             onClick?.();
         } else {
             if (window.location.pathname !== '/') {

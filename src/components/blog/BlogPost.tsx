@@ -36,6 +36,7 @@ export function BlogPost() {
                 <Link
                     to="/blog"
                     className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground mb-8 transition-colors"
+                    search={{ tag: undefined }}
                 >
                     <ArrowLeftIcon className="mr-2 size-4" />
                     {i18n.language === 'fr' ? 'Retour au blog' : 'Back to blog'}
