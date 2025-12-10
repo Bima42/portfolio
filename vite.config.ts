@@ -7,6 +7,7 @@ import mdx from '@mdx-js/rollup';
 import remarkFrontmatter from 'remark-frontmatter';
 import remarkMdxFrontmatter from 'remark-mdx-frontmatter';
 import remarkGfm from 'remark-gfm';
+import rehypeMdxImportMedia from 'rehype-mdx-import-media';
 
 export default defineConfig({
     plugins: [
@@ -18,6 +19,7 @@ export default defineConfig({
                     remarkMdxFrontmatter,
                     remarkGfm,
                 ],
+                rehypePlugins: [rehypeMdxImportMedia],
                 providerImportSource: '@mdx-js/react',
             }),
         },
