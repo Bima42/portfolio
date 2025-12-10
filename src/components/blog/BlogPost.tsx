@@ -79,7 +79,10 @@ export function BlogPost() {
                         'prose-code:text-primary prose-code:bg-primary/10 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-code:font-mono prose-code:text-[0.9em] prose-code:font-medium prose-code:before:content-none prose-code:after:content-none',
 
                         // 5. Blockquotes
-                        'prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:pl-4 prose-blockquote:italic prose-blockquote:text-muted-foreground'
+                        'prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:pl-4 prose-blockquote:italic prose-blockquote:text-muted-foreground',
+
+                        // 6. Tables
+                        'prose-table:table-auto prose-table:w-full prose-table:border prose-table:border-border prose-table:rounded-md prose-th:border prose-th:border-border prose-th:bg-secondary/20 prose-th:px-4 prose-th:py-2 prose-td:text-foreground prose-td:border prose-td:border-border prose-td:px-4 prose-td:py-2'
                     )}
                 >
                     <MDXContent components={mdxComponents} />
