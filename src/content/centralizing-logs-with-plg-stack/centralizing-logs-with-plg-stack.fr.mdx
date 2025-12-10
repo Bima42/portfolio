@@ -11,8 +11,8 @@ Mais récemment, nous avons heurté un mur. Notre infrastructure d'observabilit�
 
 Nous avions un problème classique de "Black Box". Les logs étaient piégés dans des conteneurs Docker sur des nœuds distants. Si un bug survenait en Staging, un développeur devait :
 1.  Accéder au VPS concerné via SSH.
-2.  Faire des `grep` dans des flux de texte brut dans un terminal.
-3.  Ou pire, demander à un développeur ayant les accès de vérifier pour lui.
+2.  Observer un flux de texte brut dans un terminal.
+3.  Ou encore, demander à un développeur ayant les accès de vérifier pour lui.
 
 C'était lent, frustrant, et cela tuait notre autonomie. Nous avions besoin d'un moyen de démocratiser l'accès à nos données sans donner un accès root à tout le monde.
 
@@ -20,7 +20,7 @@ Voici comment j'ai architecturé une solution de logging centralisée utilisant 
 
 ## L'Architecture : Hub & Spoke
 
-Nous ne voulions pas d'une usine à gaz comme ELK (Elasticsearch, Logstash, Kibana). Nous avions besoin de quelque chose de léger, qui respecte notre confidentialité (self-hosted) et qui puisse gérer plusieurs projets.
+Nous n'avions pas besoin de la complexité et l'efficacité de la stack ELK (Elasticsearch, Logstash, Kibana). Nous avions besoin de quelque chose de léger, qui respecte notre confidentialité (self-hosted) et qui puisse gérer plusieurs projets.
 
 J'ai conçu une architecture en **Hub & Spoke** :
 *   **Les Spokes (Nos Apps) :** Chaque serveur d'application fait tourner un agent collecteur léger.
@@ -60,25 +60,23 @@ flowchart LR
 
 ## Le Choix des Outils : Pourquoi Alloy ?
 
-Si vous cherchez des tutoriels Loki, 90% d'entre eux vous diront d'utiliser **Promtail**. C'est le collecteur de logs par défaut de la stack.
+Si vous cherchez des tutoriels Loki, la plupart d'entre eux vous diront d'utiliser **Promtail**. C'est le collecteur de logs par défaut de la stack.
 
 J'ai choisi **Grafana Alloy** à la place. Voici pourquoi :
 
-1.  **Promtail est en fin de vie.** Grafana consolide activement ses agents. Selon leur [documentation récente](https://grafana.com/docs/loki/latest/send-data/promtail/), Promtail est en mode maintenance.
-2.  **Programmabilité.** Alloy utilise une syntaxe proche de Terraform (`.alloy`) qui permet de créer des pipelines puissants. Nous pouvons filtrer, supprimer les PII (Données Personnelles), et re-taguer les logs *avant* qu'ils ne quittent le serveur.
+1.  **Promtail est en fin de vie.** Grafana consolide activement ses agents. Selon leur [documentation récente](https://grafana.com/docs/loki/latest/send-data/promtail/), Promtail est en mode maintenance et sa fin de vie débutera à la fin de la phase LTS.
+2.  **Programmabilité.** Alloy utilise un **langage de configuration déclaratif basé sur des composants** qui vous permet de créer des pipelines de données modulaires et réutilisables par programmation.
 3.  **Futur-Proof.** Pour l'instant, nous voulons juste des logs. Mais dans six mois, quand nous voudrons des Traces ou des Métriques (Prometheus), Alloy pourra aussi les gérer. Un seul agent pour tout gouverner.
 
 ## L'Implémentation : Local First
 
-J'ai une règle : **Si ça ne marche pas dans `docker-compose`, ça ne part pas en Prod.**
-
-Avant de toucher à notre cloud Jelastic, j'ai construit un Proof of Concept (PoC) en local. L'objectif était de lancer notre stack applicative et de voir les logs apparaître automatiquement dans une instance Grafana locale.
+Avant de toucher à la production, j'ai construit un POC en local. L'objectif était de lancer notre stack applicative et de voir les logs apparaître automatiquement dans une instance Grafana locale.
 
 ### 1. L'Infrastructure (`docker-compose.yml`)
 
 Nous utilisons les profils Docker pour garder notre environnement de dev propre. La stack de monitoring ne se lance que si on le demande explicitement avec `--profile monitoring`.
 
-Voici la configuration. Notez que nous montons `/var/run/docker.sock` dans Alloy — c'est l'ingrédient secret qui lui permet de découvrir automatiquement les autres conteneurs.
+Voici la configuration. Notez que nous montons `/var/run/docker.sock` dans Alloy. C'est ce qui lui permet de découvrir automatiquement les autres conteneurs.
 
 ```yaml
 services:
@@ -99,7 +97,7 @@ services:
     profiles: ["monitoring"]
     image: grafana/alloy:latest
     ports:
-      - "12345:12345" # Expose l'UI d'Alloy pour le débogage
+      - "12345:12345"
     volumes:
       - ./monitoring/alloy/config.alloy:/etc/alloy/config.alloy
       - /var/run/docker.sock:/var/run/docker.sock:ro # Critique pour la découverte
@@ -115,7 +113,7 @@ services:
     image: grafana/grafana
     profiles: ["monitoring"]
     ports:
-      - "3001:3000"
+      - "3000:3000"
     depends_on:
       - loki
     # ... volumes pour datasources/dashboards ...
@@ -131,12 +129,12 @@ C'est ici que la magie opère. Nous ne voulons pas configurer manuellement chaqu
 Nous utilisons des variables d'environnement pour rendre cette config réutilisable entre Staging, Prod et Local.
 
 ```hcl
-// 1. DÉCOUVERTE : Trouver tout ce qui tourne sur Docker
+// DÉCOUVERTE : Trouver tout ce qui tourne sur Docker
 discovery.docker "containers" {
   host = "unix:///var/run/docker.sock"
 }
 
-// 2. TRAITEMENT : Nettoyer les tags
+// TRAITEMENT : Nettoyer les tags
 discovery.relabel "containers" {
   targets = discovery.docker.containers.targets
 
@@ -161,14 +159,14 @@ discovery.relabel "containers" {
   }
 }
 
-// 3. SCRAPING : Lire les logs
+// SCRAPING : Lire les logs
 loki.source.docker "containers" {
   host       = "unix:///var/run/docker.sock"
   targets    = discovery.relabel.containers.output
   forward_to = [loki.write.remote_hub.receiver]
 }
 
-// 4. SORTIE : Envoyer vers le Hub
+// SORTIE : Envoyer vers le Hub
 loki.write "remote_hub" {
   endpoint {
     url = sys.env("LOKI_URL")
@@ -183,16 +181,14 @@ Pour que cela fonctionne, nous avons juste besoin d'un simple fichier `.env` pas
 ```bash
 LOKI_URL=http://loki:3100/loki/api/v1/push
 ENVIRONMENT=local
-PROJECT_NAME=ophio
+PROJECT_NAME=myapp
 ```
 
 ## Le Résultat : Déboguer avec du Contexte
 
-Une fois que nous avons lancé `docker-compose --profile monitoring up`, la différence a été immédiate.
+Une fois que nous avons lancé `docker-compose --profile monitoring up`, ça a tout simplement fonctionné. Je peux aller dans Grafana Explore et lancer une requête comme :
 
-Au lieu d'une fenêtre de terminal noire, nous avons maintenant une base de données d'événements structurée et interrogeable. Je peux aller dans Grafana Explore et lancer une requête comme :
-
-`{project="ophio", env="staging", service="backend"} |= "error"`
+`{project="myapp", env="staging", service="backend"} |= "error"`
 
 ![Observation des logs du backend de Ophio par Grafana explore](/src/content/centralizing-logs-with-plg-stack/resources/explore_plg.png)
 
@@ -212,3 +208,27 @@ Maintenant que nous avons validé la stack localement, le chemin vers la product
 Nous sommes en train de provisionner un VPS dédié pour agir comme notre **Hub de Monitoring**, hébergeant les instances de production de Grafana et Loki.
 
 Comme notre configuration Alloy est pilotée par des variables d'environnement, le passage à l'échelle est trivial. Il nous suffit de déployer le conteneur Alloy sur nos serveurs applicatifs existants, de mettre à jour `LOKI_URL` pour pointer vers notre nouveau Hub, et de définir le bon `PROJECT_NAME`. Instantanément, les logs de toute notre infrastructure commenceront à affluer vers un endroit central et observable.
+
+## Un Mot sur la Sécurité
+
+Le setup que je vous ai montré fonctionne parfaitement pour le développement local. Mais si vous déployez cette architecture Hub & Spoke en production, **vous devez verrouiller les accès**.
+
+Voici quelques points clés :
+
+**1. Loki NE DOIT PAS Être Public**
+
+Dans le `docker-compose.yml` ci-dessus, j'ai exposé Loki sur `3100:3100`. C'est correct pour `localhost`. En production, **ne mappez pas le port de Loki publiquement**.
+
+Vous pouvez envisager les options suivantes :
+- **Réseau Privé (LAN) :** Si vos serveurs d'application et votre hub de monitoring peuvent communiquer via un réseau privé, configurez Alloy pour pousser vers `http://<ip-privée>:3100`. Aucune exposition publique nécessaire.
+- **Couche d'Authentification :** Si vous devez absolument exposer Loki sur internet, mettez-le derrière un reverse proxy (Nginx, Traefik) avec une Basic Auth ou utilisez le mode multi-tenancy de Loki avec des tokens. Sinon, n'importe qui peut lire/pousser des logs.
+
+**2. Grafana a Besoin de Credentials**
+
+Par défaut, le login de Grafana est `admin:admin`. Changez-le.
+
+Selon votre setup, vous devrez peut-être aussi :
+- Configurer le `root_url` et `serve_from_sub_path` si vous hébergez Grafana derrière un reverse proxy ou sous un sous-chemin (ex : `monitoring.votreentreprise.com/grafana`).
+- Mettre en place des rôles utilisateurs appropriés. Tout le monde n'a pas besoin d'un accès Admin. Grafana a des rôles Viewer, Editor et Admin pour une bonne raison.
+
+J'écrirai probablement un post dédié sur le passage de la stack en production, il y a quelques pièges non-évidents autour de ça.

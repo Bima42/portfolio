@@ -20,7 +20,7 @@ Here is how I architected a centralized logging solution using the **PLG Stack**
 
 ## The Architecture: Hub & Spoke
 
-We didn't want a heavy, complex setup like ELK (Elasticsearch, Logstash, Kibana). We needed something lightweight that respected our privacy (self-hosted) and could handle multiple projects.
+We didn't need the complexity and efficiency of the ELK stack (Elasticsearch, Logstash, Kibana). We needed something lightweight that respected our privacy (self-hosted) and could handle multiple projects.
 
 I designed a **Hub & Spoke** architecture:
 *   **The Spokes (Our Apps):** Every application server runs a lightweight collector agent.
@@ -60,25 +60,23 @@ flowchart LR
 
 ## The Tool Choice: Why Alloy?
 
-If you look up "Loki tutorials," 90% of them tell you to use **Promtail**. It’s the default log collector for the stack.
+If you look up "Loki tutorials," most of them tell you to use **Promtail**. It’s the default log collector for the stack.
 
 I chose **Grafana Alloy** instead. Here is why:
 
-1.  **Promtail is effectively legacy.** Grafana is actively consolidating their agents. As per their [latest docs](https://grafana.com/docs/loki/latest/send-data/promtail/), Promtail is in maintenance mode.
-2.  **Programmability.** Alloy uses a Terraform-like syntax (`.alloy`) that allows for powerful pipelines. We can filter, drop PII (Personally Identifiable Information), and re-tag logs *before* they leave the server.
+1.  **Promtail is effectively legacy.** Grafana is actively consolidating their agents. As per their [latest docs](https://grafana.com/docs/loki/latest/send-data/promtail/), Promtail is in maintenance mode and the end-of-life phase for Promtail will begin once LTS ends.
+2.  **Programmability.** Alloy uses a **declarative, component-based configuration language** that allows you to build modular, reusable data pipelines programmatically.
 3.  **Future Proofing.** Right now, we just want logs. But in six months, when we want Traces or Metrics (Prometheus), Alloy can handle those too. One agent to rule them all.
 
 ## The Implementation: Local First
 
-I have a rule: **If it doesn't work in `docker-compose`, it doesn't go to Production.**
-
-Before touching our Jelastic cloud, I built a Proof of Concept (PoC) locally. The goal was to spin up our app stack and have logs automatically appear in a local Grafana instance.
+Before touching production, I built a POC locally. The goal was to spin up our app stack and have logs automatically appear in a local Grafana instance.
 
 ### 1. The Infrastructure (`docker-compose.yml`)
 
 We use Docker profiles to keep our dev environment clean. The monitoring stack only spins up if you explicitly ask for it with `--profile monitoring`.
 
-Here is the setup. Note that we mount `/var/run/docker.sock` to Alloy—this is the secret sauce that allows it to auto-discover other containers.
+Here is the setup. Note that we mount `/var/run/docker.sock` to Alloy. This allows it to auto-discover other containers.
 
 ```yaml
 services:
@@ -99,7 +97,7 @@ services:
     profiles: ["monitoring"]
     image: grafana/alloy:latest
     ports:
-      - "12345:12345" # Exposes the Alloy UI for debugging
+      - "12345:12345"
     volumes:
       - ./monitoring/alloy/config.alloy:/etc/alloy/config.alloy
       - /var/run/docker.sock:/var/run/docker.sock:ro # Critical for discovery
@@ -115,7 +113,7 @@ services:
     image: grafana/grafana
     profiles: ["monitoring"]
     ports:
-      - "3001:3000"
+      - "3000:3000"
     depends_on:
       - loki
     # ... volumes for datasources/dashboards ...
@@ -131,12 +129,12 @@ This is where the magic happens. We don't want to manually configure every conta
 We use environment variables to make this config reusable across Staging, Prod, and Local.
 
 ```hcl
-// 1. DISCOVERY: Find everything running on Docker
+// DISCOVERY: Find everything running on Docker
 discovery.docker "containers" {
   host = "unix:///var/run/docker.sock"
 }
 
-// 2. PROCESSING: Clean up the tags
+// PROCESSING: Clean up the tags
 discovery.relabel "containers" {
   targets = discovery.docker.containers.targets
 
@@ -161,14 +159,14 @@ discovery.relabel "containers" {
   }
 }
 
-// 3. SCRAPING: Read the logs
+// SCRAPING: Read the logs
 loki.source.docker "containers" {
   host       = "unix:///var/run/docker.sock"
   targets    = discovery.relabel.containers.output
   forward_to = [loki.write.remote_hub.receiver]
 }
 
-// 4. OUTPUT: Send to the Hub
+// OUTPUT: Send to the Hub
 loki.write "remote_hub" {
   endpoint {
     url = sys.env("LOKI_URL")
@@ -183,16 +181,14 @@ To make this work, we just need a simple `.env` file passed to the Alloy contain
 ```bash
 LOKI_URL=http://loki:3100/loki/api/v1/push
 ENVIRONMENT=local
-PROJECT_NAME=ophio
+PROJECT_NAME=myapp
 ```
 
 ## The Result: Debugging with Context
 
-Once we ran `docker-compose --profile monitoring up`, the difference was immediate.
+Once we ran `docker-compose --profile monitoring up`, everything just worked. I can go into Grafana Explore and run a query like:
 
-Instead of a black terminal window, we now have a structured, queryable database of events. I can go into Grafana Explore and run a query like:
-
-`{project="ophio", env="staging", service="backend"} |= "error"`
+`{project="myapp", env="staging", service="backend"} |= "error"`
 
 ![Grafana Explore showing logs from the Ophio backend service](/src/content/centralizing-logs-with-plg-stack/resources/explore_plg.png)
 
@@ -212,3 +208,27 @@ Now that we have validated the stack locally, the path to production is straight
 We are provisioning a dedicated VPS to act as our **Monitoring Hub**, hosting the production instances of Grafana and Loki.
 
 Because our Alloy configuration is driven by environment variables, scaling this out is trivial. We simply deploy the Alloy container to our existing application servers, update the `LOKI_URL` to point to our new Hub, and set the correct `PROJECT_NAME`. Instantly, logs from across our entire infrastructure will start flowing into one central, observable place.
+
+## A Word on Security
+
+The setup I showed you works perfectly for local development. But if you're deploying this Hub & Spoke architecture to production, **you need to lock things down**.
+
+Here are the key points I had to deal with when moving from local to production:
+
+**1. Loki Should NOT Be Public**
+
+In the `docker-compose.yml` above, I exposed Loki on `3100:3100`. That's fine for `localhost`. In production, **do not map Loki's port publicly**.
+
+Here are some options:
+- **Private Network (LAN):** If your app servers and monitoring hub can communicate over a private network, configure Alloy to push to `http://<private-ip>:3100`. No public exposure needed.
+- **Authentication Layer:** If you must expose Loki over the internet, put it behind a reverse proxy (Nginx, Traefik) with Basic Auth or use Loki's built-in multi-tenancy mode with tokens. Otherwise, anyone can read/push logs.
+
+**2. Grafana Needs Credentials**
+
+By default, Grafana's login is `admin:admin`. Change it.
+
+Depending on your setup, you may also need to:
+- Configure the `root_url` and `serve_from_sub_path` if you're hosting Grafana behind a reverse proxy or under a subpath (e.g., `monitoring.yourcompany.com/grafana`).
+- Set up proper user roles. Not everyone needs Admin access. Grafana has Viewer, Editor, and Admin roles for a reason.
+
+I'll probably write a dedicated post on hardening this stack for production, there are some non-obvious gotchas around this.
