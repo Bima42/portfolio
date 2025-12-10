@@ -4,20 +4,18 @@ import { Link } from '@tanstack/react-router';
 import { ArrowRightIcon } from 'lucide-react';
 
 export function BlogPage() {
-    const { i18n } = useTranslation();
+    const { i18n, t } = useTranslation();
     const posts = getBlogPosts(i18n.language);
 
     return (
         <div className="min-h-screen py-[120px] px-16 bg-background">
-            <div className="max-w-[var(--size-container-md)] mx-auto">
+            <div className="max-w-[var(--size-container-md)] lg:max-w-[var(--size-container-lg)] mx-auto">
                 <div className="mb-16">
                     <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 text-foreground">
                         Blog
                     </h1>
                     <p className="text-xl text-muted-foreground leading-relaxed">
-                        {i18n.language === 'fr'
-                            ? "Explorations sur l'ingénierie logicielle, le design systems et l'architecture web."
-                            : 'Explorations in software engineering, design systems, and web architecture.'}
+                        {t('blog.description')}
                     </p>
                 </div>
 
@@ -54,9 +52,7 @@ export function BlogPage() {
                             </p>
 
                             <div className="flex items-center text-sm font-medium text-primary mt-auto">
-                                {i18n.language === 'fr'
-                                    ? "Lire l'article"
-                                    : 'Read article'}
+                                {t('blog.read')}
                                 <ArrowRightIcon className="ml-2 size-4 transition-transform group-hover:translate-x-1" />
                             </div>
                         </Link>
@@ -66,9 +62,7 @@ export function BlogPage() {
                 {posts.length === 0 && (
                     <div className="py-20 text-center border border-dashed border-border rounded-md">
                         <p className="text-muted-foreground">
-                            {i18n.language === 'fr'
-                                ? 'Bientôt disponible...'
-                                : 'Coming soon...'}
+                            {t('blog.commingSoon')}
                         </p>
                     </div>
                 )}

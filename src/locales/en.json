@@ -105,5 +105,10 @@
             "title": "Docstral",
             "shortDescription": "AI-powered document search engine for efficient information retrieval about Mistral documentation."
         }
+    },
+    "blog": {
+        "description": "Explorations in software engineering, design systems, web architecture and AI.",
+        "read": "Read the article",
+        "comingSoon": "Blog coming soon!"
     }
 }

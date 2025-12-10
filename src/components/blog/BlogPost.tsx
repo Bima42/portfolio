@@ -32,7 +32,7 @@ export function BlogPost() {
 
     return (
         <div className="min-h-screen py-[120px] px-4 md:px-8 bg-background">
-            <article className="max-w-[var(--size-container-md)] mx-auto">
+            <article className="max-w-[var(--size-container-md)] lg:max-w-[var(--size-container-lg)] mx-auto">
                 <Link
                     to="/blog"
                     className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground mb-8 transition-colors"
