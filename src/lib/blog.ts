@@ -5,7 +5,7 @@ export type BlogPost = {
     description: string;
     tags: string[];
     lang: 'fr' | 'en';
-    component: React.ComponentType;
+    component: React.ComponentType<any>;
 };
 
 export function getBlogPosts(lang: string) {
@@ -36,7 +36,7 @@ export function getBlogPosts(lang: string) {
     }
 
     return posts.sort(
-        (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+        (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
     );
 }
 

@@ -105,5 +105,11 @@
             "title": "Docstral",
             "shortDescription": "Projet sandbox d'un agent pour intéragir avec la documentation de Mistal AI."
         }
+    },
+    "blog": {
+        "description": "Explorations sur l'ingénierie logicielle, le design systems, l'architecture web et l'IA.",
+        "read": "Lire l'article",
+        "comingSoon": "Bientôt disponible",
+        "allTags": "Tous les tags"
     }
 }
