@@ -285,9 +285,9 @@ The article becomes interactive first. Comments load in the background without b
 
 | Use Case | Good Fit? | Why |
 |----------|-----------|-----|
-| Modals with forms | ✅ | Draft content survives close/reopen |
-| Secondary page sections (comments, sidebars) | ✅ | Deprioritizes hydration |
-| Content that should never render until needed | ❌ | Use lazy loading or conditional rendering instead |
-| Animations or transitions | ❌ | Use CSS or animation libraries |
+| Modals with forms | **YES** | Draft content survives close/reopen |
+| Secondary page sections (comments, sidebars) | **YES** | Deprioritizes hydration |
+| Content that should never render until needed | **NO** | Use lazy loading or conditional rendering instead |
+| Animations or transitions | **NO** | Use CSS or animation libraries |
 
 So you should use `<Activity>` when you want to **keep something alive but deprioritized**, not when you want to **avoid rendering entirely**.

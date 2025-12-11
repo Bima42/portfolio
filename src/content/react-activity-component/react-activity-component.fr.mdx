@@ -285,9 +285,9 @@ L'article devient interactive en premier. Les commentaires chargent en arrière-
 
 | Use Case | Bon Choix ? | Pourquoi |
 |----------|-----------|-----|
-| Modals avec des formulaires | **YES** | Le contenu brouillon survit au close/reopen |
-| Sections secondaires de page (commentaires, sidebars) | **YES** | Déprioritise l'hydration |
-| Contenu qui ne devrait jamais render avant d'être nécessaire | **NO** | Utilisez le lazy loading ou le conditional rendering à la place |
-| Animations ou transitions | **NO** | Utilisez CSS ou des librairies d'animation |
+| Modals avec des formulaires | ****OUI**** | Le contenu brouillon survit au close/reopen |
+| Sections secondaires de page (commentaires, sidebars) | ****OUI**** | Déprioritise l'hydration |
+| Contenu qui ne devrait jamais render avant d'être nécessaire | ****NON**** | Utilisez le lazy loading ou le conditional rendering à la place |
+| Animations ou transitions | ****NON**** | Utilisez CSS ou des librairies d'animation |
 
 Donc vous devriez utiliser `<Activity>` quand vous voulez **garder quelque chose vivant mais dépriorisé**, pas quand vous voulez **éviter complètement le rendering**.
