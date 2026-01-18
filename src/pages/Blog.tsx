@@ -75,7 +75,7 @@ export function BlogPage() {
                                     {post.tags.slice(0, 2).map(t => (
                                         <span
                                             key={t}
-                                            className="text-[10px] uppercase tracking-wider font-semibold px-2 py-1 rounded-md bg-secondary/10 text-secondary"
+                                            className="text-[10px] uppercase tracking-wider font-semibold px-2 py-1 rounded-md bg-secondary/20 text-secondary"
                                         >
                                             {t}
                                         </span>
