@@ -4,30 +4,32 @@
 :root {
     /* Base - Warm White & Dark Gray */
     --background: 0 0% 99%;
-    --foreground: 0 0% 9%;
+    --foreground: 240 10% 4%;
 
     /* Brand - Purple */
-    --primary: 252 65% 84%;
-    --primary-foreground: 252 65% 20%;
+    --primary: 262 60% 60%;
+    --primary-foreground: 0 0% 100%;
+
     --secondary: 263 100% 50%;
     --secondary-foreground: 0 0% 100%;
 
     /* UI Elements */
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 9%;
+    --card-foreground: 240 10% 4%;
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 9%;
+    --popover-foreground: 240 10% 4%;
 
     /* States & Borders */
     --muted: 240 5% 96%;
-    --muted-foreground: 240 4% 46%;
+    --muted-foreground: 240 4% 40%; /* Darker for readability */
     --accent: 240 5% 96%;
     --accent-foreground: 240 6% 10%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
-    --border: 240 6% 90%;
-    --input: 240 6% 90%;
-    --ring: 263 100% 50%;
+
+    --border: 240 6% 85%;
+    --input: 240 6% 85%;
+    --ring: 262 60% 48%;
 
     /* Radius Base */
     --radius: 0.5rem;
@@ -43,8 +45,9 @@
     /* Brand */
     --primary: 252 65% 84%;
     --primary-foreground: 252 65% 20%;
-    --secondary: 263 70% 65%;
-    --secondary-foreground: 0 0% 100%;
+
+    --secondary: 263 40% 30%;
+    --secondary-foreground: 0 0% 98%;
 
     /* UI Elements */
     --card: 0 0% 9%;

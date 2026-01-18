@@ -68,22 +68,25 @@ export function BlogPost() {
                         'prose-headings:text-foreground prose-p:text-muted-foreground prose-strong:text-foreground',
 
                         // 2. Links
-                        'prose-a:text-primary prose-a:no-underline hover:prose-a:underline',
+                        'prose-a:text-primary prose-a:font-medium prose-a:no-underline hover:prose-a:underline',
 
-                        // 3. Lists (Fix for Problem #1)
+                        // 3. Lists
                         'prose-ul:list-disc prose-ul:pl-6',
                         'prose-ol:list-decimal prose-ol:pl-6',
                         'prose-li:text-muted-foreground prose-li:marker:text-primary',
 
-                        // 4. Inline Code (Fix for Problem #3)
-                        // Note: We use :not(pre)>code to target inline code only, avoiding conflict with CodeBlock
-                        'prose-code:text-primary prose-code:bg-primary/10 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-code:font-mono prose-code:text-[0.9em] prose-code:font-medium prose-code:before:content-none prose-code:after:content-none',
+                        // 4. Inline Code (Strictly targeting inline only)
+                        'prose-code:text-primary prose-code:bg-primary/10 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md',
+                        'prose-code:font-mono prose-code:text-[0.9em] prose-code:font-medium',
+                        'prose-code:before:content-none prose-code:after:content-none',
 
                         // 5. Blockquotes
                         'prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:pl-4 prose-blockquote:italic prose-blockquote:text-muted-foreground',
 
                         // 6. Tables
-                        'prose-table:table-auto prose-table:w-full prose-table:border prose-table:border-border prose-table:rounded-md prose-th:border prose-th:border-border prose-th:bg-secondary/20 prose-th:px-4 prose-th:py-2 prose-td:text-foreground prose-td:border prose-td:border-border prose-td:px-4 prose-td:py-2'
+                        'prose-table:table-auto prose-table:w-full prose-table:border prose-table:border-border prose-table:rounded-md',
+                        'prose-th:border prose-th:border-border prose-th:bg-secondary/20 prose-th:px-4 prose-th:py-2 prose-th:text-foreground',
+                        'prose-td:border prose-td:border-border prose-td:px-4 prose-td:py-2 prose-td:text-muted-foreground'
                     )}
                 >
                     <MDXContent components={mdxComponents} />
