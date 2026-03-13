@@ -3,7 +3,7 @@
 A modern portfolio showcasing my skills and achievements as a software engineer.
 [Check it out live!](https://tanguypauvret.me/)
 
-![portofolio-landing.png](public/portofolio-landing.png)
+![portofolio-landing.png](public/portfolio-landing.png)
 
 ## Tech Stack
 
@@ -11,4 +11,3 @@ A modern portfolio showcasing my skills and achievements as a software engineer.
 - **Tailwind CSS v4** - Utility-first CSS framework
 - **Framer Motion** - Smooth animations and micro-interactions
 - **Vite** - Modern and performant build tool
-
