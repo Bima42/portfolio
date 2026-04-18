@@ -3,6 +3,7 @@
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { buttonVariants } from "@/components/ui/button";
+import { GravityGrid } from "@/components/ui-kit/GravityGrid";
 import { cn } from "@/lib/utils";
 
 export function Hero() {
@@ -48,37 +49,10 @@ export function Hero() {
 			className="relative min-h-screen grid overflow-hidden"
 			style={{ alignContent: "center", padding: "140px 6vw 100px" }}
 		>
-			{/* Ambient blobs */}
-			<div
-				aria-hidden
-				className="absolute rounded-full pointer-events-none"
-				style={{
-					top: "-10%",
-					right: "-10%",
-					width: 520,
-					height: 520,
-					background:
-						"radial-gradient(circle at 30% 30%, var(--accent), transparent 60%)",
-					opacity: 0.28,
-					filter: "blur(40px)",
-					animation: "tp-drift 14s ease-in-out infinite alternate",
-				}}
-			/>
-			<div
-				aria-hidden
-				className="absolute rounded-full pointer-events-none"
-				style={{
-					bottom: "-15%",
-					left: "-5%",
-					width: 460,
-					height: 460,
-					background:
-						"radial-gradient(circle at 50% 50%, var(--periwinkle-400, #a8a4e8), transparent 60%)",
-					opacity: 0.32,
-					filter: "blur(50px)",
-					animation: "tp-drift 17s ease-in-out infinite alternate-reverse",
-				}}
-			/>
+			{/* Interactive background grid */}
+			<div aria-hidden className="absolute inset-0 z-0 opacity-40">
+				<GravityGrid />
+			</div>
 
 			<div className="relative z-10 max-w-5xl mx-auto w-full">
 				{/* Status pill — kept as pill, it's an indicator not a button */}

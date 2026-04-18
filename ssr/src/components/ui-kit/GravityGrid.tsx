@@ -13,8 +13,8 @@ export function GravityGrid({ className = "" }: { className?: string }) {
 		const ctx = canvas.getContext("2d");
 		if (!ctx) return;
 
-		const cols = 20;
-		const rows = 12;
+		const cols = 30;
+		const rows = 18;
 		let W = 0;
 		let H = 0;
 		let dots: { ox: number; oy: number }[] = [];
@@ -41,7 +41,9 @@ export function GravityGrid({ className = "" }: { className?: string }) {
 			ctx.clearRect(0, 0, W, H);
 			const mx = mouseRef.current.x;
 			const my = mouseRef.current.y;
-			const accentColor = getComputedStyle(canvas).getPropertyValue("--accent").trim() || "#895cd6";
+			const accentColor =
+				getComputedStyle(canvas).getPropertyValue("--accent-hover").trim() ||
+				"#895cd6";
 
 			for (const dot of dots) {
 				const dx = mx - dot.ox;
@@ -71,14 +73,14 @@ export function GravityGrid({ className = "" }: { className?: string }) {
 			const rect = canvas.getBoundingClientRect();
 			mouseRef.current = { x: e.clientX - rect.left, y: e.clientY - rect.top };
 		}
-		canvas.addEventListener("mousemove", onMouseMove);
+		window.addEventListener("mousemove", onMouseMove);
 
 		rafRef.current = requestAnimationFrame(draw);
 
 		return () => {
 			cancelAnimationFrame(rafRef.current);
 			window.removeEventListener("resize", resize);
-			canvas.removeEventListener("mousemove", onMouseMove);
+			window.removeEventListener("mousemove", onMouseMove);
 		};
 	}, []);
 
