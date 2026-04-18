@@ -5,7 +5,14 @@ import { useState } from "react";
 
 function EmailIcon() {
 	return (
-		<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+		<svg
+			width="20"
+			height="20"
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			strokeWidth="1.6"
+		>
 			<rect x="3" y="5" width="18" height="14" rx="2" />
 			<path d="m3 7 9 6 9-6" />
 		</svg>
@@ -39,7 +46,14 @@ interface ContactCardProps {
 function ContactCard({ kind, label, value, href, accent }: ContactCardProps) {
 	const t = useTranslations("contact");
 	const [hover, setHover] = useState(false);
-	const icon = kind === "email" ? <EmailIcon /> : kind === "linkedin" ? <LinkedInIcon /> : <GitHubIcon />;
+	const icon =
+		kind === "email" ? (
+			<EmailIcon />
+		) : kind === "linkedin" ? (
+			<LinkedInIcon />
+		) : (
+			<GitHubIcon />
+		);
 
 	return (
 		<a
@@ -73,8 +87,12 @@ function ContactCard({ kind, label, value, href, accent }: ContactCardProps) {
 				{icon}
 			</div>
 
-			<p className="font-mono text-[10.5px] uppercase tracking-caps text-fg-faint mb-1.5">{label}</p>
-			<p className="text-xl font-semibold tracking-tight text-fg mb-3 leading-snug">{value}</p>
+			<p className="font-mono text-[10.5px] uppercase tracking-caps text-fg-faint mb-1.5">
+				{label}
+			</p>
+			<p className="text-xl font-semibold tracking-tight text-fg mb-3 leading-snug">
+				{value}
+			</p>
 
 			{/* CTA */}
 			<div className="flex items-center gap-1.5 text-xs text-fg-faint">
@@ -127,7 +145,11 @@ export function Contact() {
 	];
 
 	return (
-		<section id="contact" className="bg-bg" style={{ padding: "140px 6vw 60px" }}>
+		<section
+			id="contact"
+			className="bg-bg"
+			style={{ padding: "140px 6vw 60px" }}
+		>
 			<div className="max-w-5xl mx-auto">
 				<p className="font-mono text-[11px] uppercase tracking-caps text-fg-faint mb-3.5">
 					{t("eyebrow")}
@@ -138,7 +160,7 @@ export function Contact() {
 				>
 					{t("heading")}
 					<br />
-					<span className="italic text-accent">{t("headingAccent")}</span>
+					<span className="italic text-accent-hover">{t("headingAccent")}</span>
 				</h2>
 				<p className="max-w-lg text-base leading-relaxed text-fg-muted mb-12">
 					{t("subheading")}
@@ -147,7 +169,9 @@ export function Contact() {
 				{/* Cards */}
 				<div
 					className="grid gap-4"
-					style={{ gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))" }}
+					style={{
+						gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+					}}
 				>
 					{cards.map((card) => (
 						<ContactCard key={card.kind} {...card} />

@@ -2,6 +2,8 @@
 
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 export function Hero() {
 	const t = useTranslations("hero");
@@ -55,8 +57,9 @@ export function Hero() {
 					right: "-10%",
 					width: 520,
 					height: 520,
-					background: "radial-gradient(circle at 30% 30%, var(--accent), transparent 60%)",
-					opacity: 0.3,
+					background:
+						"radial-gradient(circle at 30% 30%, var(--accent), transparent 60%)",
+					opacity: 0.28,
 					filter: "blur(40px)",
 					animation: "tp-drift 14s ease-in-out infinite alternate",
 				}}
@@ -71,62 +74,79 @@ export function Hero() {
 					height: 460,
 					background:
 						"radial-gradient(circle at 50% 50%, var(--periwinkle-400, #a8a4e8), transparent 60%)",
-					opacity: 0.35,
+					opacity: 0.32,
 					filter: "blur(50px)",
 					animation: "tp-drift 17s ease-in-out infinite alternate-reverse",
 				}}
 			/>
 
 			<div className="relative z-10 max-w-5xl mx-auto w-full">
-				{/* Status pill */}
+				{/* Status pill — kept as pill, it's an indicator not a button */}
 				<div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-pill bg-bg-elevated border border-border shadow-sm mb-8 text-xs text-fg-muted">
 					<span
-						className="w-2 h-2 rounded-pill"
+						className="w-2 h-2 rounded-pill shrink-0"
 						style={{
 							background: "oklch(0.72 0.18 145)",
 							boxShadow: "0 0 0 3px oklch(0.72 0.18 145 / 0.25)",
 							animation: "status-pulse 2s ease-in-out infinite",
 						}}
 					/>
-					<span className="font-mono uppercase tracking-wide text-[11px]">{t("statusLabel")}</span>
-					<span className="w-px h-3 bg-border" />
-					<span>{t("statusCompany")}</span>
+					<span className="font-mono uppercase tracking-wide text-[11px]">
+						ON GARDE
+					</span>
+					<span className="w-px h-3 bg-border shrink-0" />
+					<span>OU PAS</span>
 				</div>
 
-				{/* Heading */}
+				{/* Static heading — large, never wraps */}
 				<h1
-					className="font-semibold leading-tight tracking-tighter text-fg"
-					style={{ fontSize: "clamp(48px, 9vw, 112px)", margin: "0 0 8px" }}
+					className="font-semibold leading-tight tracking-tighter text-fg mb-2"
+					style={{ fontSize: "clamp(48px, 7vw, 96px)" }}
 				>
 					Tanguy Pauvret,
-					<br />
-					<span className="gradient-text italic">{text}</span>
+				</h1>
+
+				{/* Typewriter — separate line, controlled size so it never wraps */}
+				<div className="flex items-center gap-1 mb-4 h-8">
+					<span className="text-2xl font-medium italic gradient-text leading-none">
+						{text}
+					</span>
 					<span
-						className="inline-block w-0.5 h-[0.85em] bg-accent ml-1 align-middle"
+						className="inline-block w-0.5 bg-accent self-stretch"
 						style={{ animation: "blink 1s step-end infinite" }}
 					/>
-				</h1>
+				</div>
 
 				<style>{`@keyframes blink { 50% { opacity: 0; } }`}</style>
 
-				<p className="max-w-xl text-md leading-relaxed text-fg-muted mt-7">
+				<p className="max-w-xl text-md leading-relaxed text-fg-muted">
 					{t("subheading")}
 				</p>
 
-				{/* CTAs */}
-				<div className="flex gap-3 mt-10 flex-wrap">
+				{/* CTAs — use buttonVariants on <a> since they're links */}
+				<div className="flex gap-3 mt-6 flex-wrap">
 					<a
 						href="#work"
-						className="inline-flex items-center gap-2 px-5 py-3 rounded-pill bg-fg text-bg text-sm font-medium hover:opacity-90 transition-opacity"
+						className={cn(
+							buttonVariants({ variant: "default", size: "lg" }),
+							"gap-2",
+						)}
 					>
 						{t("ctaPrimary")}
-						<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+						<svg
+							width="14"
+							height="14"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							strokeWidth="2"
+						>
 							<path d="M5 12h14M13 5l7 7-7 7" />
 						</svg>
 					</a>
 					<a
 						href="#contact"
-						className="inline-flex items-center px-5 py-3 rounded-pill border border-border text-sm font-medium text-fg hover:border-accent hover:text-accent transition-colors"
+						className={cn(buttonVariants({ variant: "outline", size: "lg" }))}
 					>
 						{t("ctaSecondary")}
 					</a>
@@ -135,7 +155,9 @@ export function Hero() {
 				{/* Meta strip */}
 				<div
 					className="mt-20 pt-6 border-t border-border grid gap-6"
-					style={{ gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))" }}
+					style={{
+						gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))",
+					}}
 				>
 					{metaItems.map((item) => (
 						<div key={item.label}>

@@ -1,14 +1,18 @@
 "use client";
 
+import { Moon, Sun } from "lucide-react";
+import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { usePathname, useRouter } from "@/i18n/navigation";
+import { cn } from "@/lib/utils";
 
 const NAV_ITEMS = [
 	{ href: "#about", key: "about" as const },
 	{ href: "#work", key: "work" as const },
-	{ href: "#writing", key: "writing" as const },
 	{ href: "#contact", key: "contact" as const },
+	{ href: "#writing", key: "writing" as const },
 ];
 
 function GitHubIcon() {
@@ -18,7 +22,6 @@ function GitHubIcon() {
 		</svg>
 	);
 }
-
 function LinkedInIcon() {
 	return (
 		<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
@@ -26,15 +29,6 @@ function LinkedInIcon() {
 		</svg>
 	);
 }
-
-function DownloadIcon() {
-	return (
-		<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-			<path d="M12 3v14M5 10l7 7 7-7M5 21h14" />
-		</svg>
-	);
-}
-
 export function Header() {
 	const t = useTranslations("nav");
 	const locale = useLocale();
@@ -65,12 +59,9 @@ export function Header() {
 		router.replace(pathname, { locale: locale === "en" ? "fr" : "en" });
 	}
 
-	const iconBtnCls =
-		"w-8 h-8 rounded-pill bg-bg-sunken grid place-items-center text-fg-muted hover:text-fg transition-colors";
-
 	return (
 		<header
-			className="glass fixed top-4 left-1/2 z-50 flex items-center gap-3 rounded-pill px-5 py-2.5 transition-shadow"
+			className="glass fixed top-4 left-1/2 z-50 flex items-center gap-3 rounded-md px-5 py-2 transition-shadow"
 			style={{
 				transform: "translateX(-50%)",
 				width: "min(1180px, calc(100vw - 32px))",
@@ -79,27 +70,25 @@ export function Header() {
 		>
 			{/* Logo */}
 			<a href="#top" className="flex items-center gap-2.5 font-medium shrink-0">
-				<span
-					className="w-7 h-7 rounded-lg grid place-items-center text-white text-lg font-semibold"
-					style={{
-						background: "linear-gradient(135deg, var(--accent), var(--periwinkle-400, #a8a4e8))",
-						boxShadow: "0 2px 8px color-mix(in oklab, var(--accent) 40%, transparent)",
-					}}
-				>
-					t
-				</span>
-				<span className="text-sm text-fg">
-					tanguy<span className="text-fg-faint">.me</span>
-				</span>
+				<Image
+					src="/assets/logo/logo-primary.svg"
+					alt="Logo"
+					width={48}
+					height={48}
+					className="rounded-lg"
+				/>
 			</a>
 
-			{/* Nav */}
+			{/* Nav links — rounded-md, not pill */}
 			<nav className="hidden sm:flex gap-0.5 ml-6">
 				{NAV_ITEMS.map((item) => (
 					<a
 						key={item.href}
 						href={item.href}
-						className="px-3 py-1.5 rounded-pill text-xs text-fg-muted hover:bg-bg-sunken hover:text-fg transition-all"
+						className={cn(
+							buttonVariants({ variant: "ghost", size: "sm" }),
+							"text-fg-muted hover:text-fg font-normal",
+						)}
 					>
 						{t(item.key)}
 					</a>
@@ -107,36 +96,16 @@ export function Header() {
 			</nav>
 
 			{/* Controls */}
-			<div className="ml-auto flex items-center gap-1.5">
-				{/* Locale */}
-				<button
-					onClick={switchLocale}
-					className="hidden sm:block px-2.5 py-1.5 rounded-pill text-xs font-mono uppercase tracking-wide text-fg-muted hover:text-fg hover:bg-bg-sunken transition-all"
-					aria-label="Toggle language"
-				>
-					{locale}
-				</button>
-
-				{/* Theme */}
-				<button onClick={toggleTheme} className={iconBtnCls} aria-label="Toggle theme">
-					{theme === "light" ? (
-						<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-							<path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
-						</svg>
-					) : (
-						<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-							<circle cx="12" cy="12" r="4" />
-							<path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
-						</svg>
-					)}
-				</button>
-
+			<div className="ml-auto flex items-center gap-1">
 				{/* Social */}
 				<a
 					href="https://github.com/Bima42"
 					target="_blank"
 					rel="noopener noreferrer"
-					className={`${iconBtnCls} hidden sm:grid`}
+					className={cn(
+						buttonVariants({ variant: "ghost", size: "icon" }),
+						"hidden sm:inline-flex text-fg-muted hover:text-fg",
+					)}
 					aria-label="GitHub"
 				>
 					<GitHubIcon />
@@ -145,17 +114,42 @@ export function Header() {
 					href="https://linkedin.com/in/tanguy-pauvret"
 					target="_blank"
 					rel="noopener noreferrer"
-					className={`${iconBtnCls} hidden sm:grid`}
+					className={cn(
+						buttonVariants({ variant: "ghost", size: "icon" }),
+						"hidden sm:inline-flex text-fg-muted hover:text-fg",
+					)}
 					aria-label="LinkedIn"
 				>
 					<LinkedInIcon />
 				</a>
 
+				{/* Locale toggle */}
+				<Button
+					onClick={switchLocale}
+					variant="ghost"
+					size="icon"
+					className="hidden sm:inline-flex font-mono uppercase tracking-wide text-fg-muted hover:text-fg"
+					aria-label="Toggle language"
+				>
+					{locale}
+				</Button>
+
+				{/* Theme toggle */}
+				<Button
+					onClick={toggleTheme}
+					variant="ghost"
+					size="icon"
+					className="text-fg-muted hover:text-fg"
+					aria-label="Toggle theme"
+				>
+					{theme === "light" ? <Moon /> : <Sun />}
+				</Button>
+
 				{/* CV */}
-				<button className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-pill bg-fg text-bg text-xs font-medium hover:opacity-90 transition-opacity">
-					<DownloadIcon />
+				{/*<Button size="sm" className="gap-1.5 ml-1">
+					<Download />
 					CV
-				</button>
+				</Button>*/}
 			</div>
 		</header>
 	);

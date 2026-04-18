@@ -2,7 +2,12 @@
 
 import { useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
-import { TIMELINE_ITEMS, type TimelineItem, type TimelineType } from "@/data/timeline";
+import { Badge } from "@/components/ui/badge";
+import {
+	TIMELINE_ITEMS,
+	type TimelineItem,
+	type TimelineType,
+} from "@/data/timeline";
 
 // ── Scroll hooks ──────────────────────────────────────────────────────────────
 
@@ -82,10 +87,16 @@ const TYPE_MAP: Record<TimelineType, { label: string; color: string }> = {
 function TypeBadge({ type }: { type: TimelineType }) {
 	const m = TYPE_MAP[type] ?? TYPE_MAP.experience;
 	return (
-		<span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-pill bg-bg-sunken font-mono text-[10.5px] tracking-wide uppercase text-fg-muted">
-			<span className="w-1.5 h-1.5 rounded-pill" style={{ background: m.color }} />
+		<Badge
+			variant="outline"
+			className="gap-1.5 font-mono uppercase tracking-wide text-fg-muted border-border"
+		>
+			<span
+				className="w-1.5 h-1.5 rounded-pill shrink-0"
+				style={{ background: m.color }}
+			/>
 			{m.label}
-		</span>
+		</Badge>
 	);
 }
 
@@ -100,7 +111,14 @@ interface WaypointCardProps {
 	isActive: boolean;
 }
 
-function WaypointCard({ item, title, role, where, summary, isActive }: WaypointCardProps) {
+function WaypointCard({
+	item,
+	title,
+	role,
+	where,
+	summary,
+	isActive,
+}: WaypointCardProps) {
 	return (
 		<div
 			style={{
@@ -120,19 +138,24 @@ function WaypointCard({ item, title, role, where, summary, isActive }: WaypointC
 		>
 			<div className="flex items-center gap-2.5 flex-wrap mb-2.5">
 				<TypeBadge type={item.type} />
-				<span className="font-mono text-[10.5px] tracking-wide text-fg-faint">{where}</span>
+				<span className="font-mono text-[10.5px] tracking-wide text-fg-faint">
+					{where}
+				</span>
 			</div>
-			<h3 className="text-xl font-semibold tracking-tight text-fg mb-0.5 leading-snug">{title}</h3>
+			<h3 className="text-xl font-semibold tracking-tight text-fg mb-0.5 leading-snug">
+				{title}
+			</h3>
 			<p className="text-sm text-fg-muted mb-3">{role}</p>
 			<p className="text-sm leading-relaxed text-fg-muted">{summary}</p>
 			<div className="flex flex-wrap gap-1.5 mt-3.5">
 				{item.tags.map((tag) => (
-					<span
+					<Badge
 						key={tag}
-						className="font-mono text-[10.5px] px-2 py-0.5 rounded-md bg-bg-sunken text-fg-muted"
+						variant="secondary"
+						className="font-mono text-[10px]"
 					>
 						{tag}
-					</span>
+					</Badge>
 				))}
 			</div>
 		</div>
@@ -174,10 +197,14 @@ export function About() {
 							style={{ fontSize: "clamp(40px, 6vw, 72px)" }}
 						>
 							{t("heading")}{" "}
-							<span className="italic text-accent">{t("headingAccent")}</span>
+							<span className="italic text-accent-hover">
+								{t("headingAccent")}
+							</span>
 						</h2>
 					</div>
-					<p className="max-w-sm text-sm leading-relaxed text-fg-muted">{t("description")}</p>
+					<p className="max-w-sm text-sm leading-relaxed text-fg-muted">
+						{t("description")}
+					</p>
 				</div>
 
 				{/* Timeline */}

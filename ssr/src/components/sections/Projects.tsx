@@ -1,28 +1,48 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import {
 	Dialog,
 	DialogContent,
 	DialogDescription,
 	DialogTitle,
 } from "@/components/ui/dialog";
-import { ALL_TAGS, PROJECTS, type Project, type ThumbKind } from "@/data/projects";
+import { Input } from "@/components/ui/input";
+import {
+	ALL_TAGS,
+	PROJECTS,
+	type Project,
+	type ThumbKind,
+} from "@/data/projects";
 
 // ── SVG thumbnails ────────────────────────────────────────────────────────────
 
 function ProjectThumb({ kind, accent }: { kind: ThumbKind; accent: number }) {
 	const stroke = `oklch(0.60 0.15 ${accent})`;
 	const fill = `oklch(0.90 0.06 ${accent} / 0.5)`;
-	const props = { width: "100%", height: "100%", viewBox: "0 0 120 80", fill: "none" } as const;
+	const props = {
+		width: "100%",
+		height: "100%",
+		viewBox: "0 0 120 80",
+		fill: "none",
+	} as const;
 
 	switch (kind) {
 		case "panel":
 			return (
 				<svg {...props}>
 					<rect x="6" y="10" width="108" height="60" rx="4" stroke={stroke} />
-					<line x1="36" y1="10" x2="36" y2="70" stroke={stroke} strokeWidth="0.6" />
+					<line
+						x1="36"
+						y1="10"
+						x2="36"
+						y2="70"
+						stroke={stroke}
+						strokeWidth="0.6"
+					/>
 					<rect x="10" y="16" width="22" height="3" fill={fill} />
 					<rect x="10" y="22" width="18" height="3" fill={fill} />
 					<rect x="10" y="28" width="22" height="3" fill={fill} />
@@ -39,10 +59,38 @@ function ProjectThumb({ kind, accent }: { kind: ThumbKind; accent: number }) {
 					<circle cx="70" cy="22" r="7" stroke={stroke} fill={fill} />
 					<circle cx="90" cy="55" r="8" stroke={stroke} fill={fill} />
 					<circle cx="55" cy="60" r="5" stroke={stroke} />
-					<line x1="30" y1="40" x2="70" y2="22" stroke={stroke} strokeWidth="0.8" />
-					<line x1="30" y1="40" x2="55" y2="60" stroke={stroke} strokeWidth="0.8" />
-					<line x1="70" y1="22" x2="90" y2="55" stroke={stroke} strokeWidth="0.8" />
-					<line x1="55" y1="60" x2="90" y2="55" stroke={stroke} strokeWidth="0.8" />
+					<line
+						x1="30"
+						y1="40"
+						x2="70"
+						y2="22"
+						stroke={stroke}
+						strokeWidth="0.8"
+					/>
+					<line
+						x1="30"
+						y1="40"
+						x2="55"
+						y2="60"
+						stroke={stroke}
+						strokeWidth="0.8"
+					/>
+					<line
+						x1="70"
+						y1="22"
+						x2="90"
+						y2="55"
+						stroke={stroke}
+						strokeWidth="0.8"
+					/>
+					<line
+						x1="55"
+						y1="60"
+						x2="90"
+						y2="55"
+						stroke={stroke}
+						strokeWidth="0.8"
+					/>
 				</svg>
 			);
 		case "quill":
@@ -53,7 +101,14 @@ function ProjectThumb({ kind, accent }: { kind: ThumbKind; accent: number }) {
 						stroke={stroke}
 						fill={fill}
 					/>
-					<line x1="20" y1="60" x2="12" y2="70" stroke={stroke} strokeLinecap="round" />
+					<line
+						x1="20"
+						y1="60"
+						x2="12"
+						y2="70"
+						stroke={stroke}
+						strokeLinecap="round"
+					/>
 					<line
 						x1="30"
 						y1="55"
@@ -68,10 +123,23 @@ function ProjectThumb({ kind, accent }: { kind: ThumbKind; accent: number }) {
 		case "xml":
 			return (
 				<svg {...props}>
-					<text x="18" y="48" fontFamily="monospace" fontSize="14" fill={stroke}>
+					<text
+						x="18"
+						y="48"
+						fontFamily="monospace"
+						fontSize="14"
+						fill={stroke}
+					>
 						{"<prompt>"}
 					</text>
-					<text x="26" y="62" fontFamily="monospace" fontSize="10" fill={stroke} opacity="0.6">
+					<text
+						x="26"
+						y="62"
+						fontFamily="monospace"
+						fontSize="10"
+						fill={stroke}
+						opacity="0.6"
+					>
 						{"<goal/>"}
 					</text>
 				</svg>
@@ -80,8 +148,16 @@ function ProjectThumb({ kind, accent }: { kind: ThumbKind; accent: number }) {
 			return (
 				<svg {...props}>
 					<ellipse cx="60" cy="22" rx="30" ry="8" stroke={stroke} fill={fill} />
-					<path d="M30 22 V 42 C 30 46, 90 46, 90 42 V 22" stroke={stroke} fill="none" />
-					<path d="M30 42 V 58 C 30 62, 90 62, 90 58 V 42" stroke={stroke} fill="none" />
+					<path
+						d="M30 22 V 42 C 30 46, 90 46, 90 42 V 22"
+						stroke={stroke}
+						fill="none"
+					/>
+					<path
+						d="M30 42 V 58 C 30 62, 90 62, 90 58 V 42"
+						stroke={stroke}
+						fill="none"
+					/>
 					<ellipse cx="60" cy="42" rx="30" ry="4" stroke={stroke} />
 				</svg>
 			);
@@ -116,10 +192,24 @@ function ProjectThumb({ kind, accent }: { kind: ThumbKind; accent: number }) {
 					<text x="12" y="34" fontFamily="monospace" fontSize="9" fill={stroke}>
 						$ ./minishell
 					</text>
-					<text x="12" y="46" fontFamily="monospace" fontSize="9" fill={stroke} opacity="0.6">
+					<text
+						x="12"
+						y="46"
+						fontFamily="monospace"
+						fontSize="9"
+						fill={stroke}
+						opacity="0.6"
+					>
 						{">"} pwd
 					</text>
-					<text x="12" y="58" fontFamily="monospace" fontSize="9" fill={stroke} opacity="0.8">
+					<text
+						x="12"
+						y="58"
+						fontFamily="monospace"
+						fontSize="9"
+						fill={stroke}
+						opacity="0.8"
+					>
 						/home/tanguy
 					</text>
 				</svg>
@@ -127,9 +217,33 @@ function ProjectThumb({ kind, accent }: { kind: ThumbKind; accent: number }) {
 		case "stack":
 			return (
 				<svg {...props}>
-					<rect x="24" y="50" width="72" height="12" rx="2" stroke={stroke} fill={fill} />
-					<rect x="30" y="35" width="60" height="12" rx="2" stroke={stroke} fill={fill} />
-					<rect x="36" y="20" width="48" height="12" rx="2" stroke={stroke} fill={fill} />
+					<rect
+						x="24"
+						y="50"
+						width="72"
+						height="12"
+						rx="2"
+						stroke={stroke}
+						fill={fill}
+					/>
+					<rect
+						x="30"
+						y="35"
+						width="60"
+						height="12"
+						rx="2"
+						stroke={stroke}
+						fill={fill}
+					/>
+					<rect
+						x="36"
+						y="20"
+						width="48"
+						height="12"
+						rx="2"
+						stroke={stroke}
+						fill={fill}
+					/>
 					<text x="42" y="28" fontFamily="monospace" fontSize="7" fill={stroke}>
 						vector
 					</text>
@@ -199,7 +313,9 @@ function ProjectCard({
 			{/* Body */}
 			<div className="flex flex-col flex-1 p-[18px]">
 				<div className="flex justify-between items-start gap-2 mb-1.5">
-					<h3 className="text-base font-medium tracking-tight text-fg">{p.title}</h3>
+					<h3 className="text-base font-medium tracking-tight text-fg">
+						{p.title}
+					</h3>
 					{p.award && (
 						<span
 							className="font-mono text-[9.5px] px-1.5 py-0.5 rounded tracking-wide uppercase whitespace-nowrap"
@@ -215,29 +331,39 @@ function ProjectCard({
 				<p className="font-mono text-[10.5px] uppercase tracking-wide text-fg-faint mb-2.5">
 					{p.kind}
 				</p>
-				<p className="text-sm leading-relaxed text-fg-muted flex-1 mb-3.5">{p.blurb}</p>
+				<p className="text-sm leading-relaxed text-fg-muted flex-1 mb-3.5">
+					{p.blurb}
+				</p>
 
 				{/* Tags */}
 				<div className="flex flex-wrap gap-1 mb-3">
 					{p.tags.map((tag) => (
 						<button
 							key={tag}
+							type="button"
 							onClick={(e) => {
 								e.stopPropagation();
 								onTagClick(tag);
 							}}
-							className="font-mono text-[10px] px-1.5 py-0.5 rounded bg-bg-sunken text-fg-muted border-none cursor-pointer hover:bg-accent-soft hover:text-accent-soft-fg transition-colors"
+							className="cursor-pointer"
 						>
-							#{tag}
+							<Badge
+								variant="secondary"
+								className="font-mono text-[10px] hover:bg-accent-soft hover:text-accent-soft-fg transition-colors"
+							>
+								#{tag}
+							</Badge>
 						</button>
 					))}
 				</div>
 
 				{/* Links */}
 				<div className="flex gap-3 pt-3 border-t border-border font-mono text-[11px] text-fg-faint">
-					{p.repo && <span>{t("viewRepo").replace("↗ ", "↗ ") + " " + p.repo.replace("github.com/", "")}</span>}
-					{p.live && <span>{t("viewLive")} {p.live}</span>}
-					{!p.repo && !p.live && <span className="opacity-60">{t("internal")}</span>}
+					{p.repo && <span>↗ {p.repo.replace("github.com/", "")}</span>}
+					{p.live && <span>→ {p.live}</span>}
+					{!p.repo && !p.live && (
+						<span className="opacity-60">{t("internal")}</span>
+					)}
 				</div>
 			</div>
 		</article>
@@ -305,18 +431,21 @@ function ProjectModal({
 							{/* Tags */}
 							<div className="flex flex-wrap gap-1.5 mb-6">
 								{project.tags.map((tag) => (
-									<span
+									<Badge
 										key={tag}
-										className="font-mono text-xs px-2.5 py-1 bg-bg-sunken rounded-lg text-fg-muted"
+										variant="secondary"
+										className="font-mono text-xs"
 									>
 										#{tag}
-									</span>
+									</Badge>
 								))}
 							</div>
 
 							{/* Content placeholder */}
 							<div className="p-4 border border-dashed border-border rounded-xl mb-6 text-sm text-fg-faint">
-								<span className="font-mono text-[10px] uppercase tracking-wide">[ placeholder ]</span>
+								<span className="font-mono text-[10px] uppercase tracking-wide">
+									[ placeholder ]
+								</span>
 								<p className="mt-1.5">
 									Full write-up lives in the blog — coming soon.
 								</p>
@@ -360,7 +489,6 @@ export function Projects() {
 	const [activeTags, setActiveTags] = useState<string[]>([]);
 	const [query, setQuery] = useState("");
 	const [openProject, setOpenProject] = useState<Project | null>(null);
-	const inputRef = useRef<HTMLInputElement>(null);
 
 	function toggleTag(tag: string) {
 		setActiveTags((prev) =>
@@ -370,10 +498,13 @@ export function Projects() {
 
 	const filtered = PROJECTS.filter((p) => {
 		const matchTags =
-			activeTags.length === 0 || activeTags.every((tag) => p.tags.includes(tag));
+			activeTags.length === 0 ||
+			activeTags.every((tag) => p.tags.includes(tag));
 		const q = query.trim().toLowerCase();
 		const matchQuery =
-			!q || p.title.toLowerCase().includes(q) || p.blurb.toLowerCase().includes(q);
+			!q ||
+			p.title.toLowerCase().includes(q) ||
+			p.blurb.toLowerCase().includes(q);
 		return matchTags && matchQuery;
 	});
 
@@ -407,7 +538,9 @@ export function Projects() {
 							style={{ fontSize: "clamp(40px, 6vw, 72px)" }}
 						>
 							{t("heading")}{" "}
-							<span className="italic text-accent">{t("headingAccent")}</span>
+							<span className="italic text-accent-hover">
+								{t("headingAccent")}
+							</span>
 						</h2>
 					</div>
 					<span className="font-mono text-xs text-fg-faint">
@@ -417,7 +550,7 @@ export function Projects() {
 
 				{/* Search + clear */}
 				<div className="flex gap-3 items-center flex-wrap mb-5">
-					<div className="flex items-center gap-2 px-3.5 py-2 rounded-pill bg-bg-elevated border border-border w-64">
+					<div className="relative w-64">
 						<svg
 							width="14"
 							height="14"
@@ -425,23 +558,24 @@ export function Projects() {
 							fill="none"
 							stroke="currentColor"
 							strokeWidth="2"
-							className="text-fg-faint shrink-0"
+							className="absolute left-2.5 top-1/2 -translate-y-1/2 text-fg-faint pointer-events-none"
 						>
 							<circle cx="11" cy="11" r="8" />
 							<path d="m21 21-4.3-4.3" />
 						</svg>
-						<input
-							ref={inputRef}
+						<Input
 							value={query}
 							onChange={(e) => setQuery(e.target.value)}
 							placeholder={t("searchPlaceholder")}
-							className="border-none outline-none bg-transparent text-sm text-fg w-full placeholder:text-fg-faint"
+							className="h-7 pl-8 bg-bg-elevated border-border text-fg placeholder:text-fg-faint"
 						/>
 					</div>
 					{activeTags.length > 0 && (
-						<button
+						<Button
 							onClick={() => setActiveTags([])}
-							className="flex items-center gap-1.5 px-3 py-1.5 rounded-pill bg-fg text-bg font-mono text-[11px] tracking-wide cursor-pointer hover:opacity-90 transition-opacity"
+							variant="default"
+							size="sm"
+							className="font-mono tracking-wide gap-1.5"
 						>
 							{t("clearFilters")} {activeTags.length}
 							<svg
@@ -454,7 +588,7 @@ export function Projects() {
 							>
 								<path d="M18 6L6 18M6 6l12 12" />
 							</svg>
-						</button>
+						</Button>
 					)}
 				</div>
 
@@ -463,18 +597,15 @@ export function Projects() {
 					{ALL_TAGS.map((tag) => {
 						const on = activeTags.includes(tag);
 						return (
-							<button
+							<Button
 								key={tag}
 								onClick={() => toggleTag(tag)}
-								className="px-3 py-1.5 rounded-pill font-mono text-[11px] tracking-wide cursor-pointer whitespace-nowrap transition-all"
-								style={{
-									border: `1px solid ${on ? "var(--accent)" : "var(--border)"}`,
-									background: on ? "var(--accent)" : "var(--bg-elevated)",
-									color: on ? "var(--fg-on-accent)" : "var(--fg-muted)",
-								}}
+								variant={on ? "default" : "outline"}
+								size="sm"
+								className="font-mono text-[11px] tracking-wide whitespace-nowrap"
 							>
 								#{tag}
-							</button>
+							</Button>
 						);
 					})}
 				</div>
@@ -482,7 +613,9 @@ export function Projects() {
 				{/* Grid */}
 				<div
 					className="grid gap-5"
-					style={{ gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))" }}
+					style={{
+						gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
+					}}
 				>
 					{filtered.map((p) => (
 						<ProjectCard
@@ -494,14 +627,19 @@ export function Projects() {
 					))}
 					{filtered.length === 0 && (
 						<div className="col-span-full py-16 text-center border border-dashed border-border rounded-2xl">
-							<p className="text-xl font-semibold text-fg mb-1.5">{t("noResultsTitle")}</p>
+							<p className="text-xl font-semibold text-fg mb-1.5">
+								{t("noResultsTitle")}
+							</p>
 							<p className="text-sm text-fg-muted">{t("noResultsBody")}</p>
 						</div>
 					)}
 				</div>
 			</div>
 
-			<ProjectModal project={openProject} onClose={() => setOpenProject(null)} />
+			<ProjectModal
+				project={openProject}
+				onClose={() => setOpenProject(null)}
+			/>
 		</section>
 	);
 }
