@@ -141,3 +141,6 @@ vite.config.ts.timestamp-*
 .idea/
 docs/
 .DS_Store
+
+**/saved_folders/
+**/.next/

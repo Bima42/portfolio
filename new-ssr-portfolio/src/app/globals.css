@@ -1,0 +1,458 @@
+/* =============================================================
+   Tanguy Design System — Tailwind v4
+   Layer order:
+     1. @import tailwindcss
+     2. @custom-variant dark  (data-theme, SSR-safe)
+     3. @theme                (primitive scales → static utilities)
+     4. :root / [data-theme]  (semantic CSS vars, theme-switched)
+     5. @theme inline         (wire semantic vars → Tailwind utilities)
+     6. Base resets
+   ============================================================= */
+
+@import 'tailwindcss';
+
+@font-face {
+    font-family: 'Geist';
+    src: url('/fonts/Geist-Variable.woff2') format('woff2');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Geist Mono';
+    src: url('/fonts/GeistMono-Variable.woff2') format('woff2');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* ── 1. Dark mode variant ────────────────────────────────────────
+   Uses data-theme so the server can render the right theme
+   without a JS flash. Set <html data-theme="dark"> server-side
+   (cookie / Accept header / explicit user preference).
+   ──────────────────────────────────────────────────────────────── */
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+
+/* ── 2. Primitive scales ─────────────────────────────────────────
+   Static values only — no CSS var references here.
+   Tailwind generates bg-purple-500, text-ink-900, etc.
+   ──────────────────────────────────────────────────────────────── */
+@theme {
+    /* Fonts */
+    --font-sans:
+        'Geist', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --font-mono:
+        'Geist Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+    --font-display: 'Geist', ui-sans-serif, system-ui, sans-serif;
+
+    /* Weights */
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+
+    /* Type scale — 1.2 ratio */
+    --text-xs: 0.75rem; /* 12 */
+    --text-sm: 0.875rem; /* 14 */
+    --text-base: 1rem; /* 16 */
+    --text-md: 1.125rem; /* 18 */
+    --text-lg: 1.375rem; /* 22 */
+    --text-xl: 1.75rem; /* 28 */
+    --text-2xl: 2.25rem; /* 36 */
+    --text-3xl: 3rem; /* 48 */
+    --text-4xl: 4rem; /* 64 */
+    --text-5xl: 5.5rem; /* 88 */
+
+    /* Leading */
+    --leading-tight: 1.05;
+    --leading-snug: 1.2;
+    --leading-normal: 1.5;
+    --leading-relaxed: 1.7;
+
+    /* Tracking */
+    --tracking-tighter: -0.04em;
+    --tracking-tight: -0.02em;
+    --tracking-normal: 0em;
+    --tracking-wide: 0.02em;
+    --tracking-caps: 0.08em;
+
+    /* ── Purple primitive scale (signature) */
+    --color-purple-50: #f4f0fb;
+    --color-purple-100: #e7dff6;
+    --color-purple-200: #d2c4ef;
+    --color-purple-300: #b9a3e6;
+    --color-purple-400: #a07fdd;
+    --color-purple-500: #895cd6; /* ← signature, never replaced */
+    --color-purple-600: #7245bd;
+    --color-purple-700: #5b369a;
+    --color-purple-800: #472878;
+    --color-purple-900: #341c58;
+    --color-purple-950: #1f1038;
+
+    /* ── Pastel companions */
+    --color-rose-200: #fbd5e5;
+    --color-rose-400: #f5a3c2;
+    --color-peach-200: #fde4cf;
+    --color-peach-400: #f8b78a;
+    --color-mint-200: #d4f0e2;
+    --color-mint-400: #8fd6b3;
+    --color-sky-200: #d6e4f7;
+    --color-sky-300: #b8cdef;
+    --color-sky-400: #8fb0e5;
+    --color-sky-500: #6a8fd8;
+    --color-periwinkle-200: #d8d6f5;
+    --color-periwinkle-400: #a8a4e8;
+    --color-butter-200: #fbefcb;
+    --color-butter-400: #f3d47a;
+
+    /* ── Ink neutrals (lavender-tinted, never pure gray) */
+    --color-ink-50: #faf9fc;
+    --color-ink-100: #f3f1f7;
+    --color-ink-200: #e7e3ee;
+    --color-ink-300: #d2ccdd;
+    --color-ink-400: #9c94ae;
+    --color-ink-500: #6d6582;
+    --color-ink-600: #4d475e;
+    --color-ink-700: #332e43;
+    --color-ink-800: #201b30;
+    --color-ink-900: #14101f;
+    --color-ink-950: #0b0815;
+
+    /* ── Spacing — 4pt grid */
+    --spacing-1: 0.25rem; /* 4  */
+    --spacing-2: 0.5rem; /* 8  */
+    --spacing-3: 0.75rem; /* 12 */
+    --spacing-4: 1rem; /* 16 */
+    --spacing-5: 1.5rem; /* 24 */
+    --spacing-6: 2rem; /* 32 */
+    --spacing-7: 3rem; /* 48 */
+    --spacing-8: 4rem; /* 64 */
+    --spacing-9: 6rem; /* 96 */
+    --spacing-10: 8rem; /* 128 */
+
+    /* ── Radii */
+    --radius-xs: 3px;
+    --radius-sm: 4px;
+    --radius-md: 6px;
+    --radius-lg: 8px;
+    --radius-xl: 10px; /* inputs, buttons */
+    --radius-2xl: 14px; /* cards */
+    --radius-3xl: 24px; /* hero surfaces */
+    --radius-pill: 999px; /* true pill / status dots only */
+
+    /* ── Shadows (light — purple-tinted, never black) */
+    --shadow-xs: 0 1px 2px 0 rgba(52, 28, 88, 0.04);
+    --shadow-sm:
+        0 1px 3px 0 rgba(52, 28, 88, 0.06),
+        0 1px 2px -1px rgba(52, 28, 88, 0.04);
+    --shadow-md:
+        0 4px 12px -2px rgba(52, 28, 88, 0.08),
+        0 2px 4px -2px rgba(52, 28, 88, 0.04);
+    --shadow-lg:
+        0 12px 28px -8px rgba(52, 28, 88, 0.14),
+        0 4px 8px -4px rgba(52, 28, 88, 0.06);
+    --shadow-xl: 0 24px 48px -12px rgba(52, 28, 88, 0.18);
+
+    /* ── Easing — cinematic signature */
+    --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+    --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+    --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    /* ── Durations */
+    --duration-fast: 160ms;
+    --duration-base: 240ms;
+    --duration-slow: 420ms;
+    --duration-slower: 720ms;
+    --duration-cinematic: 1200ms;
+
+    /* ── Animations */
+    --animate-drift: tp-drift 22s cubic-bezier(0.22, 1, 0.36, 1) infinite
+        alternate;
+
+    @keyframes tp-drift {
+        0% {
+            transform: translate(0, 0) scale(1);
+        }
+        50% {
+            transform: translate(40px, -30px) scale(1.12);
+        }
+        100% {
+            transform: translate(-30px, 40px) scale(0.92);
+        }
+    }
+}
+
+/* ── 3. Semantic tokens — light (default) ────────────────────────
+   Raw CSS vars, not in @theme, so they can be switched per theme.
+   Aliased into utilities via @theme inline below.
+   ──────────────────────────────────────────────────────────────── */
+:root {
+    color-scheme: light;
+
+    /* Surface */
+    --bg: #faf9fc;
+    --bg-elevated: #ffffff;
+    --bg-sunken: #f3f1f7;
+    --bg-overlay: rgba(20, 16, 31, 0.04);
+
+    /* Foreground */
+    --fg: #14101f;
+    --fg-muted: #4d475e;
+    --fg-subtle: #6d6582;
+    --fg-faint: #9c94ae;
+    --fg-on-accent: #ffffff;
+
+    /* Border */
+    --border: #e7e3ee;
+    --border-strong: #d2ccdd;
+    --border-subtle: rgba(20, 16, 31, 0.06);
+
+    /* Accent */
+    --accent: #895cd6;
+    --accent-hover: #7245bd;
+    --accent-pressed: #5b369a;
+    --accent-soft: #e7dff6;
+    --accent-soft-fg: #5b369a;
+    --accent-ring: color-mix(in oklch, #895cd6 40%, transparent);
+
+    /* Mesh palette */
+    --mesh-1: #a07fdd;
+    --mesh-2: #d2c4ef;
+    --mesh-3: #a8a4e8;
+    --mesh-4: #b8cdef;
+    --mesh-5: #d6e4f7;
+
+    /* Shadows (overrideable by theme) */
+    --shadow-glow: 0 0 0 4px color-mix(in oklch, #895cd6 22%, transparent);
+
+    /* Focus ring */
+    --focus-ring: 0 0 0 3px color-mix(in oklch, #895cd6 40%, transparent);
+
+    /* Semantic status */
+    --success-fg: #2e7d50;
+    --success-bg: #e4f4eb;
+    --warning-fg: #8a5c16;
+    --warning-bg: #faefd4;
+    --danger-fg: #a23247;
+    --danger-bg: #fadce2;
+    --info-fg: #3b4fa0;
+    --info-bg: #e3e9f9;
+
+    /* ── shadcn semantic aliases
+     shadcn's --primary  = call-to-action = our --accent (purple-500)
+     shadcn's --accent   = hover bg       = our --accent-soft
+     Keep these in sync with [data-theme='dark'] below.        */
+    --background: var(--bg);
+    --foreground: var(--fg);
+    --card: var(--bg-elevated);
+    --card-foreground: var(--fg);
+    --popover: var(--bg-elevated);
+    --popover-foreground: var(--fg);
+    --primary: var(--accent);
+    --primary-foreground: var(--fg-on-accent);
+    --secondary: var(--accent-soft);
+    --secondary-foreground: var(--accent-soft-fg);
+    --muted: var(--bg-sunken);
+    --muted-foreground: var(--fg-subtle);
+    --accent-ui: var(--accent-soft); /* shadcn ghost/hover bg */
+    --accent-ui-foreground: var(--accent-soft-fg);
+    --destructive: var(--danger-fg);
+    --destructive-foreground: #ffffff;
+    --border-ui: var(--border);
+    --input: var(--border);
+    --ring: var(--accent);
+
+    /* One shadcn radius token — map to our card radius */
+    --radius: 14px;
+}
+
+/* ── 4. Semantic tokens — dark theme ─────────────────────────────
+   data-theme on <html> set server-side = no FOUC, SSR-safe.
+   ──────────────────────────────────────────────────────────────── */
+[data-theme='dark'] {
+    color-scheme: dark;
+
+    --bg: #0b0815;
+    --bg-elevated: #14101f;
+    --bg-sunken: #07050e;
+    --bg-overlay: rgba(255, 255, 255, 0.04);
+
+    --fg: #f4f1fa;
+    --fg-muted: #b8b0cc;
+    --fg-subtle: #8b83a1;
+    --fg-faint: #5e566f;
+    --fg-on-accent: #ffffff;
+
+    --border: rgba(255, 255, 255, 0.08);
+    --border-strong: rgba(255, 255, 255, 0.14);
+    --border-subtle: rgba(255, 255, 255, 0.04);
+
+    --accent: #a07fdd; /* purple-400, lighter for dark bg */
+    --accent-hover: #b9a3e6;
+    --accent-pressed: #895cd6;
+    --accent-soft: rgba(137, 92, 214, 0.16);
+    --accent-soft-fg: #d2c4ef;
+    --accent-ring: color-mix(in oklch, #a07fdd 50%, transparent);
+
+    --mesh-1: #7245bd;
+    --mesh-2: #5b3a9a;
+    --mesh-3: #3e3c82;
+    --mesh-4: #2b4a85;
+    --mesh-5: #1e2f6b;
+
+    --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+    --shadow-sm:
+        0 1px 3px 0 rgba(0, 0, 0, 0.4), 0 1px 2px -1px rgba(0, 0, 0, 0.3);
+    --shadow-md:
+        0 4px 12px -2px rgba(0, 0, 0, 0.45), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 12px 28px -8px rgba(0, 0, 0, 0.55);
+    --shadow-xl: 0 24px 48px -12px rgba(0, 0, 0, 0.65);
+    --shadow-glow: 0 0 24px -4px color-mix(in oklch, #a07fdd 45%, transparent);
+
+    --focus-ring: 0 0 0 3px color-mix(in oklch, #a07fdd 50%, transparent);
+
+    --success-fg: #8ee0b0;
+    --success-bg: rgba(111, 201, 154, 0.14);
+    --warning-fg: #f0cc86;
+    --warning-bg: rgba(232, 184, 100, 0.14);
+    --danger-fg: #efa1ae;
+    --danger-bg: rgba(224, 122, 141, 0.14);
+    --info-fg: #b1bef2;
+    --info-bg: rgba(139, 159, 232, 0.14);
+
+    --background: var(--bg);
+    --foreground: var(--fg);
+    --card: var(--bg-elevated);
+    --card-foreground: var(--fg);
+    --popover: var(--bg-elevated);
+    --popover-foreground: var(--fg);
+    --primary: var(--accent);
+    --primary-foreground: var(--fg-on-accent);
+    --secondary: var(--accent-soft);
+    --secondary-foreground: var(--accent-soft-fg);
+    --muted: var(--bg-sunken);
+    --muted-foreground: var(--fg-subtle);
+    --accent-ui: var(--accent-soft);
+    --accent-ui-foreground: var(--accent-soft-fg);
+    --destructive: var(--danger-fg);
+    --destructive-foreground: #ffffff;
+    --border-ui: var(--border);
+    --input: var(--border);
+    --ring: var(--accent);
+
+    --radius: 14px;
+}
+
+/* ── 5. @theme inline — semantic vars → Tailwind utilities ───────
+   "inline" = Tailwind uses var(--x) as the value, not its own var.
+   This is the v4 pattern for theme-switched tokens.
+   Result: bg-fg, text-accent, shadow-glow, etc. all work and
+   automatically reflect the active theme.
+   ──────────────────────────────────────────────────────────────── */
+@theme inline {
+    /* Surfaces */
+    --color-bg: var(--bg);
+    --color-bg-elevated: var(--bg-elevated);
+    --color-bg-sunken: var(--bg-sunken);
+    --color-bg-overlay: var(--bg-overlay);
+
+    /* Foregrounds */
+    --color-fg: var(--fg);
+    --color-fg-muted: var(--fg-muted);
+    --color-fg-subtle: var(--fg-subtle);
+    --color-fg-faint: var(--fg-faint);
+    --color-fg-on-accent: var(--fg-on-accent);
+
+    /* Borders */
+    --color-border: var(--border);
+    --color-border-strong: var(--border-strong);
+    --color-border-subtle: var(--border-subtle);
+
+    /* Accent */
+    --color-accent: var(--accent);
+    --color-accent-hover: var(--accent-hover);
+    --color-accent-pressed: var(--accent-pressed);
+    --color-accent-soft: var(--accent-soft);
+    --color-accent-soft-fg: var(--accent-soft-fg);
+
+    /* Mesh (useful for inline gradient classes) */
+    --color-mesh-1: var(--mesh-1);
+    --color-mesh-2: var(--mesh-2);
+    --color-mesh-3: var(--mesh-3);
+    --color-mesh-4: var(--mesh-4);
+    --color-mesh-5: var(--mesh-5);
+
+    /* Status */
+    --color-success: var(--success-fg);
+    --color-success-bg: var(--success-bg);
+    --color-warning: var(--warning-fg);
+    --color-warning-bg: var(--warning-bg);
+    --color-danger: var(--danger-fg);
+    --color-danger-bg: var(--danger-bg);
+    --color-info: var(--info-fg);
+    --color-info-bg: var(--info-bg);
+
+    /* Shadows — pick up dark-mode overrides */
+    --shadow-xs: var(--shadow-xs);
+    --shadow-sm: var(--shadow-sm);
+    --shadow-md: var(--shadow-md);
+    --shadow-lg: var(--shadow-lg);
+    --shadow-xl: var(--shadow-xl);
+    --shadow-glow: var(--shadow-glow);
+
+    /* ── shadcn aliases — Tailwind utilities for shadcn components */
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+    --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-accent: var(--accent-ui); /* shadcn ghost hover */
+    --color-accent-foreground: var(--accent-ui-foreground);
+    --color-destructive: var(--destructive);
+    --color-destructive-foreground: var(--destructive-foreground);
+    --color-border: var(--border-ui);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+    --radius: var(--radius);
+}
+
+/* ── 6. Base resets ──────────────────────────────────────────────
+   Applied globally — mirrors the old .ds-base class.
+   ──────────────────────────────────────────────────────────────── */
+@layer base {
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    html {
+        font-family: var(--font-sans);
+        background-color: var(--bg);
+        color: var(--fg);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        font-feature-settings: 'ss01', 'cv11';
+    }
+
+    /* Dashed dividers — softer than solid rules */
+    hr {
+        border-style: dashed;
+        border-color: var(--border);
+    }
+
+    /* Focus ring — always visible, never removed */
+    :focus-visible {
+        outline: none;
+        box-shadow: var(--focus-ring);
+    }
+}
