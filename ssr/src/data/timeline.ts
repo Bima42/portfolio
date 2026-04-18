@@ -1,4 +1,9 @@
-export type TimelineType = "now" | "experience" | "education" | "project" | "pivot";
+export type TimelineType =
+	| "now"
+	| "experience"
+	| "education"
+	| "project"
+	| "pivot";
 
 export interface TimelineItem {
 	key: string;
@@ -7,16 +12,27 @@ export interface TimelineItem {
 	mark: string;
 	accent: number;
 	tags: string[];
+	logo?: string;
 }
 
 export const TIMELINE_ITEMS: TimelineItem[] = [
 	{
-		key: "resilioNow",
+		key: "labster",
 		year: "2026",
 		type: "now",
+		mark: "L",
+		accent: 80,
+		tags: ["React", "TypeScript", "Node.js", "Python", "DevOps"],
+		logo: "/assets/brand-logos/logo-le-labster.svg",
+	},
+	{
+		key: "resilio",
+		year: "2026",
+		type: "experience",
 		mark: "R",
-		accent: 290,
+		accent: 160,
 		tags: ["Django", "React", "Celery", "Docker", "LGTM"],
+		logo: "/assets/brand-logos/logo-resilio.svg",
 	},
 	{
 		key: "voltaire",
@@ -25,22 +41,16 @@ export const TIMELINE_ITEMS: TimelineItem[] = [
 		mark: "V",
 		accent: 320,
 		tags: ["Next.js", "FastAPI", "Postgres"],
-	},
-	{
-		key: "mcpmem",
-		year: "2024",
-		type: "project",
-		mark: "◇",
-		accent: 260,
-		tags: ["Python", "Neo4j", "FastAPI"],
+		logo: "/assets/brand-logos/logo-voltaire.svg",
 	},
 	{
 		key: "resilioJoined",
 		year: "2023",
 		type: "experience",
 		mark: "→",
-		accent: 290,
+		accent: 160,
 		tags: ["Onboarding", "Architecture"],
+		logo: "/assets/brand-logos/logo-resilio.svg",
 	},
 	{
 		key: "ecole42",
@@ -49,6 +59,7 @@ export const TIMELINE_ITEMS: TimelineItem[] = [
 		mark: "42",
 		accent: 200,
 		tags: ["C", "C++", "Systems"],
+		logo: "/assets/brand-logos/logo-42.svg",
 	},
 	{
 		key: "kitchens",
@@ -63,7 +74,7 @@ export const TIMELINE_ITEMS: TimelineItem[] = [
 		year: "2016",
 		type: "education",
 		mark: "◎",
-		accent: 160,
+		accent: 290,
 		tags: ["Science", "Research"],
 	},
 ];

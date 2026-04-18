@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 import { Badge } from "@/components/ui/badge";
@@ -10,36 +11,6 @@ import {
 } from "@/data/timeline";
 
 // ── Scroll hooks ──────────────────────────────────────────────────────────────
-
-function useScrollProgress(ref: React.RefObject<HTMLElement | null>) {
-	const [progress, setProgress] = useState(0);
-
-	useEffect(() => {
-		let raf = 0;
-		const onScroll = () => {
-			if (raf) return;
-			raf = requestAnimationFrame(() => {
-				raf = 0;
-				const el = ref.current;
-				if (!el) return;
-				const r = el.getBoundingClientRect();
-				const vh = window.innerHeight;
-				const total = r.height + vh;
-				const traveled = vh - r.top;
-				setProgress(Math.max(0, Math.min(1, traveled / total)));
-			});
-		};
-		window.addEventListener("scroll", onScroll, { passive: true });
-		window.addEventListener("resize", onScroll);
-		onScroll();
-		return () => {
-			window.removeEventListener("scroll", onScroll);
-			window.removeEventListener("resize", onScroll);
-		};
-	}, [ref]);
-
-	return progress;
-}
 
 function useActiveIndex(itemRefs: React.RefObject<(HTMLDivElement | null)[]>) {
 	const [active, setActive] = useState(0);
@@ -166,11 +137,10 @@ function WaypointCard({
 
 export function About() {
 	const t = useTranslations("about");
-	const sectionRef = useRef<HTMLElement>(null);
+	const timelineRef = useRef<HTMLDivElement>(null);
 	const pathRef = useRef<SVGPathElement>(null);
 	const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-	const progress = useScrollProgress(sectionRef);
 	const active = useActiveIndex(itemRefs);
 
 	const [pathLen, setPathLen] = useState(1);
@@ -178,10 +148,41 @@ export function About() {
 		if (pathRef.current) setPathLen(pathRef.current.getTotalLength());
 	}, []);
 
+	// Progress tracks viewport center within the timeline container
+	useEffect(() => {
+		const container = timelineRef.current;
+		const path = pathRef.current;
+		if (!container || !path) return;
+		let raf = 0;
+		const onScroll = () => {
+			if (raf) return;
+			raf = requestAnimationFrame(() => {
+				raf = 0;
+				const r = container.getBoundingClientRect();
+				const vh = window.innerHeight;
+				// Fill endpoint = viewport center mapped into the container
+				const centerWithinContainer = vh * 0.5 - r.top;
+				const progress = Math.max(
+					0,
+					Math.min(1, centerWithinContainer / r.height),
+				);
+				const len = path.getTotalLength();
+				path.style.strokeDasharray = String(len);
+				path.style.strokeDashoffset = String(len * (1 - progress));
+			});
+		};
+		window.addEventListener("scroll", onScroll, { passive: true });
+		window.addEventListener("resize", onScroll);
+		onScroll();
+		return () => {
+			window.removeEventListener("scroll", onScroll);
+			window.removeEventListener("resize", onScroll);
+		};
+	}, []);
+
 	return (
 		<section
 			id="about"
-			ref={sectionRef}
 			className="relative bg-bg"
 			style={{ padding: "140px 6vw 100px" }}
 		>
@@ -208,7 +209,7 @@ export function About() {
 				</div>
 
 				{/* Timeline */}
-				<div className="relative">
+				<div ref={timelineRef} className="relative">
 					{/* SVG river path — absolute, behind cards */}
 					<svg
 						viewBox="0 0 200 1400"
@@ -240,9 +241,8 @@ export function About() {
 							strokeWidth="2.4"
 							fill="none"
 							strokeDasharray={pathLen}
-							strokeDashoffset={pathLen * (1 - progress)}
+							strokeDashoffset={pathLen}
 							strokeLinecap="round"
-							style={{ transition: "stroke-dashoffset 0.12s linear" }}
 						/>
 					</svg>
 
@@ -322,7 +322,17 @@ export function About() {
 													: "var(--shadow-sm)",
 											}}
 										>
-											{item.mark}
+											{item.logo ? (
+												<Image
+													src={item.logo}
+													alt={item.key}
+													width={isActive ? 30 : 22}
+													height={isActive ? 30 : 22}
+													className="object-contain"
+												/>
+											) : (
+												item.mark
+											)}
 										</div>
 										{/* Year label */}
 										<span
