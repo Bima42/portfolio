@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { Button, buttonVariants } from "@/components/ui/button";
+import { GitHubIcon, LinkedInIcon } from "@/components/ui/social-icons";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 
@@ -15,20 +16,6 @@ const NAV_ITEMS = [
 	{ href: "#writing", key: "writing" as const },
 ];
 
-function GitHubIcon() {
-	return (
-		<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-			<path d="M12 .5C5.73.5.75 5.48.75 11.75c0 4.96 3.22 9.17 7.69 10.65.56.1.77-.24.77-.54 0-.27-.01-1.15-.02-2.08-3.13.68-3.79-1.32-3.79-1.32-.51-1.3-1.25-1.65-1.25-1.65-1.02-.7.08-.68.08-.68 1.13.08 1.72 1.16 1.72 1.16 1 1.72 2.63 1.22 3.28.94.1-.73.4-1.23.72-1.51-2.5-.28-5.13-1.25-5.13-5.57 0-1.23.44-2.24 1.16-3.03-.12-.28-.5-1.43.11-2.98 0 0 .95-.3 3.1 1.16a10.73 10.73 0 0 1 5.64 0c2.15-1.46 3.1-1.16 3.1-1.16.61 1.55.23 2.7.11 2.98.72.79 1.16 1.8 1.16 3.03 0 4.33-2.64 5.28-5.15 5.56.41.35.77 1.05.77 2.11 0 1.52-.01 2.75-.01 3.12 0 .3.2.65.78.54A11.25 11.25 0 0 0 23.25 11.75C23.25 5.48 18.27.5 12 .5z" />
-		</svg>
-	);
-}
-function LinkedInIcon() {
-	return (
-		<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-			<path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.22 8.25h4.56V23H.22zM8.03 8.25h4.37v2.02h.06c.61-1.15 2.1-2.36 4.32-2.36 4.62 0 5.47 3.04 5.47 6.99V23h-4.56v-6.6c0-1.57-.03-3.6-2.2-3.6-2.2 0-2.54 1.72-2.54 3.49V23H8.03z" />
-		</svg>
-	);
-}
 export function Header() {
 	const t = useTranslations("nav");
 	const locale = useLocale();
@@ -61,95 +48,103 @@ export function Header() {
 
 	return (
 		<header
-			className="glass fixed top-4 left-1/2 z-50 flex items-center gap-3 rounded-md px-5 py-2 transition-shadow"
+			className="fixed top-0 left-0 right-0 z-50 transition-[box-shadow,border-color,background-color]"
 			style={{
-				transform: "translateX(-50%)",
-				width: "min(1180px, calc(100vw - 32px))",
-				boxShadow: scrolled ? "var(--shadow-md)" : "none",
+				backdropFilter: "blur(20px) saturate(180%)",
+				WebkitBackdropFilter: "blur(20px) saturate(180%)",
+				background: scrolled
+					? "color-mix(in oklch, var(--bg) 82%, transparent)"
+					: "color-mix(in oklch, var(--bg) 60%, transparent)",
+				borderBottom: `1px solid ${scrolled ? "var(--border)" : "transparent"}`,
+				boxShadow: scrolled ? "var(--shadow-sm)" : "none",
 			}}
 		>
-			{/* Logo */}
-			<a href="#top" className="flex items-center gap-2.5 font-medium shrink-0">
-				<Image
-					src="/assets/logo/logo-primary.svg"
-					alt="Logo"
-					width={48}
-					height={48}
-					className="rounded-lg"
-				/>
-			</a>
+			<div className="max-w-6xl mx-auto px-6 py-2.5 flex items-center gap-3">
+				{/* Logo */}
+				<a
+					href="#top"
+					className="flex items-center gap-2.5 font-medium shrink-0"
+				>
+					<Image
+						src="/assets/logo/logo-primary.svg"
+						alt="Logo"
+						width={52}
+						height={52}
+					/>
+				</a>
 
-			{/* Nav links — rounded-md, not pill */}
-			<nav className="hidden sm:flex gap-0.5 ml-6">
-				{NAV_ITEMS.map((item) => (
+				{/* Nav links — rounded-md, not pill */}
+				<nav className="hidden sm:flex gap-0.5 ml-6">
+					{NAV_ITEMS.map((item) => (
+						<a
+							key={item.href}
+							href={item.href}
+							className={cn(
+								buttonVariants({ variant: "ghost", size: "sm" }),
+								"text-fg-muted hover:text-fg font-normal",
+							)}
+						>
+							{t(item.key)}
+						</a>
+					))}
+				</nav>
+
+				{/* Controls */}
+				<div className="ml-auto flex items-center gap-1">
+					{/* Social */}
 					<a
-						key={item.href}
-						href={item.href}
+						href="https://github.com/Bima42"
+						target="_blank"
+						rel="noopener noreferrer"
 						className={cn(
-							buttonVariants({ variant: "ghost", size: "sm" }),
-							"text-fg-muted hover:text-fg font-normal",
+							buttonVariants({ variant: "ghost", size: "icon" }),
+							"hidden sm:inline-flex text-fg-muted hover:text-fg",
 						)}
+						aria-label="GitHub"
 					>
-						{t(item.key)}
+						<GitHubIcon size={16} />
 					</a>
-				))}
-			</nav>
+					<a
+						href="https://linkedin.com/in/tanguy-pauvret"
+						target="_blank"
+						rel="noopener noreferrer"
+						className={cn(
+							buttonVariants({ variant: "ghost", size: "icon" }),
+							"hidden sm:inline-flex text-fg-muted hover:text-fg",
+						)}
+						aria-label="LinkedIn"
+					>
+						<LinkedInIcon size={16} />
+					</a>
 
-			{/* Controls */}
-			<div className="ml-auto flex items-center gap-1">
-				{/* Social */}
-				<a
-					href="https://github.com/Bima42"
-					target="_blank"
-					rel="noopener noreferrer"
-					className={cn(
-						buttonVariants({ variant: "ghost", size: "icon" }),
-						"hidden sm:inline-flex text-fg-muted hover:text-fg",
-					)}
-					aria-label="GitHub"
-				>
-					<GitHubIcon />
-				</a>
-				<a
-					href="https://linkedin.com/in/tanguy-pauvret"
-					target="_blank"
-					rel="noopener noreferrer"
-					className={cn(
-						buttonVariants({ variant: "ghost", size: "icon" }),
-						"hidden sm:inline-flex text-fg-muted hover:text-fg",
-					)}
-					aria-label="LinkedIn"
-				>
-					<LinkedInIcon />
-				</a>
+					{/* Locale toggle */}
+					<Button
+						onClick={switchLocale}
+						variant="ghost"
+						size="icon"
+						className="hidden sm:inline-flex font-mono uppercase tracking-wide text-fg-muted hover:text-fg"
+						aria-label="Toggle language"
+					>
+						{locale}
+					</Button>
 
-				{/* Locale toggle */}
-				<Button
-					onClick={switchLocale}
-					variant="ghost"
-					size="icon"
-					className="hidden sm:inline-flex font-mono uppercase tracking-wide text-fg-muted hover:text-fg"
-					aria-label="Toggle language"
-				>
-					{locale}
-				</Button>
+					{/* Theme toggle */}
+					<Button
+						onClick={toggleTheme}
+						variant="ghost"
+						size="icon"
+						className="text-fg-muted hover:text-fg"
+						aria-label="Toggle theme"
+					>
+						{theme === "light" ? <Moon /> : <Sun />}
+					</Button>
 
-				{/* Theme toggle */}
-				<Button
-					onClick={toggleTheme}
-					variant="ghost"
-					size="icon"
-					className="text-fg-muted hover:text-fg"
-					aria-label="Toggle theme"
-				>
-					{theme === "light" ? <Moon /> : <Sun />}
-				</Button>
-
-				{/* CV */}
-				{/*<Button size="sm" className="gap-1.5 ml-1">
+					{/* CV */}
+					{/*<Button size="sm" className="gap-1.5 ml-1">
 					<Download />
 					CV
 				</Button>*/}
+				</div>
 			</div>
 		</header>
 	);
