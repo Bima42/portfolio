@@ -1,0 +1,109 @@
+{
+	"nav": {
+		"about": "About",
+		"work": "Work",
+		"writing": "Writing",
+		"contact": "Contact",
+		"downloadCv": "Download CV"
+	},
+	"hero": {
+		"typewriterPhrases": [
+			"Software engineer.",
+			"System architect.",
+			"Restless builder.",
+			"Ex-cook, ex-neuroscientist."
+		],
+		"statusLabel": "Available",
+		"statusCompany": "Resilio · Lausanne",
+		"heading": "I build systems that last.",
+		"subheading": "Non-linear path: neuroscience → kitchens → 42 Lausanne → full-stack at Resilio. I care about what happens under the surface.",
+		"ctaPrimary": "See selected work",
+		"ctaSecondary": "Get in touch",
+		"metaLocationLabel": "Based in",
+		"metaLocation": "Fessy, FR · Lausanne, CH",
+		"metaStackLabel": "Stack",
+		"metaStack": "Python · TypeScript · Postgres",
+		"metaCurrentlyLabel": "Currently",
+		"metaCurrently": "LCA platforms & dev tooling",
+		"metaReadingLabel": "Reading",
+		"metaReading": "DDIA — Kleppmann"
+	},
+	"about": {
+		"eyebrow": "§ 01 — The long way here",
+		"heading": "A path,",
+		"headingAccent": "not a ladder.",
+		"description": "Scroll through the river. Each waypoint is a chapter — jobs, projects, pivots. The stroke fills as you go.",
+		"timeline": {
+			"resilioNow": {
+				"title": "Resilio",
+				"role": "Software Engineer",
+				"where": "Lausanne · Present",
+				"summary": "Full-stack + infra on ResilioTech (LCA) and ResilioDatabase. Reduced dashboard load from 15s → <600ms. Replaced Cypress with Playwright, cut E2E 1h → 15m."
+			},
+			"voltaire": {
+				"title": "Voltaire",
+				"role": "Paid product launched",
+				"where": "Side project",
+				"summary": "AI writing assistant with agentic architecture. 2w POC → 2mo MVP → paid product with hundreds of users. Posthog feedback loop."
+			},
+			"mcpmem": {
+				"title": "MCPMEM",
+				"role": "Smithery Prize",
+				"where": "Open source",
+				"summary": "Temporal knowledge graph for LLMs — portable, evolving memory across apps. Neo4j + Graphiti."
+			},
+			"resilioJoined": {
+				"title": "Resilio — joined",
+				"role": "First full-stack role",
+				"where": "January 2023",
+				"summary": "Stepped in as primary architect on two products. Led Enterprise SSO integration with large-scale clients."
+			},
+			"ecole42": {
+				"title": "École 42 Lausanne",
+				"role": "IT Solutions Designer",
+				"where": "Oct 2021 – Jan 2023",
+				"summary": "Peer-to-peer, project-based curriculum in C / C++. minishell, containers, system design from first principles. Completed fast."
+			},
+			"kitchens": {
+				"title": "Kitchens",
+				"role": "Cook",
+				"where": "Lacanau · Genève · 2017–2021",
+				"summary": "Not a detour — a formative chapter. Service discipline, pressure handling, and an obsession with quality that I brought back into engineering."
+			},
+			"neuroscience": {
+				"title": "Bachelor, Neuroscience",
+				"role": "Animal Physiology",
+				"where": "Poitiers · 2013–2016",
+				"summary": "Graduated at 19. Taught me how to read a system I did not design — curiosity about the machinery beneath behavior."
+			}
+		}
+	},
+	"projects": {
+		"eyebrow": "§ 02 — Selected work",
+		"heading": "Things I've",
+		"headingAccent": "actually shipped.",
+		"searchPlaceholder": "Search projects…",
+		"clearFilters": "Clear",
+		"noResultsTitle": "No matches.",
+		"noResultsBody": "Try clearing a filter.",
+		"internal": "— internal —",
+		"viewRepo": "↗ Repo",
+		"viewLive": "→ Live",
+		"close": "Close"
+	},
+	"contact": {
+		"eyebrow": "§ 03 — Reach",
+		"heading": "Let's make something",
+		"headingAccent": "worth the commit.",
+		"subheading": "Open to opportunities where system architecture actually matters. Fastest reply via email.",
+		"emailLabel": "Email",
+		"emailValue": "pauvert.tanguy@gmail.com",
+		"linkedinLabel": "LinkedIn",
+		"linkedinValue": "/in/tanguy-pauvret",
+		"githubLabel": "GitHub",
+		"githubValue": "@Bima42",
+		"openCta": "Open",
+		"footerBuilt": "Built with Next.js + SSR",
+		"footerLocation": "Fessy, FR ↔ Lausanne, CH"
+	}
+}

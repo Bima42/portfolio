@@ -1,0 +1,109 @@
+{
+	"nav": {
+		"about": "À propos",
+		"work": "Projets",
+		"writing": "Articles",
+		"contact": "Contact",
+		"downloadCv": "Télécharger le CV"
+	},
+	"hero": {
+		"typewriterPhrases": [
+			"Ingénieur logiciel.",
+			"Architecte systèmes.",
+			"Bâtisseur insatiable.",
+			"Ex-cuisinier, ex-neuroscientifique."
+		],
+		"statusLabel": "Disponible",
+		"statusCompany": "Resilio · Lausanne",
+		"heading": "Je construis des systèmes qui durent.",
+		"subheading": "Parcours non-linéaire : neurosciences → cuisine → 42 Lausanne → full-stack chez Resilio. Ce qui se passe sous la surface m'importe.",
+		"ctaPrimary": "Voir mes projets",
+		"ctaSecondary": "Me contacter",
+		"metaLocationLabel": "Basé à",
+		"metaLocation": "Fessy, FR · Lausanne, CH",
+		"metaStackLabel": "Stack",
+		"metaStack": "Python · TypeScript · Postgres",
+		"metaCurrentlyLabel": "En ce moment",
+		"metaCurrently": "Plateformes LCA & outillage dev",
+		"metaReadingLabel": "Lecture",
+		"metaReading": "DDIA — Kleppmann"
+	},
+	"about": {
+		"eyebrow": "§ 01 — Le long chemin",
+		"heading": "Un parcours,",
+		"headingAccent": "pas une échelle.",
+		"description": "Faites défiler la rivière. Chaque waypoint est un chapitre — emplois, projets, pivots. Le trait se remplit au fil du défilement.",
+		"timeline": {
+			"resilioNow": {
+				"title": "Resilio",
+				"role": "Ingénieur logiciel",
+				"where": "Lausanne · Présent",
+				"summary": "Full-stack + infra sur ResilioTech (ACV) et ResilioDatabase. Réduction du chargement tableau de bord de 15s → <600ms. Remplacement de Cypress par Playwright, E2E 1h → 15m."
+			},
+			"voltaire": {
+				"title": "Voltaire",
+				"role": "Produit payant lancé",
+				"where": "Projet perso",
+				"summary": "Assistant d'écriture IA avec architecture agentique. POC 2 sem. → MVP 2 mois → produit payant avec des centaines d'utilisateurs. Boucle feedback Posthog."
+			},
+			"mcpmem": {
+				"title": "MCPMEM",
+				"role": "Smithery Prize",
+				"where": "Open source",
+				"summary": "Graphe de connaissance temporel pour LLMs — mémoire portable et évolutive entre applications. Neo4j + Graphiti."
+			},
+			"resilioJoined": {
+				"title": "Resilio — arrivée",
+				"role": "Premier poste full-stack",
+				"where": "Janvier 2023",
+				"summary": "Architecte principal sur deux produits. Pilotage de l'intégration SSO Entreprise avec de grands clients."
+			},
+			"ecole42": {
+				"title": "École 42 Lausanne",
+				"role": "Concepteur de solutions IT",
+				"where": "Oct 2021 – Jan 2023",
+				"summary": "Cursus pair-à-pair en C / C++. minishell, containers, conception système depuis les fondations. Diplômé rapidement."
+			},
+			"kitchens": {
+				"title": "Cuisine professionnelle",
+				"role": "Cuisinier",
+				"where": "Lacanau · Genève · 2017–2021",
+				"summary": "Pas un détour — un chapitre formateur. Discipline de service, gestion de la pression, obsession de la qualité que j'ai ramenée dans l'ingénierie."
+			},
+			"neuroscience": {
+				"title": "Licence, Neurosciences",
+				"role": "Physiologie animale",
+				"where": "Poitiers · 2013–2016",
+				"summary": "Diplômé à 19 ans. M'a appris à lire un système que je n'ai pas conçu — curiosité pour la mécanique derrière le comportement."
+			}
+		}
+	},
+	"projects": {
+		"eyebrow": "§ 02 — Projets sélectionnés",
+		"heading": "Ce que j'ai",
+		"headingAccent": "vraiment livré.",
+		"searchPlaceholder": "Rechercher…",
+		"clearFilters": "Effacer",
+		"noResultsTitle": "Aucun résultat.",
+		"noResultsBody": "Essayez d'effacer un filtre.",
+		"internal": "— interne —",
+		"viewRepo": "↗ Code",
+		"viewLive": "→ En ligne",
+		"close": "Fermer"
+	},
+	"contact": {
+		"eyebrow": "§ 03 — Contact",
+		"heading": "Faisons quelque chose",
+		"headingAccent": "qui vaut le commit.",
+		"subheading": "Ouvert aux opportunités où l'architecture système compte vraiment. Réponse la plus rapide par email.",
+		"emailLabel": "Email",
+		"emailValue": "pauvert.tanguy@gmail.com",
+		"linkedinLabel": "LinkedIn",
+		"linkedinValue": "/in/tanguy-pauvret",
+		"githubLabel": "GitHub",
+		"githubValue": "@Bima42",
+		"openCta": "Ouvrir",
+		"footerBuilt": "Construit avec Next.js + SSR",
+		"footerLocation": "Fessy, FR ↔ Lausanne, CH"
+	}
+}
