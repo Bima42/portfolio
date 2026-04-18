@@ -77,16 +77,10 @@ const PRIMITIVE_PALETTES = [
 		shades: [
 			{ label: "rose-200", cls: "bg-rose-200" },
 			{ label: "rose-400", cls: "bg-rose-400" },
-			{ label: "peach-200", cls: "bg-peach-200" },
-			{ label: "peach-400", cls: "bg-peach-400" },
-			{ label: "mint-200", cls: "bg-mint-200" },
-			{ label: "mint-400", cls: "bg-mint-400" },
 			{ label: "sky-200", cls: "bg-sky-200" },
 			{ label: "sky-400", cls: "bg-sky-400" },
 			{ label: "periwinkle-200", cls: "bg-periwinkle-200" },
 			{ label: "periwinkle-400", cls: "bg-periwinkle-400" },
-			{ label: "butter-200", cls: "bg-butter-200" },
-			{ label: "butter-400", cls: "bg-butter-400" },
 		],
 	},
 ] as const;
