@@ -4,9 +4,9 @@
 
 ## Le Problème
 
-Vous vous ré-expliquez à chaque session. Ouvrez Mistral — expliquez la stack. Ouvrez Claude — expliquez à nouveau. Changez d'outil, perdez tout le contexte. Chaque outil maintient son propre silo mémoire, et aucun ne communique avec les autres.
+Vous vous ré-expliquez à chaque session. Ouvrez Mistral, expliquez la stack. Ouvrez Claude, expliquez à nouveau. Changez d'outil, perdez tout le contexte. Chaque outil maintient son propre silo mémoire, et aucun ne communique avec les autres.
 
-Au-delà de la portabilité : le contexte se dégrade. Les fichiers de règles grandissent jusqu'à 200 lignes, la moitié obsolètes, personne ne les corrige. Et quand un agent récupère de la mémoire via ses propres outils, ces recherches remplissent sa fenêtre de contexte — laissant moins de place pour vraiment réfléchir.
+Au-delà de la portabilité : le contexte se dégrade. Les fichiers de règles grandissent jusqu'à 200 lignes, la moitié obsolètes, personne ne les corrige. Et quand un agent récupère de la mémoire via ses propres outils, ces recherches remplissent sa fenêtre de contexte, laissant moins de place pour vraiment réfléchir.
 
 Trois résultats de recherche indépendants (Stanford 2025, NoLiMa Benchmark, Needle-in-Haystack) convergent vers la même conclusion : **charger de la mémoire dans la fenêtre de contexte de l'agent dégrade quantifiablement la qualité du raisonnement**.
 
@@ -34,7 +34,7 @@ vault/
         └── bucket/
 ```
 
-La structure elle-même est le langage partagé entre l'utilisateur et l'agent. Un agent ne la découvre pas à chaque session — il la connaît dès le premier appel d'outil.
+La structure elle-même est le langage partagé entre l'utilisateur et l'agent. Un agent ne la découvre pas à chaque session. Il la connaît dès le premier appel d'outil.
 
 ## Deux Agents, Un Vault
 
@@ -45,9 +45,9 @@ Les deux tournent sur `mistral-large-2512` via OpenRouter dans une boucle agenti
 | **Update** | Route les nouvelles informations dans le vault | lecture + écriture |
 | **Search** | Récupération uniquement | lecture seule |
 
-**L'Inbox** — quand l'agent de mise à jour ne peut pas router une entrée avec confiance, il crée un item d'inbox avec tout son raisonnement exposé : ce qu'il a cherché, ce qu'il a trouvé, ce qu'il propose, et une question précise. Quand l'utilisateur répond, l'agent reprend là où il s'était arrêté.
+**L'Inbox:** quand l'agent de mise à jour ne peut pas router une entrée avec confiance, il crée un item d'inbox avec tout son raisonnement exposé : ce qu'il a cherché, ce qu'il a trouvé, ce qu'il propose, et une question précise. Quand l'utilisateur répond, l'agent reprend là où il s'était arrêté.
 
-## Recherche — Entièrement Local
+## Recherche: Entièrement Local
 
 Propulsé par [QMD](https://github.com/tobilu/qmd). Pas de cloud, pas d'API externe.
 

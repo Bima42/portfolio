@@ -11,9 +11,9 @@ export type ThumbKind =
 
 export interface Project {
 	title: string;
+	key: string;
 	kind: string;
 	year: string;
-	blurb: string;
 	tags: string[];
 	repo: string | null;
 	live: string | null;
@@ -30,19 +30,11 @@ export interface Project {
 export const PROJECTS: Project[] = [
 	{
 		title: "LLM Panel",
+		key: "llm-panel",
 		kind: "Desktop App",
 		year: "2025",
 		slug: "llm-panel",
-		blurb:
-			"Standalone daily-driver for LLM interaction. Zed-inspired text threads, Lexical editor, JSON plugin system, native FS access.",
-		tags: [
-			"electron",
-			"react",
-			"typescript",
-			"lexical",
-			"openrouter",
-			"zustand",
-		],
+		tags: ["electron", "react", "typescript", "lexical", "openrouter", "zustand"],
 		repo: "github.com/Bima42/llm-panel",
 		live: null,
 		accent: 260,
@@ -50,21 +42,12 @@ export const PROJECTS: Project[] = [
 	},
 	{
 		title: "MCP Mem",
+		key: "mcp-mem",
 		kind: "Hackathon · MCP Server",
 		year: "2025",
 		slug: "mcp-mem",
 		award: "Smithery Prize",
-		blurb:
-			"Temporal knowledge graph for LLMs. Relationship-based memory that's portable across applications and evolves over time.",
-		tags: [
-			"python",
-			"fastapi",
-			"neo4j",
-			"graphiti",
-			"next.js",
-			"docker",
-			"mcp",
-		],
+		tags: ["python", "fastapi", "neo4j", "graphiti", "next.js", "docker", "mcp"],
 		repo: "github.com/Bima42/mcp-mem",
 		live: null,
 		accent: 290,
@@ -72,12 +55,11 @@ export const PROJECTS: Project[] = [
 	},
 	{
 		title: "Knower",
+		key: "knower",
 		kind: "Hackathon · Memory Service",
 		year: "2025",
 		slug: "knower",
 		award: "Mistral AI Hackathon",
-		blurb:
-			"Local portable memory service that decouples memory from the AI tool. One vault, every agent — context follows you across Claude, Cursor, Mistral, and any MCP client.",
 		tags: ["python", "next.js", "fastapi", "mcp", "mistral", "typescript"],
 		repo: "github.com/Birium/knower",
 		live: null,
@@ -86,11 +68,10 @@ export const PROJECTS: Project[] = [
 	},
 	{
 		title: "Voltaire",
+		key: "voltaire",
 		kind: "Paid Product",
 		year: "2024",
 		slug: "voltaire",
-		blurb:
-			"AI writing assistant with an agentic architecture. 2w POC → 2mo MVP → hundreds of paying users. Continuous feedback loop through WhatsApp + Posthog.",
 		tags: ["next.js", "fastapi", "postgres", "docker", "devops"],
 		repo: null,
 		live: "voltaire.chat",
@@ -103,11 +84,10 @@ export const PROJECTS: Project[] = [
 	},
 	{
 		title: "Prompt Pilot",
+		key: "prompt-pilot",
 		kind: "Tool",
 		year: "2024",
 		slug: "prompt-pilot",
-		blurb:
-			"XML prompt generator for LLMs. Turns vague asks into structured, reusable prompts. Retrieval grounded with FAISS.",
 		tags: ["python", "react", "faiss", "docker"],
 		repo: null,
 		live: "prompt-pilot.app",
@@ -120,11 +100,10 @@ export const PROJECTS: Project[] = [
 	},
 	{
 		title: "Docstral",
+		key: "docstral",
 		kind: "Side Project",
 		year: "2024",
 		slug: "docstral",
-		blurb:
-			"AI-powered sandbox chat for Mistral models and documentation. RAG over official Mistral docs — sourced answers, streaming, code snippets.",
 		tags: ["next.js", "fastapi", "mistral", "rag", "docker"],
 		repo: null,
 		live: "docstral.app",
@@ -136,11 +115,10 @@ export const PROJECTS: Project[] = [
 	},
 	{
 		title: "Tidaka",
+		key: "tidaka",
 		kind: "Side Project",
 		year: "2023",
 		slug: "tidaka",
-		blurb:
-			"Mobile app connecting sports coaches with their clients for training management, session planning, and progress tracking.",
 		tags: ["react-native", "expo", "nest.js", "postgres"],
 		repo: null,
 		live: null,
@@ -152,10 +130,9 @@ export const PROJECTS: Project[] = [
 	},
 	{
 		title: "minishell",
+		key: "minishell",
 		kind: "School Project",
 		year: "2022",
-		blurb:
-			"Bash fundamentals implemented in C at École 42. Parser, executor, heredocs, signals — everything short of a shell history.",
 		tags: ["c", "systems", "42"],
 		repo: "github.com/Bima42/minishell",
 		live: null,
@@ -164,10 +141,9 @@ export const PROJECTS: Project[] = [
 	},
 	{
 		title: "ft_containers",
+		key: "ft-containers",
 		kind: "School Project",
 		year: "2022",
-		blurb:
-			"Reimplementation of the STL — vector, map, stack — in C++98. Allocators, iterators, red-black tree.",
 		tags: ["c++", "systems", "42"],
 		repo: "github.com/Bima42/ft_containers",
 		live: null,

@@ -399,6 +399,7 @@ function ProjectCard({
 	onTagClick: (t: string) => void;
 }) {
 	const t = useTranslations("projects");
+	const blurbs = useTranslations("projectBlurbs");
 	const p = project;
 	const [hover, setHover] = useState(false);
 
@@ -478,7 +479,7 @@ function ProjectCard({
 					{p.kind}
 				</p>
 				<p className="text-sm leading-relaxed text-fg-muted flex-1 mb-3.5">
-					{p.blurb}
+					{blurbs(p.key)}
 				</p>
 
 				{/* Tags */}
@@ -526,6 +527,7 @@ function ProjectModal({
 	onClose: () => void;
 }) {
 	const t = useTranslations("projects");
+	const blurbs = useTranslations("projectBlurbs");
 
 	return (
 		<Dialog open={!!project} onOpenChange={(open) => !open && onClose()}>
@@ -588,7 +590,7 @@ function ProjectModal({
 								{project.title}
 							</DialogTitle>
 							<DialogDescription className="text-base leading-relaxed text-fg-muted mb-6">
-								{project.blurb}
+								{blurbs(project.key)}
 							</DialogDescription>
 
 							{/* Tags */}
@@ -642,6 +644,7 @@ function ProjectModal({
 
 export function Projects() {
 	const t = useTranslations("projects");
+	const blurbs = useTranslations("projectBlurbs");
 	const [activeTags, setActiveTags] = useState<string[]>([]);
 	const [query, setQuery] = useState("");
 	const [openProject, setOpenProject] = useState<Project | null>(null);
@@ -660,7 +663,7 @@ export function Projects() {
 		const matchQuery =
 			!q ||
 			p.title.toLowerCase().includes(q) ||
-			p.blurb.toLowerCase().includes(q);
+			blurbs(p.key).toLowerCase().includes(q);
 		return matchTags && matchQuery;
 	});
 

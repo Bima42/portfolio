@@ -32,13 +32,13 @@
 		"eyebrow": "§ 01 · Le long chemin",
 		"heading": "Un",
 		"headingAccent": "parcours diversifié.",
-		"description": "Chaque étape est un chapitre — emplois, projets, pivots. Le chemin, c'est le CV.",
+		"description": "Chaque étape est un chapitre : emplois, projets, pivots. Le chemin, c'est le CV.",
 		"timeline": {
 			"labster": {
 				"title": "Le Labster",
 				"role": "Lead Software Engineer",
 				"where": "Depuis fév. 2026",
-				"summary": "En collaboration avec des designers UX/UI pour créer des applications sur mesure dans la santé. Actuellement centré sur la numérisation de la documentation médicale pour des cantons suisses — propulsé par l'IA, construit pour durer."
+				"summary": "En collaboration avec des designers UX/UI pour créer des applications sur mesure dans la santé. Actuellement centré sur la numérisation de la documentation médicale pour des cantons suisses. Propulsé par l'IA, construit pour durer."
 			},
 			"resilio": {
 				"title": "Resilio",
@@ -77,6 +77,17 @@
 				"summary": "Diplômé à 19 ans. M'a appris à lire un système que je n'ai pas conçu. Curiosité pour la mécanique derrière le comportement."
 			}
 		}
+	},
+	"projectBlurbs": {
+		"llm-panel": "Application standalone au quotidien pour l'interaction avec les LLM. Threads texte inspirés de Zed, éditeur Lexical, système de plugins JSON, accès natif au système de fichiers.",
+		"mcp-mem": "Graphe de connaissance temporel pour les LLM. Mémoire basée sur les relations, portable entre applications et évolutive dans le temps.",
+		"knower": "Service de mémoire local et portable qui découple la mémoire de l'outil IA. Un vault, chaque agent : le contexte vous suit sur Claude, Cursor, Mistral et tout client MCP.",
+		"voltaire": "Assistant d'écriture IA avec architecture agentique. POC 2 semaines, MVP 2 mois, des centaines d'utilisateurs payants. Boucle de feedback via WhatsApp et Posthog.",
+		"prompt-pilot": "Générateur de prompts XML pour les LLM. Transforme des demandes vagues en prompts structurés et réutilisables. Récupération basée sur FAISS.",
+		"docstral": "Chat sandbox propulsé par l'IA pour les modèles et la documentation Mistral. RAG sur les docs officiels : réponses sourcées, streaming, extraits de code.",
+		"tidaka": "Application mobile connectant les coaches sportifs avec leurs clients pour la gestion des entraînements, la planification des séances et le suivi des progrès.",
+		"minishell": "Fondamentaux Bash implémentés en C à l'École 42. Parseur, exécuteur, heredocs, signaux : tout sauf l'historique du shell.",
+		"ft-containers": "Réimplémentation de la STL : vector, map, stack en C++98. Allocateurs, itérateurs, arbre rouge-noir."
 	},
 	"projects": {
 		"eyebrow": "§ 02 · Projets sélectionnés",

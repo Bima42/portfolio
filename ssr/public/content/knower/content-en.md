@@ -4,9 +4,9 @@
 
 ## The Problem
 
-You re-explain yourself every session. Open Mistral — explain the stack. Open Claude — explain it again. Switch tools, lose all context. Every tool maintains its own memory silo, and none of them talk to each other.
+You re-explain yourself every session. Open Mistral, explain the stack. Open Claude, explain it again. Switch tools, lose all context. Every tool maintains its own memory silo, and none of them talk to each other.
 
-Beyond portability: context rots. Rules files grow to 200 lines, half outdated, nobody fixes them. And when an agent retrieves memory using its own tools, those searches fill its context window — leaving less room to actually think.
+Beyond portability: context rots. Rules files grow to 200 lines, half outdated, nobody fixes them. And when an agent retrieves memory using its own tools, those searches fill its context window, leaving less room to actually think.
 
 Three independent research results (Stanford 2025, NoLiMa Benchmark, Needle-in-Haystack) converge on the same conclusion: **loading memory into the agent's context window quantifiably degrades reasoning quality**.
 
@@ -34,7 +34,7 @@ vault/
         └── bucket/
 ```
 
-The structure itself is the shared language between user and agent. An agent doesn't discover it each session — it knows it from the first tool call.
+The structure itself is the shared language between user and agent. An agent doesn't discover it each session. It knows it from the first tool call.
 
 ## Two Agents, One Vault
 
@@ -45,9 +45,9 @@ Both run on `mistral-large-2512` via OpenRouter in an agentic tool-calling loop.
 | **Update** | Routes new information into the vault | read + write |
 | **Search** | Retrieval only | read only |
 
-**The Inbox** — when the update agent can't route input with confidence, it creates an inbox item with its full reasoning exposed: what it searched, what it found, what it proposes, and one precise question. When the user responds, the agent resumes where it left off.
+**The Inbox:** when the update agent can't route input with confidence, it creates an inbox item with its full reasoning exposed: what it searched, what it found, what it proposes, and one precise question. When the user responds, the agent resumes where it left off.
 
-## Search — Fully Local
+## Search: Fully Local
 
 Powered by [QMD](https://github.com/tobilu/qmd). No cloud, no external API.
 

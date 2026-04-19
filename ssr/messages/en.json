@@ -32,13 +32,13 @@
 		"eyebrow": "§ 01 · The long way here",
 		"heading": "A",
 		"headingAccent": "diverse background.",
-		"description": "Each waypoint is a chapter — jobs, projects, pivots. The path is the résumé.",
+		"description": "Each waypoint is a chapter: jobs, projects, pivots. The path is the résumé.",
 		"timeline": {
 			"labster": {
 				"title": "Le Labster",
 				"role": "Lead Software Engineer",
 				"where": "From Feb 2026",
-				"summary": "Working alongside UX/UI designers to build custom applications for healthcare clients. Currently focused on digitizing medical documentation for Swiss cantons — AI-powered, built to last."
+				"summary": "Working alongside UX/UI designers to build custom applications for healthcare clients. Currently focused on digitizing medical documentation for Swiss cantons. AI-powered, built to last."
 			},
 			"resilio": {
 				"title": "Resilio",
@@ -77,6 +77,17 @@
 				"summary": "Graduated at 19. Taught me how to read a system I did not design. Curiosity about the machinery beneath behavior."
 			}
 		}
+	},
+	"projectBlurbs": {
+		"llm-panel": "Standalone daily-driver for LLM interaction. Zed-inspired text threads, Lexical editor, JSON plugin system, native FS access.",
+		"mcp-mem": "Temporal knowledge graph for LLMs. Relationship-based memory that is portable across applications and evolves over time.",
+		"knower": "Local portable memory service that decouples memory from the AI tool. One vault, every agent: context follows you across Claude, Cursor, Mistral, and any MCP client.",
+		"voltaire": "AI writing assistant with an agentic architecture. 2w POC to 2mo MVP to hundreds of paying users. Continuous feedback loop through WhatsApp and Posthog.",
+		"prompt-pilot": "XML prompt generator for LLMs. Turns vague asks into structured, reusable prompts. Retrieval grounded with FAISS.",
+		"docstral": "AI-powered sandbox chat for Mistral models and documentation. RAG over official Mistral docs: sourced answers, streaming, code snippets.",
+		"tidaka": "Mobile app connecting sports coaches with their clients for training management, session planning, and progress tracking.",
+		"minishell": "Bash fundamentals implemented in C at École 42. Parser, executor, heredocs, signals: everything short of a shell history.",
+		"ft-containers": "Reimplementation of the STL: vector, map, stack in C++98. Allocators, iterators, red-black tree."
 	},
 	"projects": {
 		"eyebrow": "§ 02 · Selected work",
