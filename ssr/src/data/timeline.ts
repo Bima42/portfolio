@@ -13,6 +13,7 @@ export interface TimelineItem {
 	accent: number;
 	tags: string[];
 	logo?: string;
+	logoDark?: string;
 }
 
 export const TIMELINE_ITEMS: TimelineItem[] = [
@@ -22,7 +23,7 @@ export const TIMELINE_ITEMS: TimelineItem[] = [
 		type: "now",
 		mark: "L",
 		accent: 80,
-		tags: ["React", "TypeScript", "Node.js", "Python", "DevOps"],
+		tags: ["Hono", "React", "TypeScript", "FastAPI", "Docker"],
 		logo: "/assets/brand-logos/logo-le-labster.svg",
 	},
 	{
@@ -41,7 +42,8 @@ export const TIMELINE_ITEMS: TimelineItem[] = [
 		mark: "V",
 		accent: 320,
 		tags: ["Next.js", "FastAPI", "Postgres"],
-		logo: "/assets/brand-logos/logo-voltaire.svg",
+		logo: "/assets/brand-logos/voltaire/logo-voltaire-black.svg",
+		logoDark: "/assets/brand-logos/voltaire/logo-voltaire-white.svg",
 	},
 	{
 		key: "resilioJoined",

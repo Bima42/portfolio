@@ -14,29 +14,31 @@
 			"Ex-cuisinier, ex-neuroscientifique."
 		],
 		"heading": "Je construis des systèmes qui durent.",
-		"subheading": "Parcours non-linéaire : neurosciences → cuisine → 42 Lausanne → full-stack chez Resilio. Ce qui se passe sous la surface m'importe.",
+		"statusPillLabel": "Disponible",
+		"statusPillSub": "en freelance",
+		"subheading": "J'aime créer des solutions pour aider les gens.",
 		"ctaPrimary": "Voir mes projets",
 		"ctaSecondary": "Me contacter",
 		"metaLocationLabel": "Basé à",
-		"metaLocation": "Fessy, FR · Genève, CH",
+		"metaLocation": "Fessy, FR · Lausanne, CH",
 		"metaStackLabel": "Stack",
-		"metaStack": "Python · TypeScript · Postgres",
+		"metaStack": "React · TypeScript · Python",
 		"metaCurrentlyLabel": "En ce moment",
-		"metaCurrently": "Plateformes LCA & outillage dev",
+		"metaCurrently": "Documentation médicale IA",
 		"metaReadingLabel": "Lecture",
 		"metaReading": "DDIA · Kleppmann"
 	},
 	"about": {
 		"eyebrow": "§ 01 · Le long chemin",
-		"heading": "Un parcours,",
-		"headingAccent": "pas une échelle.",
-		"description": "Faites défiler la rivière. Chaque waypoint est un chapitre : emplois, projets, pivots. Le trait se remplit au fil du défilement.",
+		"heading": "Un",
+		"headingAccent": "parcours diversifié.",
+		"description": "Chaque étape est un chapitre — emplois, projets, pivots. Le chemin, c'est le CV.",
 		"timeline": {
 			"labster": {
 				"title": "Le Labster",
 				"role": "Lead Software Engineer",
 				"where": "Depuis fév. 2026",
-				"summary": "TODO: add summary"
+				"summary": "En collaboration avec des designers UX/UI pour créer des applications sur mesure dans la santé. Actuellement centré sur la numérisation de la documentation médicale pour des cantons suisses — propulsé par l'IA, construit pour durer."
 			},
 			"resilio": {
 				"title": "Resilio",
@@ -91,9 +93,9 @@
 	},
 	"contact": {
 		"eyebrow": "§ 03 · Contact",
-		"heading": "Faisons quelque chose",
-		"headingAccent": "qui vaut le commit.",
-		"subheading": "Ouvert aux opportunités où l'architecture système compte vraiment. Réponse la plus rapide par email.",
+		"heading": "Construisons",
+		"headingAccent": "quelque chose de concret.",
+		"subheading": "Un projet qui a besoin d'un ingénieur ? Je suis disponible en freelance, mission courte ou longue durée. Réponse la plus rapide par email.",
 		"emailLabel": "Email",
 		"emailValue": "pauvret.tanguy@gmail.com",
 		"linkedinLabel": "LinkedIn",

@@ -64,11 +64,30 @@ function TypeBadge({ type }: { type: TimelineType }) {
 		>
 			<span
 				className="w-1.5 h-1.5 rounded-pill shrink-0"
-				style={{ background: m.color }}
+				style={{
+					background: m.color,
+					animation: type === "now" ? "status-pulse 2s ease-in-out infinite" : undefined,
+					boxShadow: type === "now" ? `0 0 0 3px ${m.color.replace(")", " / 0.25)")}` : undefined,
+				}}
 			/>
 			{m.label}
 		</Badge>
 	);
+}
+
+// ── Theme hook ────────────────────────────────────────────────────────────────
+
+function useIsDark() {
+	const [dark, setDark] = useState(false);
+	useEffect(() => {
+		const el = document.documentElement;
+		const check = () => setDark(el.getAttribute("data-theme") === "dark");
+		check();
+		const obs = new MutationObserver(check);
+		obs.observe(el, { attributes: true, attributeFilter: ["data-theme"] });
+		return () => obs.disconnect();
+	}, []);
+	return dark;
 }
 
 // ── WaypointCard ──────────────────────────────────────────────────────────────
@@ -142,6 +161,7 @@ export function About() {
 	const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
 
 	const active = useActiveIndex(itemRefs);
+	const isDark = useIsDark();
 
 	const [pathLen, setPathLen] = useState(1);
 	useEffect(() => {
@@ -324,7 +344,7 @@ export function About() {
 										>
 											{item.logo ? (
 												<Image
-													src={item.logo}
+													src={isDark && item.logoDark ? item.logoDark : item.logo}
 													alt={item.key}
 													width={isActive ? 30 : 22}
 													height={isActive ? 30 : 22}

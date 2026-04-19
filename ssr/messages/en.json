@@ -14,29 +14,31 @@
 			"Ex-cook, ex-neuroscientist."
 		],
 		"heading": "I build systems that last.",
-		"subheading": "Non-linear path: neuroscience → kitchens → 42 Lausanne → full-stack at Resilio. I care about what happens under the surface.",
+		"statusPillLabel": "Available",
+		"statusPillSub": "for freelance work",
+		"subheading": "I love building solutions to help people.",
 		"ctaPrimary": "See selected work",
 		"ctaSecondary": "Get in touch",
 		"metaLocationLabel": "Based in",
 		"metaLocation": "Fessy, FR · Lausanne, CH",
 		"metaStackLabel": "Stack",
-		"metaStack": "Python · TypeScript · Postgres",
+		"metaStack": "React · TypeScript · Python",
 		"metaCurrentlyLabel": "Currently",
-		"metaCurrently": "LCA platforms & dev tooling",
+		"metaCurrently": "AI Medical Documentation",
 		"metaReadingLabel": "Reading",
 		"metaReading": "DDIA · Kleppmann"
 	},
 	"about": {
 		"eyebrow": "§ 01 · The long way here",
-		"heading": "A path,",
-		"headingAccent": "not a ladder.",
-		"description": "Scroll through the river. Each waypoint is a chapter: jobs, projects, pivots. The stroke fills as you go.",
+		"heading": "A",
+		"headingAccent": "diverse background.",
+		"description": "Each waypoint is a chapter — jobs, projects, pivots. The path is the résumé.",
 		"timeline": {
 			"labster": {
 				"title": "Le Labster",
 				"role": "Lead Software Engineer",
 				"where": "From Feb 2026",
-				"summary": "TODO: add summary"
+				"summary": "Working alongside UX/UI designers to build custom applications for healthcare clients. Currently focused on digitizing medical documentation for Swiss cantons — AI-powered, built to last."
 			},
 			"resilio": {
 				"title": "Resilio",
@@ -91,9 +93,9 @@
 	},
 	"contact": {
 		"eyebrow": "§ 03 · Reach",
-		"heading": "Let's make something",
-		"headingAccent": "worth the commit.",
-		"subheading": "Open to opportunities where system architecture actually matters. Fastest reply via email.",
+		"heading": "Let's build",
+		"headingAccent": "something real.",
+		"subheading": "Got a project that needs a sharp engineer? I'm available for freelance missions, short-term or long. Fastest reply via email.",
 		"emailLabel": "Email",
 		"emailValue": "pauvret.tanguy@gmail.com",
 		"linkedinLabel": "LinkedIn",

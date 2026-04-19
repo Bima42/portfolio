@@ -66,10 +66,10 @@ export function Hero() {
 						}}
 					/>
 					<span className="font-mono uppercase tracking-wide text-[11px]">
-						ON GARDE
+						{t("statusPillLabel")}
 					</span>
 					<span className="w-px h-3 bg-border shrink-0" />
-					<span>OU PAS</span>
+					<span>{t("statusPillSub")}</span>
 				</div>
 
 				{/* Static heading — large, never wraps */}
