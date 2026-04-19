@@ -349,6 +349,7 @@ export function About() {
 													width={isActive ? 30 : 22}
 													height={isActive ? 30 : 22}
 													className="object-contain"
+													style={{ height: "auto" }}
 												/>
 											) : (
 												item.mark

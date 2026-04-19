@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
@@ -19,6 +20,50 @@ import {
 	type Project,
 	type ThumbKind,
 } from "@/data/projects";
+
+// ── Tag logos ─────────────────────────────────────────────────────────────────
+
+const TAG_LOGOS: Record<string, string> = {
+	react: "/assets/brand-logos/logo-react.svg",
+	"react-native": "/assets/brand-logos/logo-react.svg",
+	typescript: "/assets/brand-logos/logo-ts.svg",
+	python: "/assets/brand-logos/logo-python.svg",
+	fastapi: "/assets/brand-logos/logo-fastapi.svg",
+	"next.js": "/assets/brand-logos/logo-nextjs.svg",
+	docker: "/assets/brand-logos/logo-docker.svg",
+	postgres: "/assets/brand-logos/logo-postgresql.svg",
+	mongodb: "/assets/brand-logos/logo-mongodb.svg",
+	redis: "/assets/brand-logos/logo-redis.svg",
+	tailwind: "/assets/brand-logos/logo-tailwind.svg",
+	"node.js": "/assets/brand-logos/logo-nodejs.svg",
+	django: "/assets/brand-logos/logo-django.svg",
+	42: "/assets/brand-logos/logo-42.svg",
+	vllm: "/assets/brand-logos/logo-vllm.svg",
+	drizzle: "/assets/brand-logos/logo-drizzle.svg",
+};
+
+function TagBadge({ tag }: { tag: string }) {
+	const logo = TAG_LOGOS[tag];
+	return (
+		<Badge
+			variant="secondary"
+			className="font-mono text-[10px] hover:bg-accent-soft hover:text-accent-soft-fg transition-colors gap-1"
+		>
+			{logo && (
+				// eslint-disable-next-line @next/next/no-img-element
+				<img
+					src={logo}
+					alt=""
+					aria-hidden
+					width={12}
+					height={12}
+					className="object-contain shrink-0"
+				/>
+			)}
+			#{tag}
+		</Badge>
+	);
+}
 
 // ── SVG thumbnails ────────────────────────────────────────────────────────────
 
@@ -260,8 +305,24 @@ function ProjectThumb({ kind, accent }: { kind: ThumbKind; accent: number }) {
 		case "mobile":
 			return (
 				<svg {...props}>
-					<rect x="40" y="8" width="40" height="64" rx="6" stroke={stroke} fill={fill} />
-					<rect x="46" y="14" width="28" height="40" rx="2" stroke={stroke} strokeWidth="0.6" />
+					<rect
+						x="40"
+						y="8"
+						width="40"
+						height="64"
+						rx="6"
+						stroke={stroke}
+						fill={fill}
+					/>
+					<rect
+						x="46"
+						y="14"
+						width="28"
+						height="40"
+						rx="2"
+						stroke={stroke}
+						strokeWidth="0.6"
+					/>
 					<circle cx="60" cy="62" r="3" stroke={stroke} />
 				</svg>
 			);
@@ -299,7 +360,13 @@ const markdownComponents = {
 			{children}
 		</blockquote>
 	),
-	code: ({ children, className }: { children?: React.ReactNode; className?: string }) => {
+	code: ({
+		children,
+		className,
+	}: {
+		children?: React.ReactNode;
+		className?: string;
+	}) => {
 		const isBlock = className?.startsWith("language-");
 		if (isBlock) {
 			return (
@@ -328,10 +395,14 @@ const markdownComponents = {
 			);
 		}
 		return (
+			// eslint-disable-next-line @next/next/no-img-element
 			<img
 				src={src}
 				alt={alt}
 				loading="lazy"
+				width={1200}
+				height={630}
+				style={{ height: "auto" }}
 				className="w-full rounded-lg my-4 object-contain max-h-[50vh]"
 			/>
 		);
@@ -372,14 +443,19 @@ function MarkdownContent({ slug }: { slug?: string }) {
 	}, [slug, locale]);
 
 	if (!slug) return null;
-	if (md === null) return <p className="text-sm text-fg-faint py-4">Loading…</p>;
+	if (md === null)
+		return <p className="text-sm text-fg-faint py-4">Loading…</p>;
 	if (md === "") return null;
 
 	return (
 		<div className="mt-6 pt-6 border-t border-border">
 			<ReactMarkdown
 				remarkPlugins={[remarkGfm]}
-				components={markdownComponents as Parameters<typeof ReactMarkdown>[0]["components"]}
+				components={
+					markdownComponents as Parameters<
+						typeof ReactMarkdown
+					>[0]["components"]
+				}
 			>
 				{md}
 			</ReactMarkdown>
@@ -434,16 +510,22 @@ function ProjectCard({
 				{p.logo ? (
 					<>
 						{p.logo.dark && (
-							<img
+							<Image
 								src={p.logo.dark}
 								alt={p.title}
-								className="hidden dark:block max-h-16 max-w-full object-contain"
+								width={160}
+								height={64}
+								className="hidden dark:block max-h-16 w-auto object-contain"
+								style={{ height: "auto" }}
 							/>
 						)}
-						<img
+						<Image
 							src={p.logo.light}
 							alt={p.title}
-							className={`max-h-16 max-w-full object-contain${p.logo.dark ? " dark:hidden" : ""}`}
+							width={160}
+							height={64}
+							className={`max-h-16 w-auto object-contain${p.logo.dark ? " dark:hidden" : ""}`}
+							style={{ height: "auto" }}
 						/>
 					</>
 				) : (
@@ -485,22 +567,7 @@ function ProjectCard({
 				{/* Tags */}
 				<div className="flex flex-wrap gap-1 mb-3">
 					{p.tags.map((tag) => (
-						<button
-							key={tag}
-							type="button"
-							onClick={(e) => {
-								e.stopPropagation();
-								onTagClick(tag);
-							}}
-							className="cursor-pointer"
-						>
-							<Badge
-								variant="secondary"
-								className="font-mono text-[10px] hover:bg-accent-soft hover:text-accent-soft-fg transition-colors"
-							>
-								#{tag}
-							</Badge>
-						</button>
+						<TagBadge tag={tag} key={tag} />
 					))}
 				</div>
 
@@ -548,16 +615,22 @@ function ProjectModal({
 							{project.logo ? (
 								<>
 									{project.logo.dark && (
-										<img
+										<Image
 											src={project.logo.dark}
 											alt={project.title}
-											className="hidden dark:block max-h-20 max-w-[60%] object-contain"
+											width={240}
+											height={80}
+											className="hidden dark:block max-h-20 w-auto max-w-[60%] object-contain"
+											style={{ height: "auto" }}
 										/>
 									)}
-									<img
+									<Image
 										src={project.logo.light}
 										alt={project.title}
-										className={`max-h-20 max-w-[60%] object-contain${project.logo.dark ? " dark:hidden" : ""}`}
+										width={240}
+										height={80}
+										className={`max-h-20 w-auto max-w-[60%] object-contain${project.logo.dark ? " dark:hidden" : ""}`}
+										style={{ height: "auto" }}
 									/>
 								</>
 							) : (
@@ -596,13 +669,7 @@ function ProjectModal({
 							{/* Tags */}
 							<div className="flex flex-wrap gap-1.5 mb-6">
 								{project.tags.map((tag) => (
-									<Badge
-										key={tag}
-										variant="secondary"
-										className="font-mono text-xs"
-									>
-										#{tag}
-									</Badge>
+									<TagBadge key={tag} tag={tag} />
 								))}
 							</div>
 
@@ -743,14 +810,26 @@ export function Projects() {
 				<div className="flex gap-1.5 flex-wrap mb-10 overflow-x-auto pb-1">
 					{ALL_TAGS.map((tag) => {
 						const on = activeTags.includes(tag);
+						const logo = TAG_LOGOS[tag];
 						return (
 							<Button
 								key={tag}
 								onClick={() => toggleTag(tag)}
 								variant={on ? "default" : "outline"}
 								size="sm"
-								className="font-mono text-[11px] tracking-wide whitespace-nowrap"
+								className="font-mono text-[11px] tracking-wide whitespace-nowrap gap-1"
 							>
+								{logo && (
+									// eslint-disable-next-line @next/next/no-img-element
+									<img
+										src={logo}
+										alt=""
+										aria-hidden
+										width={14}
+										height={14}
+										className="object-contain shrink-0"
+									/>
+								)}
 								#{tag}
 							</Button>
 						);
