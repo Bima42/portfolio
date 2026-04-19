@@ -516,7 +516,7 @@ function ProjectCard({
 								width={160}
 								height={64}
 								className="hidden dark:block max-h-16 w-auto object-contain"
-								style={{ height: "auto" }}
+								style={{ height: "auto", width: "auto" }}
 							/>
 						)}
 						<Image
@@ -525,7 +525,7 @@ function ProjectCard({
 							width={160}
 							height={64}
 							className={`max-h-16 w-auto object-contain${p.logo.dark ? " dark:hidden" : ""}`}
-							style={{ height: "auto" }}
+							style={{ height: "auto", width: "auto" }}
 						/>
 					</>
 				) : (
@@ -621,7 +621,7 @@ function ProjectModal({
 											width={240}
 											height={80}
 											className="hidden dark:block max-h-20 w-auto max-w-[60%] object-contain"
-											style={{ height: "auto" }}
+											style={{ height: "auto", width: "auto" }}
 										/>
 									)}
 									<Image
@@ -630,7 +630,7 @@ function ProjectModal({
 										width={240}
 										height={80}
 										className={`max-h-20 w-auto max-w-[60%] object-contain${project.logo.dark ? " dark:hidden" : ""}`}
-										style={{ height: "auto" }}
+										style={{ height: "auto", width: "auto" }}
 									/>
 								</>
 							) : (

@@ -2,6 +2,7 @@
 
 import { Moon, Sun } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { Button, buttonVariants } from "@/components/ui/button";
@@ -13,9 +14,8 @@ const NAV_ITEMS = [
 	{ href: "#about", key: "about" as const },
 	{ href: "#work", key: "work" as const },
 	{ href: "#contact", key: "contact" as const },
-	{ href: "#writing", key: "writing" as const },
+	{ href: "/blog", key: "writing" as const },
 ];
-
 export function Header() {
 	const t = useTranslations("nav");
 	const locale = useLocale();
@@ -46,6 +46,11 @@ export function Header() {
 		router.replace(pathname, { locale: locale === "en" ? "fr" : "en" });
 	}
 
+	const navLinkClass = cn(
+		buttonVariants({ variant: "ghost", size: "sm" }),
+		"text-fg-muted hover:text-fg font-normal",
+	);
+
 	return (
 		<header
 			className="fixed top-0 left-0 right-0 z-50 transition-[box-shadow,border-color,background-color]"
@@ -73,25 +78,23 @@ export function Header() {
 					/>
 				</a>
 
-				{/* Nav links — rounded-md, not pill */}
+				{/* Nav */}
 				<nav className="hidden sm:flex gap-0.5 ml-6">
-					{NAV_ITEMS.map((item) => (
-						<a
-							key={item.href}
-							href={item.href}
-							className={cn(
-								buttonVariants({ variant: "ghost", size: "sm" }),
-								"text-fg-muted hover:text-fg font-normal",
-							)}
-						>
-							{t(item.key)}
-						</a>
-					))}
+					{NAV_ITEMS.map((item) =>
+						item.href.startsWith("#") ? (
+							<a key={item.href} href={item.href} className={navLinkClass}>
+								{t(item.key)}
+							</a>
+						) : (
+							<Link key={item.href} href={item.href} className={navLinkClass}>
+								{t(item.key)}
+							</Link>
+						),
+					)}
 				</nav>
 
 				{/* Controls */}
 				<div className="ml-auto flex items-center gap-1">
-					{/* Social */}
 					<a
 						href="https://github.com/Bima42"
 						target="_blank"
@@ -117,7 +120,6 @@ export function Header() {
 						<LinkedInIcon size={16} />
 					</a>
 
-					{/* Locale toggle */}
 					<Button
 						onClick={switchLocale}
 						variant="ghost"
@@ -128,7 +130,6 @@ export function Header() {
 						{locale}
 					</Button>
 
-					{/* Theme toggle */}
 					<Button
 						onClick={toggleTheme}
 						variant="ghost"
@@ -138,12 +139,6 @@ export function Header() {
 					>
 						{theme === "light" ? <Moon /> : <Sun />}
 					</Button>
-
-					{/* CV */}
-					{/*<Button size="sm" className="gap-1.5 ml-1">
-					<Download />
-					CV
-				</Button>*/}
 				</div>
 			</div>
 		</header>
