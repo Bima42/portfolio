@@ -1,6 +1,5 @@
 "use client";
 
-import { Separator } from "@base-ui/react";
 import { Moon, Sun } from "lucide-react";
 import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";

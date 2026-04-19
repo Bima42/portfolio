@@ -1,7 +1,9 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -255,7 +257,134 @@ function ProjectThumb({ kind, accent }: { kind: ThumbKind; accent: number }) {
 					</text>
 				</svg>
 			);
+		case "mobile":
+			return (
+				<svg {...props}>
+					<rect x="40" y="8" width="40" height="64" rx="6" stroke={stroke} fill={fill} />
+					<rect x="46" y="14" width="28" height="40" rx="2" stroke={stroke} strokeWidth="0.6" />
+					<circle cx="60" cy="62" r="3" stroke={stroke} />
+				</svg>
+			);
 	}
+}
+
+// ── Markdown content loader ───────────────────────────────────────────────────
+
+const videoExtensions = [".mp4", ".webm", ".mov"];
+
+const markdownComponents = {
+	h1: ({ children }: { children?: React.ReactNode }) => (
+		<h1 className="text-2xl font-semibold mb-4 mt-8 text-fg">{children}</h1>
+	),
+	h2: ({ children }: { children?: React.ReactNode }) => (
+		<h2 className="text-xl font-semibold mb-3 mt-6 text-fg">{children}</h2>
+	),
+	h3: ({ children }: { children?: React.ReactNode }) => (
+		<h3 className="text-base font-medium mb-2 mt-5 text-fg">{children}</h3>
+	),
+	p: ({ children }: { children?: React.ReactNode }) => (
+		<p className="mb-3 text-fg-muted leading-relaxed text-sm">{children}</p>
+	),
+	ul: ({ children }: { children?: React.ReactNode }) => (
+		<ul className="mb-3 ml-5 space-y-1">{children}</ul>
+	),
+	ol: ({ children }: { children?: React.ReactNode }) => (
+		<ol className="mb-3 ml-5 space-y-1 list-decimal">{children}</ol>
+	),
+	li: ({ children }: { children?: React.ReactNode }) => (
+		<li className="text-sm text-fg-muted list-disc">{children}</li>
+	),
+	blockquote: ({ children }: { children?: React.ReactNode }) => (
+		<blockquote className="border-l-2 border-border pl-4 my-3 text-sm text-fg-faint italic">
+			{children}
+		</blockquote>
+	),
+	code: ({ children, className }: { children?: React.ReactNode; className?: string }) => {
+		const isBlock = className?.startsWith("language-");
+		if (isBlock) {
+			return (
+				<pre className="bg-bg-sunken rounded-lg p-3 overflow-x-auto my-3 text-xs">
+					<code className={`${className ?? ""} text-fg-muted`}>{children}</code>
+				</pre>
+			);
+		}
+		return (
+			<code className="bg-bg-sunken px-1 py-0.5 rounded text-xs text-fg-muted font-mono">
+				{children}
+			</code>
+		);
+	},
+	img: ({ src, alt }: { src?: string; alt?: string }) => {
+		if (videoExtensions.some((ext) => src?.endsWith(ext))) {
+			return (
+				<video
+					src={src}
+					className="w-full rounded-lg my-4 max-h-[50vh] object-contain"
+					autoPlay
+					muted
+					loop
+					playsInline
+				/>
+			);
+		}
+		return (
+			<img
+				src={src}
+				alt={alt}
+				loading="lazy"
+				className="w-full rounded-lg my-4 object-contain max-h-[50vh]"
+			/>
+		);
+	},
+	table: ({ children }: { children?: React.ReactNode }) => (
+		<div className="overflow-x-auto my-4">
+			<table className="w-full text-sm border-collapse">{children}</table>
+		</div>
+	),
+	th: ({ children }: { children?: React.ReactNode }) => (
+		<th className="border border-border px-3 py-1.5 text-left text-xs font-medium text-fg bg-bg-elevated">
+			{children}
+		</th>
+	),
+	td: ({ children }: { children?: React.ReactNode }) => (
+		<td className="border border-border px-3 py-1.5 text-xs text-fg-muted">
+			{children}
+		</td>
+	),
+};
+
+function MarkdownContent({ slug }: { slug?: string }) {
+	const locale = useLocale();
+	const [md, setMd] = useState<string | null>(null);
+
+	useEffect(() => {
+		if (!slug) return;
+		setMd(null);
+		fetch(`/content/${slug}/content-${locale}.md`)
+			.then((r) => (r.ok ? r.text() : Promise.reject()))
+			.catch(() =>
+				fetch(`/content/${slug}/content-en.md`).then((r) =>
+					r.ok ? r.text() : Promise.reject(),
+				),
+			)
+			.then((text) => setMd(text))
+			.catch(() => setMd(""));
+	}, [slug, locale]);
+
+	if (!slug) return null;
+	if (md === null) return <p className="text-sm text-fg-faint py-4">Loading…</p>;
+	if (md === "") return null;
+
+	return (
+		<div className="mt-6 pt-6 border-t border-border">
+			<ReactMarkdown
+				remarkPlugins={[remarkGfm]}
+				components={markdownComponents as Parameters<typeof ReactMarkdown>[0]["components"]}
+			>
+				{md}
+			</ReactMarkdown>
+		</div>
+	);
 }
 
 // ── Project card ──────────────────────────────────────────────────────────────
@@ -295,13 +424,30 @@ function ProjectCard({
 		>
 			{/* Thumbnail */}
 			<div
-				className="h-28 relative overflow-hidden border-b border-border"
+				className="h-28 relative overflow-hidden border-b border-border flex items-center justify-center"
 				style={{
 					padding: 18,
 					background: `linear-gradient(135deg, oklch(0.96 0.03 ${p.accent}), oklch(0.99 0.01 ${p.accent}))`,
 				}}
 			>
-				<ProjectThumb kind={p.thumb} accent={p.accent} />
+				{p.logo ? (
+					<>
+						{p.logo.dark && (
+							<img
+								src={p.logo.dark}
+								alt={p.title}
+								className="hidden dark:block max-h-16 max-w-full object-contain"
+							/>
+						)}
+						<img
+							src={p.logo.light}
+							alt={p.title}
+							className={`max-h-16 max-w-full object-contain${p.logo.dark ? " dark:hidden" : ""}`}
+						/>
+					</>
+				) : (
+					<ProjectThumb kind={p.thumb} accent={p.accent} />
+				)}
 				<span
 					className="absolute top-2.5 right-3 font-mono text-[10px] tracking-wide"
 					style={{ color: `oklch(0.45 0.15 ${p.accent})` }}
@@ -384,26 +530,43 @@ function ProjectModal({
 	return (
 		<Dialog open={!!project} onOpenChange={(open) => !open && onClose()}>
 			<DialogContent
-				className="max-w-2xl p-0 overflow-hidden rounded-2xl border-border"
+				className="max-w-3xl w-[90vw] p-0 overflow-hidden rounded-2xl border-border"
 				style={{ background: "var(--bg-elevated)" }}
 			>
 				{project && (
 					<>
 						{/* Thumb header */}
 						<div
-							className="h-48 relative"
+							className="h-40 relative flex-shrink-0 flex items-center justify-center"
 							style={{
 								padding: 32,
 								background: `linear-gradient(135deg, oklch(0.92 0.06 ${project.accent}), oklch(0.98 0.02 ${project.accent}))`,
 							}}
 						>
-							<div className="absolute inset-8">
-								<ProjectThumb kind={project.thumb} accent={project.accent} />
-							</div>
+							{project.logo ? (
+								<>
+									{project.logo.dark && (
+										<img
+											src={project.logo.dark}
+											alt={project.title}
+											className="hidden dark:block max-h-20 max-w-[60%] object-contain"
+										/>
+									)}
+									<img
+										src={project.logo.light}
+										alt={project.title}
+										className={`max-h-20 max-w-[60%] object-contain${project.logo.dark ? " dark:hidden" : ""}`}
+									/>
+								</>
+							) : (
+								<div className="absolute inset-8">
+									<ProjectThumb kind={project.thumb} accent={project.accent} />
+								</div>
+							)}
 						</div>
 
-						{/* Content */}
-						<div className="p-8">
+						{/* Scrollable content */}
+						<div className="overflow-y-auto max-h-[65vh] p-8">
 							<div className="flex items-center gap-2.5 mb-3">
 								<span className="font-mono text-[10.5px] uppercase tracking-wide text-fg-faint">
 									{project.kind} · {project.year}
@@ -441,18 +604,8 @@ function ProjectModal({
 								))}
 							</div>
 
-							{/* Content placeholder */}
-							<div className="p-4 border border-dashed border-border rounded-xl mb-6 text-sm text-fg-faint">
-								<span className="font-mono text-[10px] uppercase tracking-wide">
-									[ placeholder ]
-								</span>
-								<p className="mt-1.5">
-									Full write-up lives in the blog — coming soon.
-								</p>
-							</div>
-
 							{/* Actions */}
-							<div className="flex gap-2.5">
+							<div className="flex gap-2.5 mb-2">
 								{project.repo && (
 									<a
 										href={`https://${project.repo}`}
@@ -474,6 +627,9 @@ function ProjectModal({
 									</a>
 								)}
 							</div>
+
+							{/* Markdown content */}
+							<MarkdownContent slug={project.slug} />
 						</div>
 					</>
 				)}
@@ -507,18 +663,6 @@ export function Projects() {
 			p.blurb.toLowerCase().includes(q);
 		return matchTags && matchQuery;
 	});
-
-	// Lock body scroll when modal is open
-	useEffect(() => {
-		if (openProject) {
-			document.body.style.overflow = "hidden";
-		} else {
-			document.body.style.overflow = "";
-		}
-		return () => {
-			document.body.style.overflow = "";
-		};
-	}, [openProject]);
 
 	return (
 		<section
