@@ -10,8 +10,7 @@
 		"typewriterPhrases": [
 			"Ingénieur logiciel.",
 			"Architecte systèmes.",
-			"Bâtisseur insatiable.",
-			"Ex-cuisinier, ex-neuroscientifique."
+			"Bâtisseur insatiable."
 		],
 		"heading": "Je construis des systèmes qui durent.",
 		"statusPillLabel": "Disponible",
@@ -32,49 +31,48 @@
 		"eyebrow": "§ 01 · Le long chemin",
 		"heading": "Un",
 		"headingAccent": "parcours diversifié.",
-		"description": "Chaque étape est un chapitre : emplois, projets, pivots. Le chemin, c'est le CV.",
 		"timeline": {
 			"labster": {
 				"title": "Le Labster",
 				"role": "Lead Software Engineer",
 				"where": "Depuis fév. 2026",
-				"summary": "En collaboration avec des designers UX/UI pour créer des applications sur mesure dans la santé. Actuellement centré sur la numérisation de la documentation médicale pour des cantons suisses. Propulsé par l'IA, construit pour durer."
+				"summary": "En collaboration avec des designers UX/UI pour créer des applications modernes sur mesure, centré sur l'IA pour la santé. Actuellement centré sur la numérisation de documentation médicale pour des cantons suisses."
 			},
 			"resilio": {
 				"title": "Resilio",
 				"role": "Ingénieur logiciel",
 				"where": "Lausanne · jan. 2023 – avr. 2026",
-				"summary": "Full-stack + infra sur ResilioTech (ACV) et ResilioDatabase. Réduction du chargement tableau de bord de 15s → <600ms. Remplacement de Cypress par Playwright, E2E 1h → 15m."
+				"summary": "Full-stack & infra sur l'ensemble des produits. Pilotage technique de ResilioTech (ACV) : refonte des schémas d'architecture, plans de migration (structure & patterns), stack analytics LGTM. Onboarding de nouveaux devs, documentation et peer review."
 			},
 			"voltaire": {
 				"title": "Voltaire",
 				"role": "Produit payant lancé",
 				"where": "Projet perso",
-				"summary": "Assistant d'écriture IA avec architecture agentique. POC 2 sem. → MVP 2 mois → produit payant avec des centaines d'utilisateurs. Boucle feedback Posthog."
+				"summary": "Assistant d'écriture IA avec architecture agentique. Il s'adapte à votre style et à votre voix uniques."
 			},
 			"resilioJoined": {
 				"title": "Resilio · arrivée",
-				"role": "Premier poste full-stack",
+				"role": "Stagiaire full-stack",
 				"where": "Janvier 2023",
-				"summary": "Architecte principal sur deux produits. Pilotage de l'intégration SSO Entreprise avec de grands clients."
+				"summary": "Focus backend initial. Contribution à la conception technique de ResilioDatabase. Mise en place d'une fonctionnalité d'import de fichiers CMDB."
 			},
 			"ecole42": {
 				"title": "École 42 Lausanne",
 				"role": "Concepteur de solutions IT",
 				"where": "Oct 2021 – Jan 2023",
-				"summary": "Cursus pair-à-pair en C / C++. minishell, containers, conception système depuis les fondations. Diplômé rapidement."
+				"summary": "Cursus 100% projet, sans enseignants. Apprentissage par le bas niveau (C / C++) pour comprendre les mécanismes fondamentaux. Autonomie et peer review au cœur de la pédagogie."
 			},
 			"kitchens": {
 				"title": "Cuisine professionnelle",
 				"role": "Cuisinier",
 				"where": "Lacanau · Genève · 2017–2021",
-				"summary": "Pas un détour : un chapitre formateur. Discipline de service, gestion de la pression, obsession de la qualité que j'ai ramenée dans l'ingénierie."
+				"summary": "Pas un détour mais un chapitre formateur. Discipline de service, gestion de la pression, obsession de la qualité que j'ai ramenée dans l'ingénierie."
 			},
 			"neuroscience": {
 				"title": "Licence, Neurosciences",
 				"role": "Physiologie animale",
 				"where": "Poitiers · 2013–2016",
-				"summary": "Diplômé à 19 ans. M'a appris à lire un système que je n'ai pas conçu. Curiosité pour la mécanique derrière le comportement."
+				"summary": "Diplômé à 19 ans. Toujours guidé par la même question : comment ça marche ? De la biologie et du corps humain aux neurosciences, une curiosité pour les mécanismes qui gouvernent le vivant."
 			}
 		}
 	},

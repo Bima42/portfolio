@@ -1,6 +1,6 @@
-import Link from "next/link";
 import Image from "next/image";
-import { ThemeToggle } from "@/components/blog/ThemeToggle";
+import Link from "next/link";
+import { ThemeToggle } from "@/components/ui-kit/ThemeToggle";
 
 interface BlogNavProps {
 	locale: string;
@@ -27,9 +27,13 @@ export function BlogNav({ locale }: BlogNavProps) {
 					width={28}
 					height={28}
 				/>
-				<span className="font-semibold text-sm tracking-tight">Tanguy Pauvret</span>
+				<span className="font-semibold text-sm tracking-tight">
+					Tanguy Pauvret
+				</span>
 				<span className="text-fg-faint mx-1">/</span>
-				<span className="font-mono text-xs text-fg-muted tracking-wide">writing</span>
+				<span className="font-mono text-xs text-fg-muted tracking-wide">
+					writing
+				</span>
 			</Link>
 
 			<ThemeToggle />

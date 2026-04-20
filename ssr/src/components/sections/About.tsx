@@ -66,8 +66,12 @@ function TypeBadge({ type }: { type: TimelineType }) {
 				className="w-1.5 h-1.5 rounded-pill shrink-0"
 				style={{
 					background: m.color,
-					animation: type === "now" ? "status-pulse 2s ease-in-out infinite" : undefined,
-					boxShadow: type === "now" ? `0 0 0 3px ${m.color.replace(")", " / 0.25)")}` : undefined,
+					animation:
+						type === "now" ? "status-pulse 2s ease-in-out infinite" : undefined,
+					boxShadow:
+						type === "now"
+							? `0 0 0 3px ${m.color.replace(")", " / 0.25)")}`
+							: undefined,
 				}}
 			/>
 			{m.label}
@@ -223,9 +227,6 @@ export function About() {
 							</span>
 						</h2>
 					</div>
-					<p className="max-w-sm text-sm leading-relaxed text-fg-muted">
-						{t("description")}
-					</p>
 				</div>
 
 				{/* Timeline */}
@@ -344,7 +345,9 @@ export function About() {
 										>
 											{item.logo ? (
 												<Image
-													src={isDark && item.logoDark ? item.logoDark : item.logo}
+													src={
+														isDark && item.logoDark ? item.logoDark : item.logo
+													}
 													alt={item.key}
 													width={isActive ? 30 : 22}
 													height={isActive ? 30 : 22}

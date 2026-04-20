@@ -32,7 +32,7 @@ export const TIMELINE_ITEMS: TimelineItem[] = [
 		type: "experience",
 		mark: "R",
 		accent: 160,
-		tags: ["Django", "React", "Celery", "Docker", "LGTM"],
+		tags: ["Django", "React", "TypeScript", "DevOps", "Docker"],
 		logo: "/assets/brand-logos/logo-resilio.svg",
 	},
 	{
@@ -76,7 +76,7 @@ export const TIMELINE_ITEMS: TimelineItem[] = [
 		year: "2016",
 		type: "education",
 		mark: "◎",
-		accent: 290,
+		accent: 200,
 		tags: ["Science", "Research"],
 	},
 ];

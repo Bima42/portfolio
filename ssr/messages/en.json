@@ -10,8 +10,7 @@
 		"typewriterPhrases": [
 			"Software engineer.",
 			"System architect.",
-			"Restless builder.",
-			"Ex-cook, ex-neuroscientist."
+			"Restless builder."
 		],
 		"heading": "I build systems that last.",
 		"statusPillLabel": "Available",
@@ -32,49 +31,48 @@
 		"eyebrow": "§ 01 · The long way here",
 		"heading": "A",
 		"headingAccent": "diverse background.",
-		"description": "Each waypoint is a chapter: jobs, projects, pivots. The path is the résumé.",
 		"timeline": {
 			"labster": {
 				"title": "Le Labster",
 				"role": "Lead Software Engineer",
 				"where": "From Feb 2026",
-				"summary": "Working alongside UX/UI designers to build custom applications for healthcare clients. Currently focused on digitizing medical documentation for Swiss cantons. AI-powered, built to last."
+				"summary": "Working alongside UX/UI designers to build custom applications, AI-powered for healthcare clients. Currently focused on digitizing medical documentation for Swiss cantons."
 			},
 			"resilio": {
 				"title": "Resilio",
 				"role": "Software Engineer",
 				"where": "Lausanne · Jan 2023 – Apr 2026",
-				"summary": "Full-stack + infra on ResilioTech (LCA) and ResilioDatabase. Reduced dashboard load from 15s → <600ms. Replaced Cypress with Playwright, cut E2E 1h → 15m."
+				"summary": "Full-stack & infra across all products. Technical lead on ResilioTech (ACV): architecture overhaul, migration plans (structure & patterns), LGTM analytics stack. Onboarded new devs, maintained documentation and enforced strict peer review."
 			},
 			"voltaire": {
 				"title": "Voltaire",
 				"role": "Paid product launched",
 				"where": "Side project",
-				"summary": "AI writing assistant with agentic architecture. 2w POC → 2mo MVP → paid product with hundreds of users. Posthog feedback loop."
+				"summary": "AI writing assistant with agentic architecture. It adapts to your unique style and voice."
 			},
 			"resilioJoined": {
 				"title": "Resilio · joined",
-				"role": "First full-stack role",
+				"role": "Full-stack intern",
 				"where": "January 2023",
-				"summary": "Stepped in as primary architect on two products. Led Enterprise SSO integration with large-scale clients."
+				"summary": "Initial backend focus. Contributed to the technical design of ResilioDatabase. Implemented CMDB file import feature."
 			},
 			"ecole42": {
 				"title": "École 42 Lausanne",
 				"role": "IT Solutions Designer",
 				"where": "Oct 2021 – Jan 2023",
-				"summary": "Peer-to-peer, project-based curriculum in C / C++. minishell, containers, system design from first principles. Completed fast."
+				"summary": "100% project-based, no teachers. Learned through low-level languages (C / C++) to understand core mechanics. Autonomy and peer review at the heart of the curriculum."
 			},
 			"kitchens": {
 				"title": "Kitchens",
 				"role": "Cook",
 				"where": "Lacanau · Genève · 2017–2021",
-				"summary": "Not a detour: a formative chapter. Service discipline, pressure handling, and an obsession with quality that I brought back into engineering."
+				"summary": "Not a detour but a formative chapter. Service discipline, pressure handling, and an obsession with quality that I brought back into engineering."
 			},
 			"neuroscience": {
 				"title": "Bachelor, Neuroscience",
 				"role": "Animal Physiology",
 				"where": "Poitiers · 2013–2016",
-				"summary": "Graduated at 19. Taught me how to read a system I did not design. Curiosity about the machinery beneath behavior."
+				"summary": "Graduated at 19. Always driven by the same question: how does it work? From biology and the human body to neuroscience, a curiosity for the mechanics behind living things."
 			}
 		}
 	},

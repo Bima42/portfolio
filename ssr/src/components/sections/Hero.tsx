@@ -1,5 +1,6 @@
 "use client";
 
+import { ArrowRight } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { buttonVariants } from "@/components/ui/button";
@@ -82,7 +83,7 @@ export function Hero() {
 
 				{/* Typewriter — separate line, controlled size so it never wraps */}
 				<div className="flex items-center gap-1 mb-4 h-8">
-					<span className="text-2xl font-medium italic gradient-text leading-none">
+					<span className="text-3xl font-medium italic gradient-text leading-none">
 						{text}
 					</span>
 					<span
@@ -107,16 +108,7 @@ export function Hero() {
 						)}
 					>
 						{t("ctaPrimary")}
-						<svg
-							width="14"
-							height="14"
-							viewBox="0 0 24 24"
-							fill="none"
-							stroke="currentColor"
-							strokeWidth="2"
-						>
-							<path d="M5 12h14M13 5l7 7-7 7" />
-						</svg>
+						<ArrowRight />
 					</a>
 					<a
 						href="#contact"
