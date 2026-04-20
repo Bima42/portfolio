@@ -84,7 +84,7 @@
 		"prompt-pilot": "XML prompt generator for LLMs. Turns vague asks into structured, reusable prompts. Retrieval grounded with FAISS.",
 		"docstral": "AI-powered sandbox chat for Mistral models and documentation. RAG over official Mistral docs: sourced answers, streaming, code snippets.",
 		"tidaka": "Mobile app connecting sports coaches with their clients for training management, session planning, and progress tracking.",
-		"minishell": "Bash fundamentals implemented in C at École 42. Parser, executor, heredocs, signals: everything short of a shell history.",
+		"minishell": "Bash fundamentals implemented in C at École 42. Parser, executor, heredocs, signals.",
 		"ft-containers": "Reimplementation of the STL: vector, map, stack in C++98. Allocators, iterators, red-black tree."
 	},
 	"projects": {

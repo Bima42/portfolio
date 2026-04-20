@@ -81,10 +81,10 @@
 		"mcp-mem": "Graphe de connaissance temporel pour les LLM. Mémoire basée sur les relations, portable entre applications et évolutive dans le temps.",
 		"knower": "Service de mémoire local et portable qui découple la mémoire de l'outil IA. Un vault, chaque agent : le contexte vous suit sur Claude, Cursor, Mistral et tout client MCP.",
 		"voltaire": "Assistant d'écriture IA avec architecture agentique. POC 2 semaines, MVP 2 mois, des centaines d'utilisateurs payants. Boucle de feedback via WhatsApp et Posthog.",
-		"prompt-pilot": "Générateur de prompts XML pour les LLM. Transforme des demandes vagues en prompts structurés et réutilisables. Récupération basée sur FAISS.",
+		"prompt-pilot": "Générateur de prompts XML pour les LLM. Transforme des demandes vagues en prompts structurés et réutilisables.",
 		"docstral": "Chat sandbox propulsé par l'IA pour les modèles et la documentation Mistral. RAG sur les docs officiels : réponses sourcées, streaming, extraits de code.",
 		"tidaka": "Application mobile connectant les coaches sportifs avec leurs clients pour la gestion des entraînements, la planification des séances et le suivi des progrès.",
-		"minishell": "Fondamentaux Bash implémentés en C à l'École 42. Parseur, exécuteur, heredocs, signaux : tout sauf l'historique du shell.",
+		"minishell": "Fondamentaux Bash implémentés en C à l'École 42. Parseur, exécuteur, heredocs, signaux.",
 		"ft-containers": "Réimplémentation de la STL : vector, map, stack en C++98. Allocateurs, itérateurs, arbre rouge-noir."
 	},
 	"projects": {

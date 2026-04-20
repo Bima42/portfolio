@@ -102,7 +102,7 @@ export const PROJECTS: Project[] = [
 		kind: "Tool",
 		year: "2024",
 		slug: "prompt-pilot",
-		tags: ["python", "react", "faiss", "docker"],
+		tags: ["python", "react", "docker"],
 		repo: null,
 		live: "prompt-pilot.app",
 		accent: 70,
