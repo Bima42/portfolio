@@ -1,7 +1,8 @@
-import type { Root } from "hast";
+import type { Root as HastRoot } from "hast";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
+import remarkGfm from "remark-gfm";
 import { visit } from "unist-util-visit";
 
 export interface TocHeading {
@@ -11,7 +12,7 @@ export interface TocHeading {
 }
 
 export function rehypeExtractHeadings(headings: TocHeading[]) {
-	return () => (tree: Root) => {
+	return () => (tree: HastRoot) => {
 		visit(tree, "element", (node) => {
 			if (
 				node.type === "element" &&
@@ -31,6 +32,7 @@ export function rehypeExtractHeadings(headings: TocHeading[]) {
 }
 
 export const mdxOptions = {
+	remarkPlugins: [remarkGfm],
 	rehypePlugins: [
 		rehypeSlug,
 		[

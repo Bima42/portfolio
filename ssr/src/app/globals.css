@@ -16,14 +16,14 @@
     font-display: swap;
 }
 
-/* ── 1. Dark mode variant ────────────────────────────────────────
+/* ── Dark mode variant ────────────────────────────────────────
    Uses data-theme so the server can render the right theme
    without a JS flash. Set <html data-theme="dark"> server-side
    (cookie / Accept header / explicit user preference).
    ──────────────────────────────────────────────────────────────── */
 @custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
 
-/* ── 2. Primitive scales ─────────────────────────────────────────
+/* ── Primitive scales ─────────────────────────────────────────
    Static values only — no CSS var references here.
    Tailwind generates bg-purple-500, text-ink-900, etc.
    ──────────────────────────────────────────────────────────────── */
@@ -137,7 +137,7 @@
 
 }
 
-/* ── 3. Semantic tokens — light (default) ────────────────────────
+/* ── Semantic tokens — light (default) ────────────────────────
    Raw CSS vars, not in @theme, so they can be switched per theme.
    Aliased into utilities via @theme inline below.
    ──────────────────────────────────────────────────────────────── */
@@ -193,10 +193,7 @@
     --info-fg: #3b4fa0;
     --info-bg: #e3e9f9;
 
-    /* ── shadcn semantic aliases
-     shadcn's --primary  = call-to-action = our --accent (purple-500)
-     shadcn's --accent   = hover bg       = our --accent-soft
-     Keep these in sync with [data-theme='dark'] below.        */
+    /* ── shadcn semantic aliases */
     --background: var(--bg);
     --foreground: var(--fg);
     --card: var(--bg-elevated);
@@ -221,9 +218,7 @@
     --radius: 8px;
 }
 
-/* ── 4. Semantic tokens — dark theme ─────────────────────────────
-   data-theme on <html> set server-side = no FOUC, SSR-safe.
-   ──────────────────────────────────────────────────────────────── */
+/* ── Semantic tokens — dark theme ────────────────────────*/
 [data-theme='dark'] {
     color-scheme: dark;
 
@@ -298,12 +293,7 @@
     --radius: 8px;
 }
 
-/* ── 5. @theme inline — semantic vars → Tailwind utilities ───────
-   "inline" = Tailwind uses var(--x) as the value, not its own var.
-   This is the v4 pattern for theme-switched tokens.
-   Result: bg-fg, text-accent, shadow-glow, etc. all work and
-   automatically reflect the active theme.
-   ──────────────────────────────────────────────────────────────── */
+/* ── @theme inline — semantic vars → Tailwind utilities ─────── */
 @theme inline {
     /* Surfaces */
     --color-bg: var(--bg);
@@ -368,8 +358,8 @@
     --color-secondary-foreground: var(--secondary-foreground);
     --color-muted: var(--muted);
     --color-muted-foreground: var(--muted-foreground);
-    --color-accent: var(--accent-ui); /* shadcn ghost hover */
-    --color-accent-foreground: var(--accent-ui-foreground);
+    --color-accent-ui: var(--accent-ui);
+    --color-accent-ui-foreground: var(--accent-ui-foreground);
     --color-destructive: var(--destructive);
     --color-destructive-foreground: var(--destructive-foreground);
     --color-border: var(--border-ui);
@@ -378,9 +368,6 @@
     --radius: var(--radius);
 }
 
-/* ── 6. Base resets ──────────────────────────────────────────────
-   Applied globally — mirrors the old .ds-base class.
-   ──────────────────────────────────────────────────────────────── */
 /* ── 7. Component utilities ──────────────────────────────────────── */
 @layer utilities {
     .glass {

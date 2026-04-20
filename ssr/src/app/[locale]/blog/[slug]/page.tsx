@@ -4,7 +4,6 @@ import { compileMDX } from "next-mdx-remote/rsc";
 import { BlogHeader } from "@/components/blog/BlogHeader";
 import { BlogNav } from "@/components/blog/BlogNav";
 import { mdxComponents } from "@/components/blog/MdxComponents";
-import { ReadingProgress } from "@/components/blog/ReadingProgress";
 import { TableOfContents } from "@/components/blog/TableOfContents";
 import { getAllBlogSlugs, getBlogPost } from "@/lib/blog";
 import { mdxOptions, rehypeExtractHeadings, type TocHeading } from "@/lib/mdx";
@@ -77,15 +76,16 @@ export default async function BlogPostPage({ params }: Props) {
 
 	return (
 		<>
-			<ReadingProgress />
 			<BlogNav locale={locale} />
 			<BlogHeader frontmatter={post.frontmatter} locale={locale} />
 
-			<div className="max-w-[960px] mx-auto px-6 pb-[120px] pt-10">
-				<div className="flex gap-16 items-start">
-					<article className="min-w-0 flex-1 blog-prose">{content}</article>
-					<TableOfContents headings={headings} />
-				</div>
+			<div className="pb-[120px] pt-10 xl:grid xl:grid-cols-[1fr_720px_minmax(0,280px)_1fr]">
+				<div className="hidden xl:block" />
+				<article className="px-6 max-w-[720px] mx-auto xl:max-w-none xl:mx-0 blog-prose min-w-0">
+					{content}
+				</article>
+				<TableOfContents headings={headings} />
+				<div className="hidden xl:block" />
 			</div>
 		</>
 	);

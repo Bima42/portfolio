@@ -1,98 +1,21 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
 import { Check, Copy } from "lucide-react";
-import type { ComponentPropsWithoutRef, ReactNode } from "react";
-import React from "react";
-
-/* ── Text extractor from React node tree ─────────────────────── */
-
-function extractText(node: ReactNode): string {
-	if (typeof node === "string" || typeof node === "number") return String(node);
-	if (Array.isArray(node)) return node.map(extractText).join("");
-	if (React.isValidElement(node)) {
-		return extractText(
-			(node.props as { children?: ReactNode }).children,
-		);
-	}
-	return "";
-}
-
-/* ── Mermaid ──────────────────────────────────────────────────── */
-
-function MermaidBlock({ code }: { code: string }) {
-	const [svg, setSvg] = useState<string>("");
-	const [error, setError] = useState<string>("");
-
-	useEffect(() => {
-		let cancelled = false;
-
-		async function render() {
-			try {
-				const mermaid = (await import("mermaid")).default;
-				mermaid.initialize({
-					startOnLoad: false,
-					theme:
-						document.documentElement.getAttribute("data-theme") === "dark"
-							? "dark"
-							: "neutral",
-					fontFamily: "var(--font-mono)",
-					fontSize: 13,
-				});
-				const id = `mermaid-${Math.random().toString(36).slice(2)}`;
-				const { svg: rendered } = await mermaid.render(id, code.trim());
-				if (!cancelled) setSvg(rendered);
-			} catch (e) {
-				if (!cancelled) setError(String(e));
-			}
-		}
-
-		render();
-		return () => {
-			cancelled = true;
-		};
-	}, [code]);
-
-	if (error) {
-		return (
-			<div className="my-7 rounded-xl border border-border bg-bg-sunken p-4 font-mono text-xs text-danger overflow-x-auto">
-				{error}
-			</div>
-		);
-	}
-
-	if (!svg) {
-		return (
-			<div className="my-7 rounded-xl border border-border bg-bg-sunken p-4 flex items-center justify-center min-h-[120px]">
-				<span className="w-4 h-4 rounded-full border-2 border-accent border-t-transparent animate-spin inline-block" />
-			</div>
-		);
-	}
-
-	return (
-		<div
-			className="my-7 rounded-xl border border-border bg-bg-sunken p-6 overflow-x-auto flex justify-center"
-			// biome-ignore lint/security/noDangerouslySetInnerHtml: mermaid-rendered SVG is safe
-			dangerouslySetInnerHTML={{ __html: svg }}
-		/>
-	);
-}
+import type { ComponentPropsWithoutRef } from "react";
+import { useRef, useState } from "react";
+import { cn } from "@/lib/utils";
 
 /* ── Pre / Code block ─────────────────────────────────────────── */
 
-type PreProps = ComponentPropsWithoutRef<"pre"> & {
-	"data-language"?: string;
-};
-
-function MdxPre({ children, ...props }: PreProps) {
+/**
+ * Wraps rehype-pretty-code's <pre> output with a copy button.
+ * Merges classNames via cn() so rehype-pretty-code's data-theme classes
+ * are preserved — the globals.css dual-theme visibility selectors depend on them.
+ * Background is intentionally left to CSS (pre[data-theme] sets bg-sunken).
+ */
+function MdxPre({ children, ...props }: ComponentPropsWithoutRef<"pre">) {
 	const [copied, setCopied] = useState(false);
 	const preRef = useRef<HTMLPreElement>(null);
-	const language = props["data-language"] ?? "";
-
-	if (language === "mermaid") {
-		const code = extractText(children);
-		return <MermaidBlock code={code} />;
-	}
 
 	async function handleCopy() {
 		const text = preRef.current?.textContent ?? "";
@@ -116,7 +39,10 @@ function MdxPre({ children, ...props }: PreProps) {
 			<pre
 				ref={preRef}
 				{...props}
-				className="rounded-xl border border-border bg-bg-sunken overflow-x-auto p-[18px] text-[13.5px] leading-[1.55] font-mono"
+				className={cn(
+					"rounded-xl border border-border overflow-x-auto p-[18px] text-[13.5px] leading-[1.55] font-mono",
+					props.className,
+				)}
 			>
 				{children}
 			</pre>

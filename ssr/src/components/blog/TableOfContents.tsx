@@ -41,7 +41,7 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
 	if (headings.length === 0) return null;
 
 	return (
-		<aside className="sticky top-24 w-56 shrink-0 hidden xl:block self-start">
+		<aside className="sticky top-24 shrink-0 hidden xl:block self-start pl-10">
 			<p className="font-mono text-[11px] tracking-[0.08em] uppercase text-fg-faint mb-4">
 				{t("onThisPage")}
 			</p>
