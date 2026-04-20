@@ -113,5 +113,16 @@
 		"githubValue": "@Bima42",
 		"openCta": "Ouvrir",
 		"footerLocation": "Fessy, FR ↔ Genève, CH"
+	},
+	"blog": {
+		"onThisPage": "Sur cette page",
+		"metaTitle": "Écriture — Tanguy Pauvret",
+		"metaDescription": "Notes d'ingénierie sur les systèmes, l'architecture et les décisions techniques qui comptent.",
+		"ogDescription": "Notes d'ingénierie sur les systèmes, l'architecture et les décisions techniques.",
+		"eyebrow": "Écriture · {count} articles",
+		"heading": "Notes d'un ingénieur qui travaille.",
+		"subheading": "Essais sur les systèmes, l'architecture, et les décisions lentes et ennuyeuses qui déterminent si une équipe livre en mars ou en juillet.",
+		"featured": "À la une",
+		"archive": "Archive"
 	}
 }

@@ -113,5 +113,16 @@
 		"githubValue": "@Bima42",
 		"openCta": "Open",
 		"footerLocation": "Fessy, FR ↔ Lausanne, CH"
+	},
+	"blog": {
+		"onThisPage": "On this page",
+		"metaTitle": "Writing — Tanguy Pauvret",
+		"metaDescription": "Engineering notes on systems, architecture, and the technical decisions that matter.",
+		"ogDescription": "Engineering notes on systems, architecture, and technical decisions.",
+		"eyebrow": "Writing · {count} articles",
+		"heading": "Notes from a working engineer.",
+		"subheading": "Essays on systems, architecture, and the boring slow decisions that decide whether a team ships in March or July.",
+		"featured": "Featured",
+		"archive": "Archive"
 	}
 }
