@@ -1,14 +1,16 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
-import { cn } from "@/lib/utils";
 import type { TocHeading } from "@/lib/mdx";
+import { cn } from "@/lib/utils";
 
 interface TableOfContentsProps {
 	headings: TocHeading[];
 }
 
 export function TableOfContents({ headings }: TableOfContentsProps) {
+	const t = useTranslations("blog");
 	const [activeId, setActiveId] = useState<string>("");
 	const observerRef = useRef<IntersectionObserver | null>(null);
 
@@ -41,7 +43,7 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
 	return (
 		<aside className="sticky top-24 w-56 shrink-0 hidden xl:block self-start">
 			<p className="font-mono text-[11px] tracking-[0.08em] uppercase text-fg-faint mb-4">
-				On this page
+				{t("onThisPage")}
 			</p>
 			<nav>
 				<ul className="space-y-1">

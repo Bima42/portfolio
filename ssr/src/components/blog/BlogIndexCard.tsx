@@ -42,7 +42,7 @@ export function BlogIndexCard({ post, locale }: BlogIndexCardProps) {
 						</span>
 					</div>
 
-					<h2 className="text-[1.875rem] font-semibold tracking-tight leading-snug mb-3 group-hover:text-accent transition-colors duration-240">
+					<h2 className="text-[1.875rem] font-semibold tracking-tight leading-snug mb-3 group-hover:text-accent-hover transition-colors duration-240">
 						{title}
 					</h2>
 

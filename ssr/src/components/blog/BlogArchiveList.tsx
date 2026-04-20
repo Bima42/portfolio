@@ -21,14 +21,17 @@ export function BlogArchiveList({ posts, locale }: BlogArchiveListProps) {
 						key={slug}
 						href={`/${locale}/blog/${slug}`}
 						className="group grid gap-5 py-5 border-t border-dashed border-border text-inherit no-underline transition-[padding] duration-[240ms] ease-[cubic-bezier(.22,1,.36,1)] hover:pl-2"
-						style={{ gridTemplateColumns: "72px 1fr auto", alignItems: "baseline" }}
+						style={{
+							gridTemplateColumns: "72px 1fr auto",
+							alignItems: "baseline",
+						}}
 					>
 						<div className="font-mono text-[11px] text-fg-subtle tracking-[0.04em]">
 							{formatDate(date, locale)}
 						</div>
 
 						<div>
-							<div className="text-[17px] font-medium tracking-tight mb-1 group-hover:text-accent transition-colors duration-150">
+							<div className="text-[17px] font-medium tracking-tight mb-1 group-hover:text-accent-hover transition-colors duration-150">
 								{title}
 							</div>
 							{description && (
