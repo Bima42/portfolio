@@ -74,7 +74,6 @@ export const PROJECTS: Project[] = [
 		kind: "Hackathon · Memory Service",
 		year: "2025",
 		slug: "knower",
-		award: "Mistral AI Hackathon",
 		tags: ["python", "next.js", "fastapi", "mcp", "mistral", "typescript"],
 		repo: "github.com/Birium/knower",
 		live: null,
@@ -121,7 +120,7 @@ export const PROJECTS: Project[] = [
 		slug: "docstral",
 		tags: ["next.js", "fastapi", "mistral", "rag", "docker"],
 		repo: null,
-		live: "docstral.app",
+		live: "docstral.tanguypauvret.me",
 		accent: 30,
 		thumb: "db",
 		logo: {
