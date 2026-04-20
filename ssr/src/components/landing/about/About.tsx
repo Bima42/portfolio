@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
-import { TIMELINE_ITEMS } from "@/data/timeline";
+import { TIMELINE_ITEMS } from "@/components/landing/about/timeline";
 import { useActiveIndex, useIsDark } from "./hooks";
 import { WaypointCard } from "./WaypointCard";
 
@@ -186,7 +186,9 @@ export function About() {
 										>
 											{item.logo ? (
 												<Image
-													src={isDark && item.logoDark ? item.logoDark : item.logo}
+													src={
+														isDark && item.logoDark ? item.logoDark : item.logo
+													}
 													alt={item.key}
 													width={isActive ? 30 : 22}
 													height={isActive ? 30 : 22}

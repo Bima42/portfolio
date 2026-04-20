@@ -2,9 +2,13 @@
 
 import { useTranslations } from "next-intl";
 import { useState } from "react";
+import {
+	ALL_TAGS,
+	PROJECTS,
+	type Project,
+} from "@/components/landing/projects/projects-data";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { ALL_TAGS, PROJECTS, type Project } from "@/data/projects";
 import { ProjectCard } from "./ProjectCard";
 import { ProjectModal } from "./ProjectModal";
 import { TAG_LOGOS } from "./tag-logos";
@@ -52,7 +56,9 @@ export function Projects() {
 							style={{ fontSize: "clamp(40px, 6vw, 72px)" }}
 						>
 							{t("heading")}{" "}
-							<span className="italic text-accent-hover">{t("headingAccent")}</span>
+							<span className="italic text-accent-hover">
+								{t("headingAccent")}
+							</span>
 						</h2>
 					</div>
 					<span className="font-mono text-xs text-fg-faint">

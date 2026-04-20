@@ -1,13 +1,14 @@
+import type { TimelineType } from "@/components/landing/about/timeline";
 import { Badge } from "@/components/ui/badge";
-import type { TimelineType } from "@/data/timeline";
 
-export const TYPE_MAP: Record<TimelineType, { label: string; color: string }> = {
-	now: { label: "Present", color: "oklch(0.72 0.18 145)" },
-	experience: { label: "Experience", color: "var(--accent)" },
-	education: { label: "Education", color: "oklch(0.66 0.15 200)" },
-	project: { label: "Project", color: "oklch(0.72 0.18 320)" },
-	pivot: { label: "Pivot", color: "oklch(0.74 0.16 40)" },
-};
+export const TYPE_MAP: Record<TimelineType, { label: string; color: string }> =
+	{
+		now: { label: "Present", color: "oklch(0.72 0.18 145)" },
+		experience: { label: "Experience", color: "var(--accent)" },
+		education: { label: "Education", color: "oklch(0.66 0.15 200)" },
+		project: { label: "Project", color: "oklch(0.72 0.18 320)" },
+		pivot: { label: "Pivot", color: "oklch(0.74 0.16 40)" },
+	};
 
 export function TypeBadge({ type }: { type: TimelineType }) {
 	const m = TYPE_MAP[type] ?? TYPE_MAP.experience;

@@ -2,13 +2,13 @@
 
 import Image from "next/image";
 import { useTranslations } from "next-intl";
+import type { Project } from "@/components/landing/projects/projects-data";
 import {
 	Dialog,
 	DialogContent,
 	DialogDescription,
 	DialogTitle,
 } from "@/components/ui/dialog";
-import type { Project } from "@/data/projects";
 import { MarkdownContent } from "./MarkdownContent";
 import { ProjectThumb } from "./ProjectThumb";
 import { TagBadge } from "./TagBadge";
@@ -20,7 +20,6 @@ export function ProjectModal({
 	project: Project | null;
 	onClose: () => void;
 }) {
-	const t = useTranslations("projects");
 	const blurbs = useTranslations("projectBlurbs");
 
 	return (

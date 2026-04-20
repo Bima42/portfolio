@@ -1,6 +1,12 @@
-import type { ThumbKind } from "@/data/projects";
+import type { ThumbKind } from "@/components/landing/projects/projects-data";
 
-export function ProjectThumb({ kind, accent }: { kind: ThumbKind; accent: number }) {
+export function ProjectThumb({
+	kind,
+	accent,
+}: {
+	kind: ThumbKind;
+	accent: number;
+}) {
 	const stroke = `oklch(0.60 0.15 ${accent})`;
 	const fill = `oklch(0.90 0.06 ${accent} / 0.5)`;
 	const props = {
@@ -15,7 +21,14 @@ export function ProjectThumb({ kind, accent }: { kind: ThumbKind; accent: number
 			return (
 				<svg {...props}>
 					<rect x="6" y="10" width="108" height="60" rx="4" stroke={stroke} />
-					<line x1="36" y1="10" x2="36" y2="70" stroke={stroke} strokeWidth="0.6" />
+					<line
+						x1="36"
+						y1="10"
+						x2="36"
+						y2="70"
+						stroke={stroke}
+						strokeWidth="0.6"
+					/>
 					<rect x="10" y="16" width="22" height="3" fill={fill} />
 					<rect x="10" y="22" width="18" height="3" fill={fill} />
 					<rect x="10" y="28" width="22" height="3" fill={fill} />
@@ -32,10 +45,38 @@ export function ProjectThumb({ kind, accent }: { kind: ThumbKind; accent: number
 					<circle cx="70" cy="22" r="7" stroke={stroke} fill={fill} />
 					<circle cx="90" cy="55" r="8" stroke={stroke} fill={fill} />
 					<circle cx="55" cy="60" r="5" stroke={stroke} />
-					<line x1="30" y1="40" x2="70" y2="22" stroke={stroke} strokeWidth="0.8" />
-					<line x1="30" y1="40" x2="55" y2="60" stroke={stroke} strokeWidth="0.8" />
-					<line x1="70" y1="22" x2="90" y2="55" stroke={stroke} strokeWidth="0.8" />
-					<line x1="55" y1="60" x2="90" y2="55" stroke={stroke} strokeWidth="0.8" />
+					<line
+						x1="30"
+						y1="40"
+						x2="70"
+						y2="22"
+						stroke={stroke}
+						strokeWidth="0.8"
+					/>
+					<line
+						x1="30"
+						y1="40"
+						x2="55"
+						y2="60"
+						stroke={stroke}
+						strokeWidth="0.8"
+					/>
+					<line
+						x1="70"
+						y1="22"
+						x2="90"
+						y2="55"
+						stroke={stroke}
+						strokeWidth="0.8"
+					/>
+					<line
+						x1="55"
+						y1="60"
+						x2="90"
+						y2="55"
+						stroke={stroke}
+						strokeWidth="0.8"
+					/>
 				</svg>
 			);
 		case "quill":
@@ -46,7 +87,14 @@ export function ProjectThumb({ kind, accent }: { kind: ThumbKind; accent: number
 						stroke={stroke}
 						fill={fill}
 					/>
-					<line x1="20" y1="60" x2="12" y2="70" stroke={stroke} strokeLinecap="round" />
+					<line
+						x1="20"
+						y1="60"
+						x2="12"
+						y2="70"
+						stroke={stroke}
+						strokeLinecap="round"
+					/>
 					<line
 						x1="30"
 						y1="55"
@@ -61,7 +109,13 @@ export function ProjectThumb({ kind, accent }: { kind: ThumbKind; accent: number
 		case "xml":
 			return (
 				<svg {...props}>
-					<text x="18" y="48" fontFamily="monospace" fontSize="14" fill={stroke}>
+					<text
+						x="18"
+						y="48"
+						fontFamily="monospace"
+						fontSize="14"
+						fill={stroke}
+					>
 						{"<prompt>"}
 					</text>
 					<text
@@ -80,8 +134,16 @@ export function ProjectThumb({ kind, accent }: { kind: ThumbKind; accent: number
 			return (
 				<svg {...props}>
 					<ellipse cx="60" cy="22" rx="30" ry="8" stroke={stroke} fill={fill} />
-					<path d="M30 22 V 42 C 30 46, 90 46, 90 42 V 22" stroke={stroke} fill="none" />
-					<path d="M30 42 V 58 C 30 62, 90 62, 90 58 V 42" stroke={stroke} fill="none" />
+					<path
+						d="M30 22 V 42 C 30 46, 90 46, 90 42 V 22"
+						stroke={stroke}
+						fill="none"
+					/>
+					<path
+						d="M30 42 V 58 C 30 62, 90 62, 90 58 V 42"
+						stroke={stroke}
+						fill="none"
+					/>
 					<ellipse cx="60" cy="42" rx="30" ry="4" stroke={stroke} />
 				</svg>
 			);
@@ -116,10 +178,24 @@ export function ProjectThumb({ kind, accent }: { kind: ThumbKind; accent: number
 					<text x="12" y="34" fontFamily="monospace" fontSize="9" fill={stroke}>
 						$ ./minishell
 					</text>
-					<text x="12" y="46" fontFamily="monospace" fontSize="9" fill={stroke} opacity="0.6">
+					<text
+						x="12"
+						y="46"
+						fontFamily="monospace"
+						fontSize="9"
+						fill={stroke}
+						opacity="0.6"
+					>
 						{">"} pwd
 					</text>
-					<text x="12" y="58" fontFamily="monospace" fontSize="9" fill={stroke} opacity="0.8">
+					<text
+						x="12"
+						y="58"
+						fontFamily="monospace"
+						fontSize="9"
+						fill={stroke}
+						opacity="0.8"
+					>
 						/home/tanguy
 					</text>
 				</svg>
@@ -127,9 +203,33 @@ export function ProjectThumb({ kind, accent }: { kind: ThumbKind; accent: number
 		case "stack":
 			return (
 				<svg {...props}>
-					<rect x="24" y="50" width="72" height="12" rx="2" stroke={stroke} fill={fill} />
-					<rect x="30" y="35" width="60" height="12" rx="2" stroke={stroke} fill={fill} />
-					<rect x="36" y="20" width="48" height="12" rx="2" stroke={stroke} fill={fill} />
+					<rect
+						x="24"
+						y="50"
+						width="72"
+						height="12"
+						rx="2"
+						stroke={stroke}
+						fill={fill}
+					/>
+					<rect
+						x="30"
+						y="35"
+						width="60"
+						height="12"
+						rx="2"
+						stroke={stroke}
+						fill={fill}
+					/>
+					<rect
+						x="36"
+						y="20"
+						width="48"
+						height="12"
+						rx="2"
+						stroke={stroke}
+						fill={fill}
+					/>
 					<text x="42" y="28" fontFamily="monospace" fontSize="7" fill={stroke}>
 						vector
 					</text>
@@ -144,8 +244,24 @@ export function ProjectThumb({ kind, accent }: { kind: ThumbKind; accent: number
 		case "mobile":
 			return (
 				<svg {...props}>
-					<rect x="40" y="8" width="40" height="64" rx="6" stroke={stroke} fill={fill} />
-					<rect x="46" y="14" width="28" height="40" rx="2" stroke={stroke} strokeWidth="0.6" />
+					<rect
+						x="40"
+						y="8"
+						width="40"
+						height="64"
+						rx="6"
+						stroke={stroke}
+						fill={fill}
+					/>
+					<rect
+						x="46"
+						y="14"
+						width="28"
+						height="40"
+						rx="2"
+						stroke={stroke}
+						strokeWidth="0.6"
+					/>
 					<circle cx="60" cy="62" r="3" stroke={stroke} />
 				</svg>
 			);

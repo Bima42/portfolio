@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
-import type { Project } from "@/data/projects";
+import type { Project } from "@/components/landing/projects/projects-data";
 import { ProjectThumb } from "./ProjectThumb";
 import { TagBadge } from "./TagBadge";
 
@@ -84,7 +84,9 @@ export function ProjectCard({
 			{/* Body */}
 			<div className="flex flex-col flex-1 p-[18px]">
 				<div className="flex justify-between items-start gap-2 mb-1.5">
-					<h3 className="text-base font-medium tracking-tight text-fg">{p.title}</h3>
+					<h3 className="text-base font-medium tracking-tight text-fg">
+						{p.title}
+					</h3>
 					{p.award && (
 						<span
 							className="font-mono text-[9.5px] px-1.5 py-0.5 rounded tracking-wide uppercase whitespace-nowrap"

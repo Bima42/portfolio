@@ -1,5 +1,5 @@
+import type { TimelineItem } from "@/components/landing/about/timeline";
 import { Badge } from "@/components/ui/badge";
-import type { TimelineItem } from "@/data/timeline";
 import { TypeBadge } from "./TypeBadge";
 
 interface WaypointCardProps {
@@ -49,7 +49,11 @@ export function WaypointCard({
 			<p className="text-sm leading-relaxed text-fg-muted">{summary}</p>
 			<div className="flex flex-wrap gap-1.5 mt-3.5">
 				{item.tags.map((tag) => (
-					<Badge key={tag} variant="secondary" className="font-mono text-[10px]">
+					<Badge
+						key={tag}
+						variant="secondary"
+						className="font-mono text-[10px]"
+					>
 						{tag}
 					</Badge>
 				))}

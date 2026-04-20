@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { useLocale } from "next-intl";
+import { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
@@ -126,7 +126,9 @@ export function MarkdownContent({ slug }: { slug?: string }) {
 			<ReactMarkdown
 				remarkPlugins={[remarkGfm]}
 				components={
-					markdownComponents as Parameters<typeof ReactMarkdown>[0]["components"]
+					markdownComponents as Parameters<
+						typeof ReactMarkdown
+					>[0]["components"]
 				}
 			>
 				{md}
