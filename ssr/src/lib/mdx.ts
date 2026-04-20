@@ -1,4 +1,5 @@
 import type { Root as HastRoot } from "hast";
+import type { Root as MdastRoot } from "mdast";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
@@ -11,6 +12,30 @@ export interface TocHeading {
 	depth: number;
 }
 
+// ── Remark: convert ```mermaid blocks → <MermaidBlock code="…"> ──────────────
+// Must run BEFORE rehype-pretty-code so it never sees the mermaid fences.
+function remarkMermaid() {
+	return (tree: MdastRoot) => {
+		visit(tree, "code", (node: any, index: any, parent: any) => {
+			if (node.lang !== "mermaid" || index == null || !parent) return;
+
+			parent.children[index] = {
+				type: "mdxJsxFlowElement",
+				name: "MermaidBlock",
+				attributes: [
+					{
+						type: "mdxJsxAttribute",
+						name: "code",
+						value: node.value,
+					},
+				],
+				children: [],
+			};
+		});
+	};
+}
+
+// ── Rehype: extract headings for ToC ─────────────────────────────────────────
 export function rehypeExtractHeadings(headings: TocHeading[]) {
 	return () => (tree: HastRoot) => {
 		visit(tree, "element", (node) => {
@@ -32,7 +57,7 @@ export function rehypeExtractHeadings(headings: TocHeading[]) {
 }
 
 export const mdxOptions = {
-	remarkPlugins: [remarkGfm],
+	remarkPlugins: [remarkGfm, remarkMermaid],
 	rehypePlugins: [
 		rehypeSlug,
 		[
@@ -48,10 +73,9 @@ export const mdxOptions = {
 		[
 			rehypePrettyCode,
 			{
-				theme: {
-					dark: "github-dark-dimmed",
-					light: "github-light",
-				},
+				// Single theme → tokens get inline style="color:#xxx", no CSS-var injection needed.
+				// Switch to "github-light" if you prefer a light theme.
+				theme: "github-dark-dimmed",
 				keepBackground: false,
 				defaultLang: "plaintext",
 				onVisitLine(node: { children: unknown[] }) {
