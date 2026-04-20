@@ -134,7 +134,7 @@ export const PROJECTS: Project[] = [
 		kind: "Side Project",
 		year: "2023",
 		slug: "tidaka",
-		tags: ["react-native", "expo", "nest.js", "postgres"],
+		tags: ["react-native", "expo", "nestjs", "postgres"],
 		repo: null,
 		live: null,
 		accent: 220,

@@ -40,6 +40,12 @@ const TAG_LOGOS: Record<string, string> = {
 	42: "/assets/brand-logos/logo-42.svg",
 	vllm: "/assets/brand-logos/logo-vllm.svg",
 	drizzle: "/assets/brand-logos/logo-drizzle.svg",
+	expo: "/assets/brand-logos/logo-expo.svg",
+	mistral: "/assets/brand-logos/logo-mistral.svg",
+	c: "/assets/brand-logos/logo-c.svg",
+	"c++": "/assets/brand-logos/logo-cplusplus.svg",
+	electron: "/assets/brand-logos/logo-electron.svg",
+	nestjs: "/assets/brand-logos/logo-nestjs.svg",
 };
 
 function TagBadge({ tag }: { tag: string }) {
