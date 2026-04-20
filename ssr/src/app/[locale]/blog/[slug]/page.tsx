@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { compileMDX } from "next-mdx-remote/rsc";
 import { BlogHeader } from "@/components/blog/BlogHeader";
 import { BlogNav } from "@/components/blog/BlogNav";
-import { mdxComponents } from "@/components/blog/MdxComponents";
+import { mdxComponents } from "@/components/blog/mdx/MdxComponents";
 import { TableOfContents } from "@/components/blog/TableOfContents";
 import { getAllBlogSlugs, getBlogPost } from "@/lib/blog";
 import { mdxOptions, rehypeExtractHeadings, type TocHeading } from "@/lib/mdx";
@@ -79,13 +79,12 @@ export default async function BlogPostPage({ params }: Props) {
 			<BlogNav locale={locale} />
 			<BlogHeader frontmatter={post.frontmatter} locale={locale} />
 
-			<div className="pb-[120px] pt-10 xl:grid xl:grid-cols-[1fr_720px_minmax(0,280px)_1fr]">
+			<div className="pb-[120px] pt-10 xl:grid xl:grid-cols-[1fr_720px_1fr]">
 				<div className="hidden xl:block" />
 				<article className="px-6 max-w-[720px] mx-auto xl:max-w-none xl:mx-0 blog-prose min-w-0">
 					{content}
 				</article>
 				<TableOfContents headings={headings} />
-				<div className="hidden xl:block" />
 			</div>
 		</>
 	);
