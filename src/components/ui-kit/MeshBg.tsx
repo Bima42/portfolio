@@ -20,9 +20,6 @@ export function MeshBg({ className = "" }: { className?: string }) {
 					opacity: 0.7,
 				}}
 			/>
-			<div className="absolute inset-0 flex items-center justify-center">
-				<span className="text-fg-subtle text-sm font-mono">MeshBg</span>
 			</div>
-		</div>
 	);
 }

@@ -2,8 +2,10 @@
 
 import { ArrowRight } from "lucide-react";
 import { useTranslations } from "next-intl";
+import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 import { buttonVariants } from "@/components/ui/button";
+import { MeshBg } from "@/components/ui-kit/MeshBg";
 import { GravityGrid } from "@/components/ui-kit/GravityGrid";
 import { cn } from "@/lib/utils";
 
@@ -51,8 +53,12 @@ export function Hero() {
 			style={{ alignContent: "center", padding: "140px 6vw 100px" }}
 		>
 			{/* Interactive background grid */}
-			<div aria-hidden className="absolute inset-0 z-0 opacity-40">
+			<div aria-hidden className="absolute inset-0 z-0 opacity-40 hidden md:block">
 				<GravityGrid />
+			</div>
+			{/* Mesh gradient fallback — mobile only */}
+			<div aria-hidden className="absolute inset-0 z-0 md:hidden">
+				<MeshBg className="h-full" />
 			</div>
 
 			<div className="relative z-10 max-w-5xl mx-auto w-full">
@@ -82,7 +88,7 @@ export function Hero() {
 				</h1>
 
 				{/* Typewriter — separate line, controlled size so it never wraps */}
-				<div className="flex items-center gap-1 mb-4 h-8">
+				<div className="flex items-start gap-1 mb-4 h-[4.5rem] md:items-center md:h-8">
 					<span className="text-3xl font-medium italic gradient-text leading-none">
 						{text}
 					</span>
