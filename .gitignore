@@ -145,3 +145,6 @@ docs/
 **/saved_folders/
 **/.next/
 .zed/
+
+# Generated blog resources (copied from src/blog-content/*/resources/ at build time)
+public/blog/
