@@ -2,7 +2,6 @@
 
 import { ArrowRight } from "lucide-react";
 import { useTranslations } from "next-intl";
-import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 import { buttonVariants } from "@/components/ui/button";
 import { MeshBg } from "@/components/ui-kit/MeshBg";

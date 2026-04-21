@@ -1,9 +1,24 @@
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
+import localFont from "next/font/local";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import "../globals.css";
+
+const geist = localFont({
+	src: "../../../public/fonts/Geist-Variable.woff2",
+	variable: "--font-geist",
+	display: "swap",
+	weight: "100 900",
+});
+
+const geistMono = localFont({
+	src: "../../../public/fonts/GeistMono-Variable.woff2",
+	variable: "--font-geist-mono",
+	display: "swap",
+	weight: "100 900",
+});
 
 export const metadata: Metadata = {
 	title: "Tanguy Pauvret — Software Engineer & Architect",
@@ -26,7 +41,7 @@ export default async function LocaleLayout({ children, params }: Props) {
 	const messages = await getMessages();
 
 	return (
-		<html lang={locale} suppressHydrationWarning>
+		<html lang={locale} className={`${geist.variable} ${geistMono.variable}`} suppressHydrationWarning>
 			<body>
 				<NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
 			</body>
