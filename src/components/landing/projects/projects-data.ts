@@ -93,7 +93,6 @@ export const PROJECTS: Project[] = [
 		thumb: "quill",
 		logo: {
 			light: "/content/voltaire/logo-voltaire-black.svg",
-			dark: "/content/voltaire/logo-voltaire-white.svg",
 		},
 	},
 	{
@@ -109,7 +108,6 @@ export const PROJECTS: Project[] = [
 		thumb: "xml",
 		logo: {
 			light: "/content/prompt-pilot/logo-prompt-pilot-black.svg",
-			dark: "/content/prompt-pilot/logo-prompt-pilot-white.svg",
 		},
 	},
 	{
