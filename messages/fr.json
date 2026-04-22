@@ -1,0 +1,128 @@
+{
+	"nav": {
+		"about": "À propos",
+		"work": "Projets",
+		"writing": "Articles",
+		"contact": "Contact",
+		"downloadCv": "Télécharger le CV"
+	},
+	"hero": {
+		"typewriterPhrases": [
+			"Ingénieur logiciel.",
+			"Architecte systèmes.",
+			"Bâtisseur insatiable."
+		],
+		"heading": "Je construis des systèmes qui durent.",
+		"statusPillLabel": "Disponible",
+		"statusPillSub": "freelance",
+		"subheading": "J'aime créer des solutions pour aider les gens.",
+		"ctaPrimary": "Voir mes projets",
+		"ctaSecondary": "Me contacter",
+		"metaLocationLabel": "Basé à",
+		"metaLocation": "Fessy, FR · Lausanne, CH",
+		"metaStackLabel": "Stack",
+		"metaStack": "React · TypeScript · Python",
+		"metaCurrentlyLabel": "En ce moment",
+		"metaCurrently": "Documentation médicale IA",
+		"metaReadingLabel": "Lecture",
+		"metaReading": "DDIA · Kleppmann"
+	},
+	"about": {
+		"eyebrow": "§ 01 · Le long chemin",
+		"heading": "Un",
+		"headingAccent": "parcours diversifié.",
+		"timeline": {
+			"labster": {
+				"title": "Le Labster",
+				"role": "Lead Software Engineer",
+				"where": "Depuis fév. 2026",
+				"summary": "En collaboration avec des designers UX/UI pour créer des applications modernes sur mesure, centré sur l'IA pour la santé. Actuellement centré sur la numérisation de documentation médicale pour des cantons suisses."
+			},
+			"resilio": {
+				"title": "Resilio",
+				"role": "Ingénieur logiciel",
+				"where": "Lausanne · jan. 2023 – avr. 2026",
+				"summary": "Full-stack & infra sur l'ensemble des produits. Pilotage technique de ResilioTech (ACV) : refonte des schémas d'architecture, plans de migration (structure & patterns), stack analytics LGTM. Onboarding de nouveaux devs, documentation et peer review."
+			},
+			"voltaire": {
+				"title": "Voltaire",
+				"role": "Produit payant lancé",
+				"where": "Projet perso",
+				"summary": "Assistant d'écriture IA avec architecture agentique. Il s'adapte à votre style et à votre voix uniques."
+			},
+			"resilioJoined": {
+				"title": "Resilio · arrivée",
+				"role": "Stagiaire full-stack",
+				"where": "Janvier 2023",
+				"summary": "Focus backend initial. Contribution à la conception technique de ResilioDatabase. Mise en place d'une fonctionnalité d'import de fichiers CMDB."
+			},
+			"ecole42": {
+				"title": "École 42 Lausanne",
+				"role": "Concepteur de solutions IT",
+				"where": "Oct 2021 – Jan 2023",
+				"summary": "Cursus 100% projet, sans enseignants. Apprentissage par le bas niveau (C / C++) pour comprendre les mécanismes fondamentaux. Autonomie et peer review au cœur de la pédagogie."
+			},
+			"kitchens": {
+				"title": "Cuisine professionnelle",
+				"role": "Cuisinier",
+				"where": "Lacanau · Genève · 2017–2021",
+				"summary": "Pas un détour mais un chapitre formateur. Discipline de service, gestion de la pression, obsession de la qualité que j'ai ramenée dans l'ingénierie."
+			},
+			"neuroscience": {
+				"title": "Licence, Neurosciences",
+				"role": "Physiologie animale",
+				"where": "Poitiers · 2013–2016",
+				"summary": "Diplômé à 19 ans. Toujours guidé par la même question : comment ça marche ? De la biologie et du corps humain aux neurosciences, une curiosité pour les mécanismes qui gouvernent le vivant."
+			}
+		}
+	},
+	"projectBlurbs": {
+		"llm-panel": "Application standalone au quotidien pour l'interaction avec les LLM. Threads texte inspirés de Zed, éditeur Lexical, système de plugins JSON, accès natif au système de fichiers.",
+		"mcp-mem": "Graphe de connaissance temporel pour les LLM. Mémoire basée sur les relations, portable entre applications et évolutive dans le temps.",
+		"knower": "Service de mémoire local et portable qui découple la mémoire de l'outil IA. Un vault, chaque agent : le contexte vous suit sur Claude, Cursor, Mistral et tout client MCP.",
+		"voltaire": "Assistant d'écriture IA avec architecture agentique. POC 2 semaines, MVP 2 mois, des centaines d'utilisateurs payants. Boucle de feedback via WhatsApp et Posthog.",
+		"prompt-pilot": "Générateur de prompts XML pour les LLM. Transforme des demandes vagues en prompts structurés et réutilisables.",
+		"docstral": "Chat sandbox propulsé par l'IA pour les modèles et la documentation Mistral. RAG sur les docs officiels : réponses sourcées, streaming, extraits de code.",
+		"tidaka": "Application mobile connectant les coaches sportifs avec leurs clients pour la gestion des entraînements, la planification des séances et le suivi des progrès.",
+		"minishell": "Fondamentaux Bash implémentés en C à l'École 42. Parseur, exécuteur, heredocs, signaux.",
+		"ft-containers": "Réimplémentation de la STL : vector, map, stack en C++98. Allocateurs, itérateurs, arbre rouge-noir."
+	},
+	"projects": {
+		"eyebrow": "§ 02 · Projets sélectionnés",
+		"heading": "Ce que j'ai",
+		"headingAccent": "vraiment livré.",
+		"searchPlaceholder": "Rechercher…",
+		"clearFilters": "Effacer",
+		"noResultsTitle": "Aucun résultat.",
+		"noResultsBody": "Essayez d'effacer un filtre.",
+		"internal": "· interne ·",
+		"viewRepo": "↗ Code",
+		"viewLive": "→ En ligne",
+		"close": "Fermer"
+	},
+	"contact": {
+		"eyebrow": "§ 03 · Contact",
+		"heading": "Construisons",
+		"headingAccent": "quelque chose de concret.",
+		"subheading": "Un projet qui a besoin d'un ingénieur ? Je suis disponible en freelance, pour tout type de mission. Réponse la plus rapide par email.",
+		"emailLabel": "Email",
+		"emailValue": "pauvret.tanguy@gmail.com",
+		"linkedinLabel": "LinkedIn",
+		"linkedinValue": "/in/tanguy-pauvret",
+		"githubLabel": "GitHub",
+		"githubValue": "@Bima42",
+		"openCta": "Ouvrir",
+		"footerLocation": "Fessy, FR ↔ Genève, CH"
+	},
+	"blog": {
+		"onThisPage": "Sur cette page",
+		"metaTitle": "Écriture — Tanguy Pauvret",
+		"metaDescription": "Notes d'ingénierie sur les systèmes, l'architecture et les décisions techniques qui comptent.",
+		"ogDescription": "Notes d'ingénierie sur les systèmes, l'architecture et les décisions techniques.",
+		"eyebrow": "Écriture · {count} articles",
+		"heading": "Notes d'un ingénieur qui travaille.",
+		"subheading": "Essais sur les systèmes, l'architecture, et les décisions lentes et ennuyeuses qui déterminent si une équipe livre en mars ou en juillet.",
+		"featured": "À la une",
+		"archive": "Archive"
+	}
+}

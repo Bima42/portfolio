@@ -1,0 +1,128 @@
+{
+	"nav": {
+		"about": "About",
+		"work": "Work",
+		"writing": "Writing",
+		"contact": "Contact",
+		"downloadCv": "Download CV"
+	},
+	"hero": {
+		"typewriterPhrases": [
+			"Software engineer.",
+			"System architect.",
+			"Restless builder."
+		],
+		"heading": "I build systems that last.",
+		"statusPillLabel": "Available",
+		"statusPillSub": "for freelance work",
+		"subheading": "I love building solutions to help people.",
+		"ctaPrimary": "See selected work",
+		"ctaSecondary": "Get in touch",
+		"metaLocationLabel": "Based in",
+		"metaLocation": "Fessy, FR · Lausanne, CH",
+		"metaStackLabel": "Stack",
+		"metaStack": "React · TypeScript · Python",
+		"metaCurrentlyLabel": "Currently",
+		"metaCurrently": "AI Medical Documentation",
+		"metaReadingLabel": "Reading",
+		"metaReading": "DDIA · Kleppmann"
+	},
+	"about": {
+		"eyebrow": "§ 01 · The long way here",
+		"heading": "A",
+		"headingAccent": "diverse background.",
+		"timeline": {
+			"labster": {
+				"title": "Le Labster",
+				"role": "Lead Software Engineer",
+				"where": "From Feb 2026",
+				"summary": "Working alongside UX/UI designers to build custom applications, AI-powered for healthcare clients. Currently focused on digitizing medical documentation for Swiss cantons."
+			},
+			"resilio": {
+				"title": "Resilio",
+				"role": "Software Engineer",
+				"where": "Lausanne · Jan 2023 – Apr 2026",
+				"summary": "Full-stack & infra across all products. Technical lead on ResilioTech (ACV): architecture overhaul, migration plans (structure & patterns), LGTM analytics stack. Onboarded new devs, maintained documentation and enforced strict peer review."
+			},
+			"voltaire": {
+				"title": "Voltaire",
+				"role": "Paid product launched",
+				"where": "Side project",
+				"summary": "AI writing assistant with agentic architecture. It adapts to your unique style and voice."
+			},
+			"resilioJoined": {
+				"title": "Resilio · joined",
+				"role": "Full-stack intern",
+				"where": "January 2023",
+				"summary": "Initial backend focus. Contributed to the technical design of ResilioDatabase. Implemented CMDB file import feature."
+			},
+			"ecole42": {
+				"title": "École 42 Lausanne",
+				"role": "IT Solutions Designer",
+				"where": "Oct 2021 – Jan 2023",
+				"summary": "100% project-based, no teachers. Learned through low-level languages (C / C++) to understand core mechanics. Autonomy and peer review at the heart of the curriculum."
+			},
+			"kitchens": {
+				"title": "Kitchens",
+				"role": "Cook",
+				"where": "Lacanau · Genève · 2017–2021",
+				"summary": "Not a detour but a formative chapter. Service discipline, pressure handling, and an obsession with quality that I brought back into engineering."
+			},
+			"neuroscience": {
+				"title": "Bachelor, Neuroscience",
+				"role": "Animal Physiology",
+				"where": "Poitiers · 2013–2016",
+				"summary": "Graduated at 19. Always driven by the same question: how does it work? From biology and the human body to neuroscience, a curiosity for the mechanics behind living things."
+			}
+		}
+	},
+	"projectBlurbs": {
+		"llm-panel": "Standalone daily-driver for LLM interaction. Zed-inspired text threads, Lexical editor, JSON plugin system, native FS access.",
+		"mcp-mem": "Temporal knowledge graph for LLMs. Relationship-based memory that is portable across applications and evolves over time.",
+		"knower": "Local portable memory service that decouples memory from the AI tool. One vault, every agent: context follows you across Claude, Cursor, Mistral, and any MCP client.",
+		"voltaire": "AI writing assistant with an agentic architecture. 2w POC to 2mo MVP to hundreds of paying users. Continuous feedback loop through WhatsApp and Posthog.",
+		"prompt-pilot": "XML prompt generator for LLMs. Turns vague asks into structured, reusable prompts. Retrieval grounded with FAISS.",
+		"docstral": "AI-powered sandbox chat for Mistral models and documentation. RAG over official Mistral docs: sourced answers, streaming, code snippets.",
+		"tidaka": "Mobile app connecting sports coaches with their clients for training management, session planning, and progress tracking.",
+		"minishell": "Bash fundamentals implemented in C at École 42. Parser, executor, heredocs, signals.",
+		"ft-containers": "Reimplementation of the STL: vector, map, stack in C++98. Allocators, iterators, red-black tree."
+	},
+	"projects": {
+		"eyebrow": "§ 02 · Selected work",
+		"heading": "Things I've",
+		"headingAccent": "actually shipped.",
+		"searchPlaceholder": "Search projects…",
+		"clearFilters": "Clear",
+		"noResultsTitle": "No matches.",
+		"noResultsBody": "Try clearing a filter.",
+		"internal": "· internal ·",
+		"viewRepo": "↗ Repo",
+		"viewLive": "→ Live",
+		"close": "Close"
+	},
+	"contact": {
+		"eyebrow": "§ 03 · Reach",
+		"heading": "Let's build",
+		"headingAccent": "something real.",
+		"subheading": "Got a project that needs a sharp engineer? I'm available for freelance missions, short-term or long. Fastest reply via email.",
+		"emailLabel": "Email",
+		"emailValue": "pauvret.tanguy@gmail.com",
+		"linkedinLabel": "LinkedIn",
+		"linkedinValue": "/in/tanguy-pauvret",
+		"githubLabel": "GitHub",
+		"githubValue": "@Bima42",
+		"openCta": "Open",
+		"footerLocation": "Fessy, FR ↔ Lausanne, CH"
+	},
+	"blog": {
+		"onThisPage": "On this page",
+		"metaTitle": "Writing — Tanguy Pauvret",
+		"metaDescription": "Engineering notes on systems, architecture, and the technical decisions that matter.",
+		"ogDescription": "Engineering notes on systems, architecture, and technical decisions.",
+		"eyebrow": "Writing · {count} articles",
+		"heading": "Notes from a working engineer.",
+		"subheading": "Essays on systems, architecture, and the boring slow decisions that decide whether a team ships in March or July.",
+		"featured": "Featured",
+		"archive": "Archive"
+	}
+}

@@ -1,10 +1,19 @@
 node_modules
-dist
-docs
+.next
 .git
 .gitignore
-.env
-*.md
-.idea
-coverage
 .DS_Store
+.idea
+.zed
+.claude
+
+# Documentation
+docs
+*.md
+
+# Environment files (inject at runtime)
+.env
+.env.*
+
+# Generated at build time inside the container
+public/blog

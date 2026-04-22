@@ -141,3 +141,10 @@ vite.config.ts.timestamp-*
 .idea/
 docs/
 .DS_Store
+
+**/saved_folders/
+**/.next/
+.zed/
+
+# Generated blog resources (copied from src/blog-content/*/resources/ at build time)
+public/blog/

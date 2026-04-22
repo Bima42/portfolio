@@ -1,0 +1,297 @@
+/* ── Base ─────────────────────────────────────────────────────────────────── */
+
+.blog-prose {
+	font-family: var(--font-sans);
+	font-size: 17px;
+	line-height: 1.75;
+	color: var(--fg-muted);
+}
+
+.blog-prose > * + * {
+	margin-top: 1.4em;
+}
+
+/* ── Paragraphs ───────────────────────────────────────────────────────────── */
+
+.blog-prose p {
+	margin: 0;
+}
+
+/* ── Headings ─────────────────────────────────────────────────────────────── */
+
+.blog-prose h2 {
+	font-size: 1.625rem;
+	font-weight: 600;
+	letter-spacing: -0.025em;
+	line-height: 1.2;
+	margin-top: 2.75rem;
+	margin-bottom: 0.875rem;
+	color: var(--fg);
+}
+
+.blog-prose h3 {
+	font-size: 1.25rem;
+	font-weight: 600;
+	letter-spacing: -0.02em;
+	line-height: 1.3;
+	margin-top: 2rem;
+	margin-bottom: 0.625rem;
+	color: var(--fg);
+}
+
+.blog-prose h4 {
+	font-size: 1.0625rem;
+	font-weight: 600;
+	letter-spacing: -0.01em;
+	margin-top: 1.75rem;
+	margin-bottom: 0.5rem;
+	color: var(--fg);
+}
+
+/* ── Anchor links (rehype-autolink-headings) ──────────────────────────────── */
+
+.blog-prose .anchor-link {
+	color: inherit;
+	text-decoration: none;
+}
+
+.blog-prose .anchor-link:hover {
+	color: var(--accent);
+}
+
+/* ── Inline links ─────────────────────────────────────────────────────────── */
+
+.blog-prose a:not(.anchor-link) {
+	color: var(--accent-pressed);
+	text-decoration: underline;
+	text-underline-offset: 3px;
+	text-decoration-thickness: 1px;
+	transition: color 150ms;
+}
+
+.blog-prose a:not(.anchor-link):hover {
+	color: var(--accent-hover);
+}
+
+[data-theme="dark"] .blog-prose a:not(.anchor-link) {
+	color: var(--accent);
+}
+
+/* ── Strong / em ──────────────────────────────────────────────────────────── */
+
+.blog-prose strong {
+	font-weight: 600;
+	color: var(--fg);
+}
+
+.blog-prose em {
+	font-style: italic;
+}
+
+/* ── Lists ────────────────────────────────────────────────────────────────── */
+
+.blog-prose ul {
+	list-style: none;
+	padding: 0;
+	margin: 1.4em 0;
+}
+
+.blog-prose ul > li {
+	position: relative;
+	padding-left: 1.25em;
+}
+
+.blog-prose ul > li::before {
+	content: "—";
+	position: absolute;
+	left: 0;
+	color: var(--accent);
+	font-size: 0.875em;
+}
+
+.blog-prose ol {
+	list-style: decimal;
+	padding-left: 1.5em;
+	margin: 1.4em 0;
+}
+
+.blog-prose ol > li {
+	padding-left: 0.25em;
+	margin-bottom: 0.4em;
+}
+
+.blog-prose li + li {
+	margin-top: 0.3em;
+}
+
+/* ── Horizontal rule ──────────────────────────────────────────────────────── */
+
+.blog-prose hr {
+	border: none;
+	border-top: 1px dashed var(--border);
+	margin: 2.5rem 0;
+}
+
+/* ── Blockquote ───────────────────────────────────────────────────────────── */
+/* MdxBlockquote component handles its own styles via Tailwind — this is a    */
+/* fallback in case bare > in MDX is used directly.                           */
+
+.blog-prose blockquote {
+	margin: 2rem 0;
+	padding-left: 1.5rem;
+	border-left: 3px solid var(--accent);
+	font-size: 1.125em;
+	line-height: 1.5;
+	color: var(--fg);
+}
+
+/* ── Inline code ──────────────────────────────────────────────────────────── */
+/* Scoped to :not(pre) > code so it never fights rehype-pretty-code tokens.   */
+
+.blog-prose :not(pre) > code {
+	font-family: var(--font-mono);
+	font-size: 0.84em;
+	padding: 0.15em 0.4em;
+	border-radius: 4px;
+	background: var(--bg-sunken);
+	border: 1px solid var(--border);
+	color: var(--accent-pressed);
+	white-space: nowrap;
+}
+
+[data-theme="dark"] .blog-prose :not(pre) > code {
+	color: var(--accent);
+}
+
+/* ── Code blocks — rehype-pretty-code ────────────────────────────────────── */
+/*                                                                             */
+/* DOM structure when a title is present:                                     */
+/*   <figure data-rehype-pretty-code-figure>                                  */
+/*     <figcaption data-rehype-pretty-code-title>file.py</figcaption>         */
+/*     <div class="group relative my-7">  ← MdxPre wrapper                   */
+/*       <button>copy</button>                                                 */
+/*       <pre data-language="python">...</pre>                                */
+/*     </div>                                                                  */
+/*   </figure>                                                                 */
+/*                                                                             */
+/* Without a title, the figure/figcaption are absent and MdxPre renders       */
+/* directly. MdxPre already applies border, radius, padding, bg via Tailwind. */
+/* We only need to handle the title bar and adjust the pre radius below it.   */
+
+.blog-prose figure[data-rehype-pretty-code-figure] {
+	margin: 1.75rem 0;
+}
+
+/* Remove the default my-7 margin from MdxPre when it sits inside a figure
+   with a title — the figure itself owns the vertical spacing */
+.blog-prose figure[data-rehype-pretty-code-figure] > div {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+/* Title bar */
+.blog-prose figcaption[data-rehype-pretty-code-title] {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	font-family: var(--font-mono);
+	font-size: 0.72rem;
+	font-weight: 500;
+	letter-spacing: 0.01em;
+	color: var(--fg-subtle);
+	background: var(--bg-sunken);
+	border: 1px solid var(--border);
+	border-bottom: none;
+	border-radius: 12px 12px 0 0;
+	padding: 9px 18px;
+}
+
+/* Small dot before the filename */
+.blog-prose figcaption[data-rehype-pretty-code-title]::before {
+	content: "";
+	display: inline-block;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: var(--accent);
+	opacity: 0.6;
+	flex-shrink: 0;
+}
+
+/* When a title is present, square off the top corners of the pre below */
+.blog-prose figcaption[data-rehype-pretty-code-title] ~ div > pre {
+	border-top-left-radius: 0 !important;
+	border-top-right-radius: 0 !important;
+	border-top: none !important;
+}
+
+/* Tokens — inline style="color:#xxx" from Shiki, nothing to override.
+   Just ensure no inherited color stomps them. */
+.blog-prose pre code {
+	color: inherit;
+	background: transparent;
+	padding: 0;
+	border: none;
+	font-size: inherit;
+	white-space: pre;
+}
+
+.blog-prose pre code span {
+	font-family: inherit;
+}
+
+/* ── Tables ───────────────────────────────────────────────────────────────── */
+/* MdxTable handles its own wrapper — these target the cells inside it.       */
+
+.blog-prose th {
+	font-size: 0.8125rem;
+	font-weight: 600;
+	text-align: left;
+	padding: 8px 14px;
+	background: var(--bg-sunken);
+	border-bottom: 1px solid var(--border);
+	border-right: 1px solid var(--border);
+	color: var(--fg-muted);
+	letter-spacing: 0.02em;
+}
+
+.blog-prose th:last-child {
+	border-right: none;
+}
+
+.blog-prose td {
+	font-size: 0.875rem;
+	padding: 8px 14px;
+	border-bottom: 1px solid var(--border-subtle);
+	border-right: 1px solid var(--border-subtle);
+	vertical-align: top;
+	color: var(--fg-muted);
+}
+
+.blog-prose td:last-child {
+	border-right: none;
+}
+
+.blog-prose tr:last-child td {
+	border-bottom: none;
+}
+
+/* ── Images ───────────────────────────────────────────────────────────────── */
+
+.blog-prose img {
+	max-width: 100%;
+	border-radius: 10px;
+	border: 1px solid var(--border);
+	margin: 1.75rem auto;
+	display: block;
+}
+
+/* ── Mermaid diagrams — client component (MermaidBlock) ──────────────────── */
+/* The component renders an <svg> inside a div — styles here are a fallback.  */
+
+.blog-prose svg[id^="mermaid"] {
+	display: block;
+	margin: 0 auto;
+	max-width: 100%;
+	height: auto;
+}

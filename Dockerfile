@@ -1,16 +1,54 @@
-FROM node:20-alpine AS builder
+# ============================================
+# Stage 1: Dependencies
+# ============================================
+
+FROM node:25-alpine AS dependencies
 
 WORKDIR /app
-COPY package*.json ./
-RUN npm ci
+
+COPY package.json package-lock.json ./
+
+RUN --mount=type=cache,target=/root/.npm \
+    npm ci --no-audit --no-fund
+
+# ============================================
+# Stage 2: Build (Next.js standalone)
+# ============================================
+
+FROM node:25-alpine AS builder
+
+WORKDIR /app
+
+COPY --from=dependencies /app/node_modules ./node_modules
 COPY . .
+
+ENV NODE_ENV=production
+# ENV NEXT_TELEMETRY_DISABLED=1
 
 RUN npm run build
 
-FROM nginx:alpine
+# ============================================
+# Stage 3: Runtime
+# ============================================
 
-COPY --from=builder /app/dist /usr/share/nginx/html
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-EXPOSE 80
+FROM node:25-alpine AS runner
 
-CMD ["nginx", "-g", "daemon off;"]
+WORKDIR /app
+
+ENV NODE_ENV=production
+ENV PORT=3000
+ENV HOSTNAME="0.0.0.0"
+# ENV NEXT_TELEMETRY_DISABLED=1
+
+COPY --from=builder --chown=node:node /app/public ./public
+
+RUN mkdir .next && chown node:node .next
+
+COPY --from=builder --chown=node:node /app/.next/standalone ./
+COPY --from=builder --chown=node:node /app/.next/static ./.next/static
+
+USER node
+
+EXPOSE 3000
+
+CMD ["node", "server.js"]
