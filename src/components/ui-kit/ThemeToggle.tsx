@@ -7,14 +7,29 @@ export function ThemeToggle() {
 	const [theme, setTheme] = useState<"light" | "dark">("light");
 
 	useEffect(() => {
-		const saved = document.documentElement.getAttribute("data-theme");
-		if (saved === "dark") setTheme("dark");
+		const hasCookie = document.cookie.split(";").some((c) =>
+			c.trim().startsWith("theme="),
+		);
+		if (!hasCookie) {
+			const preferred = window.matchMedia("(prefers-color-scheme: dark)")
+				.matches
+				? "dark"
+				: "light";
+			document.documentElement.setAttribute("data-theme", preferred);
+			document.cookie = `theme=${preferred}; path=/; max-age=31536000; SameSite=Lax`;
+			setTheme(preferred);
+		} else {
+			setTheme(
+				document.documentElement.getAttribute("data-theme") as "light" | "dark",
+			);
+		}
 	}, []);
 
 	function toggle() {
 		const next = theme === "light" ? "dark" : "light";
 		setTheme(next);
 		document.documentElement.setAttribute("data-theme", next);
+		document.cookie = `theme=${next}; path=/; max-age=31536000; SameSite=Lax`;
 	}
 
 	return (

@@ -95,8 +95,8 @@ export function About() {
 						<defs>
 							<linearGradient id="timeline-grad" x1="0" y1="0" x2="0" y2="1">
 								<stop offset="0%" stopColor="var(--accent)" />
-								<stop offset="50%" stopColor="var(--periwinkle-400, #a8a4e8)" />
-								<stop offset="100%" stopColor="var(--rose-400, #f5a3c2)" />
+								<stop offset="50%" stopColor="var(--periwinkle-400)" />
+								<stop offset="100%" stopColor="var(--rose-400)" />
 							</linearGradient>
 							<linearGradient
 								id="timeline-grad-mobile"
@@ -107,8 +107,8 @@ export function About() {
 								gradientUnits="userSpaceOnUse"
 							>
 								<stop offset="0%" stopColor="var(--accent)" />
-								<stop offset="50%" stopColor="var(--periwinkle-400, #a8a4e8)" />
-								<stop offset="100%" stopColor="var(--rose-400, #f5a3c2)" />
+								<stop offset="50%" stopColor="var(--periwinkle-400)" />
+								<stop offset="100%" stopColor="var(--rose-400)" />
 							</linearGradient>
 						</defs>
 

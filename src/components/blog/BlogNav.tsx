@@ -9,7 +9,7 @@ interface BlogNavProps {
 export function BlogNav({ locale }: BlogNavProps) {
 	return (
 		<nav
-			className="sticky top-0 z-50 flex items-center justify-between px-6 py-3"
+			className="sticky top-0 z-50 flex items-center justify-between px-4 sm:px-6 py-3"
 			style={{
 				background: "color-mix(in oklch, var(--bg) 80%, transparent)",
 				backdropFilter: "blur(12px)",
@@ -19,19 +19,20 @@ export function BlogNav({ locale }: BlogNavProps) {
 		>
 			<Link
 				href={`/${locale}`}
-				className="flex items-center gap-2.5 hover:opacity-80 transition-opacity"
+				className="flex items-center gap-2 hover:opacity-80 transition-opacity min-w-0"
 			>
 				<Image
 					src="/assets/logo/logo-primary.svg"
 					alt="Logo"
 					width={28}
 					height={28}
+					className="shrink-0"
 				/>
-				<span className="font-semibold text-sm tracking-tight">
+				<span className="font-semibold text-sm tracking-tight truncate hidden xs:block">
 					Tanguy Pauvret
 				</span>
-				<span className="text-fg-faint mx-1">/</span>
-				<span className="font-mono text-xs text-fg-muted tracking-wide">
+				<span className="text-fg-faint mx-1 hidden xs:block">/</span>
+				<span className="font-mono text-xs text-fg-muted tracking-wide shrink-0">
 					writing
 				</span>
 			</Link>

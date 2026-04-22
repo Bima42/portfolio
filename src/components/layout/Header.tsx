@@ -1,6 +1,6 @@
 "use client";
 
-import { Moon, Sun } from "lucide-react";
+import { Menu, Moon, Sun, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
@@ -16,6 +16,7 @@ const NAV_ITEMS = [
 	{ href: "#contact", key: "contact" as const },
 	{ href: "/blog", key: "writing" as const },
 ];
+
 export function Header() {
 	const t = useTranslations("nav");
 	const locale = useLocale();
@@ -23,10 +24,25 @@ export function Header() {
 	const pathname = usePathname();
 	const [scrolled, setScrolled] = useState(false);
 	const [theme, setTheme] = useState<"light" | "dark">("light");
+	const [menuOpen, setMenuOpen] = useState(false);
 
 	useEffect(() => {
-		const saved = document.documentElement.getAttribute("data-theme");
-		if (saved === "dark") setTheme("dark");
+		const hasCookie = document.cookie.split(";").some((c) =>
+			c.trim().startsWith("theme="),
+		);
+		if (!hasCookie) {
+			const preferred = window.matchMedia("(prefers-color-scheme: dark)")
+				.matches
+				? "dark"
+				: "light";
+			document.documentElement.setAttribute("data-theme", preferred);
+			document.cookie = `theme=${preferred}; path=/; max-age=31536000; SameSite=Lax`;
+			setTheme(preferred);
+		} else {
+			setTheme(
+				document.documentElement.getAttribute("data-theme") as "light" | "dark",
+			);
+		}
 	}, []);
 
 	useEffect(() => {
@@ -36,10 +52,16 @@ export function Header() {
 		return () => window.removeEventListener("scroll", onScroll);
 	}, []);
 
+	// Close mobile menu on route change
+	useEffect(() => {
+		setMenuOpen(false);
+	}, [pathname]);
+
 	function toggleTheme() {
 		const next = theme === "light" ? "dark" : "light";
 		setTheme(next);
 		document.documentElement.setAttribute("data-theme", next);
+		document.cookie = `theme=${next}; path=/; max-age=31536000; SameSite=Lax`;
 	}
 
 	function switchLocale() {
@@ -78,7 +100,7 @@ export function Header() {
 					/>
 				</a>
 
-				{/* Nav */}
+				{/* Desktop Nav */}
 				<nav className="hidden sm:flex gap-0.5 ml-6">
 					{NAV_ITEMS.map((item) =>
 						item.href.startsWith("#") ? (
@@ -139,8 +161,86 @@ export function Header() {
 					>
 						{theme === "light" ? <Moon /> : <Sun />}
 					</Button>
+
+					{/* Hamburger — mobile only */}
+					<Button
+						onClick={() => setMenuOpen((o) => !o)}
+						variant="ghost"
+						size="icon"
+						className="sm:hidden text-fg-muted hover:text-fg"
+						aria-label="Toggle menu"
+					>
+						{menuOpen ? <X /> : <Menu />}
+					</Button>
 				</div>
 			</div>
+
+			{/* Mobile dropdown */}
+			{menuOpen && (
+				<div
+					className="sm:hidden border-t border-border px-6 py-4 flex flex-col gap-1"
+					style={{
+						background: "color-mix(in oklch, var(--bg) 96%, transparent)",
+					}}
+				>
+					{NAV_ITEMS.map((item) =>
+						item.href.startsWith("#") ? (
+							<a
+								key={item.href}
+								href={item.href}
+								className={cn(navLinkClass, "w-full justify-start")}
+								onClick={() => setMenuOpen(false)}
+							>
+								{t(item.key)}
+							</a>
+						) : (
+							<Link
+								key={item.href}
+								href={item.href}
+								className={cn(navLinkClass, "w-full justify-start")}
+								onClick={() => setMenuOpen(false)}
+							>
+								{t(item.key)}
+							</Link>
+						),
+					)}
+					<div className="flex items-center gap-2 pt-3 mt-2 border-t border-border">
+						<a
+							href="https://github.com/Bima42"
+							target="_blank"
+							rel="noopener noreferrer"
+							className={cn(
+								buttonVariants({ variant: "ghost", size: "icon" }),
+								"text-fg-muted hover:text-fg",
+							)}
+							aria-label="GitHub"
+						>
+							<GitHubIcon size={16} />
+						</a>
+						<a
+							href="https://linkedin.com/in/tanguy-pauvret"
+							target="_blank"
+							rel="noopener noreferrer"
+							className={cn(
+								buttonVariants({ variant: "ghost", size: "icon" }),
+								"text-fg-muted hover:text-fg",
+							)}
+							aria-label="LinkedIn"
+						>
+							<LinkedInIcon size={16} />
+						</a>
+						<Button
+							onClick={switchLocale}
+							variant="ghost"
+							size="icon"
+							className="font-mono uppercase tracking-wide text-fg-muted hover:text-fg"
+							aria-label="Toggle language"
+						>
+							{locale}
+						</Button>
+					</div>
+				</div>
+			)}
 		</header>
 	);
 }
