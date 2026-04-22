@@ -22,6 +22,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
+	metadataBase: new URL("https://tanguypauvret.me"),
 	title: "Tanguy Pauvret — Software Engineer & Architect",
 	description:
 		"Software engineer and system architect based in Lausanne, CH. Building distributed systems and developer tooling.",
