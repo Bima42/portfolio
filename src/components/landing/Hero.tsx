@@ -52,9 +52,15 @@ export function Hero() {
 			style={{ alignContent: "center", padding: "140px 6vw 100px" }}
 		>
 			{/* Interactive background grid */}
-			<div aria-hidden className="absolute inset-0 z-0 opacity-40 hidden md:block">
-				<GravityGrid />
-			</div>
+			<div aria-hidden className="absolute inset-0 z-0 opacity-70 hidden md:block">
+        <GravityGrid
+          influenceRadius={220}
+          baseAlpha={0.35}
+          maxExtraAlpha={0.75}
+          baseRadius={1.5}
+          maxExtraRadius={3}
+        />
+      </div>
 			{/* Mesh gradient fallback — mobile only */}
 			<div aria-hidden className="absolute inset-0 z-0 md:hidden">
 				<MeshBg className="h-full" />

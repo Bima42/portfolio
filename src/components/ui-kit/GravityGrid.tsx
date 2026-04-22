@@ -167,10 +167,9 @@ export function GravityGrid({
 				color,
 			} = configRef.current;
 
-			// Resolve color once per frame, outside the dot loop.
 			const resolvedColor =
 				color ||
-				getComputedStyle(canvas).getPropertyValue("--accent-hover").trim() ||
+				getComputedStyle(canvas).getPropertyValue("--primary").trim() ||
 				"#895cd6";
 
 			ctx.clearRect(0, 0, W, H);
