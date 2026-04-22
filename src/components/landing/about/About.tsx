@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
+import { cn } from "@/lib/utils";
 import { TIMELINE_ITEMS } from "@/components/landing/about/timeline";
 import { useActiveIndex, useIsDark } from "./hooks";
 import { WaypointCard } from "./WaypointCard";
@@ -11,6 +12,7 @@ export function About() {
 	const t = useTranslations("about");
 	const timelineRef = useRef<HTMLDivElement>(null);
 	const pathRef = useRef<SVGPathElement>(null);
+	const mobilePathRef = useRef<SVGPathElement>(null);
 	const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
 
 	const active = useActiveIndex(itemRefs);
@@ -32,14 +34,19 @@ export function About() {
 				raf = 0;
 				const r = container.getBoundingClientRect();
 				const vh = window.innerHeight;
-				const centerWithinContainer = vh * 0.5 - r.top;
 				const progress = Math.max(
 					0,
-					Math.min(1, centerWithinContainer / r.height),
+					Math.min(1, (vh * 0.5 - r.top) / r.height),
 				);
 				const len = path.getTotalLength();
 				path.style.strokeDasharray = String(len);
 				path.style.strokeDashoffset = String(len * (1 - progress));
+				const mobilePath = mobilePathRef.current;
+				if (mobilePath) {
+					const mLen = mobilePath.getTotalLength();
+					mobilePath.style.strokeDasharray = String(mLen);
+					mobilePath.style.strokeDashoffset = String(mLen * (1 - progress));
+				}
 			});
 		};
 		window.addEventListener("scroll", onScroll, { passive: true });
@@ -54,8 +61,7 @@ export function About() {
 	return (
 		<section
 			id="about"
-			className="relative bg-bg"
-			style={{ padding: "140px 6vw 100px" }}
+			className="relative bg-bg pt-[140px] px-[6vw] pb-[100px]"
 		>
 			<div className="max-w-5xl mx-auto">
 				{/* Section header */}
@@ -64,10 +70,7 @@ export function About() {
 						<p className="font-mono text-[11px] uppercase tracking-caps text-fg-faint mb-3.5">
 							{t("eyebrow")}
 						</p>
-						<h2
-							className="font-semibold leading-tight tracking-tighter text-fg"
-							style={{ fontSize: "clamp(40px, 6vw, 72px)" }}
-						>
+						<h2 className="font-semibold leading-tight tracking-tighter text-fg text-[clamp(40px,6vw,72px)]">
 							{t("heading")}{" "}
 							<span className="italic text-accent-hover">
 								{t("headingAccent")}
@@ -82,8 +85,12 @@ export function About() {
 						viewBox="0 0 200 1400"
 						preserveAspectRatio="none"
 						aria-hidden
-						className="absolute inset-0 w-full h-full pointer-events-none"
-						style={{ zIndex: 0 }}
+						className={cn(
+							"absolute inset-0 w-full h-full pointer-events-none z-0",
+							// Mobile: narrow strip pinned to the left
+							"max-[820px]:w-[60px] max-[820px]:inset-auto",
+							"max-[820px]:left-0 max-[820px]:top-0 max-[820px]:bottom-0",
+						)}
 					>
 						<defs>
 							<linearGradient id="timeline-grad" x1="0" y1="0" x2="0" y2="1">
@@ -91,8 +98,23 @@ export function About() {
 								<stop offset="50%" stopColor="var(--periwinkle-400, #a8a4e8)" />
 								<stop offset="100%" stopColor="var(--rose-400, #f5a3c2)" />
 							</linearGradient>
+							<linearGradient
+								id="timeline-grad-mobile"
+								x1="100"
+								y1="0"
+								x2="100"
+								y2="1400"
+								gradientUnits="userSpaceOnUse"
+							>
+								<stop offset="0%" stopColor="var(--accent)" />
+								<stop offset="50%" stopColor="var(--periwinkle-400, #a8a4e8)" />
+								<stop offset="100%" stopColor="var(--rose-400, #f5a3c2)" />
+							</linearGradient>
 						</defs>
+
+						{/* Desktop paths */}
 						<path
+							className="hidden min-[821px]:block"
 							d="M 100 0 C 40 150, 160 300, 100 450 S 30 750, 100 900 S 170 1200, 100 1400"
 							stroke="var(--border)"
 							strokeWidth="1.5"
@@ -101,6 +123,7 @@ export function About() {
 						/>
 						<path
 							ref={pathRef}
+							className="hidden min-[821px]:block"
 							d="M 100 0 C 40 150, 160 300, 100 450 S 30 750, 100 900 S 170 1200, 100 1400"
 							stroke="url(#timeline-grad)"
 							strokeWidth="2.4"
@@ -109,9 +132,28 @@ export function About() {
 							strokeDashoffset={pathLen}
 							strokeLinecap="round"
 						/>
+
+						{/* Mobile paths */}
+						<path
+							className="min-[821px]:hidden"
+							d="M 100 0 L 100 1400"
+							stroke="var(--border)"
+							strokeWidth="3"
+							fill="none"
+							strokeDasharray="2 5"
+						/>
+						<path
+							ref={mobilePathRef}
+							className="min-[821px]:hidden"
+							d="M 100 0 L 100 1400"
+							stroke="url(#timeline-grad-mobile)"
+							strokeWidth="4"
+							fill="none"
+							strokeLinecap="round"
+						/>
 					</svg>
 
-					<div className="relative" style={{ zIndex: 1 }}>
+					<div className="relative z-[1]">
 						{TIMELINE_ITEMS.map((item, i) => {
 							const side = i % 2 === 0 ? "right" : "left";
 							const isActive = i === active;
@@ -128,21 +170,19 @@ export function About() {
 									ref={(el) => {
 										itemRefs.current[i] = el;
 									}}
-									className="timeline-row grid items-center"
-									style={{
-										gridTemplateColumns: "1fr 140px 1fr",
-										minHeight: "70vh",
-									}}
+									className={cn(
+										"grid items-center",
+										// Mobile: [marker | card], Desktop: [card | marker | card]
+										"grid-cols-[60px_1fr] min-[821px]:grid-cols-[1fr_140px_1fr]",
+										"py-6 min-[821px]:py-0 min-[821px]:min-h-[70vh]",
+									)}
 								>
-									{/* Left slot */}
-									<div
-										style={{
-											textAlign: "right",
-											padding: "0 32px",
-											opacity: side === "left" ? 1 : 0,
-											gridColumn: 1,
-										}}
-									>
+									{/*
+									 * Desktop left slot — hidden on mobile.
+									 * Renders the card only when side=left.
+									 * Empty div still needed so the 3-col grid stays consistent.
+									 */}
+									<div className="hidden min-[821px]:block col-start-1 text-right px-8">
 										{side === "left" && (
 											<WaypointCard
 												item={item}
@@ -152,23 +192,21 @@ export function About() {
 										)}
 									</div>
 
-									{/* Center marker */}
-									<div
-										className="grid place-items-center relative"
-										style={{ gridColumn: 2 }}
-									>
+									{/* Center marker — col 1 mobile / col 2 desktop */}
+									<div className="col-start-1 min-[821px]:col-start-2 grid place-items-center relative">
+										{/* Glow blob — size driven by isActive, oklch hue from item.accent → must stay inline */}
 										<div
-											className="absolute rounded-full"
+											className="absolute rounded-full transition-all duration-500 ease-[cubic-bezier(.2,.8,.2,1)]"
 											style={{
 												width: isActive ? 80 : 40,
 												height: isActive ? 80 : 40,
 												background: `radial-gradient(circle, oklch(0.72 0.16 ${item.accent} / 0.35) 0%, transparent 70%)`,
 												filter: "blur(8px)",
-												transition: "all 0.5s cubic-bezier(.2,.8,.2,1)",
 											}}
 										/>
+										{/* Icon circle — oklch border/color/shadow must stay inline */}
 										<div
-											className="relative grid place-items-center font-semibold rounded-full"
+											className="relative grid place-items-center font-semibold rounded-full transition-all duration-[400ms] ease-[cubic-bezier(.2,.8,.2,1)]"
 											style={{
 												width: isActive ? 56 : 44,
 												height: isActive ? 56 : 44,
@@ -178,7 +216,6 @@ export function About() {
 												color: isActive
 													? `oklch(0.55 0.18 ${item.accent})`
 													: "var(--fg-muted)",
-												transition: "all 0.4s cubic-bezier(.2,.8,.2,1)",
 												boxShadow: isActive
 													? `0 10px 30px oklch(0.55 0.18 ${item.accent} / 0.25)`
 													: "var(--shadow-sm)",
@@ -187,45 +224,43 @@ export function About() {
 											{item.logo ? (
 												<Image
 													src={
-														isDark && item.logoDark ? item.logoDark : item.logo
+														isDark && item.logoDark
+															? item.logoDark
+															: item.logo
 													}
 													alt={item.key}
 													width={isActive ? 30 : 22}
 													height={isActive ? 30 : 22}
-													className="object-contain"
-													style={{ height: "auto" }}
+													className="object-contain h-auto"
 												/>
 											) : (
 												item.mark
 											)}
 										</div>
 										<span
-											className="absolute font-mono text-[10px] tracking-wide text-fg-faint"
-											style={{
-												top: "50%",
-												transform: "translateY(calc(100% + 14px))",
-												opacity: isActive ? 1 : 0.6,
-											}}
+											className={cn(
+												"absolute font-mono text-[10px] tracking-wide text-fg-faint",
+												"top-1/2 translate-y-[calc(100%+14px)]",
+												"transition-opacity duration-500",
+												isActive ? "opacity-100" : "opacity-60",
+											)}
 										>
 											{item.year}
 										</span>
 									</div>
 
-									{/* Right slot */}
 									<div
-										style={{
-											padding: "0 32px",
-											opacity: side === "right" ? 1 : 0,
-											gridColumn: 3,
-										}}
-									>
-										{side === "right" && (
-											<WaypointCard
-												item={item}
-												isActive={isActive}
-												{...itemT}
-											/>
+										className={cn(
+											"col-start-2 min-[821px]:col-start-3",
+											"pl-5 min-[821px]:pl-8 min-[821px]:pr-8",
+											side === "left" && "min-[821px]:hidden",
 										)}
+									>
+										<WaypointCard
+											item={item}
+											isActive={isActive}
+											{...itemT}
+										/>
 									</div>
 								</div>
 							);
@@ -233,22 +268,6 @@ export function About() {
 					</div>
 				</div>
 			</div>
-
-			<style>{`
-				@media (max-width: 820px) {
-					.timeline-row {
-						grid-template-columns: 60px 1fr !important;
-					}
-					.timeline-row > *:nth-child(1) { display: none; }
-					.timeline-row > *:nth-child(2) { grid-column: 1 !important; }
-					.timeline-row > *:nth-child(3) {
-						grid-column: 2 !important;
-						opacity: 1 !important;
-						padding-left: 20px !important;
-						padding-right: 0 !important;
-					}
-				}
-			`}</style>
 		</section>
 	);
 }

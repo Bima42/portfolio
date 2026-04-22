@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils";
 import type { TimelineItem } from "@/components/landing/about/timeline";
 import { Badge } from "@/components/ui/badge";
 import { TypeBadge } from "./TypeBadge";
@@ -21,19 +22,17 @@ export function WaypointCard({
 }: WaypointCardProps) {
 	return (
 		<div
+			className={cn(
+				"inline-block max-w-[440px] p-6 rounded-[14px] text-left",
+				"bg-[var(--bg-elevated)]",
+				"transition-all duration-500 ease-[cubic-bezier(.2,.8,.2,1)]",
+				isActive ? "-translate-y-1" : "translate-y-0",
+			)}
 			style={{
-				display: "inline-block",
-				maxWidth: 440,
-				padding: 24,
-				background: "var(--bg-elevated)",
 				border: `1px solid ${isActive ? `oklch(0.75 0.12 ${item.accent} / 0.5)` : "var(--border)"}`,
-				borderRadius: 14,
 				boxShadow: isActive
 					? `var(--shadow-md), 0 0 0 4px oklch(0.88 0.06 ${item.accent} / 0.3)`
 					: "var(--shadow-sm)",
-				transform: isActive ? "translateY(-4px)" : "translateY(0)",
-				transition: "all 0.5s cubic-bezier(.2,.8,.2,1)",
-				textAlign: "left",
 			}}
 		>
 			<div className="flex items-center gap-2.5 flex-wrap mb-2.5">
