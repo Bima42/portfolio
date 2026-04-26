@@ -2,7 +2,7 @@
 
 **DocStral** est une application de chat sandbox conçue pour interagir avec les modèles et la documentation Mistral. Il ne s'agit évidemment **pas d'un projet officiel Mistral**.
 
-![docstral-demo.mp4](/docstral/docstral-demo.mp4)
+![docstral-demo.mp4](/content/docstral/docstral-demo.mp4)
 
 ## Contexte
 

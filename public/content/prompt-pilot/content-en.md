@@ -1,6 +1,6 @@
 Prompt Pilot is an application that enables users to generate optimized prompts in XML format. It streamlines the creation and management of high-quality prompts to enhance interactions with LLMs and chatbots.
 
-![prompt-pilot-landing.mp4](/prompt-pilot/prompt-pilot-landing.mp4)
+![prompt-pilot-landing.mp4](/content/prompt-pilot/prompt-pilot-landing.mp4)
 
 ## Context
 
@@ -15,23 +15,23 @@ Imagine you regularly work with AI and need to create numerous structured prompt
 
 ### Authentication
 
-![prompt-pilot-auth.png](/prompt-pilot/prompt-pilot-auth.png)
+![prompt-pilot-auth.png](/content/prompt-pilot/prompt-pilot-auth.png)
 
 To access the application, users can authenticate via Google, Github, or use Magic Link for passwordless authentication. This approach simplifies access while maintaining security standards.
 
 ### Prompt Generation
 
-![prompt-pilot-generator.png](/prompt-pilot/prompt-pilot-generator.png)
+![prompt-pilot-generator.png](/content/prompt-pilot/prompt-pilot-generator.png)
 
 Users can input a request in natural language and the application automatically generates a structured prompt in XML format. The system optimizes phrasing, adds appropriate tags, and structures content to maximize effectiveness with LLMs.
 
 ### Prompt Management
 
-![prompt-pilot-library.png](/prompt-pilot/prompt-pilot-library.png)
+![prompt-pilot-library.png](/content/prompt-pilot/prompt-pilot-library.png)
 
 Once generated, prompts can be saved, organized, and modified.
 
-![prompt-pilot-editor.png](/prompt-pilot/prompt-pilot-editor.png)
+![prompt-pilot-editor.png](/content/prompt-pilot/prompt-pilot-editor.png)
 
 Users have access to a personal library where they can retrieve, edit, and reuse their prompts according to their needs.
 
