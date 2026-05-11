@@ -1,0 +1,361 @@
+---
+title: "Comment améliorer le Largest Contentful Paint (LCP) avec Next.js"
+description: "Le LCP représente 25% du score Lighthouse. Contrairement au FCP, il n'existe pas de correction unique. Voici comment le diagnostiquer et l'améliorer méthodiquement avec Next.js."
+date: "2026-05-11"
+tags:
+  [
+    "Lighthouse",
+    "LCP",
+    "Core Web Vitals",
+    "Next.js",
+    "Web Performance",
+    "next/image",
+  ]
+series: "Lighthouse Performance"
+seriesPart: 3
+author: "Tanguy Pauvret"
+readingTime: 8
+---
+
+Cet article fait partie de la série Lighthouse Performance. [La partie 2](./how-to-improve-fcp)
+couvrait le FCP et le chemin de rendu critique. Celui-ci prend la suite.
+
+Le FCP vous dit que la page est vivante. Le LCP vous dit que la page est utile. Il se déclenche
+quand le plus grand élément visible finit de s'afficher : typiquement votre section hero, un
+grand titre, ou une image clé. À 25% du score Lighthouse, c'est la métrique avec le plus de
+poids.
+
+La difficulté : il n'y a pas de correction unique pour le LCP. Contrairement au FCP où retirer
+quelques ressources bloquantes fait la différence, le LCP dépend d'une chaîne d'étapes. En rater
+une, c'est déplacer le temps plutôt que le supprimer.
+
+## Étape 0 : Identifier votre élément LCP
+
+Avant de corriger quoi que ce soit, il faut savoir quel est votre élément LCP. Ce n'est pas
+toujours une image. Sur une page d'article, c'est souvent un bloc de texte, ce qui change
+complètement ce qu'il faut corriger.
+
+Lancez ceci dans la console du navigateur :
+
+```ts
+new PerformanceObserver((list) => {
+  const entries = list.getEntries();
+  const last = entries[entries.length - 1];
+  console.log("Élément LCP :", last.element);
+  console.log("Temps LCP :", Math.round(last.startTime) + "ms");
+}).observe({ type: "largest-contentful-paint", buffered: true });
+```
+
+Rechargez la page. La dernière entrée affichée est votre élément LCP : le noeud DOM exact que
+Chrome a identifié comme le plus grand élément visible au chargement.
+
+Pour une vue structurée, lancez un audit Lighthouse localement et ouvrez le diagnostic
+**LCP breakdown**. Il affiche l'élément et le temps passé dans chaque phase de chargement :
+
+| Sous-partie LCP         | Ce qu'elle mesure                                     |
+| :---------------------- | :---------------------------------------------------- |
+| **TTFB**                | De la navigation jusqu'au premier octet du HTML       |
+| **Délai de chargement** | Du TTFB au début du chargement de la ressource LCP    |
+| **Durée de chargement** | Temps de téléchargement de la ressource LCP elle-même |
+| **Délai de rendu**      | De la ressource chargée à l'élément affiché à l'écran |
+
+Pour un **élément LCP texte** (titres, paragraphes), le délai et la durée de chargement sont
+tous les deux à 0. Il n'y a pas de ressource à télécharger. Seuls le TTFB et le délai de rendu
+comptent.
+
+Voici ce que ça donne concrètement sur une de mes pages d'article :
+
+```
+Élément LCP :  <p>Tous les devs front-end ont déjà vu ce score…</p>
+TTFB :                  210 ms   ✓
+Délai de chargement :     0 ms   (texte — pas de ressource à fetcher)
+Durée de chargement :     0 ms   (texte — pas de ressource à fetcher)
+Délai de rendu :         240 ms  ⚠
+LCP total :             ~450 ms  ✓ (bien sous les 2.5s)
+```
+
+Le score est parfait (25/25) parce que 450ms est rapide. Mais le délai de rendu représente
+240ms sur 450ms au total, soit 53% du LCP dans une phase qui devrait être sous les 10%.
+Lighthouse signale aussi des render-blocking requests en avertissement séparé, ce qui est la
+cause directe de ce délai.
+
+## Le modèle en 4 sous-parties
+
+C'est le modèle mental qui rend l'optimisation du LCP gérable. Au lieu de deviner quoi corriger,
+vous mesurez chaque phase et adressez celle qui est disproportionnée.
+
+```mermaid
+flowchart LR
+    A["Navigation\ndémarrage"] --> B["TTFB\n~40%"]
+    B --> C["Délai de\nchargement\n<10%"]
+    C --> D["Durée de\nchargement\n~40%"]
+    D --> E["Délai de\nrendu\n<10%"]
+    E --> F["LCP ✓"]
+
+    style C fill:#ff5b4a,color:#fff
+    style E fill:#ff5b4a,color:#fff
+    style F fill:#34a853,color:#fff
+```
+
+Les deux phases en rouge sont les phases de "délai" : vous voulez les garder aussi proches de
+zéro que possible. Le TTFB et la durée de chargement impliquent du temps réseau, ils ne seront
+jamais à zéro, mais ils doivent rester proportionnellement faibles.
+
+| Sous-partie LCP     | Part cible |
+| :------------------ | :--------- |
+| TTFB                | ~40%       |
+| Délai de chargement | < 10%      |
+| Durée de chargement | ~40%       |
+| Délai de rendu      | < 10%      |
+
+**L'insight clé :** réduire la durée de chargement sans corriger le délai de chargement
+n'améliore pas le LCP. Si votre image est cachée jusqu'à ce que JavaScript s'exécute,
+la compresser déplace juste le temps d'un bucket à l'autre. Il faut adresser les quatre
+phases.
+
+## Fix 1 : Éliminer le délai de rendu
+
+Pour un LCP texte, c'est la seule phase sur laquelle vous pouvez agir. Trois choses en
+sont généralement la cause.
+
+**CSS bloquant le rendu.** Si votre feuille de styles prend plus longtemps à télécharger
+que le temps entre le TTFB et l'apparition de l'élément LCP, elle retarde l'affichage.
+Avec Tailwind, ce n'est généralement pas un problème car le CSS généré est léger. Mais
+les feuilles de styles tierces chargées via CDN (polices d'icônes, bibliothèques UI)
+peuvent ajouter un vrai délai bloquant. Vérifiez l'onglet Network : cherchez les fichiers
+CSS qui finissent de se charger après le premier affichage visible.
+
+**Scripts bloquant le rendu.** Toute balise `<script>` dans le `<head>` sans `async` ni
+`defer` bloque le parsing jusqu'à la fin de son téléchargement et de son exécution. Utilisez
+`next/script` avec la bonne stratégie :
+
+```tsx
+// src/app/[locale]/layout.tsx
+import Script from "next/script";
+
+export default async function LocaleLayout({ children, params }: Props) {
+  return (
+    <html lang={locale}>
+      <body>
+        {children}
+        {/* Se charge après l'hydratation — ne bloque pas le LCP */}
+        <Script
+          src="https://www.googletagmanager.com/gtm.js?id=GTM-XXXXXXX"
+          strategy="afterInteractive"
+        />
+      </body>
+    </html>
+  );
+}
+```
+
+**Tâches longues sur le thread principal.** Les navigateurs affichent le texte et les images
+sur le thread principal. Un gros bundle JavaScript qui parse et s'exécute au chargement peut
+retarder le rendu même sans bloquer le parser HTML. Ouvrez le panneau Performance dans
+DevTools et cherchez les tâches longues (barres rouges dans le flame chart) qui chevauchent
+le marqueur LCP.
+
+## Fix 2 : Rendre votre image LCP découvrable tôt
+
+Si votre élément LCP est une image (courant sur les pages landing et hero), le goulot
+d'étranglement se déplace vers le **délai de chargement**. Le navigateur dispose d'un
+preload scanner qui lit le HTML initial avant même d'avoir fini de le parser. Si l'image
+est dans ce HTML initial, le scanner la détecte immédiatement et commence à la fetcher
+en parallèle.
+
+Si elle n'est pas dans le HTML initial (parce qu'elle est gérée par JavaScript, chargée
+via CSS, ou derrière un import `dynamic()`), le navigateur doit attendre avant même de
+savoir que l'image existe.
+
+**L'erreur la plus fréquente avec Next.js : envelopper votre hero dans `dynamic()`.**
+
+```tsx
+// src/app/[locale]/page.tsx
+
+// ❌ Le Hero n'est pas dans le HTML initial.
+// Le navigateur télécharge d'abord le bundle JS, puis découvre l'image LCP.
+const Hero = dynamic(() => import("@/components/landing/Hero"));
+
+// ✅ Import direct. Le Hero est rendu côté serveur et présent dans le HTML initial.
+import { Hero } from "@/components/landing/Hero";
+```
+
+Si votre hero contient une image, ajoutez la prop `priority` à `next/image` :
+
+```tsx
+// src/components/landing/Hero.tsx
+import Image from "next/image";
+
+export function Hero() {
+  return (
+    <section>
+      <Image
+        src="/images/profile.webp"
+        alt="Photo de profil"
+        width={400}
+        height={400}
+        priority
+        // Ajoute fetchpriority="high" sur la balise <img>
+        // Injecte <link rel="preload"> dans le <head> — visible par le preload scanner
+      />
+    </section>
+  );
+}
+```
+
+Sans `priority`, `next/image` applique le lazy loading par défaut, ce qui reporte la requête
+jusqu'à ce que le layout confirme que l'image est dans le viewport. Sur un hero, ça peut
+représenter plusieurs centaines de millisecondes.
+
+**Cas particulier : les images en arrière-plan CSS.** Un `background-image: url(...)` dans
+le CSS est invisible au preload scanner. Le navigateur ne le découvre qu'après avoir
+téléchargé et appliqué la feuille de styles. Ajoutez un preload explicite dans le `<head>` :
+
+```tsx
+// src/app/[locale]/layout.tsx
+export default async function LocaleLayout({ children, params }: Props) {
+  return (
+    <html lang={locale}>
+      <head>
+        <link
+          rel="preload"
+          as="image"
+          href="/images/hero-bg.webp"
+          type="image/webp"
+          // @ts-expect-error — fetchpriority pas encore typé dans React
+          fetchpriority="high"
+        />
+      </head>
+      <body>{children}</body>
+    </html>
+  );
+}
+```
+
+## Fix 3 : Envoyer la bonne taille d'image
+
+Une fois l'image découvrable et priorisée, le levier suivant est le poids du fichier.
+Une ressource plus légère se télécharge plus vite, réduisant la durée de chargement.
+
+`next/image` gère automatiquement la conversion de format (WebP ou AVIF selon le navigateur),
+sans aucun pré-traitement. Mais la prop `sizes` est là où la plupart des projets laissent de
+la performance sur la table.
+
+Sans `sizes`, Next.js suppose que l'image occupe 100vw et génère une version adaptée au
+viewport le plus large. Une photo de profil de 400px peut se retrouver servie avec une
+largeur 5 fois trop grande sur desktop.
+
+```tsx
+// src/components/landing/Hero.tsx
+
+// ❌ Pas de sizes : Next.js sert une image beaucoup plus grande que nécessaire
+<Image src="/images/profile.webp" alt="Profil" width={400} height={400} priority />
+
+// ✅ Avec sizes : Next.js sert une image proche des dimensions réellement affichées
+<Image
+  src="/images/profile.webp"
+  alt="Profil"
+  width={400}
+  height={400}
+  sizes="(max-width: 768px) 100vw, 400px"
+  priority
+/>
+```
+
+C'est l'optimisation la plus systématiquement absente dans les projets Next.js que j'audite.
+
+## Fix 4 : Réduire le TTFB
+
+Le TTFB est la fondation. Chaque milliseconde de réponse serveur en plus retarde toutes les
+autres phases. J'ai couvert ça en détail dans [l'article sur le FCP](./how-to-improve-fcp) :
+génération statique, ISR, compression et suppression des chaînes de redirections.
+
+Un point spécifique au LCP : si vous fetchez des données dans le composant qui affiche votre
+élément LCP, ce fetch bloque la réponse serveur. Déplacez les fetches lents vers une couche
+mise en cache :
+
+```tsx
+// src/app/[locale]/page.tsx
+
+// ❌ Ce fetch bloque la réponse. Le TTFB inclut le temps de cet appel API.
+export default async function HomePage() {
+  const hero = await fetch("https://api.example.com/hero").then((r) =>
+    r.json(),
+  );
+  return <Hero data={hero} />;
+}
+
+// ✅ Mis en cache à l'edge. Seul le premier visiteur après expiration du cache paie le coût.
+export const revalidate = 3600;
+
+export default async function HomePage() {
+  const hero = await fetch("https://api.example.com/hero", {
+    next: { revalidate: 3600 },
+  }).then((r) => r.json());
+  return <Hero data={hero} />;
+}
+```
+
+## Mesurer le LCP par sous-partie
+
+Le LCP total vous dit si vous avez un problème. Le détail par sous-partie vous dit quoi
+corriger. Le build attribution de `web-vitals` expose les quatre phases depuis les sessions
+utilisateurs réelles :
+
+```ts
+// src/lib/vitals.ts
+import { onLCP } from "web-vitals/attribution";
+
+onLCP((metric) => {
+  const { value, attribution } = metric;
+
+  console.log("LCP total :", Math.round(value) + "ms");
+  console.log("LCP element:", attribution.lcpEntry?.element);
+
+  console.log("TTFB :", Math.round(attribution.timeToFirstByte) + "ms");
+  console.log(
+    "Délai chargement :",
+    Math.round(attribution.resourceLoadDelay) + "ms",
+  );
+  console.log(
+    "Durée chargement :",
+    Math.round(attribution.resourceLoadDuration) + "ms",
+  );
+  console.log(
+    "Délai rendu :",
+    Math.round(attribution.elementRenderDelay) + "ms",
+  );
+});
+```
+
+Si le délai et la durée de chargement sont tous les deux à 0, votre élément LCP est du texte.
+Si le délai de rendu est élevé, quelque chose bloque le thread principal après que la ressource
+a fini de se charger.
+
+Intégrez-le dans votre layout Next.js avec le hook intégré pour une mise en place rapide :
+
+```tsx
+// src/app/web-vitals.tsx
+"use client";
+
+import { useReportWebVitals } from "next/web-vitals";
+
+export function WebVitals() {
+  useReportWebVitals((metric) => {
+    if (metric.name === "LCP") {
+      console.log(`LCP : ${metric.value}ms`);
+    }
+  });
+  return null;
+}
+```
+
+Le hook vous donne le total. Importez directement depuis `web-vitals/attribution` si vous
+voulez le détail des sous-parties depuis les données terrain.
+
+## La suite
+
+Avec le FCP et le LCP couverts, le prochain article s'attaque au TBT (Total Blocking Time),
+qui pèse 30% du score Lighthouse. Il mesure combien de temps le thread principal est bloqué
+après le début du rendu de la page, et il est directement lié au délai de rendu qu'on vient
+d'examiner ici.
