@@ -20,14 +20,18 @@ The core mechanic. Commands inject context **surgically**, no copy-pasting block
 
 **Built-in:**
 
-- `/file`: embed a file's content
+- `/file`: embed a file or folder's content — PDFs, spreadsheets, and Word documents are converted to markdown on the fly via [markitdown](https://github.com/microsoft/markitdown), so the model receives readable text regardless of the source format
 - `/tree`: insert a folder structure
+- `/skill`: insert a named folder of instructions or context
+- `/configuration`: activate a saved model + skills bundle in one step
 
 **Custom commands:** define your own via a JSON manifest. Wrap any CLI tool, script, or external workflow. The app stays unchanged.
 
-## Model Access via OpenRouter
+## Model Access
 
-Every major model available on day one: DeepSeek, Claude, GPT, Mistral, and others. When a new model is released on OpenRouter, it appears in LLM Panel immediately, no update required. Switch models mid-conversation.
+**OpenRouter** gives access to every major model on day one: DeepSeek, Claude, GPT, Mistral, and others. When a new model is released, it appears in LLM Panel immediately, no update required.
+
+**Custom models:** add any OpenAI-compatible endpoint alongside OpenRouter models. Switch between them mid-conversation.
 
 ## Architecture
 
@@ -41,7 +45,5 @@ Storage: JSON files on disk. No database, no cloud.
 
 ## Roadmap
 
-- PDF interpretation in markdown
-- Image pasting for vision models
 - Git diff summaries
-- Expanded JSON tooling options
+- Expanded built-in command coverage

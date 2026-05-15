@@ -20,14 +20,18 @@ Le mécanisme central. Les commandes injectent du contexte de façon **chirurgic
 
 **Intégrées :**
 
-- `/file`: intègre le contenu d'un fichier
+- `/file`: intègre le contenu d'un fichier ou dossier — les PDFs, tableurs et documents Word sont convertis à la volée en markdown via [markitdown](https://github.com/microsoft/markitdown), le modèle reçoit du texte lisible quel que soit le format source
 - `/tree`: insère une arborescence de dossier
+- `/skill`: insère un dossier nommé d'instructions ou de contexte
+- `/configuration`: active un bundle modèle + skills en une étape
 
 **Commandes personnalisées :** définissez les vôtres via un manifeste JSON. Encapsulez n'importe quel outil CLI, script ou workflow externe. L'application reste inchangée.
 
-## Accès aux Modèles via OpenRouter
+## Accès aux Modèles
 
-Tous les grands modèles disponibles dès le premier jour : DeepSeek, Claude, GPT, Mistral, et d'autres. Quand un nouveau modèle est publié sur OpenRouter, il apparaît immédiatement dans LLM Panel, sans mise à jour nécessaire. Changez de modèle en cours de conversation.
+**OpenRouter** donne accès à tous les grands modèles dès le premier jour : DeepSeek, Claude, GPT, Mistral, et d'autres. Quand un nouveau modèle est publié, il apparaît immédiatement dans LLM Panel, sans mise à jour nécessaire.
+
+**Modèles personnalisés :** ajoutez n'importe quel endpoint compatible OpenAI aux côtés des modèles OpenRouter. Changez de modèle en cours de conversation.
 
 ## Architecture
 
@@ -41,7 +45,5 @@ Stockage : fichiers JSON sur disque. Pas de base de données, pas de cloud.
 
 ## Feuille de Route
 
-- Interprétation PDF en markdown
-- Collage d'images pour les modèles de vision
 - Résumés de diff Git
-- Options d'outillage JSON élargies
+- Couverture élargie des commandes intégrées
