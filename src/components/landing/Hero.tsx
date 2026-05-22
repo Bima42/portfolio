@@ -67,23 +67,6 @@ export function Hero() {
 			</div>
 
 			<div className="relative z-10 max-w-5xl mx-auto w-full">
-				{/* Status pill — kept as pill, it's an indicator not a button */}
-				<div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-pill bg-bg-elevated border border-border shadow-sm mb-8 text-xs text-fg-muted">
-					<span
-						className="w-2 h-2 rounded-pill shrink-0"
-						style={{
-							background: "oklch(0.72 0.18 145)",
-							boxShadow: "0 0 0 3px oklch(0.72 0.18 145 / 0.25)",
-							animation: "status-pulse 2s ease-in-out infinite",
-						}}
-					/>
-					<span className="font-mono uppercase tracking-wide text-[11px]">
-						{t("statusPillLabel")}
-					</span>
-					<span className="w-px h-3 bg-border shrink-0" />
-					<span>{t("statusPillSub")}</span>
-				</div>
-
 				{/* Static heading — large, never wraps */}
 				<h1
 					className="font-semibold leading-tight tracking-tighter text-fg mb-2"
